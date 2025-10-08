@@ -1,0 +1,252 @@
+/*start/cosultation*/
+@use '../components/_generalInnerPage.scss';
+@use '../source/_Variables.scss';
+
+
+
+
+.consultation {
+    padding-top: 14em;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-items: baseline;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+    /*    &.show {
+        min-height: 230vh;
+    }*/
+
+    > div {
+        height: fit-content;
+        padding: 0em 4em 2em 0em;
+
+        article {
+            // margin-top: 8em;
+            .p-limit {
+                -webkit-line-clamp: 6;
+            }
+
+            h4 {
+                color: var(--white);
+                margin-bottom: 1em;
+            }
+
+            p {
+                color: var(---white);
+            }
+        }
+
+        .show-more--btn {
+            color: var(---white);
+        }
+    }
+
+    .call {
+        color: var(--yellow);
+        margin-top: 1em;
+        font-weight: 600;
+        font-size: 1.7em;
+        width: fit-content;
+        grid-row: 3/4;
+        padding: 0 0 1em 2em;
+        margin: 0em 2.6em 4em 0;
+
+        span {
+            color: var(--white);
+            display: block;
+            font-weight: 400;
+            font-size: 0.9em;
+            text-align: right;
+
+            &:not(:last-child) {
+                margin-top: 1em;
+            }
+
+            &:last-child {
+                text-align: left;
+                margin-top: 0.5em;
+            }
+        }
+    }
+
+    > img {
+        width: 39vw;
+        position: absolute;
+        left: 0;
+        top: -5vw;
+    }
+}
+
+// ---------
+.teens {
+
+
+    .consultation {
+        margin-bottom: 2em;
+        background-color: var(--boxGray);
+        min-height: auto;
+        grid-template-columns: 70% 1fr;
+        padding: 2em;
+
+        .show-more--btn {
+            color: var(--textColor);
+        }
+
+        &.circle-bg {
+            &::after {
+                left: 0;
+                bottom: -9em;
+            }
+        }
+
+        > div {
+            padding: 2em;
+        }
+
+        &.show {
+            min-height: auto;
+        }
+
+        img {
+            top: 2em;
+            height: 101%;
+            width: auto;
+        }
+
+        > div article p {
+            color: var(--textColor);
+        }
+
+        .call {
+            padding-bottom: 0;
+            color: var(--blue);
+
+            span {
+                color: var(--textColor);
+            }
+        }
+    }
+}
+
+// --start/queris
+
+@media(max-width:1400px) and (min-width:992px) {
+    .consultation {
+        > img {
+            
+        }
+    }
+}
+
+@include Variables.media(Variables.$laptop) {
+
+    .consultation {
+        grid-template-rows: 8em max-content;
+        grid-template-columns: 100%;
+        margin-top: 47vw;
+
+        > img {
+            grid-row: 1/2;
+            width: 85vw;
+            top: -77vw;
+        }
+
+        > div {
+            grid-row: 2/3;
+            padding: 2em;
+
+
+            article {
+                margin-top: 0;
+            }
+        }
+
+        .call {
+            padding: 1em;
+            margin-inline: 1em;
+        }
+    }
+    // start/teens page
+    .teens {
+        .consultation {
+            grid-template-rows: 0 max-content;
+            grid-template-columns: 1fr;
+            margin-top: 6em;
+
+
+            img {
+                top: -5em;
+            }
+        }
+    }
+}
+
+@media (max-width:991px) and (min-width:697px) {
+    .teens {
+        .consultation {
+
+
+            img {
+                width: 15%;
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$tablet) {
+
+
+    .teens {
+        .consultation {
+            > div {
+                padding-inline: 0;
+            }
+
+            img {
+                width: 20%;
+            }
+        }
+    }
+}
+
+
+@include Variables.media(Variables.$mobile) {
+    .consultation {
+        > div {
+            padding:1em;
+        }
+
+        .call {
+
+            margin-inline:0;
+
+            span {
+
+                &:last-child {
+                    width: max-content;
+                }
+            }
+        }
+    }
+
+
+
+    .teens {
+        .consultation {
+            padding: 1em;
+
+            h4 {
+
+
+                &::after {
+                    display: none;
+                }
+            }
+
+            img {
+                width: 25%;
+            }
+        }
+    }
+}

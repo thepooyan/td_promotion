@@ -1,0 +1,11 @@
+@mixin theme {
+    &[data-theme='scratch'] {
+        --mainTheme: #FFAB1A;
+        --themeCompliment: #615031;
+        --button_image_1: url("/Content/images/img/scratch items/scratch_selfie.png");
+        --button_image_2: url("/Content/images/img/scratch items/scratch_happy.png");
+        --button_image_3: url("/Content/images/img/scratch items/scratch_surfboard.png");
+        --themeHeader: url("/Content/images/img/scratch items/main_logo.png");
+        --weblogBack: #FFEED2;
+    }
+}

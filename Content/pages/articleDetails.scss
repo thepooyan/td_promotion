@@ -1,0 +1,222 @@
+﻿@use '../source/Variables';
+@use "../components/boxesAds/boxesAds";
+@use '../components/_loader.scss';
+@use '../components/footer';
+@use '../components/shared/innerContent' as i;
+@use "../components/instaSide";
+@use "../components/sideBar";
+@use "../components/newComment";
+@use "../components/intraction";
+.ArticleBox {
+    .box {
+        padding-inline: 0 !important;
+    }
+
+    img {
+        &:not(.exception) {
+
+            &:not(.normal) {
+                max-width: 50%;
+                object-fit: contain;
+                aspect-ratio : 16/9;
+            }
+        }
+    }
+}
+.mian-col-item {
+    display: grid;
+    grid-template-columns: 300px minmax(15em, 119em);
+    grid-gap: 0 20px;
+    grid-auto-flow: dense;
+
+
+
+    &.hasDetials {
+        grid-template-areas:
+            "sideInfo content interaction" "sideBar content interaction" "sideBar content interaction";
+        grid-template-rows: 26em auto;
+
+        .sideBarInfo {
+            grid-area: sideInfo;
+        }
+
+        .content {
+            grid-area: content
+        }
+
+        .sideBar {
+            grid-area: sideBar
+        }
+
+        .interaction {
+            grid-area: interaction;
+        }
+    }
+}
+.course-Details-dec {
+    width: 100%;
+    max-width: 400px;
+    margin: 0px auto;
+    font-size: 1.2em;
+}
+.course-Details-dec .course-Details-dec-header {
+    background: Variables.$main-blue;
+    height: 45px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin: 5px auto;
+    padding: 14px 15px;
+    color: Variables.$bg-color;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.course-Details-dec .course-Details-dec-header h5 {
+    color: Variables.$bg-color;
+    text-align: center;
+    font-size: 1.3em;
+}
+.course-Details-dec ul {
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 1em;
+}
+
+.course-Details-dec ul .course-Details-dec-row {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    padding: 5px;
+    height: 45px;
+    border-bottom: 1px solid Variables.$main-blue;
+}
+
+.course-Details-dec ul .dec-prerequisites {
+    grid-template-columns: 18% 82%;
+}
+
+.course-Details-dec ul .course-Details-dec-row .titr-row {
+    font-weight: 600;
+    display: grid;
+    grid-template-columns: 30px auto;
+    font-size: 1em;
+}
+
+.course-Details-dec ul .course-Details-dec-row .titr-row i {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.course-Details-dec ul .course-Details-dec-row .titr-row label {
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.course-Details-dec ul .course-Details-dec-row .dec-details {
+    font-size: 1em;
+    opacity: .8;
+    text-align: left;
+    margin-left: 5%;
+    font-weight: 100;
+    white-space: nowrap;
+}
+
+.course-Details-dec ul .course-Details-dec-row {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    padding: 5px;
+    height: 45px;
+    border-bottom: 1px solid Variables.$main-blue;
+
+    &:last-child {
+        border: none;
+    }
+}
+.add-rate {
+    padding: 15px 4%;
+}
+
+.add-rate .Comment-card {
+    background: #f4f4f4;
+    box-shadow: none;
+    border: none;
+    width: 98%;
+    margin: 10px auto;
+    height: auto;
+    font-size: 1.1em;
+}
+
+.flex-edu-download {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #8d8d8d;
+    padding-bottom: 0em;
+    margin-bottom: 1em;
+    opacity: 0.8;
+}
+
+.div-edu-download {
+    margin-bottom: .9em;
+}
+
+.div-edu-download i {
+    font-size: 20px
+}
+
+.green {
+    color: #05890f;
+}
+
+.div-edu-download .red {
+    color: #bb0808;
+}
+
+.btn-save-like {
+    color: #cf1716;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.add-rate .commnet-card-footer.grid {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5%;
+    border: none;
+}
+
+.star-rating .rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.btn-save-like:hover {
+    color: #03a9f4
+}
+
+.stars-more {
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .mian-col-item.reverse-768 {
+        display: flex;
+        flex-direction: column-reverse;
+
+        &.forFilms, &.bookPart {
+            .sideInfoBar {
+                order: 2;
+            }
+
+            .sideBar {
+                order: 1;
+            }
+
+            .content {
+                order: 3;
+            }
+        }
+    }
+}

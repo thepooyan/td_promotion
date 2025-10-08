@@ -1,0 +1,25 @@
+﻿.loader {
+    font-size: .8em;
+    --mainColor: rgb(88, 160, 255);
+    --backColor: rgb(224, 224, 224);
+    --thick: .78em;
+    --duration: 1.3s;
+    height: 5em;
+    width: 5em;
+    border: var(--thick) solid var(--backColor);
+    border-top: var(--thick) solid var(--mainColor);
+    border-radius: 50%;
+    animation: spin var(--duration) infinite cubic-bezier(.65,.05,.36,1);
+    margin: auto;
+    margin-bottom: 1em;
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

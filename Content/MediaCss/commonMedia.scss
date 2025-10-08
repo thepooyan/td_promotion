@@ -1,0 +1,77 @@
+@use 'mediaPartials/header';
+
+
+
+@media only screen and (max-width: 1200px) {
+
+    #search {
+        margin: auto;
+
+        input {
+            height: 3em;
+        }
+    }
+}
+@media (max-width:800px){
+    .course-Details .whiteArea header {
+
+        h1 {
+            font-size:2em;
+  
+        }
+
+    
+    }
+    .mainHeader .headerContainer
+    #search {
+        width: 90%;
+    }
+}
+/* Extra small devices (698-374)*/
+@media only screen and (max-width: 519px) {
+    .course-Details .whiteArea header {
+
+        h1 {
+         
+         
+            font-size: 5.5vw;
+            line-height: 1.6em;
+            transform: translateX(0);
+            left: 0;
+            width: 100%;
+        }
+
+        img {
+            min-height: 49.7vw;
+        }
+    }
+}
+
+/* Large devices (laptops/desktops, 992px till 769 and down) */
+
+
+@media only screen and (max-width:780px) {
+    #search {
+        margin: 1em auto;
+      
+    }
+}
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+    .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+ 
+}
+@media screen and (max-width:320px){
+    #profile > section .cont .course {
+        display: block;
+    .right .table {
+        margin-bottom:1em;
+        div{
+            margin-bottom:1em;
+        }
+    }
+    }
+}

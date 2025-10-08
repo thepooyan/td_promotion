@@ -1,0 +1,72 @@
+﻿%box_general {
+    box-shadow: var(--boxShadow);
+    padding: 3em;
+    border-radius: .9em;
+}
+
+section.comments {
+    @extend %box_general;
+    @at-root #course_package section.comments form, #course_package .kids_comments_form {
+        border: 2px solid var(--greyBorder);
+        border-radius: 0.6em;
+        padding: 1.4em 2em;
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 0.8em;
+            font-weight: 600;
+        }
+
+        textarea {
+            border: 1px solid var(--grayColor);
+            font-family: inherit;
+            width: 100%;
+            border-radius: 1em;
+            resize: none;
+            padding: 1em;
+        }
+
+        button {
+            display: block;
+            margin-top: 0.7em;
+            margin-right: auto;
+            padding: 0.3em 1.3em;
+            font-weight: bold;
+        }
+    }
+
+    .comment {
+        margin: 5em 0;
+
+        .name {
+            color: var(--greyText);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        span {
+            color: var(--greyText);
+
+            &::after {
+                content: '';
+                border-bottom: 1px solid var(--greyBorder);
+                display: block;
+                margin-bottom: 1em;
+            }
+        }
+
+        button {
+            background: none;
+            color: var(--greyText);
+            font-size: 1.1em;
+            margin-top: 1em;
+
+            &::before {
+                content: '\f3e5';
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                margin-left: .4em;
+            }
+        }
+    }
+}

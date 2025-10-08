@@ -1,0 +1,43 @@
+#modal.spinner.alt .content {
+    font-size: 1.8em;
+    background: white;
+    padding: 1em;
+    border-radius: 0.3em;
+
+    img {
+        width: 10em;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0 1em;
+        margin-top: 0.8em;
+
+        p {
+            color: #676767;
+            font-size: 0.8em;
+        }
+
+        span {
+            display: block;
+            width: 1.3em;
+            height: 1.3em;
+            border-radius: 50%;
+            border-top: 2px solid #1d71b9;
+            animation: round 1s linear infinite;
+            border-top: 2px solid #2086C8;
+
+            @keyframes round {
+                from {
+                    rotate: 0deg;
+                }
+
+                to {
+                    rotate: 360deg;
+                }
+            }
+        }
+    }
+}

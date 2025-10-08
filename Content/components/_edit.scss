@@ -1,0 +1,225 @@
+@use '../source/_Variables.scss';
+
+form.editProfile {
+    display: grid;
+    grid-template-columns: repeat(2, 40%);
+    justify-content: center;
+    column-gap: 4%;
+    border: 1px solid var(--fourthColor);
+    padding: 1.5em;
+    border-radius: .7em;
+
+    .full {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .validationMsg {
+        color: red;
+        font-weight: bold;
+        font-size: 0.85em;
+        overflow: hidden;
+        display: block;
+        transition: 0.2s cubic-bezier(.68,-0.55,.27,1.55), max-height .3s .3s;
+        transform: scale(.8);
+        transform-origin: right;
+        opacity: 0;
+        max-height: 0;
+
+        &.show {
+            transition: 0.2s cubic-bezier(.68,-0.55,.27,1.55) .2s, max-height .3s;
+            transform: scale(1);
+            opacity: 100;
+            max-height: 2.1em;
+        }
+    }
+    //! structure
+
+    label {
+        padding: .3em 0 ;
+        font-size: .9em;
+        padding-bottom: 1.3em;
+        width: 100%;
+        color: var(--textMainColor);
+
+        input,
+        .select,
+        select,
+        textarea {
+            width: 100%;
+            border: 0;
+            border-radius: 0.6em;
+            padding: 0.7em 0.7em;
+            display: block;
+            font-family: inherit;
+            margin-top: .4em;
+            color: var(--textMainColor);
+            font-size: 1em;
+            background: var(--fourthColor);
+            /* border: 1px solid #dadada; */
+            margin-bottom: .2em;
+
+            &:focus {
+                outline: none;
+                border-color: gray;
+            }
+        }
+
+        input::placeholder {
+            color: var(--textMainColor);
+        }
+
+        .select {
+            &.top, &.bottom {
+                border-color: gray;
+            }
+        }
+
+        textarea {
+            resize: none;
+            width: 85%;
+            font-size: 0.9em;
+            height: 10em;
+            padding: .6em;
+        }
+
+        input:disabled {
+            background-color: #bbbbbb;
+            user-select: none;
+            transition: .2s;
+            box-shadow: none;
+        }
+
+        .birth {
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            background-color: unset;
+            padding: 0;
+
+            > div {
+                flex: 0 0 32%;
+
+                select {
+                    width: 100%;
+                    padding: .4em 1em;
+                }
+            }
+        }
+
+        &.photo {
+
+            img {
+                display: block;
+                --wid: 8.1em;
+                width: var(--wid);
+                height: var(--wid);
+                background: #f1f1f1;
+                margin: 1em auto;
+                border-radius: 0.2em;
+                cursor: pointer;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                object-fit: cover;
+                box-shadow: 1px 1px 5px #00000070;
+
+                &[src=""]::after {
+                    content: "\f093";
+                    font-family: "Font Awesome 5 Free";
+                    font-weight: 900;
+                    font-size: 3em;
+                }
+            }
+
+            input {
+                &.imageInput {
+                    display: none;
+                }
+            }
+
+            .smallButton {
+                margin: auto;
+                display: block;
+                width: max-content;
+                padding: 0.6em 2em;
+                border-radius: 8px;
+            }
+
+            > span {
+                margin-bottom: 2em;
+                display: block;
+            }
+        }
+
+        &.hidden {
+            display: none;
+        }
+
+        &.alert {
+            padding: 1.9em 1.1em;
+            background: #f8f8f8;
+            border-radius: 0.3em;
+            color: #f20000;
+            margin: 1em 0;
+
+            ul {
+                padding: 0;
+                margin: 0;
+                padding-right: 0.9em;
+
+                li:first-child {
+                    margin-bottom: 0.3em;
+                }
+            }
+        }
+    }
+
+    .errors {
+        grid-column: 1 / 3;
+    }
+
+    > div {
+        grid-column: 1 / 3;
+        margin-top: 2em;
+
+        button {
+            margin-left: 1em;
+        }
+    }
+
+    @include Variables.media(Variables.$laptop) {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+        gap: 1em;
+
+        label .birth {
+            flex-direction: column;
+        }
+    }
+
+    @include Variables.media(Variables.$tablet) {
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        font-size: 1.1em;
+        grid-template-columns: 49% 49%;
+        column-gap: 2%;
+
+        h3 {
+            margin: 0.7em 0;
+        }
+
+        label {
+            input, select {
+                width: 100%;
+            }
+
+            textarea {
+                width: 100%;
+            }
+        }
+    }
+}

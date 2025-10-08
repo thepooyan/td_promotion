@@ -1,0 +1,464 @@
+/*start/interview*/
+@use '../source/_Variables.scss';
+
+.interview--k {
+    position: relative;
+    margin-top: 2em;
+
+    &::before {
+        position: absolute;
+        content: "";
+        background-image: url(/public/Content/images/img/line2.png);
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        background-position: center;
+        transform: scale(1.04);
+    }
+
+    h4 {
+        margin-bottom: 3em;
+    }
+
+    > div {
+        display: grid;
+        grid-template-columns: 65% 1fr;
+        // grid-template-rows: 25em;
+        gap: 1.5em;
+        padding: 0 2em 2em;
+
+        ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+            gap: 1em;
+            align-items: center;
+            justify-content: center;
+            height: fit-content;
+
+            li.section-video-i {
+                width: 95%;
+                margin: auto;
+
+                > div {
+                    position: relative;
+                    height: 8em;
+                    border-radius: 15px;
+                    overflow: hidden;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    cursor: pointer;
+
+
+
+                    &:hover .overlay-video-interview {
+                        visibility: visible;
+                        opacity: 1;
+
+                        > div {
+                            transform: translateY(0);
+                        }
+                    }
+
+                    &:after {
+                        position: absolute;
+                        content: "\f144";
+                        font-family: "Font Awesome 5 Free";
+                        top: 40%;
+                        left: 50%;
+                        transform: translate(-50%);
+                        font-size: 2.5em;
+                        color: #fff;
+                        font-weight: 900;
+                        z-index: 3;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+
+                p {
+                    margin-top: 0.5em;
+                }
+                p,span{
+padding-inline:0.5em;
+text-align:right;
+                }
+                span {
+                    font-size: 0.9em;
+                    color: var(---lightBlack);
+                    display:block;
+                }
+            }
+        }
+
+        .show-video-i {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 21em;
+
+            &:hover .overlay-video-interview {
+                visibility: visible;
+                opacity: 1;
+
+                > div {
+                    transform: translateY(0);
+                }
+            }
+            // &::before,
+            // &::after {
+            //     position: absolute;
+            //     content: '';
+            //     top: 0;
+            //     bottom: 0;
+            //     left: 0;
+            //     right: 0;
+            // }
+            // &::before {
+            //
+            //     background-position: center;
+            //     background-repeat: no-repeat;
+            //     background-size: cover;
+            //     width: 100%;
+            //     height: 100%;
+            //     z-index: 2;
+            // }
+            // &:after {
+            //     content: "\f144";
+            //     font-family: "Font Awesome 5 Free";
+            //     top: 50%;
+            //     left: 11%;
+            //     transform: translate(-50%);
+            //     font-size: 2.5em;
+            //     color: #fff;
+            //     font-weight: 900;
+            //     z-index: 3;
+            // }
+        }
+
+        .description-person {
+            display: none;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .show-video-i {
+        position: relative;
+
+        &.hide {
+            &::after {
+                display: none;
+            }
+        }
+
+        &::after {
+            position: absolute;
+            content: "\f144";
+            font-family: "Font Awesome 5 Free";
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%);
+            font-size: 2.5em;
+            color: #fff;
+            font-weight: 900;
+            z-index: 3;
+            cursor: pointer;
+        }
+
+        .overlay-video-interview {
+            background-image: url(/public/Content/images/img/kid.jpg);
+            visibility: visible;
+            opacity: 1;
+
+            &::after {
+                position: absolute;
+                content: '';
+                bottom: 0;
+                left: 0;
+                right: 0;
+                top: 0;
+                background-color: rgb(0 0 0 / 26%);
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            &:hover::after {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+
+    .overlay-video-interview {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-color: rgb(0 0 0 / 26%);
+        color: #fff;
+        z-index: 3;
+        display: grid;
+        opacity: 0;
+        visibility: hidden;
+        align-items: end;
+        transition: 0.3s;
+        cursor: pointer;
+        background-size: cover;
+
+
+        &.hide {
+            position: relative;
+        }
+
+        > div {
+            padding: 1em;
+            background-color: rgb(0 0 0 / 59%);
+            transform: translateY(100%);
+            transition: 0.5s;
+            width: 100%;
+        }
+
+        p {
+            line-height: 2;
+            font-size: 0.9em;
+
+            &:last-child {
+                font-size: 0.8em;
+            }
+        }
+
+        span {
+            margin-block: 0.5em;
+        }
+    }
+
+
+    .owl-item {
+        margin-right: 0 !important;
+        margin-left: 10px !important;
+    }
+
+    .owl-carousel .owl-nav.disabled {
+        display: none;
+    }
+}
+
+// ---teens page styles---
+.teens {
+
+    .title-style-o {
+
+        .img-smallDevice {
+            position: absolute;
+            top: -1em;
+            right: -2.5em;
+        }
+    }
+
+    .interview--k {
+        &.circle-bg {
+            &::after {
+                border-style: dashed;
+                right: -1em;
+                bottom: 6em;
+            }
+        }
+
+        h4 {
+            margin-bottom: 0;
+        }
+
+        > div {
+            grid-template-columns: 25% 1fr 35%;
+
+            .age-person {
+                display: none;
+            }
+
+            ul,
+            > div {
+                margin-top: 5em;
+            }
+
+            img {
+                width: 95%;
+            }
+
+            ul {
+                grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+
+
+                li.section-video-i p {
+                    text-align: right;
+                }
+            }
+
+            .show-video-i {
+                height: 22em;
+            }
+        }
+    }
+}
+
+// ---queris
+@include Variables.media(Variables.$laptop) {
+    .interview--k {
+
+
+        > div {
+            display: grid;
+            grid-template-columns: 100%;
+            gap: 1em;
+            padding: 0;
+
+            ul {
+                grid-row: 2/3;
+                padding: 0;
+
+                .item {
+                    width: 300px;
+                }
+
+                li.section-video-i {
+                    width: 100%;
+                }
+            }
+
+            .show-video-i {
+                width: 50%;
+                margin: auto;
+            }
+        }
+    }
+    // --teens
+
+    .teens {
+
+        .img-bigDevice {
+            display: none;
+        }
+
+        .interview--k {
+            > div {
+                > div, ul {
+                    margin-top: 0;
+                }
+            }
+
+            h4 {
+                margin-bottom: 3em;
+
+                .img-smallDevice {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:991px) and (min-width:699px) {
+    .teens {
+        .interview--k {
+            > div {
+                grid-template-columns: 50% 1fr;
+                padding-inline: 1em;
+
+                .show-video-i {
+                    width: 100%;
+                }
+
+                ul {
+                    grid-row: 1/2;
+                    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+
+                    li.section-video-i {
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include Variables.media(800px) {
+    .interview--k {
+        > div {
+
+
+            .show-video-i {
+                width: 55%;
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$tablet) {
+    .teens {
+        .interview--k {
+
+            h4 {
+                margin-bottom: 2em;
+
+                .img-smallDevice {
+                    display: block;
+                }
+            }
+
+            > div {
+                grid-template-columns: 100%;
+
+                .show-video-i {
+                    grid-row: 2/3;
+                }
+
+                ul {
+                    grid-row: 3/4;
+                }
+            }
+        }
+    }
+}
+
+@include Variables.media(600px) {
+
+    .interview--k {
+        > div {
+
+
+            .show-video-i {
+                width: 65%;
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$mobile) {
+    .interview--k {
+        .overlay-video-interview {
+            visibility: visible;
+            opacity: 1;
+
+            > div {
+                transform: translateY(0);
+            }
+        }
+    }
+
+
+
+    .interview--k > div {
+
+
+        .show-video-i {
+            width: 85%;
+            height: 15em;
+        }
+    }
+}

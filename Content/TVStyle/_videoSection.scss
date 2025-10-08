@@ -1,0 +1,281 @@
+@use "../source/Variables" as v;
+@mixin videoSection {
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+  font-size: 1vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  width: 85%;
+  margin: auto;
+  margin-bottom: 6em;
+  margin-top: 10em;
+
+  > .menu {
+    display: flex;
+    gap: 3em;
+    --borderColor: #d6d6d6;
+    border-bottom: 2px solid var(--borderColor);
+
+    .item {
+      position: relative;
+      .sub-menu {
+        top: calc(100% + 10px);
+        transform: scale(0.9);
+        right: 0;
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.2s;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        width: fit-content;
+        min-width: 15em;
+        border-radius: 0.2em;
+        box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.1);
+
+        > .item {
+          > a {
+            display: block;
+            padding: .5em 1em;
+            transition: background-color .2s;
+
+            &:hover{
+              background-color: #f6f6f6;
+            }
+          }
+
+          &:not(:first-child){
+            >a{
+              padding-top: 0;
+            }
+          }
+
+          > .sub-menu {
+            right: calc(100% + 10px);
+            top: 0;
+            transform: scale(1);
+          }
+          &:hover{
+            >.sub-menu {
+              opacity: 1;
+              right: calc(100% + 1px);
+              visibility: visible;
+            }
+          }
+
+          &.has-menu{
+            &::after{
+              position: absolute;
+              content: "";
+              display: inline-block;
+              padding: .15em;
+              border-left: 1px solid black;
+              border-bottom: 1px solid black;
+              transform: rotate(45deg) translateY(-50%);
+              top: 50%;
+              left: .6em;
+            }
+          }
+        }
+      }
+    }
+
+
+    > .item {
+      > a {
+        cursor: pointer;
+        font-weight: 500;
+        color: var(--p);
+        transition: all 0.2s;
+
+        &::after {
+          background-color: transparent;
+          transition: background-color 0.2s;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          width: 100%;
+          top: 100%;
+          left: 0;
+          height: 2px;
+        }
+
+        &:hover {
+          color: var(--blue);
+          position: relative;
+
+          &::after {
+            background-color: var(--blue);
+          }
+        }
+      }
+
+      &:hover {
+        > a {
+          color: var(--blue);
+          position: relative;
+          transition: all 0.3s;
+
+          &::after {
+            background-color: var(--blue);
+          }
+        }
+        >.sub-menu {
+          opacity: 1;
+          top: calc(100% + 2px);
+          transform: scale(1);
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  > .videos {
+    position: relative;
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5em;
+    animation-name: fade;
+    animation-duration: 0.7s;
+
+    &.active {
+      display: grid;
+    }
+
+    &.more {
+      > a {
+        &:nth-of-type(n + 7) {
+          display: block;
+        }
+      }
+
+      .show-more {
+        &::after {
+          transform: translateY(-47%) rotate(270deg) scale(1, 1.6);
+        }
+      }
+    }
+
+    > a {
+      &:nth-of-type(n + 7) {
+        display: none;
+      }
+
+      cursor: pointer;
+      animation-name: fade;
+      animation-duration: 0.7s;
+
+      > div {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: "";
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          --wid: 2.5vw;
+          --min: 2.3em;
+          min-width: var(--min);
+          min-height: var(--min);
+          width: var(--wid);
+          height: var(--wid);
+          background-image: url("/Content/images/img/playIcon.svg");
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+
+        > img {
+          width: 100% !important;
+          aspect-ratio: 16/9;
+          border-radius: 0.8em;
+        }
+      }
+
+      > span {
+        color: var(--textColorStrong);
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        padding-block: 0.3em;
+      }
+    }
+
+    > .show-more {
+      position: absolute;
+      top: calc(100% + 2em);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--blue);
+      cursor: pointer;
+
+      &::after {
+        content: "<";
+        position: absolute;
+        right: calc(100% + 0.5em);
+        top: 50%;
+        transform: translateY(-47%) rotate(90deg) scale(1, 1.6);
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  @include v.media(v.$tablet) {
+    margin-top: 5em;
+
+    > .tabs {
+      border: none;
+      gap: 0.5em;
+      overflow-x: scroll;
+      padding-bottom: 0.5em;
+
+      > span {
+        border: 1px solid var(--borderColor);
+        padding: 0.3em 1em;
+        border-radius: 0.5em;
+        flex-shrink: 0;
+
+        &.active {
+          border-color: var(--blue);
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+
+    > .videos {
+      grid-template-columns: repeat(2, 1fr);
+
+      > div {
+        > div {
+          &::after {
+            --wid: 10.5vw;
+          }
+
+          > img {
+            height: 57vw;
+            max-width: 43vw;
+          }
+        }
+
+        > span {
+          text-align: justify;
+          -webkit-line-clamp: 2;
+        }
+      }
+    }
+  }
+}

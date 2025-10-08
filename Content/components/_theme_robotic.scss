@@ -1,0 +1,11 @@
+@mixin theme {
+    &[data-theme='robotic'] {
+        --mainTheme: #294F81;
+        --themeCompliment: white;
+        --button_image_1: url("/Content/images/img/robotic items/robotic_chat.png");
+        --button_image_2: url("/Content/images/img/robotic items/robotic_idea.png");
+        --button_image_3: url("/Content/images/img/robotic items/robotic_happy.png");
+        --themeHeader: url("/Content/images/img/robotic items/main_logo.png");
+        --weblogBack: #CFD7E6;
+    }
+}

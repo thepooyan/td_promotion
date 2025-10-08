@@ -1,0 +1,10 @@
+@mixin theme {
+    &[data-theme='icdl'] {
+        --mainTheme: #002CE3;
+        --themeCompliment: #fff;
+        --button_image_1: url("/Content/images/img/icdl items/icon1.png");
+        --button_image_3: url("/Content/images/img/icdl items/cat.png");
+        --themeHeader: url("/Content/images/img/icdl items/mainLogo.png");
+        --weblogBack: #D6EDFF;
+    }
+}

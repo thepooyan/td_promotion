@@ -1,0 +1,42 @@
+@mixin yellowBackMain {
+  background-color: #f7c04a;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  padding: 2em;
+  margin-bottom: 4em;
+      @media (min-width: 900px) {
+        display: none;
+      }
+
+  .imgTop {
+    width: fit-content;
+    > img {
+      width: 100%;
+    }
+  }
+  .txtDown {
+    padding: 1em;
+    .giv-product {
+      height: 1.6em;
+      font-size: 1.5em;
+      font-weight: 900;
+      border-right: 0.2em solid;
+      border-radius: 0.3em;
+      padding-right: 0.5em;
+
+      @media (max-width: 1100px) {
+              font-size: 1.1em;
+      }
+    }
+
+    .product-text {
+      width: fit-content;
+
+      line-height: 2;
+      font-size: 1em;
+      margin-top: 1em;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@use "../components/font-sizes";
+
+@mixin modalT {
+  margin: auto;
+
+  width: 800px;
+  border-radius: 1em;
+  @media (max-width: 850px) {
+    width: 500px;
+  }
+  .modalContainer {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: 65% 30%;
+    .leftSide {
+      position: relative;
+      height: 100%;
+      > img {
+        width: 16em;
+        position: absolute;
+        left: 0;
+        /* top: -4.2em; */
+        bottom: 0;
+        @media (max-width: 850px) {
+          width: 10em;
+        }
+        @media (max-width: 505px) {
+          width: 10em;
+          bottom: -0.9em;
+        }
+        @media (max-width: 480px) {
+          width: 10em;
+          bottom: -2em;
+        }
+        @media (max-width: 356px) {
+          width: 10em;
+          bottom: -.7em;
+        }
+      }
+    }
+    .rightSide {
+      gap: 1em;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #363636;
+
+      @media (max-width: 850px) {
+        gap: 0.7em;
+      }
+
+      .title {
+        @include font-sizes.text-size(2xl);
+        font-weight: 900;
+        text-align: center;
+        @media (max-width: 850px) {
+          @include font-sizes.text-size(1xl);
+        }
+      }
+      .description {
+        text-align: center;
+        margin: unset !important;
+      }
+      .bigTxt {
+        @include font-sizes.text-size(4xl);
+        font-weight: 900;
+        color: #003c6b;
+        text-align: center;
+        margin-top: unset !important;
+        @media (max-width: 850px) {
+          @include font-sizes.text-size(2xl);
+        }
+        @media (max-width: 505px) {
+          @include font-sizes.text-size(md);
+        }
+      }
+      #resetBtn {
+        order: 6;
+        background: none;
+        @include font-sizes.text-size(md);
+        font-weight: bold;
+      }
+      .seeMore {
+        font-weight: bold;
+        background-color: #ffae00;
+        color: #fff;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        width: 100%;
+        @media (max-width: 505px) {
+          height: unset;
+        }
+      }
+      #prevBtn {
+      }
+    }
+  }
+}

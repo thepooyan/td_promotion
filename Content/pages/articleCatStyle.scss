@@ -1,0 +1,188 @@
+﻿@use '../source/Variables';
+@use "../components/boxesAds/boxesAds";
+@use '../components/search/filterBar';
+@use '../components/customSelect';
+@use '../components/_loader.scss';
+@use '../components/footer';
+@use '../components/shared/innerContent' as i;
+
+.td-content {
+    @include i.innerContent;
+}
+
+.p-ddu {
+    opacity: 100;
+}
+.title-edu-step {
+    background-color: Variables.$redLight;
+    text-align: center;
+    color: Variables.$bg-color;
+    font-size: 1.2rem;
+    padding: .8em;
+    border-radius: 6px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin: 25px 27px;
+}
+.width-edu {
+    width: 96%;
+    margin: 0px auto;
+}
+.Courses-card-grid.edu-detail {
+    grid-template-columns: repeat(auto-fill, 255px) !important;
+    padding-bottom: 1em;
+    grid-gap: 25px 0.5%;
+}
+
+.Courses-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 2fr)) !important;
+    grid-gap: 25px 20px;
+    overflow: hidden;
+    grid-auto-flow: dense;
+    justify-content: space-evenly;
+    margin-bottom : 2em;
+
+    &.forBooks {
+        padding: 2em 0;
+    }
+}
+.grid-item-article {
+    opacity: 1;
+    bottom: 0%;
+    position: relative;
+}
+
+.Courses-card.article-part {
+    position: relative;
+    border-radius: 10px;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+.article-title-long {
+    font-size: 13px;
+    line-height: 22px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 18px;
+}
+.grid-item-title {
+    position: absolute;
+    text-align: center;
+    color: #000;
+    font-size: 1.2em;
+    padding: 10px 5px;
+    height: 40px;
+    z-index: 9;
+    left: 9px;
+    width: 130px;
+    top: 8px;
+    line-height: 21px;
+}
+
+.grid-item-article .Courses-card-img {
+    height: auto;
+}
+
+.Courses-card-img {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.classes .grid-item-article .Courses-card-img img {
+    display: block;
+    width: 253px;
+    height: 131px;
+    color: transparent;
+    background-color: #bbb;
+    border-radius: 8px;
+}
+.Courses-card-img img {
+    display: block;
+    margin: auto;
+    height: 100%;
+}
+.classes .Courses-card-item {
+    padding: 1em 2em;
+    bottom: 35px;
+}
+.Courses-card-item {
+    padding: 1em 2em;
+}
+.Courses-card-text {
+    height: 150px;
+    overflow: hidden;
+    line-height: 21px;
+    font-size: 14px;
+    text-align: justify;
+    margin-top: 10px;
+    -webkit-transition: .6s linear;
+    -moz-transition: .6s linear;
+    transition: .6s linear;
+}
+.course-card-container {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding-top: 15px;
+}
+.visit-num {
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    position: absolute;
+    bottom: 6px;
+    right: 21px;
+}
+.flex-visit-num {
+    font-size: .6rem;
+    margin-left: 1.5em;
+    color: #42515a;
+}
+.width-edu .Courses-card .btn-more {
+    padding: 5px 1em;
+    width: auto;
+    color: #02cde7;
+}
+.article-part .btn-more,
+.books-part .btn-more,
+.grid-container .books-part .stars-more a {
+    text-align: left;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    padding: 5px 2em;
+    width: 100%;
+    color: Variables.$main-blue;
+}
+@media (max-width: 1220px) {
+    .Courses-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+}
+@media (max-width: 768px){
+    .Courses-card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 280px));
+        justify-content: center;
+        grid-auto-flow: dense;
+    }
+}
+@media (max-width: 480px){
+    .Courses-card-grid.edu-detail {
+        padding: 0 1em;
+    }
+}

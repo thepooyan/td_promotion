@@ -1,0 +1,376 @@
+﻿@use "../components/courseDetailTitr" as cd;
+@use "../source/Variables" as v;
+@use "../components/courseQuestion" as cq;
+.course-Details .whiteArea header h1{
+    opacity : 0;
+}
+.course-Details .whiteArea header {
+    margin-inline : 4%;
+}
+.course-Details .whiteArea header img {
+    min-height: unset;
+    border-radius: 1.5em;
+}
+.uiuxGradient {
+    background-color: unset;
+    background-image: linear-gradient(to right, #C60D88 0%,#A30B70 27%,#8F0963 54%,#73084F 81%,#600642 100%);
+}
+.courseDetailTitr {
+    @include cd.courseDetailTitr;
+    font-size: 0.87vw;
+
+    > div {
+        &:nth-of-type(1) {
+            flex-basis: 34em;
+        }
+    }
+
+    @include v.media(v.$screen) {
+        font-size: .78vw;
+    }
+
+    @include v.media(962px) {
+        font-size: 1vw;
+    }
+
+    @include v.media(v.$tablet){
+        font-size : 1.2vw;
+    }
+}
+
+.question {
+    @include cq.courseQuestion;
+
+    >div{
+        &:nth-child(2){
+            >img{
+                object-fit : contain;
+            }
+        }
+    }
+}
+.colorTheme {
+    color: var(--colorTheme) !important;
+}
+
+.box{
+    
+}
+
+.part {
+    background-color: var(--colorTheme);
+    border-radius: var(--radius);
+    font-size: 1.2em;
+    color: var(--colorCompliment);
+    padding: 0.9em 2.3em;
+    margin-bottom: 0.5em !important;
+
+    &.collapsePart {
+
+        &::before {
+            border: 1px solid #fff;
+            color: #fff;
+        }
+    }
+}
+
+.box {
+    position: relative;
+    background-color: var(--colorCompliment);
+    border: 0.1em solid var(--colorAlt);
+    border-radius: var(--radius);
+    padding: 1em 2em;
+    margin-bottom: 3rem;
+    --p: #383838;
+
+    
+
+    &.project {
+        background-color: var(--color);
+        display: grid;
+        grid-template-columns: 25% auto;
+        grid-template-areas: "right left";
+        gap: 6em;
+        padding: 2em 5em;
+        position: relative;
+
+        .h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        * {
+            color: var(--colorCompliment) !important;
+        }
+
+        .left {
+            grid-area: left;
+            margin-block: auto;
+
+            h4 {
+                margin-top: 1em;
+            }
+
+            .h3 {
+                border-image: unset;
+            }
+        }
+
+        img {
+            margin-block: auto;
+            grid-area: right;
+        }
+
+        &.withLabel {
+            &::before {
+                content: "";
+                position: absolute;
+                display: block;
+                width: 16em;
+                height: 16em;
+                top: -10em;
+                left: 0;
+                background-image: url("../Content/images/courseDetails/JQueryLabel.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+    }
+
+    &:not(.project) {
+        img {
+            margin: auto;
+            width: 50%;
+            max-height: 26em;
+            object-fit: contain;
+            border-radius: 1em;
+            margin-bottom: 1.5em;
+
+            &:not(.block-image) {
+                width: 40%;
+                box-shadow: unset !important;
+                float: left;
+                margin-left: 3em;
+                object-fit: unset;
+                max-height: unset;
+                max-width: 23em;
+            }
+        }
+    }
+
+    > .h4 {
+        color: var(--colorTheme);
+    }
+
+    > ul {
+        padding-inline: 1em;
+    }
+
+    > .box-mobile-img {
+        display: none;
+        width: 80%;
+        margin: auto
+    }
+
+    li {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+.partSection {
+    counter-reset: box;
+
+     .box {
+        &:not(.project) {
+            &::before {
+                --wid: 2.7em;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: var(--wid);
+                height: var(--wid);
+                border: 0.1em solid var(--colorAlt);
+                background-color: white;
+                border-radius: 50%;
+                top: 50%;
+                right: 0;
+                transform: translate(50%, -50%);
+                counter-increment: box;
+                content: counter(box);
+                color: var(--colorTheme);
+            }
+        }
+    }
+}
+
+.uiuxProjects {
+    font-size: .9vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2em;
+    padding: 4em 1.7em;
+    border-radius: 16px;
+    background-image: linear-gradient(to left,#c60d88 0%,#a30b70 27%,#8f0963 54%,#73084f 81%,#600642 100%);
+
+    img {
+        border-radius: .9em;
+    }
+
+    div {
+        grid-area: 2 / 1 / 3 / 3;
+        color: #fff;
+        font-size: 2.9em;
+        line-height: 1.5em;
+        text-align: center;
+
+        > span {
+            width: fit-content;
+            transform: translateX(-7em);
+        }
+    }
+
+    &.single {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-image: unset;
+
+        img {
+            width: 52em;
+            margin: auto;
+        }
+
+        > div {
+            grid-area: unset;
+            color: var(--textColorStrong);
+        }
+
+        .downloadBtn {
+            background-image: linear-gradient(to left,#c60d88 0%,#a30b70 27%,#8f0963 54%,#73084f 81%,#600642 100%);
+            padding: .5em 1em;
+            border-radius: .5em;
+            color: white;
+            display: flex;
+            gap: .4em;
+            align-items: center;
+            font-size : 1.4em;
+
+            >svg{
+                --wid : 1.3em;
+                width : var(--wid);
+                height : var(--wid);
+            }
+        }
+    }
+}
+@include v.media(1255px) {
+    .partSection {
+        > .box:not(.project) {
+            margin-top: 3em;
+            padding-top: 2em;
+
+            &::before {
+                top: 0;
+                right: 50%;
+            }
+        }
+    }
+}
+
+@include v.media(v.$laptop) {
+   .partSection {
+        > .box:not(.project) {
+            margin-top: 3em;
+            padding-top: 2em;
+
+            &::before {
+                top: 0;
+                right: 50%;
+            }
+        }
+    }
+}
+
+@include v.media(v.$tablet) {
+    .partSection {
+        > .box {
+            &:not(.project) {
+                img {
+                    float: none;
+                    width: 100%;
+                    margin-block: auto;
+                    height: auto;
+                }
+            }
+
+            &.project {
+                grid-template-columns: auto;
+                grid-template-areas: unset;
+                gap: 1em;
+                padding: 2em;
+
+                > img {
+                    grid-area: unset;
+                    width: 80%;
+                    height: auto;
+                }
+
+                > .left {
+                    grid-area: unset;
+                }
+
+                &.withLabel {
+                    &::before {
+                        display: none;
+                    }
+                }
+            }
+
+            > .box-mobile-img {
+                display: block;
+            }
+        }
+    }
+
+    .uiuxProjects {
+        margin-block: 11em;
+        display: flex;
+        flex-direction: column;
+        padding: 4em;
+        border-radius: 4.1em;
+
+        img {
+            border-radius: 2.5em;
+        }
+
+        div {
+            order: -1;
+            padding-left: 0;
+            align-items: center;
+            font-size: 6em;
+            padding-right: 0;
+
+            > span {
+                transform: unset;
+            }
+        }
+
+        &.single {
+            gap: 5em;
+
+            img{
+                width : 100%;
+            }
+
+            .downloadBtn {
+                font-size: 4.6em;
+                border-radius: 1em;
+            }
+        }
+    }
+}

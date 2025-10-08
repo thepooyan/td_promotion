@@ -1,0 +1,325 @@
+﻿@use '../source/Variables';
+@use "../components/boxesAds/boxesAds";
+@use '../components/_loader.scss';
+@use '../components/footer';
+@use "../components/instaSide";
+@use '../components/search/filterBar';
+@use '../components/customSelect';
+@use "../components/pagination";
+@use "../components/sideBar";
+
+
+.mian-col-item {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 0 20px;
+    grid-auto-flow: dense;
+
+
+
+    &.hasDetials {
+        grid-template-areas:
+            "sideInfo content interaction" "sideBar content interaction" "sideBar content interaction";
+        grid-template-rows : 27em;
+
+        .sideBarInfo {
+            grid-area: sideInfo;
+        }
+
+        .content {
+            grid-area: content
+        }
+
+        .sideBar {
+            grid-area: sideBar
+        }
+
+        .interaction {
+            grid-area: interaction;
+        }
+    }
+}
+.section-id {
+    padding: 10px;
+}
+.grid-change-main {
+    display: grid;
+    grid-template-columns: 170px auto;
+    padding: 10px 10px;
+}
+.grid-change-btn {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.grid-change-btn .btn {
+    background: transparent;
+    font-size: 1em;
+    height: 35px;
+    border-radius: 8px;
+    margin: 0px 2px;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.grid-change-btn .btn i {
+    color: #1d3bbb;
+}
+.Courses-card-grid.video-more {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    padding: 0 15px;
+}
+
+.Courses-card-grid.video-more .video-box video {
+    width: 100%;
+    height: 200px;
+}
+
+.video-poster {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 10px;
+}
+
+.Courses-card-grid.video-more .video-title {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: Variables.$fontcolor;
+    padding: 12px 0;
+}
+
+.bg-white .list-view .Courses-card-grid {
+    grid-template-columns: auto !important;
+}
+
+.video-box {
+    opacity: 1;
+    top: 0;
+
+    .movieWrapper {
+        transition: .1s;
+        overflow: hidden;
+
+        &:hover {
+            filter: drop-shadow(1px 1px 3px #4e4e4e)
+        }
+    }
+}
+
+.grid-container .Courses-card-grid.video-more .video-box video {
+    max-width: 100%;
+    width: auto;
+    height: 150px;
+    background-color: transparent;
+}
+
+.grid-container.list-view .Courses-card-grid.video-more .video-box {
+    margin: 0;
+    border-bottom: 1px solid #cccccc;
+    padding: 1em 0
+}
+.movieWrapper {
+    margin: auto;
+    font-family: inherit;
+    width: 262px;
+    height: 150px;
+    position: relative;
+    @include Variables.flex(c, c);
+    border: 1px solid rgba(66, 66, 66, 0.678);
+    border-radius: 5px;
+
+    video {
+        width: 100%;
+        height: 100%;
+    }
+
+    .overlay {
+        $overlay-height: 65%;
+        position: absolute;
+        top: (100 - $overlay-height) / 2;
+        height: $overlay-height;
+        width: 100%;
+        background-color: rgba(66, 66, 66, 0.658);
+
+        &::before {
+            background: url("./images/img/moive-icon.png") no-repeat;
+            background-size: 100%;
+            @include Variables.square(30px);
+            display: inline-block;
+            content: "";
+            position: absolute;
+            top: calc(50% - 10px);
+            left: calc(50% - 16px);
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &::after {
+            content: "tahlildadeh.com";
+            color: #f9b130;
+            position: absolute;
+            left: 5px;
+            font-family: inherit;
+            font-weight: 500;
+        }
+    }
+}
+
+.grid-container .video-box .Courses-card-item {
+    display: none;
+}
+.grid-container.list-view .Courses-card-item {
+    display: block;
+}
+.grid-container .video-list-item-txt,
+.grid-container.list-view .video-title {
+    display: none;
+}
+.grid-container.list-view .Courses-card-grid.video-more {
+    grid-template-columns: 100%;
+    padding: 0 15px;
+}
+
+.bg-white .list-view .Courses-card-grid {
+    grid-template-columns: auto !important;
+}
+
+.grid-container.list-view .video-box {
+    display: grid;
+    grid-template-columns: 40% auto;
+}
+
+.grid-container.list-view .video-box .Courses-card-title {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.grid-container.list-view .Courses-card-grid.book-main .books-part .Courses-card-text,
+.grid-container.list-view .video-box .Courses-card-item .Courses-card-text {
+    height: 75px;
+    overflow: hidden;
+    line-height: 24px;
+    font-size: 0.9em;
+    text-align: justify;
+    margin: 5px;
+    -webkit-transition: 0s linear;
+    -moz-transition: 0s linear;
+    transition: 0s linear;
+}
+
+.grid-container.list-view .video-box .Courses-card-item .Courses-card-text {
+    height: 50px;
+}
+
+.grid-container.list-view .books-part .Courses-card-more {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.grid-container.list-view .books-part .Courses-card-more .details {
+    display: block
+}
+.grid-container.list-view .video-box .Courses-card-item .item-details-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px 0%;
+}
+
+.grid-container.list-view .video-box .details-box {
+    display: flex;
+    HEIGHT: 22px;
+    align-items: center;
+    gap: 10px;
+}
+.article-part .btn-more,
+.books-part .btn-more,
+.grid-container .books-part .stars-more a {
+    text-align: left;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    padding: 5px 2em;
+    width: 100%;
+    color: Variables.$main-blue;
+}
+.grid-container .books-part .btn-more,
+.grid-container .books-part .stars-more a {
+    position: relative;
+    top: 0;
+    background: Variables.$yellow;
+    color: Variables.$bg-color;
+    text-align: center;
+    padding: 5px 16px;
+    max-width: 130px;
+    font-size: 1.2em;
+}
+.stars-more {
+    text-align: center;
+}
+.star-rating .rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+.showRating {
+    margin-bottom: 10px;
+}
+.TD-pagination .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row-reverse;
+    padding-bottom: 1em;
+}
+
+.TD-pagination .pagination li.page-item {
+    width: 32px;
+    height: 30px;
+    padding: 0 1px;
+    text-align: center;
+}
+
+.TD-pagination .pagination li.page-item a {
+    border-radius: 5px;
+    text-align: center;
+    color: #989898;
+    padding: 12px;
+}
+
+.TD-pagination .pagination li.page-item.active a.page-link {
+    border: none;
+    height: 30px;
+    margin: 0;
+    color: #333 !important;
+}
+@media (max-width: 1200px){
+    .mian-col-item.reverse-768 {
+        display: flex;
+        flex-direction: column-reverse;
+
+        &.forFilms, &.bookPart {
+            .sideInfoBar {
+                order: 2;
+            }
+
+            .sideBar {
+                order: 1;
+            }
+
+            .content {
+                order: 3;
+            }
+        }
+    }
+
+}

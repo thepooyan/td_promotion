@@ -1,0 +1,85 @@
+@use "../source/Variables";
+
+.ourCourses {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(16em,1fr));
+    gap: 1em;
+    margin: 3em 2em;
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        gap : .5em;
+
+        video {
+            height: auto;
+        }
+
+        > .img {
+            img {
+                
+            }
+        }
+
+
+        > .info {
+            background-color: var(--white);
+            padding: 1em;
+            border-radius: 15px;
+            box-shadow: -1px -1px 8px 1px rgba(0, 0, 0, 0.1490196078);
+            flex-basis: 100%;
+            display: flex;
+            flex-direction: column;
+
+            h5 {
+                color: var(--textColorStrong);
+                font-size: 1em;
+            }
+
+            p {
+                margin-block: 0.4em 1em;
+            }
+
+            .link-arrow {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: auto;
+
+
+                a {
+                    color: var(--blue);
+                    font-size: 0.9em;
+                    justify-content: flex-end;
+                    padding-left: 1.2em;
+                    margin-left: 0 !important;
+
+                    &::after {
+                        left: 0;
+                    }
+
+                    &:hover::after {
+                        left: -.3em;
+                    }
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$tablet) {
+        margin: 3em 1em 3em;
+    }
+
+    @include Variables.media(Variables.$mobile) {
+
+        .item {
+            h5 {
+                font-size: 0.9em;
+            }
+
+            .link-arrow a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    }
+}

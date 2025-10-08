@@ -1,0 +1,98 @@
+﻿#addedModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24em;
+    padding: 1.4em;
+    flex-direction: column;
+    z-index: 501;
+    background-color: white;
+    border-radius: 0.8em;
+    animation-name: modal;
+    animation-duration: .5s;
+    display: none;
+
+    > .mTitle {
+        display: flex;
+        align-items: center;
+        gap: .5em;
+        padding-bottom: 1em;
+        border-bottom: 1px solid #F4F4F4;
+
+        > svg {
+            width: 24px;
+            height: 24px;
+
+            &:nth-of-type(2) {
+                margin-right: auto;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+            }
+        }
+
+        > span {
+            font-size: .9em;
+            color: #049801;
+            font-weight: 700;
+        }
+    }
+
+    > .mBody {
+        display: flex;
+        margin-top: 1.5em;
+        gap: 1em;
+
+        > img {
+            width: 37%;
+            height: 5em;
+            border-radius: 1em;
+        }
+
+        > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            > span {
+                font-weight: 800;
+                font-size: 0.8em;
+                color: var(--textColorStrong);
+                display: flex;
+                align-items: center;
+                gap: .5em;
+
+                &:nth-of-type(2) {
+                    &::after, &::before {
+                        font-size: .8em;
+                        font-weight: 700;
+                    }
+
+                    &::after {
+                        content: 'تومان';
+                    }
+
+                    &::before {
+                        content: 'هزینه دوره :';
+                        color: #848484;
+                    }
+                }
+            }
+        }
+    }
+
+    > a {
+        background-color: var(--mainBlue);
+        color: #fff;
+        text-align: center;
+        padding-block: 0.6em;
+        font-size: 0.8em;
+        border-radius: 0.8em;
+        margin-top: 3em;
+    }
+
+    &.active {
+        display: flex;
+    }
+}

@@ -1,0 +1,235 @@
+@use "../source/Variables";
+
+footer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 40% auto;
+    grid-template-areas: 'logo logo logo' 'links contact enamad' 'links contact enamad' 'text text text';
+    color: var(--textColorStrong);
+    background-color: white;
+    padding: 4em 5em 2em;
+    margin-top: 1em;
+    gap: 1em;
+
+    p,
+    a {
+        font-size: 1.2em;
+    }
+
+    .h5 {
+        font-size: 1.3em;
+        margin-bottom: 1em;
+        font-weight: 600;
+    }
+
+    .logo-footer {
+        grid-area: logo;
+        justify-self: right;
+
+        img {
+            height: auto;
+        }
+    }
+
+    .links-footer {
+        display: grid;
+        grid-area: links;
+        grid-template-areas: "title title" "rightLinks leftLinks";
+        grid-template-rows: 4em;
+        gap: 0 2em;
+
+        .h5 {
+            grid-area: title;
+        }
+
+        > div {
+
+            a {
+                display: list-item;
+                margin-right: 1em;
+                list-style: disc;
+            }
+
+            &:first-child {
+                grid-area: rightLinks;
+            }
+
+            &:last-child {
+                grid-area: leftLinks;
+            }
+        }
+    }
+
+    .contact-footer {
+        grid-area: contact;
+
+        #mobile {
+            > span {
+                display: flex;
+                flex-wrap: wrap;
+
+                > span {
+                    &:nth-of-type(2) {
+                        flex-basis: auto;
+                    }
+                }
+            }
+        }
+
+        p {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1em;
+
+            &::before {
+                content: "";
+                width: 2em;
+                height: 2em;
+                display: inline-block;
+                margin-left: 0.5em;
+                background-image: url('/Content/images/img/footerIcon1.png');
+                background-repeat: no-repeat;
+                background-size: 657%;
+                flex-shrink: 0;
+            }
+
+            &:nth-of-type(1) {
+                &::before {
+                    background-position: 0 .1em;
+                }
+            }
+
+            &:nth-of-type(2) {
+                &::before {
+                    background-position: -2.1em 0.1em;
+                    background-size: 533%;
+                }
+            }
+
+            &:nth-of-type(3) {
+                &::before {
+                    background-position: -5.7em 0em;
+                }
+            }
+
+            &:nth-of-type(4) {
+                &::before {
+                    background-position: -8.5em 0.1em;
+                }
+            }
+
+            &:nth-of-type(5) {
+                &::before {
+                    background-position: -11.3em .1em;
+                }
+            }
+        }
+
+        .socialmedia-footer {
+            display: flex;
+            flex-wrap: wrap;
+
+            a {
+                display: inline-block;
+                margin-left: 0.5em;
+                margin-top: 0.5em;
+                --wid: 3em;
+                width: var(--wid);
+                height: var(--wid);
+                background-image: url('/Content/images/img/HeaderAndFooterIcons.webp');
+                background-repeat: no-repeat;
+                background-size: 514%;
+                background-position: 0 0;
+
+                &:nth-of-type(1) {
+                    background-position: -181px -81px;
+                }
+
+                &:nth-of-type(2) {
+                    background-position: -134px -81px;
+                }
+
+                &:nth-of-type(3) {
+                    background-position: -89px -81px;
+                }
+
+                &:nth-of-type(4) {
+                    background-position: -43px -81px;
+                }
+
+                &:nth-of-type(5) {
+                    background-position: 2px -81px;
+                }
+
+                &:nth-of-type(6) {
+                    background-size : cover;
+                }
+            }
+        }
+    }
+
+    .enamad-footer {
+        grid-area: enamad;
+        width: 10em;
+        justify-self: left;
+        align-self: end;
+        margin-top: 1em;
+    }
+
+    > p {
+        background-color: var(--white);
+        color: var(--blue);
+        font-weight: 600;
+        text-align: center;
+        padding: 0.5em 1em;
+        grid-area: text;
+        border-radius: var(--borderRadius);
+        margin-top: 2em;
+    }
+
+    @include Variables.media(Variables.$laptop) {
+        grid-template-areas: "logo logo logo" "links links links" "contact contact contact" "enamad enamad enamad" "text text text";
+    }
+
+    @media (max-width:992px) and (min-width:479px) {
+        .links-footer {
+            grid-template-areas: "title title" "rightLinks rightLinks" "leftLinks leftLinks";
+            grid-gap: 0;
+
+            > div {
+                display: flex;
+                flex-wrap: wrap;
+
+                a {
+                    display: list-item;
+                    margin-right: 1em;
+                    list-style: disc;
+                    margin-left: 1.5em;
+                }
+
+                &:first-child,
+                &:last-child {
+                    grid-column: 1/2
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        padding: 4em 2em 2em;
+        grid-template-areas: "logo" "links" "contact" "enamad" "text ";
+        grid-template-columns: 100%;
+
+        .enamad-footer {
+            grid-column: 1/2;
+            justify-self: right;
+        }
+    }
+
+    @include Variables.media(330px) {
+        .links-footer {
+            display: block;
+        }
+    }
+}
+

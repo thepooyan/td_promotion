@@ -1,0 +1,132 @@
+@use '../source/Variables';
+@use '../components/technologyNews';
+@use '../components/latestNews';
+@use '../components/dailyNews';
+@use '../components/relatedLinks';
+@use '../components/archiveNews';
+@use '../components/pagination';
+@use '../components/asideArticle';
+@use '../components/weblogHeader';
+@use '../components/detailsArticle';
+@use '../components/gridItems';
+@use '../components/_blogCategory';
+@use "../components/category";
+@use '../components/footer';
+@import '../components/boxesAds/boxesAds';
+.forWeblog{
+    overflow : hidden;
+}
+.container-news {
+    padding: 0 3em 2em;
+}
+
+
+
+.mb-1 {
+    margin-bottom: 1em;
+}
+
+
+.boxesAds {
+    margin: 2em 0 0;
+    @include Variables.media(Variables.$mobile){
+        margin:2em 1em 0;
+    }
+
+}
+
+
+.txt-box {
+    margin: 1em;
+    padding: 0.5em;
+}
+
+
+.section-with--aside {
+    padding: 1em 0;
+
+}
+
+.section-with--aside {
+
+    display: grid;
+    grid-template-columns: 25em auto;
+    gap: 0 2em;
+}
+
+.aside-bg-gray {
+    margin-top: 3em;
+
+}
+saveItem{
+    &.active{
+        font-weight:600;
+    }
+}
+
+    ul.social-weblog-horizontal {
+        li {
+            &:first-child {
+
+                a {
+
+                    &:hover,
+                    &.active {
+                        color: var(--redColor);
+                    }
+                }
+            }
+            // --
+
+            &:nth-child(4) {
+
+                a {
+
+                    &.active {
+                        i {
+                            color: #0072BB;
+                        }
+                    }
+                }
+            }
+
+            a {
+                cursor: pointer;
+
+                &.active {
+                    i {
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+@include Variables.media(Variables.$screen) {
+    .section-with--aside {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .aside-bg-gray {
+        box-shadow: none;
+        grid-column: 1/3;
+        grid-row: 3/4;
+        padding: 0;
+    }
+}
+@include Variables.media(Variables.$laptop) {
+
+    .section-with--aside > div {
+        grid-column: 1/3;
+    }
+}
+@include Variables.media(Variables.$tablet) {
+    .container-news {
+        padding: 1em;
+    }
+
+
+}

@@ -1,0 +1,253 @@
+@use "../../source/Variables";
+
+@media only screen and (max-width: 1200px) {
+    .Qcomment {
+        .contain header {
+            &::before {
+                width: 4em;
+            }
+
+            &::after {
+                left: .5em;
+            }
+        }
+
+        .replyModal .content {
+            width: 93%;
+        }
+    }
+}
+
+/* Large devices (laptops/desktops, 992px till 769 and down) */
+@media only screen and (max-width: 992px) {
+    .Qcomment {
+        .contain header {
+            &::after {
+                width: 2.5em;
+            }
+
+            &::before {
+                width: 2.7em;
+                height: 4.5em;
+            }
+        }
+
+        .replyModal .content {
+            padding-bottom: 1.5em;
+
+            .reply {
+                display: block;
+                width: 100%;
+            }
+
+            button {
+                display: block;
+                float: none;
+                margin: 1em auto;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+/* Medium devices (landscape tablets, 768px till 601 and down) */
+@media only screen and (max-width: 768px) {
+    .Qcomment {
+        .contain {
+
+            header {
+                padding: 1em;
+                text-align: left;
+                font-size: 4.5em;
+
+                &::after {
+                    display: none;
+                }
+
+                &::before {
+                    height: 3.5em;
+                }
+            }
+
+            .forms {
+                .formTab {
+                    margin-right: 2em;
+                }
+
+                .send {
+                    padding: 1em 6em;
+                    padding-right: 6em;
+                    padding-bottom: 1em;
+                    padding-right: 2em;
+                    padding-bottom: 2em;
+                }
+            }
+
+            .question, .answer {
+                > span {
+                    max-width: unset;
+                }
+            }
+        }
+
+        .replyModal {
+            .content {
+                padding-right: 2em;
+                padding-left: 2em;
+                width: 96%;
+                height: max-content;
+
+                .reply {
+                    width: 100%;
+                }
+            }
+
+            .question > span, .Qcomment .answer > span {
+                max-width: calc(100% - 9.2em);
+            }
+        }
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px till 481 and down) */
+@media only screen and (max-width: 600px) {
+    .Qcomment {
+        .contain {
+            header {
+                @include Variables.flex(fs,c);
+                flex-direction: column;
+
+                &::before {
+                    position: static;
+                }
+            }
+
+            .forms {
+                width: 98%;
+            }
+
+            div section {
+                width: 89%;
+                margin-top: 0;
+
+                .question, .answer {
+                    padding-top: 4em;
+                    font-size: .75em;
+
+                    &::before {
+                        top: 2em;
+                    }
+                }
+
+                .question + .question.combine, .answer + .answer.combine {
+                    padding-top: 0;
+                }
+            }
+        }
+
+        .replyModal {
+            .question, .answer {
+                span {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}
+
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+    .Qcomment {
+        .contain {
+            header {
+                font-size: 3em;
+            }
+
+            .forms {
+                .logIn {
+                    font-size: 1.2em;
+                    text-align: center;
+                    line-height: 1.5em;
+                }
+
+                .formTab.alone {
+                    gap: 0;
+
+                    span {
+                        font-size: 1.3em;
+                        height: max-content;
+                    }
+                }
+
+                .send {
+                    padding: 0 .5em;
+                    padding-bottom: 0px;
+                    padding-bottom: 1em;
+
+                    button {
+                        font-size: 1em;
+                        width: 94%;
+                        height: 4em;
+                    }
+
+                    p.success.show {
+                        padding-top: 1em;
+                    }
+                }
+            }
+
+            > div > section {
+                .question + .question.combine {
+                    margin-right: 6em;
+                }
+
+                .answer + .answer.combine {
+                    margin-left: 6em;
+                }
+
+                .question > span i::before {
+                    left: -18px;
+                    font-size: 1.5em;
+                }
+
+                .answer > span i::before {
+                    right: -18px;
+                    font-size: 1.5em;
+                }
+
+                .question, .answer {
+                    gap: .7em;
+
+                    .icon {
+                        font-size: .9em;
+
+                        &::after {
+                            bottom: -2.6em;
+                        }
+                    }
+                }
+            }
+
+            .buttons {
+                gap: 0;
+
+                &.twoButtons {
+                    .more {
+                        right: -8em
+                    }
+
+                    .close {
+                        left: -14.5em
+                    }
+                }
+
+                button {
+                    padding: 0.7em 1.6em;
+                    border-radius: 0 0 25px 25px;
+                }
+            }
+        }
+    }
+}

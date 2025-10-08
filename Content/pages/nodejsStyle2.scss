@@ -1,0 +1,87 @@
+﻿@use '../source/Variables' as v;
+@use '../components/videoGrid';
+
+.journal {
+    .part {
+        border-radius: 0.2em;
+        background-color: rgb(173 207 179 / 40%);
+        font-size: 1.2em;
+        color: black;
+        padding: 0.5em 0.6em;
+        border-right: 12px solid #608b68;
+        cursor: pointer;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        padding-left: 1em;
+
+        &.collapsePart {
+
+
+            &::before {
+                content: '';
+                border: 2px solid #608b68;
+                color: #608b68;
+                border-left-color: transparent;
+                border-top-color: transparent;
+                transform: rotate(45deg);
+                border-radius: 0;
+                width: .3em;
+                height: .3em;
+                transition: all .3s;
+                margin-top: -0.4em;
+            }
+
+            &.active {
+
+                &::before {
+                    transform: rotate(225deg);
+                    margin-top: 0.3em;
+                }
+            }
+        }
+    }
+
+    .box {
+        background-color: #eafffa30;
+        border: unset;
+        border-radius: 0.2em;
+        box-shadow: 0 0 15px #7bbb5338;
+        background-color: #f4fff6;
+
+        ul, ol {
+            li {
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: .4em;
+                }
+            }
+
+            &.disclosure-closed {
+                li {
+                    list-style-type: disclosure-closed;
+                }
+            }
+        }
+
+        img {
+            height: auto;
+            margin: auto;
+            margin-block: 1em;
+            border-radius: 1em;
+
+            &:not(:last-child) {
+                margin-top: 2em;
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        .part {
+            font-size: 1em;
+        }
+    }
+}

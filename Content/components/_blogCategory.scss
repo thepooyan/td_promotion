@@ -1,0 +1,49 @@
+@use '../source/Variables' as v;
+
+.blog-category {
+    padding-inline: 2em;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(auto-fill,20em);
+    column-gap: 2%;
+    row-gap: 2em;
+    margin-block: 5em;
+
+    > a {
+        position: relative;
+        border-radius: 1.3em;
+        box-shadow: 0em 0.3em 1em #0000001f;
+        height: 20em;
+
+        > div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.3em;
+            background: linear-gradient(0, rgb(0 0 0 / 69%), transparent 62%);
+        }
+
+        > img {
+            width: 100%;
+            height: 100%;
+            border-radius: 1.3em;
+        }
+
+        > span {
+            position: absolute;
+            color: white;
+            font-size: 2em;
+            bottom: 10%;
+            right: 5%;
+            font-weight: 600;
+        }
+    }
+
+    @include v.media(v.$screen) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include v.media(v.$tablet) {
+        grid-template-columns: 1fr;
+    }
+}

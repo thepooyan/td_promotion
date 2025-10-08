@@ -1,0 +1,35 @@
+﻿@use "../source/Variables" as v;
+@use "../components/shared/innerContent" as innerContent;
+
+
+@mixin seoLandingStepDescription {
+    max-width: 800px;
+    margin-inline: auto;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: 0 0 15px #00000017;
+    background-color: white;
+
+    > .td-content {
+        @include innerContent.innerContent;
+    }
+
+    > .seoLandingLink {
+        margin-top: 2em;
+    }
+
+    @include v.media(800px) {
+        margin-inline: 1em;
+    }
+
+    @include v.media(v.$mobile) {
+        padding : 1em;
+        > .td-content {
+            padding: 0;
+        }
+
+        > .seoLandingLink {
+            font-size: .75em;
+        }
+    }
+}

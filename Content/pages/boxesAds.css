@@ -1,0 +1,57 @@
+﻿/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+.boxes-one {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.boxes-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (max-width: 480px) {
+  .boxes-two {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.boxes-three {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 992px) {
+  .boxes-three {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+.boxes-four {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 698px) {
+  .boxes-four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.container {
+  padding: 1em;
+}
+
+.boxesAds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+  gap: 1em;
+}
+@media (max-width: 595px) {
+  .boxesAds {
+    grid-column: 1/3;
+  }
+}
+.boxesAds img {
+  border-radius: 12px;
+}
+@media (max-width: 992px) {
+  .boxesAds.boxes-two {
+    grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+  }
+}

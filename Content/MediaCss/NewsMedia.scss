@@ -1,0 +1,24 @@
+﻿@use '../source/_Variables.scss' as v;
+@include v.media(v.$tablet) {
+    .mian-col-item {
+        grid-template-columns: auto;
+
+        .table-responsive {
+            .grid-two-section-news {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .page-number {
+                li {
+                    margin-right: 1.2em;
+                }
+            }
+            a {
+                img{
+                    width : 100%;
+                }
+            }
+        }
+    }
+}

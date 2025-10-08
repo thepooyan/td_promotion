@@ -1,0 +1,156 @@
+@use "../source/_Variables.scss";
+
+.three-columns-boxe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 1em;
+}
+
+.grid--items {
+    background-color: var(--white);
+    padding: 1em 1em 0;
+    box-shadow: 1px 1px 12px 1px rgb(0 0 0 / 10%);
+    border-radius: var(--borderRadius);
+
+    ul {
+        display: grid;
+        grid-template-columns: 160px repeat(auto-fit, minmax(3em, 1fr));
+        align-items: center;
+        padding: 1.5em 1em;
+        gap: 0.5em;
+
+        &.head-grid--items {
+            font-weight: 600;
+            background-color: var(--tableHeadColor);
+            border-radius: var(--borderRadius) var(--borderRadius) 0 0;
+        }
+
+        li {
+            text-align: center;
+        }
+    }
+
+    .body-grid--items {
+        font-size: var(--size09);
+
+        &:not(:last-of-type) {
+            border-bottom: 1px dashed var(--lightGray);
+        }
+
+        a {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .delete {
+
+            img {
+                width: 2em;
+            }
+        }
+    }
+}
+
+.card-grid-item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(21em, 25em));
+    justify-content: center;
+    gap: 2em;
+
+    @media (max-width:698px) and (min-width:480px) {
+
+        .card--item-course {
+            width: min-content;
+            margin: auto;
+
+            img {
+                width: auto;
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        gap: 1em;
+    }
+}
+
+// --start/media query
+@include Variables.media(Variables.$screen) {
+    .three-columns-boxe-grid {
+        gap: 2em;
+    }
+
+
+    ul.body-basket-items {
+        border: none;
+        grid-template-rows: repeat(auto-fit, 1fr);
+        grid-template-columns: auto !important;
+        padding: 1em 2.5em;
+        gap: 0.5em;
+        box-shadow: 0px 0px 11px 0px #0000001f;
+        border-radius: 8px;
+        background-color: #fff;
+        place-items: inherit;
+
+        &::before {
+            display: none;
+        }
+
+        li {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            a {
+                margin-right: 1em;
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$laptop) {
+    .three-columns-boxe-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+    }
+
+    .mainContent-twoParts {
+        grid-template-columns: auto;
+
+        aside {
+            grid-row: 2/3;
+        }
+    }
+}
+
+@media (min-width:992px) {
+    .mainContent-twoParts {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width:598px) and (min-width:480px) {
+    .info--box ul {
+        margin-top: 1em;
+    }
+}
+
+@include Variables.media(Variables.$mobile) {
+    .three-columns-boxe-grid {
+        grid-template-columns: 1fr;
+        font-size: 0.9em;
+    }
+
+
+
+    .mainContent-twoParts {
+        padding: 1em
+    }
+}
+ 
+ 
+ 

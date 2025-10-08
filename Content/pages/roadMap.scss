@@ -1,0 +1,937 @@
+@use "../source/Variables" as v;
+.road-map-details {
+    position: relative;
+    background-image: url("/Content/images/img/logic/roadMapDetailBg.webp");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    padding-bottom: 8vw;
+    height: auto;
+    min-height: 100%;
+    margin-bottom: 5em;
+    padding-top: 3vw;
+    margin-top: 9vw;
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    .roadMapTitle {
+        position: absolute !important;
+        bottom: calc(100% - 1.3em);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        width: max-content;
+    }
+
+    h2, h3, h4 {
+        border-image: none;
+        border-image-slice: 1;
+        padding-bottom: unset;
+        margin-top: unset;
+        margin-bottom: unset;
+    }
+
+    p {
+        font-size: 1.1em;
+    }
+
+    > p {
+        color: #383838;
+        width: 92%;
+        margin: auto;
+        margin-block: 3em !important;
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 0.5em;
+        width: fit-content;
+        padding: 1em 2em;
+        box-shadow: 0 0 15px rgba(0,0,0,.2);
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 91%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2.7em;
+            height: 3.4em;
+            background-image: url(/Content/images/img/logic/dummy1.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 1;
+        }
+    }
+
+    > .content-of-category {
+        > p {
+            color: #383838;
+            width: 92%;
+            margin: auto;
+            margin-block: 3em !important;
+        }
+
+
+        > .pre-desc {
+            color: #383838;
+            display: flex;
+            align-items: flex-start;
+            gap: 7px;
+        }
+
+        position: relative;
+        z-index: 3;
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .road-map-anchors {
+        width: 91%;
+        margin: auto;
+        display: none;
+        grid-template-columns: repeat(3, auto);
+        gap: 1em;
+        position: relative;
+        z-index: 3;
+        border-bottom: 0.2em solid black;
+        margin-bottom: 2em;
+        padding-bottom: 1em;
+
+        > span {
+            position: relative;
+            z-index: 3;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            direction: ltr;
+            flex-direction: column;
+            color: white;
+            font-size: 1.1em;
+            line-height: 1.3em;
+            width: 27vw;
+            height: 27vw;
+            background-color: var(--bgcolor);
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: white;
+                border-radius: 50%;
+                opacity: 0.3;
+            }
+        }
+    }
+
+    .road-map-category {
+        position: relative;
+        font-size: 1vw;
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        z-index: 3;
+
+
+        > span {
+            font-size: 1.6em;
+            --wid: 6em;
+            padding: 0.5em;
+            width: var(--wid);
+            height: var(--wid);
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all .3s;
+            color: var(--textColorStrong);
+
+            &.active {
+                background-color: var(--colorTheme);
+                color: white;
+                box-shadow: 0 0 20px rgba(0, 0, 0, .8);
+            }
+
+            &:hover {
+                background-color: var(--colorTheme);
+                color: white;
+                box-shadow: 0 0 20px rgba(0, 0, 0, .8);
+            }
+        }
+    }
+
+    > .roadmap-overlay {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        opacity: 0.75;
+    }
+
+    .road-map-overview {
+        position: relative;
+        z-index: 3;
+        width: 92%;
+        margin: auto;
+        display: flex;
+        margin-bottom: 5em;
+
+        > .road-map-description {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 32%;
+            border-radius: 1em;
+            // height: 42em;
+            min-height: 27vw;
+            padding: 1.2vw 2vw;
+
+            &.active {
+                background-color: white;
+            }
+
+            &.loading {
+                background-color: white;
+                align-items: center;
+                justify-content: center;
+
+                &::after {
+                    --thick: 8px;
+                    content: '';
+                    --wid: 3vw;
+                    width: var(--wid);
+                    height: var(--wid);
+                    border: var(--thick) solid #e0e0e0;
+                    border-radius: 50%;
+                    border-top: blue;
+                    border-top: var(--thick) solid var(--blue);
+                    animation: spin 1s infinite cubic-bezier(.65,.05,.36,1);
+                }
+            }
+
+
+            > h3 {
+                direction: ltr;
+                text-align: right;
+                padding-block: 0.5em;
+                border-bottom: 2px solid #f0e9f1;
+                font-size: 1.6em;
+            }
+
+            > p {
+                line-height: 1.5em;
+                padding-top: 1em;
+                color: #737373;
+                height: 11.5em;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 7;
+            }
+
+            > .overlay {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    z-index: 1;
+                    width: 100%;
+                    height: 100%;
+                    background-color: black;
+                    opacity: 0.3;
+                    border-radius: 1em;
+                }
+
+                &::after {
+                    @include v.fontAwsome(f04b, 800);
+                    content: "\f04b";
+                    position: absolute;
+                    z-index: 2;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+                    color: black;
+                    font-size: 1.2em;
+                    width: 2.6em;
+                    height: 2.6em;
+                    box-sizing: border-box;
+                    padding-right: 0.8em;
+                    display: flex;
+                    align-items: center;
+                    background-color: white;
+                    cursor: pointer;
+                }
+            }
+
+            > .road-map-video {
+                position: relative;
+                margin-block: 1.5em;
+
+                > video {
+                    float: left;
+                    width: 100%;
+                    border-radius: 1em;
+                }
+            }
+
+            > a {
+                margin-top: auto;
+                align-self: flex-end;
+                padding: 0.3em 1.2em;
+                background-color: var(--csharp);
+                color: white;
+                border-radius: 0.6em;
+                font-size: 1.3em;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        > .road-map-stations {
+            position: relative;
+            flex-basis: 68%;
+
+
+
+            > .big-circle-back {
+                position: absolute;
+                width: 13vw;
+                height: 13vw;
+                top: 49%;
+                left: 9.7%;
+                border-radius: 50%;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: white;
+                    border-radius: 50%;
+                    opacity: 0.7;
+                }
+
+                > .big-dummy {
+                    position: absolute;
+                    background-image: url("/Content/images/img/logic/bigDummy.webp");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 112%;
+                    height: 125%;
+                    left: -9%;
+                    top: -81%;
+                    z-index: -1;
+                }
+
+                .big-dummy-hand {
+                    background-image: url("/Content/images/img/logic/dummyHand.webp");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    position: absolute;
+                    width: 22%;
+                    height: 19.8%;
+                    top: 6%;
+                    right: 4%;
+                    z-index: 3;
+                }
+            }
+
+            > .big-circle {
+                position: absolute;
+                width: 13vw;
+                height: 13vw;
+                top: 50%;
+                left: 10%;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                direction: ltr;
+                flex-direction: column;
+                color: white;
+                font-size: 1.6em;
+                z-index: 2;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: white;
+                    border-radius: 50%;
+                    opacity: 0.3;
+                }
+
+                > span {
+                    font-size: 0.8em;
+                }
+
+                > [class*="station"] {
+                    position: absolute;
+                    width: 5.7vw;
+                    height: 5.7vw;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    direction: ltr;
+                    color: white;
+                    font-size: 0.6em;
+                    text-align: center;
+                    padding-inline: 1em;
+                    line-height: 1.1em;
+                    cursor: pointer;
+                }
+
+                .prerequisite {
+                    position: absolute;
+                    width: 5.7vw;
+                    height: 5.7vw;
+                    background-color: #969696;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    direction: ltr;
+                    color: white;
+                    font-size: 1em;
+                    text-align: center;
+                    padding-inline: 1em;
+                    line-height: 1.1em;
+                    text-decoration : none;
+                }
+
+                .dummy1::after {
+                    position: absolute;
+                    content: "";
+                    width: 51%;
+                    height: 64%;
+                    bottom: 83%;
+                    background-image: url("/Content/images/img/logic/dummy1.webp");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                .dummy2::after {
+                    position: absolute;
+                    content: "";
+                    width: 55%;
+                    height: 73%;
+                    top: 86%;
+                    right: 88%;
+                    background-image: url("/Content/images/img/logic/dummy2.webp");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                .dummy2-right::after {
+                    position: absolute;
+                    content: "";
+                    width: 55%;
+                    height: 73%;
+                    top: 104%;
+                    right: -20%;
+                    transform: rotateY(180deg);
+                    background-image: url("/Content/images/img/logic/dummy1.webp");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                .dummy3::after {
+                    position: absolute;
+                    content: "";
+                    width: 74%;
+                    height: 85%;
+                    bottom: 66%;
+                    left: 30%;
+                    background-image: url("/Content/images/img/logic/dummy3.webp");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                .dummy3-left::after {
+                    position: absolute;
+                    content: "";
+                    width: 74%;
+                    height: 85%;
+                    bottom: 69%;
+                    left: -11%;
+                    transform: rotateY(180deg);
+                    background-image: url("/Content/images/img/logic/dummy3.webp");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+                > .station1 {
+                    top: 5%;
+                    left: 117%;
+
+                    svg {
+                        > i {
+                            &::before {
+                                content: "";
+                            }
+                        }
+
+                        position: absolute;
+                        content: "";
+                        width: 65%;
+                        height: 25%;
+                        left: -47%;
+                        top: 89%;
+                        z-index: -1;
+                    }
+                }
+
+                > .station2 {
+                    top: 31%;
+                    left: 175%;
+
+                    > .prerequisite {
+                        bottom: 139%;
+                        left: -23%;
+                    }
+
+                    &.withPrerequisite {
+                        &::before {
+                            position: absolute;
+                            content: "";
+                            background-image: url("/Content/images/img/grayArrow.webp");
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            width: 18%;
+                            height: 50%;
+                            left: -25%;
+                            top: -49%;
+                            z-index: -1;
+                        }
+                    }
+
+                    > svg {
+                        position: absolute;
+                        content: "";
+                        width: 65%;
+                        height: 25%;
+                        left: -56%;
+                        top: -3%;
+                        transform: rotateX(180deg);
+                        z-index: -1;
+                    }
+                }
+
+                > .station3 {
+                    top: 27%;
+                    left: 241%;
+
+                    > .prerequisite {
+                        top: 129%;
+                        left: -26%;
+                    }
+
+                    &.withPrerequisite {
+                        &::before {
+                            position: absolute;
+                            content: "";
+                            background-image: url("/Content/images/img/grayArrow.webp");
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            width: 18%;
+                            height: 50%;
+                            left: -25%;
+                            top: 86%;
+                            z-index: -1;
+                            transform: rotateX(180deg);
+                        }
+                    }
+
+                    svg {
+                        position: absolute;
+                        content: "";
+                        width: 65%;
+                        height: 25%;
+                        left: -58%;
+                        top: 61%;
+                        transform: rotateZ(30deg);
+                        z-index: -1;
+                    }
+                }
+
+                > .station4 {
+                    top: 58%;
+                    left: 306%;
+
+                    .prerequisite {
+                        top: -135%;
+                        left: -14%;
+                    }
+
+                    &.withPrerequisite {
+                        &::before {
+                            position: absolute;
+                            content: "";
+                            background-image: url("/Content/images/img/grayArrow.webp");
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            width: 18%;
+                            height: 50%;
+                            left: -22%;
+                            top: -49%;
+                            z-index: -1;
+                        }
+                    }
+
+                    svg {
+                        position: absolute;
+                        content: "";
+                        width: 65%;
+                        height: 25%;
+                        left: -56%;
+                        top: -3%;
+                        transform: rotateX(180deg);
+                        z-index: -1;
+                    }
+                }
+
+                > .station5 {
+                    top: 29%;
+                    left: 365%;
+
+                    &.withPrerequisite {
+                        &::before {
+                            position: absolute;
+                            content: "";
+                            background-image: url("/Content/images/img/grayArrow.webp");
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            width: 18%;
+                            height: 50%;
+                            left: -9%;
+                            top: 115%;
+                            transform: rotateX(180deg);
+                            z-index: -1;
+                        }
+                    }
+
+                    .prerequisite {
+                        top: 159%;
+                        left: -8%;
+                    }
+
+                    svg {
+                        position: absolute;
+                        content: "";
+                        width: 65%;
+                        height: 25%;
+                        left: -42%;
+                        top: 94%;
+                        transform: rotateZ(-6deg);
+                        z-index: -1;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .roadMapTitle {
+            font-size: 1.8vw;
+        }
+    }
+
+    @include v.media(1540px) {
+        background-image: url("/Content/images/img/roadMapDetailBgRes.webp");
+    }
+
+    @include v.media(v.$screen) {
+        .roadMapTitle {
+            font-size: 1.5em;
+        }
+
+        > h3 {
+            font-size: 1em;
+        }
+
+        .road-map-overview {
+            > .road-map-description {
+                > p {
+                    font-size: 1.1em;
+                }
+
+                > h3 {
+                    font-size: 1.3em;
+                }
+
+                > a {
+                    font-size: 1.1em;
+                }
+            }
+
+            > .road-map-stations {
+                > p {
+                    font-size: 1.1em;
+                }
+
+                .big-circle {
+                    > [class*="station"] {
+                        font-size: 0.5em;
+                    }
+
+                    > .prerequisite {
+                        font-size: 1em;
+                    }
+                }
+            }
+        }
+    }
+
+    @include v.media(v.$laptop) {
+        .road-map-overview {
+            > .road-map-stations {
+                > .big-circle {
+                    font-size: 1.1em;
+
+                    > [class*="station"] {
+                        font-size: 0.8em;
+                    }
+
+                    > .prerequisite {
+                        font-size: 0.8em;
+                    }
+                }
+            }
+        }
+
+        > h3 {
+            font-size: 0.8em;
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        background-image: url("/Content/images/img/roadMapDetailBgRes2.webp");
+        background-repeat: repeat-y;
+        padding-top: 2em;
+        margin-top: 5em;
+        >p{
+            margin-inline : 1em;
+            padding : 1em 1em;
+        }
+
+        .road-map-anchors {
+            display: grid;
+        }
+
+        > h3 {
+            width: 33vw;
+            height: 32.8vw;
+            top: 11em;
+            font-size: 1.4em;
+
+            > span {
+                font-size: 1.5em;
+            }
+        }
+
+        .road-map-overview {
+            flex-direction: column-reverse;
+            margin-bottom: 0em;
+
+            > .road-map-description {
+                padding: 1.1em 1.8em;
+
+                > a {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            > .road-map-stations {
+                flex-basis: unset;
+                height: 86em;
+
+                > p {
+                    padding: 0;
+                    line-height: 1.5em;
+                }
+
+                .big-circle {
+                    width: 36vw;
+                    height: 36vw;
+                    top: 17em;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    line-height: 1.3em;
+
+                    > [class*="station"],
+                    .prerequisite {
+                        width: 19vw;
+                        height: 19vw;
+                    }
+
+                    > .station1 {
+                        top: 123%;
+                        left: 52%;
+
+                        > svg {
+                            width: 65%;
+                            height: 52%;
+                            left: -29%;
+                            top: -37%;
+                            transform: rotateZ(108deg);
+                        }
+                    }
+
+                    > .station2 {
+                        top: 192%;
+                        left: 19%;
+
+                        &.withPrerequisite {
+                            &::before {
+                                left: 132%;
+                                top: -29%;
+                                transform: rotateZ(94deg);
+                            }
+                        }
+
+                        > svg {
+                            width: 65%;
+                            height: 52%;
+                            left: 77%;
+                            top: -37%;
+                            transform: rotateZ(88deg) rotateX(180deg);
+                        }
+
+                        > .prerequisite {
+                            bottom: 17%;
+                            left: 165%;
+                        }
+                    }
+
+                    > .station3 {
+                        top: 267.5%;
+                        left: 21%;
+
+                        &.withPrerequisite {
+                            &::before {
+                                left: -19%;
+                                top: -43%;
+                                transform: rotateZ(94deg) rotateX(180deg);
+                            }
+                        }
+
+                        > svg {
+                            width: 65%;
+                            height: 52%;
+                            left: -4%;
+                            top: -58%;
+                            transform: rotateZ(108deg);
+                        }
+
+                        > .prerequisite {
+                            top: -76%;
+                            left: -138%;
+                        }
+                    }
+
+                    > .station4 {
+                        top: 342%;
+                        left: 59%;
+
+                        &.withPrerequisite {
+                            &::before {
+                                left: 36%;
+                                top: -70%;
+                                transform: rotateZ(51deg);
+                            }
+                        }
+
+                        > svg {
+                            left: -15%;
+                            top: -42%;
+                            transform: rotateX(180deg) rotateZ(-47deg);
+                        }
+
+                        > .prerequisite {
+                            top: -127%;
+                            left: 66%;
+                        }
+                    }
+
+                    > .station5 {
+                        top: 403%;
+                        left: 3%;
+
+                        &.withPrerequisite {
+                            &::before {
+                                left: 57%;
+                                top: -66%;
+                                transform: rotateX(176deg) rotateZ(-143deg);
+                            }
+                        }
+
+                        > svg {
+                            left: 63%;
+                            top: -33%;
+                            transform: rotateZ(157deg);
+                        }
+
+                        > .prerequisite {
+                            top: -116%;
+                            left: -61%;
+                        }
+                    }
+                }
+
+                > .big-circle-back {
+                    width: 36vw;
+                    height: 36vw;
+                    top: 18.3em;
+                    left: 30%;
+                }
+            }
+        }
+
+        .road-map-category {
+            gap: 3em;
+            flex-wrap: wrap;
+
+            > span {
+                --wid: 6.5em;
+                font-size: 4.4em;
+            }
+        }
+    }
+
+    @include v.media(v.$mobile) {
+        > h3 {
+            font-size: 1em;
+            top: 15em;
+            line-height: 2em;
+        }
+
+        .road-map-anchors {
+            > span {
+                font-size: .8em;
+            }
+        }
+    }
+}

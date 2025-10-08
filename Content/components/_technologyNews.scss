@@ -1,0 +1,171 @@
+@use '../source/Variables';
+
+
+
+.tech-news {
+    width: 94%;
+    margin: auto;
+    border-radius: 8px;
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 2em;
+
+
+    .owl-nav {
+        button {
+            background-color: white !important;
+            border-radius: 50%;
+            width: 2.3em;
+            height: 2.3em;
+            position: absolute;
+            --offset: -2.5em;
+            visibility: hidden;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            font-size: 1.5em !important;
+            opacity: 0;
+            box-shadow: 0 0 15px #00000026;
+            transition: .2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &::before {
+                @include Variables.fontAwsome('f053', 900);
+            }
+
+            &.owl-prev {
+                right: var(--offset);
+
+                &::before {
+                    content: '\f054';
+                }
+            }
+
+            &.owl-next {
+                left: var(--offset);
+            }
+        }
+    }
+
+    &:hover {
+        button {
+            visibility: visible;
+            opacity: .9;
+            --offset: -0.9em;
+        }
+    }
+
+    .owl-stage {
+        display: flex;
+
+        .item {
+            height: 100%;
+        }
+    }
+
+    .card-item-weblog {
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        background-color: #fff;
+        padding: 1em;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+
+        > .info--box {
+        }
+
+        h4, h3, p {
+            margin-bottom: 1em;
+        }
+
+        > a:first-child {
+            display: block;
+            height: 14.3em;
+            margin-bottom: 2em;
+            border-radius: 5px;
+            overflow: hidden;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                transition: 0.3s;
+                transform: scale(1);
+            }
+
+            &:hover img {
+                transform: scale(1.1);
+            }
+        }
+
+
+
+
+
+
+
+        p {
+            color: #6A6A68;
+            height: 8em;
+            margin-top: 0.5em;
+        }
+
+        p,
+        a {
+            font-weight: 500;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            &:nth-child(3) {
+                margin-top: auto;
+            }
+        }
+    }
+
+
+
+
+
+    @include Variables.media(1400px) {
+        justify-content: center;
+    }
+
+
+
+
+    @include Variables.media(Variables.$tablet) {
+        width: 80%;
+
+        .owl-nav {
+            button {
+                visibility: visible;
+                opacity: .9;
+                --offset: -0.9em;
+                bottom: unset;
+                top: 42%;
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$mobile) {
+
+
+
+        .card-item-weblog {
+            width: 100%;
+            padding: 1em;
+            /* margin-top: 1em;*/
+        }
+    }
+}

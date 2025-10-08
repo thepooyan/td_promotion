@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <link rel="stylesheet" href="./Content/Common.scss">
+  <link rel="stylesheet" href="./Content/OwlCarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="./Content/OwlCarousel/assets/owl.theme.default.css">
+  <link rel="stylesheet" href="./Content/pages/newkids2.scss">
+</head>
+<script src="Scripts/js/jquery-1.11.3.min.js"></script>
+
+<body>
+  <svg style="display: none;">
+    <symbol id="leftArrow" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M5.3417 7.29688L0.100098 2.31354L1.69537 0.796875L8.53224 7.29688L1.69537 13.7969L0.100098 12.2802L5.3417 7.29688Z"
+        fill="white" />
+    </symbol>
+    <symbol id="emoji" viewBox="0 0 16 16" fill="none">
+      <rect x="0.496124" y="-0.000488281" width="17.556" height="17.5523" rx="8.08662" fill="#E0F0FB" />
+      <path
+        d="M7.16743 6.66942V6.12091C6.8645 6.12091 6.61892 6.36648 6.61892 6.66942H7.16743ZM7.23738 6.66942H7.78589C7.78589 6.36648 7.54031 6.12091 7.23738 6.12091V6.66942ZM11.3809 6.66942V6.12091C11.0779 6.12091 10.8324 6.36648 10.8324 6.66942H11.3809ZM11.4431 6.66942H11.9916C11.9916 6.36648 11.746 6.12091 11.4431 6.12091V6.66942ZM7.23738 6.72564V7.27415C7.54031 7.27415 7.78589 7.02857 7.78589 6.72564H7.23738ZM7.16743 6.72564H6.61892C6.61892 7.02857 6.8645 7.27415 7.16743 7.27415V6.72564ZM11.4431 6.72564V7.27415C11.746 7.27415 11.9916 7.02857 11.9916 6.72564H11.4431ZM11.3809 6.72564H10.8324C10.8324 7.02857 11.0779 7.27415 11.3809 7.27415V6.72564ZM7.30604 10.6219C7.14658 10.3643 6.80851 10.2848 6.55094 10.4443C6.29338 10.6037 6.21385 10.9418 6.37332 11.1994L7.30604 10.6219ZM12.175 11.1994C12.3345 10.9418 12.2549 10.6037 11.9974 10.4443C11.7398 10.2848 11.4017 10.3643 11.2423 10.6219L12.175 11.1994ZM15.7481 8.7757C15.7481 12.3502 12.8497 15.2481 9.27416 15.2481V16.3451C13.4554 16.3451 16.8451 12.9563 16.8451 8.7757H15.7481ZM9.27416 15.2481C5.69861 15.2481 2.80025 12.3502 2.80025 8.7757H1.70323C1.70323 12.9563 5.09296 16.3451 9.27416 16.3451V15.2481ZM2.80025 8.7757C2.80025 5.20118 5.69861 2.30327 9.27416 2.30327V1.20625C5.09296 1.20625 1.70323 4.5951 1.70323 8.7757H2.80025ZM9.27416 2.30327C12.8497 2.30327 15.7481 5.20118 15.7481 8.7757H16.8451C16.8451 4.5951 13.4554 1.20625 9.27416 1.20625V2.30327ZM7.16743 7.21793H7.23738V6.12091H7.16743V7.21793ZM11.3809 7.21793H11.4431V6.12091H11.3809V7.21793ZM6.68887 6.66942V6.72564H7.78589V6.66942H6.68887ZM7.23738 6.17713H7.16743V7.27415H7.23738V6.17713ZM7.71594 6.72564V6.66942H6.61892V6.72564H7.71594ZM10.8946 6.66942V6.72564H11.9916V6.66942H10.8946ZM11.4431 6.17713H11.3809V7.27415H11.4431V6.17713ZM11.9294 6.72564V6.66942H10.8324V6.72564H11.9294ZM9.27416 11.7376C8.45322 11.7376 7.72488 11.2984 7.30604 10.6219L6.37332 11.1994C6.9785 12.1768 8.04812 12.8346 9.27416 12.8346V11.7376ZM11.2423 10.6219C10.8234 11.2984 10.0951 11.7376 9.27416 11.7376V12.8346C10.5002 12.8346 11.5698 12.1768 12.175 11.1994L11.2423 10.6219Z"
+        fill="black" />
+    </symbol>
+
+    <symbol id="sand-clock" viewBox="0 0 19 19" fill="none">
+      <path
+        d="M0.5 8.87678C0.5 4.41066 4.1205 0.790161 8.58662 0.790161H9.96573C14.4318 0.790161 18.0523 4.41066 18.0523 8.87678V10.2559C18.0523 14.722 14.4318 18.3425 9.96573 18.3425H8.58662C4.1205 18.3425 0.5 14.722 0.5 10.2559V8.87678Z"
+        fill="#E0F0FB" />
+      <path
+        d="M4.33957 2.98425H14.5784M4.33957 16.1485H14.5784M13.2986 2.98425V4.9203C13.2986 5.42507 13.1245 5.9144 12.8058 6.3058L10.7031 8.88767C10.3309 9.34468 10.3397 9.99016 10.7243 10.4375L12.7683 12.8152C13.1104 13.2132 13.2986 13.7207 13.2986 14.2455V16.1485M5.61943 2.98425V4.9203C5.61943 5.42507 5.79348 5.9144 6.11223 6.3058L8.21492 8.88767C8.58711 9.34468 8.57827 9.99016 8.19369 10.4375L6.14969 12.8152C5.80756 13.2132 5.61943 13.7207 5.61943 14.2455V16.1485"
+        stroke="black" stroke-width="1.09702" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+
+
+
+
+
+
+
+  </svg>
+
+  <div id="resMenu">
+    <i class="fas fa-times" id="resClose"></i>
+    <div class="OriginContent">
+      <a href="/" class="logo"></a>
+
+      <ul class="mainNav">
+
+        <li class="item">
+          <div class="collapsible">دوره‌های آموزشی</div>
+          <ul class="content">
+
+
+            <li class="courseSelector" data-linkto="28">مقدمات برنامه نویسی</li>
+            <li class="courseSelector" data-linkto="1">برنامه نویسی #C-سی شارپ</li>
+            <li class="courseSelector" data-linkto="25">برنامه نویسی پایتون و هوش مصنوعی</li>
+            <li class="courseSelector" data-linkto="2">دوره های طراحی سایت</li>
+            <li class="courseSelector" data-linkto="33">آموزش UI/UX</li>
+            <li class="courseSelector" data-linkto="7">برنامه نویسی PHP و Laravel</li>
+            <li class="courseSelector" data-linkto="34">دیجیتال مارکتینگ</li>
+            <li class="courseSelector" data-linkto="9">برنامه نويسي جاوا-JAVA</li>
+            <li class="courseSelector" data-linkto="37">آموزش Node js</li>
+            <li class="courseSelector" data-linkto="3">برنامه نویسی تحت وب (ASP.Net MVC )</li>
+            <li class="courseSelector" data-linkto="4">پایگاه داده ها</li>
+            <li class="courseSelector" data-linkto="6">طراحی و معماری نرم افزار</li>
+            <li class="courseSelector" data-linkto="41">وبینار</li>
+          </ul>
+
+        </li>
+        <li class="item">
+          <span class="new-ticket">جدید</span>
+          <a href="/online-courses">پکیج های رایگان</a>
+        </li>
+        <li class="item"><a href="/آموزش">آموزش گام به گام</a></li>
+        <li class="item">
+          <div class="collapsible">فیلم‌های آموزشی</div>
+          <ul class="content">
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-SQL-Server">فيلم
+                آموزشي SQL SERVER </a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-CSharp">فيلم
+                آموزشي سي شارپ</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C-PHP">فیلم
+                آموزشی PHP</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%20jquery">فیلم
+                آموزش jQuery</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%AC%D8%A7%D9%88%D8%A7">فیلم
+                آموزش جاوا</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-ASP-NET">فیلم
+                آموزش ASP.NET</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-HTML5">فیلم
+                آموزش HTML5</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%AC%D9%88%D9%85%D9%84%D8%A7">فیلم
+                آموزش جوملا</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84">فیلم
+                آموزش برنامه نویسی موبایل</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-XML">فیلم
+                آموزش XML</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C-WPF">فیلم
+                آموزشی WPF</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/Team%20Foundation%20Server">آموزش
+                TFS Team Foundation Server</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%D9%8A%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%D9%8A-WordPress">فيلم
+                آموزشي WordPress</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C-%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA">فیلم
+                آموزشی طراحی سایت</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D8%AA%D8%AD%D9%84%DB%8C%D9%84-%D9%88-%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B4%D8%A6-%DA%AF%D8%B1%D8%A7">تحلیل
+                و طراحی شئ گرا</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/Entity-Framework">Entity
+                Framework</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%DA%A9%D8%A7%D8%B1-%D8%A8%D8%A7-Xamarin">آموزش
+                کار با Xamarin</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-MVC">فیلم
+                آموزشی MVC</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-python">آموزش
+                python</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-Web-Api">آموزش
+                Web Api</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-Oracle">آموزش
+                Oracle</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-NoSQL">NoSQL</a>
+            </li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C-SignalR">فیلم
+                آموزشی SignalR</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%85%D8%AA%D8%AF-%D9%87%D8%A7%DB%8C-%D8%B3%D8%B1%DB%8C%D8%B9-%D8%AA%D9%88%D9%84%DB%8C%D8%AF-%D9%86%D8%B1%D9%85-%D8%A7%D9%81%D8%B2%D8%A7%D8%B1">متد
+                های سریع تولید نرم افزار</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-SEO">فیلم
+                آموزش SEO</a></li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-Angular">Angular</a>
+            </li>
+            <li><a
+                href="/%D9%81%DB%8C%D9%84%D9%85%20%D9%87%D8%A7%DB%8C%20%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C/%D9%81%DB%8C%D9%84%D9%85-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-React-js">فیلم
+                آموزش React.js</a></li>
+          </ul>
+        </li>
+        <li class="item">
+          <div class="collapsible">پروژه‌ها</div>
+          <ul class="content">
+            <li><a href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D8%B3%DB%8C%20%D8%B4%D8%A7%D8%B1%D9%BE">پروژه های #C</a></li>
+            <li><a href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D8%AC%D8%A7%D9%88%D8%A7">پروژه های جاوا</a></li>
+            <li><a href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87-PHP">پروژه های PHP</a></li>
+            <li><a href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D8%A7%D9%86%D8%AF%D8%B1%D9%88%DB%8C%D8%AF">پروژه های
+                اندروید</a></li>
+            <li><a href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D8%A7%DA%A9%D8%B3%D8%B3">پروژه های Access</a></li>
+            <li><a href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D8%A7%D8%B3%20%DA%A9%DB%8C%D9%88%20%D8%A7%D9%84">پروژه های SQL
+                Server</a></li>
+            <li><a
+                href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87%20%D9%87%D8%A7%DB%8C%20ASp_net">پروژه
+                های ASp.net</a></li>
+            <li><a
+                href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87-%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA">پروژه
+                طراحی سایت</a></li>
+            <li><a
+                href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87-%D9%BE%D8%A7%DB%8C%D8%AA%D9%88%D9%86">پروژه
+                پایتون</a></li>
+            <li><a
+                href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87-c-%D8%B3%DB%8C-%D9%BE%D9%84%D8%A7%D8%B3-%D9%BE%D9%84%D8%A7%D8%B3">پروژه
+                های ++C</a></li>
+            <li><a
+                href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87%20%D9%87%D8%A7%DB%8C-Django">پروژه
+                های Django</a></li>
+            <li><a href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87-React-Native">پروژه هاي React
+                Native</a></li>
+            <li><a
+                href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C-%DA%A9%D9%88%D8%AF%DA%A9%D8%A7%D9%86">پروژه
+                برنامه نویسی کودکان</a></li>
+            <li><a
+                href="/%D9%BE%D8%B1%D9%88%DA%98%D9%87/%D9%BE%D8%B1%D9%88%DA%98%D9%87-%D9%87%D8%A7%DB%8C-%DB%8C%D8%A7%D8%AF%DA%AF%DB%8C%D8%B1%DB%8C-%D9%85%D8%A7%D8%B4%DB%8C%D9%86">پروژه
+                های یادگیری ماشین</a></li>
+          </ul>
+        </li>
+        <li class="item">
+          <div class="collapsible">کتابخانه</div>
+          <ul class="content">
+            <li><a href="/EBookCategory/کتاب-آموزش-سی-شارپ" data-count="58">C#</a></li>
+            <li><a href="/EBookCategory/SQL SERVER" data-count="78">SQL SERVER</a></li>
+            <li><a href="/EBookCategory/WEB DESIGN" data-count="51">WEB DESIGN</a></li>
+            <li><a href="/EBookCategory/ASP-NET" data-count="65">ASP.NET</a></li>
+            <li><a href="/EBookCategory/UML And RUP" data-count="28">UML And RUP</a></li>
+            <li><a href="/EBookCategory/Oracle" data-count="35">Oracle</a></li>
+            <li><a href="/EBookCategory/PHP" data-count="45">PHP</a></li>
+            <li><a href="/EBookCategory/Python" data-count="62">Python</a></li>
+            <li><a href="/EBookCategory/آموزش بهینه سازی وب سایت SEO" data-count="14">آموزش SEO</a></li>
+            <li><a href="/EBookCategory/OOP" data-count="18">OOP</a></li>
+            <li><a href="/EBookCategory/کتاب آموزش جاوا" data-count="40">کتاب آموزش جاوا</a></li>
+            <li><a href="/EBookCategory/LINQ" data-count="14">LINQ</a></li>
+            <li><a href="/EBookCategory/الگوریتم---فلوچارت" data-count="1">الگوریتم - فلوچارت</a></li>
+            <li><a href="/EBookCategory/WCF" data-count="7">WCF</a></li>
+            <li><a href="/EBookCategory/ویژوال استودیو" data-count="6">Visual Studio</a></li>
+            <li><a href="/EBookCategory/Entity Framework" data-count="19">Entity Framework</a></li>
+            <li><a href="/EBookCategory/ADO_NET" data-count="8">ADO .NET</a></li>
+            <li><a href="/EBookCategory/JavaScript" data-count="25">JavaScript</a></li>
+            <li><a href="/EBookCategory/JQuery" data-count="39">JQuery</a></li>
+            <li><a href="/EBookCategory/HTML" data-count="12">HTML</a></li>
+            <li><a href="/EBookCategory/Ajax" data-count="19">Ajax</a></li>
+            <li><a href="/EBookCategory/MySQL" data-count="13">MySQL</a></li>
+            <li><a href="/EBookCategory/Android" data-count="95">Android</a></li>
+            <li><a href="/EBookCategory/database" data-count="13">database</a></li>
+            <li><a href="/EBookCategory/آموزش هك" data-count="13">Hacking</a></li>
+            <li><a href="/EBookCategory/جوملا" data-count="17">جوملا</a></li>
+            <li><a href="/EBookCategory/وردپرس-wordpress" data-count="23">wordpress</a></li>
+            <li><a href="/EBookCategory/دانلود کتاب MVC" data-count="34">MVC</a></li>
+            <li><a href="/EBookCategory/IOS" data-count="28">IOS</a></li>
+            <li><a href="/EBookCategory/bootstrap" data-count="8">bootstrap</a></li>
+            <li><a href="/EBookCategory/hardware-ebook" data-count="3">سخت افزار</a></li>
+            <li><a href="/EBookCategory/React" data-count="4">React</a></li>
+            <li><a href="/EBookCategory/کتاب-آموزش-React-Native" data-count="6">React Native</a></li>
+            <li><a href="/EBookCategory/فلاتر" data-count="3">Flutter</a></li>
+            <li><a href="/EBookCategory/انگولار" data-count="4">Angular</a></li>
+            <li><a href="/EBookCategory/Microservice" data-count="3">Microservice </a></li>
+            <li><a href="/EBookCategory/c-plus-plus" data-count="2">++C</a></li>
+            <li><a href="/EBookCategory/یادگیری-ماشین" data-count="2">یادگیری ماشین</a></li>
+            <li><a href="/EBookCategory/Go" data-count="3">Golang</a></li>
+            <li><a href="/EBookCategory/Node-js" data-count="1">Node.js</a></li>
+            <li><a href="/EBookCategory/Git" data-count="1">Git</a></li>
+            <li><a href="/EBookCategory/آموزش-Solidity" data-count="1">Solidity</a></li>
+          </ul>
+        </li>
+        <li class="item">
+          <div class="collapsible">برنامه نویسی کودکان</div>
+          <ul class="content">
+            <li><a href="/آموزش-برنامه-نویسی-کودکان">آموزش برنامه نویسی کودکان</a></li>
+            <li><a href="/آموزش-برنامه-نویسی-نوجوانان">آموزش برنامه نویسی نوجوانان</a></li>
+          </ul>
+        </li>
+        <li class="item item-weblog">
+
+          <a href="/وبلاگ">بلاگ تحلیل داده</a>
+        </li>
+
+
+
+      </ul>
+      <div class="line"></div>
+
+      <div class="social">
+        <span>مارا در شبکه های اجتماعی دنبال کنید</span>
+        <div class="icons">
+          <a href="https://www.instagram.com/tahlildadeh" class=""></a>
+          <a href="https://wa.me/989905283471" class=""></a>
+          <a href="https://t.me/TahlildadehAcademy" class=""></a>
+        </div>
+      </div>
+    </div>
+    <div class="crossContent">
+      <i class="fas fa-arrow-right" id="backToRes"></i>
+      <ul class="InnerNav noDisplay hide" id="28">
+        <li><a
+            href="/CourseDetails/123/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%85%D9%86%D8%B7%D9%82-%D9%88-%D9%85%D9%82%D8%AF%D9%85%D8%A7%D8%AA-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C.aspx">آموزش
+            مبانی برنامه نویسی (اولین گام شروع برنامه نویسی)</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="1">
+        <li><a href="/CourseDetails/114/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%B3%DB%8C-%D8%B4%D8%A7%D8%B1%D9%BE.aspx">آموزش
+            سی شارپ</a></li>
+        <li><a
+            href="/CourseDetails/1158/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%B4%DB%8C-%DA%AF%D8%B1%D8%A7%DB%8C%DB%8C.aspx">آموزش
+            #C پیشرفته همراه با شی گرایی</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="25">
+        <li><a
+            href="/CourseDetails/1165/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C-%D9%BE%D8%A7%DB%8C%D8%AA%D9%88%D9%86.aspx">دوره
+            آموزش پایتون</a></li>
+        <li><a
+            href="/CourseDetails/1183/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%DB%8C%D8%A7%D8%AF%DA%AF%DB%8C%D8%B1%DB%8C-%D8%B9%D9%85%DB%8C%D9%82.aspx">دوره
+            آموزش یادگیری عمیق</a></li>
+        <li><a
+            href="/CourseDetails/1184/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%AF%D8%A7%D8%AF%D9%87-%DA%A9%D8%A7%D9%88%DB%8C.aspx">دوره
+            آموزش یادگیری ماشین</a></li>
+        <li><a href="/CourseDetails/1190/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-Django.aspx">دوره آموزش
+            Django</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="2">
+        <li><a
+            href="/CourseDetails/28/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-Web-Design.aspx">دوره
+            آموزش طراحی سایت</a></li>
+        <li><a
+            href="/CourseDetails/1166/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D8%AC%D8%A7%D9%85%D8%B9-%DA%A9%D8%A7%D8%B1%D8%A8%D8%B1%D8%AF%DB%8C-Front-End.aspx">دوره
+            آموزش Front End - به همراه ReactJs</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="33">
+        <li><a href="/CourseDetails/1193/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-ui-ux.aspx">دوره آموزش
+            طراحی رابط و تجربه کاربری UI/UX</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="7">
+        <li><a
+            href="/CourseDetails/82/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-PHP-%D9%BE%D9%8A%D8%B4%D8%B1%D9%81%D8%AA%D9%87-%D8%A8%D8%A7-Laravel.aspx">آموزش
+            PHP پيشرفته همراه با فریمورک Laravel</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="34">
+        <li><a href="/CourseDetails/1181/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-SEO.aspx">دوره آموزش SEO</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="9">
+        <li><a href="/CourseDetails/90/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-java.aspx">دوره آموزش جاوا</a></li>
+        <li><a
+            href="/CourseDetails/1167/%DA%A9%D8%A7%D8%B1%DA%AF%D8%A7%D9%87-%D8%B9%D9%85%D9%84%DB%8C-Spring-MVC.aspx">آموزش
+            پروژه محور جاوا پیشرفته همراه با Spring Boot</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="37">
+        <li><a href="/CourseDetails/1172/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-NodeJS.aspx">دوره آموزش
+            Node JS</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="3">
+        <li><a href="/CourseDetails/83/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-mvc.aspx">دوره آموزش
+            پروژه محور MVC Core همراه با Web API</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="4">
+        <li><a href="/CourseDetails/27/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-sql-server.aspx">آموزش SQL SERVER</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="6">
+        <li><a href="/CourseDetails/1136/%D8%A2%D9%85%D9%88%D8%B2%D8%B4-Domain-Driven-Design.aspx">دوره آموزش معماری نرم
+            افزارهای Enterprise در دات نت</a></li>
+        <li><a
+            href="/CourseDetails/1185/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%85%D8%B9%D9%85%D8%A7%D8%B1%DB%8C-microservice.aspx">دوره
+            آموزش میکروسرویس</a></li>
+        <li><a
+            href="/CourseDetails/1204/%D8%AF%D9%88%D8%B1%D9%87-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%85%D8%B9%D9%85%D8%A7%D8%B1%DB%8C-%D9%86%D8%B1%D9%85-%D8%A7%D9%81%D8%B2%D8%A7%D8%B1.aspx">دوره
+            آموزش معماری نرم افزار</a></li>
+      </ul>
+      <ul class="InnerNav noDisplay hide" id="41">
+        <li><a
+            href="/CourseDetails/1194/%D9%88%D8%A8%DB%8C%D9%86%D8%A7%D8%B1-%D9%85%DB%8C%DA%A9%D8%B1%D9%88-%D8%B3%D8%B1%D9%88%DB%8C%D8%B3.aspx">وبینار
+            رایگان میکروسرویس</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="overlay"></div>
+
+  <div id="modal">
+    <div class="content">
+
+    </div>
+  </div>
+
+
+  <main>
+    hello
+  </main>
+
+  <link href="./style.scss" rel="stylesheet"/>
+  <script type="module" src="js.js" defer></script>
+</body>
+</html>

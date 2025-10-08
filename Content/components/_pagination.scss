@@ -1,0 +1,41 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row-reverse;
+    padding-bottom: 1em;
+    margin-top: 2em;
+
+    li.page-item {
+        width: 3em;
+        padding: 0 0.2em;
+        text-align: center;
+
+        &.active, &:hover {
+            a {
+                background-color: var(--blue);
+                color: #fff;
+            }
+        }
+
+        a {
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid var(--blue);
+            color: #0072BB;
+            // padding: 0.8em;
+            padding: 0.2em 0.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size:1.1em;
+            font-weight:900;
+        }
+
+        span {
+            color: var(--blue);
+        }
+    }
+}

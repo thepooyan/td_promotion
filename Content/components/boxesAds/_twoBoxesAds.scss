@@ -1,0 +1,11 @@
+@use "../../source/Variables";
+
+.boxes-two{
+    grid-template-columns: repeat(2, 1fr);
+
+
+
+    @include Variables.media(Variables.$mobile){
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

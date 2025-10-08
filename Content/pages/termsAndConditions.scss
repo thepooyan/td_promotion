@@ -1,0 +1,53 @@
+@use './InnerStyle.scss';
+@use '../source/_Variables' as v;
+
+.termsAndConditions{
+    font-size: 16px;
+
+    .mainTitle , h2{
+        color: var(--textColorStrong);
+    }
+    .mainTitle{
+        background-color: #D9D9D9;
+        padding: 1.3em;
+        text-align: center;
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 1.4em !important;
+    }
+    .termsBody{
+        padding-inline: 1.5em;
+        padding-bottom: 1.5em;
+        .termBox{
+            max-width: 1300px;
+            border-radius: 1em;
+            box-shadow: 0 0 40px rgba(168,168,168,.16);
+            margin: auto;
+            padding: 2em;
+    
+            h2{
+                font-size: 1.5em;
+                margin-bottom: .5em;
+            }
+    
+            &:not(:first-child){
+                margin-top: 1.5em;
+            }
+        }
+    }
+    
+    @include v.media(v.$tablet){
+        .mainTitle{
+            font-size: 1.2em;
+        }
+
+        .termsBody{
+            .termBox{
+                padding: 1.2em;
+                h2{
+                    font-size: 1.1em;
+                }
+            }
+        }
+    }
+}

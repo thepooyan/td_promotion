@@ -1,0 +1,429 @@
+﻿@charset "UTF-8";
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+@media only screen and (max-width: 1400px) {
+  .mainHeader .headerContainer .title > h1, .mainHeader .headerContainer .title p {
+    font-size: 15px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px till 993 and down) */
+@media only screen and (max-width: 1200px) {
+  .mainHeader {
+    background-color: var(--white);
+    padding-bottom: 25px;
+  }
+  .mainHeader .topBar {
+    display: flex;
+    padding-right: 25px;
+    justify-content: space-between;
+  }
+  .mainHeader .topBar .center {
+    width: 23%;
+  }
+  .mainHeader .topBar span.menu {
+    display: block;
+    font-size: 30px;
+    position: relative;
+    top: 3px;
+  }
+  .mainHeader .topBar span.menu:hover {
+    cursor: pointer;
+  }
+  .mainHeader .topBar .right,
+  .mainHeader .topBar .center {
+    display: none;
+  }
+  .mainHeader .topBar .left > div {
+    left: 0;
+    transform: translateX(0);
+  }
+  .mainHeader .headerContainer {
+    grid-template-areas: "logotitle logotitle " "search layer";
+    grid-template-columns: 50% 50%;
+    padding: 0.5em 2em;
+    gap: 1em 0;
+  }
+  .mainHeader .headerContainer #search {
+    width: 90%;
+  }
+  .mainHeader .headerContainer .logo {
+    margin-left: 0.3em;
+  }
+  .mainHeader .headerContainer .logo .logo {
+    width: 9em;
+  }
+  .mainHeader .headerContainer .layer {
+    justify-content: center;
+  }
+  .mainHeader .headerContainer .layer .item:nth-of-type(7) {
+    display: flex;
+  }
+  .mainHeader .headerContainer .header {
+    gap: 0;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .mainHeader .headerContainer .header .rest .layer2 .item.four {
+    display: none;
+  }
+  .mainHeader .headerContainer .space {
+    display: none;
+  }
+  .mainHeader .headerContainer .calendar {
+    transform: scale(1.3);
+  }
+  .mainHeader .headerContainer nav.navBar {
+    display: none;
+  }
+  .mainHeader .headerContainer nav.navBar > ul.mainNav > .item > a {
+    font-size: 14px;
+  }
+  .mainHeader .headerContainer .left-header {
+    position: absolute;
+    top: 1.9%;
+    left: 1.5em;
+    height: auto;
+  }
+  .mainHeader .headerContainer .left-header .left {
+    border-color: var(--mainBlue);
+  }
+  .mainHeader .headerContainer .slider #slider {
+    font-size: 14px;
+  }
+  .mainHeader .headerContainer .cart--item .body-basket-items {
+    box-shadow: none;
+  }
+  .mainHeader {
+    /*  .headerContainer {
+        nav.navBar{
+            display:none;
+        }
+
+            .header {
+            padding: 50px 0;
+
+            .rest {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+
+
+        .spaceRightSide {
+            span {
+                width: 80%;
+            }
+        }
+
+        .calendar {
+            .FatLIne {
+                transform: scale(1.5);
+            }
+        }
+
+        nav.navBar {
+            margin-top: 1em;
+
+            ul.mainNav {
+                ul.CourseNav {
+                    width: 290px;
+                }
+            }
+        }
+    }*/
+  }
+}
+/* Large devices (laptops/desktops, 992px till 769 and down) */
+@media only screen and (max-width: 992px) {
+  .mainHeader {
+    padding-bottom: 20px;
+  }
+  .mainHeader .calendar {
+    margin: 2em auto;
+    background: url(/Content/images/general/Header-Footer.png);
+    height: 94.5px;
+    width: 94.5px;
+    background-position: -527px -31px;
+    background-size: 381%;
+    transform: scale(1);
+  }
+  .mainHeader .calendar::before {
+    content: "تقویم آموزشی";
+    position: absolute;
+    bottom: -22px;
+    color: #0d72a1;
+    font-size: 11px;
+    font-weight: bold;
+  }
+  .mainHeader .calendar .FatLIne {
+    display: none;
+  }
+  .slider #slider {
+    font-size: 10px;
+  }
+  .cart--item > div:first-child:hover ~ .cart--content,
+  .cart--content:hover {
+    visibility: visible;
+    opacity: 1;
+    top: 3em !important;
+    transform: translateY(0);
+  }
+}
+/* Medium devices (landscape tablets, 768px till 601 and down) */
+@media only screen and (max-width: 768px) {
+  .mainHeader {
+    padding: 0;
+    position: relative;
+  }
+  .mainHeader .topBar .right {
+    gap: 0px;
+  }
+  .mainHeader .topBar .center {
+    gap: 0px;
+    justify-content: flex-end;
+    width: auto;
+  }
+  .mainHeader .headerContainer {
+    grid-template-columns: auto;
+    grid-template-areas: "logotitle" "layer" "search";
+    padding: 0.5em;
+  }
+  .mainHeader .headerContainer .logo-tilte {
+    padding-top: 1em;
+  }
+  .mainHeader .headerContainer .logo-tilte .title {
+    margin: auto;
+    padding-top: 0em;
+  }
+  .mainHeader .headerContainer .logo-tilte .title > h1, .mainHeader .headerContainer .logo-tilte .title p {
+    text-align: center;
+  }
+  .mainHeader .headerContainer nav.navBar ul.mainNav {
+    padding: 0;
+    justify-content: space-around;
+  }
+  .mainHeader .headerContainer nav.navBar ul.mainNav .item > a {
+    font-size: 12px;
+  }
+  .mainHeader .headerContainer nav.navBar ul.mainNav .item .CourseNav {
+    width: 220px;
+  }
+  .mainHeader .headerContainer nav.navBar ul.mainNav .item .CourseNav .InnerNav {
+    width: 300px;
+  }
+  .mainHeader .headerContainer .layer {
+    margin-top: 1em;
+  }
+  .mainHeader .headerContainer .header {
+    justify-content: center;
+  }
+  .mainHeader .headerContainer .header .signupButtonLayer {
+    display: block;
+    margin: 45px 0;
+    margin-right: 10px;
+  }
+  .mainHeader .headerContainer .header .rest .layer2 {
+    display: none;
+  }
+  .space {
+    display: block;
+    clear: both;
+  }
+  .sideMenu {
+    display: none;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px till 481 and down) */
+@media only screen and (max-width: 600px) {
+  .mainHeader .topBar .right .wrap.email {
+    display: none;
+  }
+  .mainHeader .headerContainer .header .Cooperation {
+    transform: scale(0.9);
+  }
+  .mainHeader .headerContainer .header .rest {
+    width: 100%;
+  }
+  .mainHeader .headerContainer .header .rest .layer2 {
+    width: 130%;
+  }
+  .mainHeader .headerContainer .header .rest .layer2 a.item span {
+    font-size: 11px;
+  }
+  .mainHeader .headerContainer .header .signupButtonLayer {
+    display: none;
+  }
+  .mainHeader .headerContainer .calendar {
+    transform: scale(0.9);
+  }
+  .mainHeader .headerContainer .calendar .FatLIne {
+    margin: 34px 25px;
+  }
+  .slider {
+    margin-top: 20px;
+  }
+  .slider #slider {
+    font-size: 7.5px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .mainHeader .headerContainer .header {
+    display: block;
+  }
+}
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+  .left-header {
+    gap: 1.3em;
+  }
+  .left-header .left {
+    background-color: unset;
+    box-shadow: unset;
+    padding: 0;
+  }
+  .left-header .left > i {
+    display: flex;
+  }
+  .left-header .left > p {
+    display: none;
+  }
+  .left-header .left::after {
+    display: none;
+  }
+  .left-header .left > div {
+    line-height: 2.2;
+    padding: 0.5em;
+    width: 12em;
+  }
+  .left-header .left.active > div {
+    top: calc(100% + 1em);
+  }
+  .mainHeader .headerContainer {
+    padding-top: 0;
+  }
+  .mainHeader .headerContainer .logo {
+    display: block;
+    margin: auto;
+  }
+  .mainHeader .headerContainer .logo a.logo {
+    max-width: 126px;
+    max-height: 80px;
+    background-color: white;
+    border-radius: 50%;
+    border: 7px solid white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 10px 10px 0 0;
+    margin-top: 0.7em;
+  }
+  #resMenu .OriginContent .mainNav .item.logIn {
+    display: block;
+  }
+  #resMenu .OriginContent .mainNav .item.logIn.logIn a, #resMenu .OriginContent .mainNav .item.logIn.profile a {
+    display: flex;
+    align-items: center;
+  }
+  #resMenu .OriginContent .mainNav .item.logIn.logIn a i, #resMenu .OriginContent .mainNav .item.logIn.profile a i {
+    margin-left: 7px;
+    font-size: 0.9em;
+  }
+  #resMenu .OriginContent .mainNav .item.logIn.logIn {
+    display: block;
+  }
+  #resMenu .OriginContent .mainNav .item .cart--item .cart--content {
+    font-size: 0.8em;
+    width: 20em;
+  }
+  #resMenu .OriginContent .mainNav .item .cart--item .cart--content {
+    font-size: 0.8em;
+    width: 20em;
+  }
+  #resMenu .OriginContent .mainNav .item .cart--item > div:first-child:hover ~ .cart--content,
+  #resMenu .OriginContent .mainNav .item .cart--content:hover {
+    top: 4em !important;
+  }
+  #resMenu .OriginContent .mainNav .item .topBar .left {
+    display: none;
+  }
+  #resMenu.loggedIn .OriginContent .mainNav .item.profile, #resMenu.loggedIn .OriginContent .mainNav .item.logOut {
+    display: block;
+  }
+  #resMenu.loggedIn .OriginContent .mainNav .item .cart--item > div:first-child:hover ~ .cart--content,
+  #resMenu.loggedIn .OriginContent .mainNav .item .cart--content:hover {
+    top: 4em !important;
+  }
+  #resMenu.loggedIn .OriginContent .mainNav .item.logIn {
+    display: none;
+  }
+  #resMenu .OriginContent .mainNav .item.logIn a, #resMenu .OriginContent .mainNav .item.profile a, #resMenu .OriginContent .mainNav .item.logOut a {
+    display: flex;
+    align-items: center;
+  }
+  #resMenu .OriginContent .mainNav .item.logIn a i, #resMenu .OriginContent .mainNav .item.profile a i, #resMenu .OriginContent .mainNav .item.logOut a i {
+    margin-left: 7px;
+    font-size: 0.9em;
+  }
+  #resMenu .OriginContent .mainNav .item.logIn {
+    display: block;
+  }
+}
+@media screen and (max-width: 480px) and (max-width: 350px) {
+  #search {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  #search {
+    margin: auto;
+  }
+  #search input {
+    height: 3em;
+  }
+}
+@media (max-width: 800px) {
+  .course-Details .whiteArea header h1 {
+    font-size: 2em;
+  }
+  .mainHeader .headerContainer #search {
+    width: 90%;
+  }
+}
+/* Extra small devices (698-374)*/
+@media only screen and (max-width: 519px) {
+  .course-Details .whiteArea header h1 {
+    font-size: 5.5vw;
+    line-height: 1.6em;
+    transform: translateX(0);
+    left: 0;
+    width: 100%;
+  }
+  .course-Details .whiteArea header img {
+    min-height: 49.7vw;
+  }
+}
+/* Large devices (laptops/desktops, 992px till 769 and down) */
+@media only screen and (max-width: 780px) {
+  #search {
+    margin: 1em auto;
+  }
+}
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 320px) {
+  #profile > section .cont .course {
+    display: block;
+  }
+  #profile > section .cont .course .right .table {
+    margin-bottom: 1em;
+  }
+  #profile > section .cont .course .right .table div {
+    margin-bottom: 1em;
+  }
+}

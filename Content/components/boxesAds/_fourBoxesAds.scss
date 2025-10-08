@@ -1,0 +1,9 @@
+@use '../../source/Variables';
+
+.boxes-four {
+    grid-template-columns: repeat(4, 1fr);
+
+    @include Variables.media(Variables.$tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

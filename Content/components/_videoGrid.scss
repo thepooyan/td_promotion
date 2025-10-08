@@ -1,0 +1,185 @@
+﻿@use '../source/Variables' as v;
+@use "sampleVideo" as sv;
+@use "seoLandingLink" as sl;
+.videoGridContainer {
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px;
+    margin: auto;
+    align-items: center;
+    margin-block: 2em;
+    position: relative;
+
+
+
+    > .videoGridTitle {
+        font-size: 1.5em;
+        font-weight: 600;
+        --color: green;
+        position: relative;
+        margin-bottom: 1em;
+        padding-bottom: .8em;
+
+        > span {
+            color: var(--color);
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            background-color: var(--color);
+            width: 1.5em;
+            height: 2px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    > .videoGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill,minmax(20em, 1fr));
+        gap: 1.5em;
+        width: 100%;
+
+        > .videoGridItem {
+            display: flex;
+            gap: 1em;
+            flex-direction: column;
+            background-color: white;
+            padding: 1em;
+            border-radius: 1em;
+            box-shadow: 0 0 15px rgba(0,0,0,.1);
+
+            > .sample-video {
+                @include sv.sample-video;
+
+                > video {
+                    aspect-ratio: 16/9;
+                    width: 100%;
+                    height: auto;
+                    background-color: black;
+                }
+
+                svg {
+                    --wid: 3em;
+                }
+            }
+
+            > .info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                justify-content: space-between;
+                font-size: .9em;
+
+                > div {
+                    &:nth-of-type(1) {
+                        font-weight: 600;
+                    }
+
+                    &:nth-of-type(2) {
+                        display: flex;
+                        justify-content: flex-end;
+                        gap: .5em;
+                        flex-wrap: wrap;
+                        color: #616161;
+                    }
+                }
+            }
+
+            > a {
+                @include sl.seoLandingLink;
+            }
+
+            &:nth-child(n+7) {
+                display: none;
+            }
+        }
+    }
+
+    > .seoLandingLink {
+        display: none;
+    }
+
+    &.active {
+        > .videoGrid {
+            > .videoGridItem {
+                &:nth-child(n+7) {
+                    display: flex;
+                }
+            }
+        }
+
+        > .seoLandingLink {
+            display: block;
+            margin-top: 2em;
+            padding-block: 0.9em;
+            align-self: flex-end;
+        }
+    }
+
+    .seeMore {
+        position: absolute;
+        bottom: 0em;
+        left: 0;
+        background-image: linear-gradient(to top, #ffffff 45%, transparent);
+        padding-block: 8.7em 2.2em;
+        color: #1d71b9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        z-index: 1;
+        user-select: none;
+        cursor: pointer;
+        font-size: 1.1em;
+        font-weight: 700;
+        border-radius: 0 0 1em 1em;
+        gap: .5em;
+
+        &:after {
+            content: '\f063';
+            font-family: "Font Awesome 5 Free";
+            font-size: .8em;
+        }
+
+        &.active {
+            position: relative;
+            background-image: unset;
+            padding-block: 3em;
+
+            &:after {
+                content: '\f062';
+            }
+        }
+    }
+
+
+    @include v.media(v.$tablet) {
+        > .videoGridTitle {
+            font-size: 1.2em;
+        }
+
+        > .videoGrid {
+            > .videoGridItem {
+                &:nth-child(n+4) {
+                    display: none;
+                }
+            }
+        }
+
+        &.active {
+            > .videoGrid {
+                > .videoGridItem {
+                    &:nth-child(n+4) {
+                        display: flex;
+                    }
+                }
+            }
+        }
+
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,320 @@
+﻿@use '../source/_Variables.scss';
+section.upload {
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 3em;
+
+    ul.rules {
+        padding: 0;
+        margin: 0;
+        font-size: 0.9em;
+        background-color: var(--fourthColor);
+        padding: 0.5em 1.5em;
+        border-radius: 0.5em;
+
+        h3 {
+            text-align: right;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 1em;
+            color: #e10000;
+            border-right-color: #ff3f3f !important;
+        }
+
+        li {
+            text-align: right;
+            list-style-position: inside;
+        }
+
+        [style='font-weight:bold;color:red'] {
+            color: #ff3f3f !important;
+        }
+    }
+
+    .cardNumber {
+        h3 {
+            color: var(--textMainColor);
+            text-align: center;
+            font-size: 1em;
+            margin-top: 2em;
+            font-weight: bold;
+        }
+
+        .bankCard {
+            --width: 21em;
+        }
+    }
+
+    form, .pastRecord {
+        text-align: right;
+        color: var(--textMainColor);
+        // general
+        label.uploadImg {
+            cursor: pointer;
+            width: 100%;
+            border: 0;
+            border-radius: .6em;
+            padding: .7em .7em;
+            display: block;
+            font-family: inherit;
+            margin-top: .4em;
+            color: var(--textMainColor);
+            font-size: 1em;
+            background: var(--fourthColor);
+            margin-bottom: .2em;
+
+            input {
+                display: none;
+            }
+
+            img {
+                display: block;
+                margin: auto;
+            }
+
+            span {
+                text-align: center;
+                display: block;
+
+                &:empty {
+                    text-align: right;
+
+                    &::before {
+                        content: 'انتخاب فایل';
+                    }
+                }
+            }
+        }
+
+        input {
+            text-align: left;
+
+            &[type=number] {
+                -moz-appearance: textfield;
+            }
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+
+        select, input {
+            padding: .2em 0.5em;
+            border-radius: 6px;
+            background: white;
+            border: 0;
+            border-radius: .6em;
+            padding: .7em .7em;
+            font-family: inherit;
+            margin-top: .4em;
+            color: var(--textMainColor);
+            font-size: 1em;
+            background: var(--fourthColor);
+            margin-bottom: .2em;
+        }
+
+        input::placeholder {
+            color: var(--textMainColor);
+        }
+        //strucutre
+        h4 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+
+        .alert {
+            color: red;
+            font-weight: bold;
+            max-height: 0;
+            overflow: hidden;
+            padding: 0;
+            font-size: 0.8em;
+            transition: .2s;
+            margin: 0;
+
+            &.show {
+                max-height: 2em;
+                margin-bottom: 1em;
+            }
+        }
+
+        .table {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            border: 1px solid var(--fourthColor);
+            border-radius: 10px;
+            padding: 0.8em;
+            grid-auto-rows: minmax(4em, auto);
+            row-gap: 0.3em;
+            font-size: 0.9em;
+            align-items: center;
+            margin-bottom: 1em;
+
+            .validationMsg {
+                display: none;
+            }
+
+            span {
+                height: min-content;
+                color: var(--textMainColor);
+
+                &.verified {
+                    grid-column: 4/6;
+                    text-align: right;
+                    margin-right: 1em;
+                }
+            }
+
+            &.four {
+                grid-template-columns: 7% 31.5% 31.5% 31.5%;
+            }
+
+            &.five {
+                grid-template-columns: 7% 21.5% 21.5% 25.5% 24.5%;
+
+                a {
+                    width: 4em;
+                    margin-bottom: 0.4em;
+                    display: inline-block;
+                    color: #fff;
+                    padding: 0.2em 0.6em;
+                    font-size: 0.9em;
+
+
+
+                    &:first-child {
+                        background-color: #1d71b9;
+                    }
+
+                    &:last-child {
+                        background-color: #e30000;
+                    }
+                }
+            }
+
+            &.two {
+                grid-template-columns: 100%;
+                grid-auto-rows: auto;
+                gap: 1.7em;
+                padding: 1.4em 1em;
+
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-weight: 600;
+
+                    &:first-child span {
+                        color: #008000;
+                    }
+
+                    &:last-child span {
+                        color: #e30000;
+                    }
+                }
+            }
+
+            p {
+                margin-bottom: 0;
+                grid-column: 1/3;
+                color: #ed4c51;
+                font-weight: bold;
+                font-size: 1em;
+                text-align: center;
+            }
+        }
+
+        button {
+            display: block;
+            padding: 0.2em 1.9em;
+            border-radius: 11px;
+            background: #5084FF;
+            color: white;
+            margin-top: 0.8em;
+
+            &:disabled {
+                background: grey;
+            }
+        }
+
+        &.pastRecord {
+            padding-right: 1em;
+
+            p {
+                grid-column: 1/6;
+                text-align: center;
+                font-size: 0.9em;
+                padding: 0 1em;
+                line-height: 1.5em;
+            }
+
+            span {
+                text-align: center;
+
+                &.verified, &.rejected {
+                    color: green;
+                    font-weight: bold;
+
+                    &::after {
+                        @include Variables.fontAwsome('f058', 800);
+                        margin-right: .2em;
+                    }
+                }
+
+                &.rejected {
+                    color: red;
+
+                    &::after {
+                        content: '\f057';
+                    }
+                }
+
+                &.waiting {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    label {
+        color: var(--textMainColor);
+    }
+
+    @include Variables.media(Variables.$screen) {
+        grid-template-columns: auto;
+
+        .pastRecord.pastRecord {
+            padding: 0;
+        }
+    }
+
+    @include Variables.media(1000px) {
+        form{
+            .table{
+                display : flex;
+                flex-direction : column;
+                align-items : flex-start;
+
+                input{
+                     width : 100%;
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        .pastRecord.pastRecord {
+
+            .table.five {
+
+                a {
+                    width: 100%
+                }
+            }
+        }
+    }
+}

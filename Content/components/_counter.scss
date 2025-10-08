@@ -1,0 +1,88 @@
+﻿#counterSlider {
+    display: block;
+    width: 90vw;
+    height: 31.2vw;
+    margin: 9em auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.239);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    font-size: 1vw;
+
+    .title,
+    .des,
+    .timer {
+        position: absolute;
+    }
+
+    .institute::before {
+        content: "آموزشگاه تحلیل داده";
+        display: block;
+        font-size: 1.6em;
+        margin-bottom: 1.9em;
+        font-weight: 900;
+        text-align: center;
+        width: 39%;
+        left: 2vw;
+        top: 6vw;
+        position: absolute;
+    }
+
+    .title {
+        font-size: 4em;
+        font-weight: 900;
+        display: block;
+        text-align: center;
+        width: 39%;
+        top: 10vw;
+        left: 2vw;
+
+        &.long {
+            font-size: 2.72em;
+        }
+
+        &.tooLong {
+            font-size: 2.5em;
+        }
+    }
+
+    .des {
+        top: 17vw;
+        left: 2vw;
+        width: 39%;
+        text-align: center;
+        line-height: 1.2em;
+        color: rgb(66, 81, 90);
+        font-size: 3em;
+        font-weight: 800;
+        word-spacing: 4px;
+    }
+
+    .timer {
+        top: 15.2vw;
+        right: 6.3vw;
+        display: flex;
+        justify-content: space-between;
+        font-size: 3.5em;
+        font-weight: 600;
+        width: 30.5vw;
+
+        span {
+            width: 5.7vw;
+            text-align: center;
+            color: white;
+            height: 2.6vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &.done {
+        display: none;
+    }
+
+    &.backgroundLoaded {
+        background-image: url("/Content/images/img/homeSlider-CommingSoon-Blank.png");
+    }
+}

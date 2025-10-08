@@ -1,0 +1,707 @@
+@use "sass:meta";
+@use '../source/Variables';
+@use 'shared/innerContent';
+
+.td-content {
+    @include innerContent.innerContent;
+    --background: white;
+    --p: #383838;
+    --h2: #e30613;
+    --h3: #1d71b8;
+}
+
+
+
+.container-calendar {
+    padding: 0 2em 2em;
+}
+
+.top-title-calendar-courses {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: 2em 10em;
+
+    > .calendar-roadMap-banner {
+        width: 100%;
+        margin-bottom: 2em;
+
+        > .img {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    > img {
+        margin: auto;
+        width: 40em;
+    }
+
+    > h1 {
+        padding-top: .5em;
+        color: #383838;
+        text-align: center;
+        line-height: 1.5em;
+        font-size: 2.2em;
+    }
+
+    > span {
+        color: #1F86C8;
+        border-bottom: .1em solid #1F86C8;
+        font-weight: 600;
+        font-size: 1.5em;
+    }
+
+    > p {
+        font-size: 1em;
+        line-height: 1.9rem;
+        color: var(--textColorStrong);
+        font-size: 1.5em;
+        text-align: justify;
+        font-weight : 700;
+        margin-top : .5em;
+    }
+}
+
+.course-calendar {
+    margin-top: 2em;
+    position: relative;
+
+    &:not(:last-child) {
+        margin-bottom: 10em;
+    }
+
+    .title-course-calendar {
+        position: absolute;
+        z-index: 1;
+        bottom: calc(100% - 0.9em);
+        right: 1.5em;
+        padding: 1em;
+        font-size: 1.2em;
+        display: flex;
+        align-items: center;
+        border-radius: 0.7em;
+        box-shadow: 0 0 15px rgb(0 0 0 / 40%);
+
+        h4, h2, h1 {
+            color: var(--white);
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+    }
+
+    .title-course-calendar {
+        background-color: rgba(0,44,81,.2);
+    }
+
+    .titles-details-course {
+        background-color: rgba(0,44,81,.2);
+    }
+
+    .table-course {
+        z-index: 0;
+    }
+
+    .remainingCapacity-title {
+        background-color: #EB5C6E;
+        color: var(--white);
+        border-radius: 15px;
+        line-height: 2.5em;
+        width: 95%;
+        margin: auto;
+    }
+
+    .capacity-course {
+        color: #01DA65;
+
+        &.remainingCapacity {
+            color: #EB5C6E;
+        }
+
+        &.fullClasses {
+            color: #9E9E9E;
+        }
+    }
+
+    &:nth-child(2) {
+        .title-course-calendar {
+            background-color: rgba(0, 45, 227, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(0, 45, 227, 0.2);
+        }
+    }
+
+    &:nth-child(3), .moghadamat-course {
+
+        .title-course-calendar {
+            background-color: rgba(0, 44, 81, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(0, 44, 81, 0.2);
+        }
+    }
+
+    &:nth-child(4), .webDesign-course {
+        .title-course-calendar {
+            background-color: rgba(2, 181, 147, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(2, 181, 147, 0.2);
+        }
+    }
+
+    &:nth-child(5), .UIUX-course {
+        .title-course-calendar {
+            background-color: rgba(171, 59, 164, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(171, 59, 164, 0.2);
+        }
+    }
+
+    &:nth-child(6), .digitalMarketing-course {
+        .title-course-calendar {
+            background-color: rgba(97, 218, 251, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(97, 218, 251, 0.2);
+        }
+    }
+
+    &:nth-child(7), .mobile-course {
+        .title-course-calendar {
+            background-color: rgba(231, 111, 0, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(231, 111, 0, 0.2);
+        }
+    }
+
+    &:nth-child(8), .python-course {
+        .title-course-calendar {
+            background-color: rgba(104, 33, 122, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(104, 33, 122, 0.2);
+        }
+    }
+
+    &:nth-child(9), .c#-course {
+        .title-course-calendar {
+            background-color: rgba(80, 94, 155, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(80, 94, 155, 0.2);
+        }
+    }
+
+    &:nth-child(10), JAVA-course {
+        .title-course-calendar {
+            background-color: rgba(20, 92, 163,1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(20, 92, 163, 0.2);
+        }
+    }
+
+    &:nth-child(11), .ASP-course {
+        .title-course-calendar {
+            background-color: rgba(195, 156, 26, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(195, 156, 26, 0.2);
+        }
+    }
+
+    &:nth-child(12), .database-course {
+        .title-course-calendar {
+            background-color: rgba(0, 82, 204, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(0, 82, 204, 0.2);
+        }
+    }
+
+    &:nth-child(13), .node-course {
+        .title-course-calendar {
+            background-color: rgba(160, 170, 180, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(160, 170, 180, 0.2);
+        }
+    }
+
+    &:nth-child(14), .softwararchitect-course {
+        .title-course-calendar {
+            background-color: rgba(0, 68, 130, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(0, 68, 130, 0.2);
+        }
+    }
+
+    &:nth-child(15), .PHP-course {
+        .title-course-calendar {
+            background-color: rgba(122, 194, 76, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(122, 194, 76, 0.2);
+        }
+    }
+
+    &:nth-child(16), .Cplus-course {
+        .title-course-calendar {
+            background-color: rgba(150, 36, 68, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(150, 36, 68, 0.2);
+        }
+    }
+
+    &:nth-child(17), .blockchain-course {
+        .title-course-calendar {
+            background-color: rgba(62, 134, 61, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(62, 134, 61, 0.2);
+        }
+    }
+
+    &:nth-child(18), .UML-course {
+        .title-course-calendar {
+            background-color: rgba(109, 82, 194, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(109, 82, 194, 0.2);
+        }
+    }
+
+    &:nth-child(19), .GO-course {
+        .title-course-calendar {
+            background-color: rgba(116, 206, 221, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(116, 206, 221, 0.2);
+        }
+    }
+
+    &:nth-child(20), .kids-course {
+        .title-course-calendar {
+            background-color: rgba(247, 198, 20, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(247, 198, 20, 0.2);
+        }
+    }
+
+    &:nth-child(21), .teens-course {
+        .title-course-calendar {
+            background-color: rgba(93, 93, 93, 1);
+        }
+
+        .titles-details-course {
+            background-color: rgba(93, 93, 93, 0.2);
+        }
+    }
+}
+
+@include Variables.media(1200px) {
+
+
+    .course-calendar {
+        margin-inline: 13%;
+
+        &:nth-child(2), .ICDL-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(0, 45, 227, 0.2);
+
+                        .res-text {
+                            color: rgba(0, 45, 227, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(3), .moghadamat-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(0, 44, 81, 0.2);
+
+                        .res-text {
+                            color: rgba(0, 44, 81, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(4), .webDesign-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(2, 182, 147, 0.2);
+
+                        .res-text {
+                            color: rgba(2, 182, 147, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(5), .UIUX-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(172, 59, 165, 0.2);
+
+                        .res-text {
+                            color: rgba(172, 59, 165, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(6), .digitalMarketing-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(97, 218, 252, 0.2);
+
+                        .res-text {
+                            color: rgba(97, 218, 252, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(7), .mobile-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(231, 111, 0, 0.2);
+
+                        .res-text {
+                            color: rgba(231, 111, 0, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(8), .python-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(103, 33, 121, 0.2);
+
+                        .res-text {
+                            color: rgba(103, 33, 121, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(9), .c#-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(80, 94, 155, 0.2);
+
+                        .res-text {
+                            color: rgba(80, 94, 155, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(10), JAVA-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(20, 92, 164, 0.2);
+
+                        .res-text {
+                            color: rgba(20, 92, 164, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(11), .ASP-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(195, 156, 25, 0.2);
+
+                        .res-text {
+                            color: rgba(195, 156, 25, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(12), .database-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(0, 82, 204, 0.2);
+
+                        .res-text {
+                            color: rgba(0, 82, 204, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(13), .node-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(160, 170, 180, 0.2);
+
+                        .res-text {
+                            color: rgba(160, 170, 180, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(14), .softwararchitect-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(0, 68, 131,0.2);
+
+                        .res-text {
+                            color: rgba(0, 68, 131, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(15), .PHP-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(123, 194, 76, 0.2);
+
+                        .res-text {
+                            color: rgba(123, 194, 76, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(16), .Cplus-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(150, 36, 69, 0.2);
+
+                        .res-text {
+                            color: rgba(150, 36, 69, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(17), .blockchain-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(62, 134, 61, 0.2);
+
+                        .res-text {
+                            color: rgba(62, 134, 61, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(18), .UML-course {
+            > div:last-child {
+                > div {
+                    > div {
+                        background-color: rgba(109, 82, 194, 0.2);
+
+                        .res-text {
+                            color: rgba(109, 82, 194, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(19), .GO-course {
+            > div:last-child {
+                > div {
+                    > div {
+                        background-color: rgba(117, 206, 222, 0.2);
+
+                        .res-text {
+                            color: rgba(117, 206, 222, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(20), .kids-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(247, 198, 20, 0.2);
+
+                        .res-text {
+                            color: rgba(247, 198, 20, 1);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-child(21), .teens-course {
+            > div:last-child {
+
+                > div {
+                    > div {
+                        background-color: rgba(93, 93, 93, 0.2);
+
+                        .res-text {
+                            color: rgba(93, 93, 93, 1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .display-none {
+        display: none !important;
+    }
+}
+
+@include Variables.media(Variables.$laptop) {
+    .top-title-calendar-courses {
+        margin-bottom: 10em;
+    }
+
+    .table-course {
+        display: block;
+    }
+
+
+    .course-calendar .title-course-calendar {
+        right: 50%;
+        width: 70%;
+        transform: translateX(50%);
+    }
+}
+
+@include Variables.media(610px) {
+    .course-calendar {
+        margin-inline: 0;
+    }
+
+    .container-calendar {
+        padding: 0 0em 2em;
+    }
+
+    .top-title-calendar-courses {
+        > .calendar-roadMap-banner {
+            > .img {
+                &:nth-child(1) {
+                    display: none;
+                }
+
+                &:nth-child(2) {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@include Variables.media(480px) {
+    .top-title-calendar-courses {
+        img {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 1.6em;
+        }
+    }
+
+
+    .table-course {
+        display: block;
+    }
+
+
+
+    .course-calendar .title-course-calendar {
+        font-size: 1.1em;
+    }
+}

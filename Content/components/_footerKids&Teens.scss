@@ -1,0 +1,268 @@
+﻿@use '../source/_Variables.scss';
+
+.kids {
+
+    footer {
+        font-size : 1.2em;
+        background-image: url(/Content/images/img/Vector\ 15.png);
+        background-color: var(--white);
+    }
+}
+
+
+footer {
+    background-position: top;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: 20% auto 10%;
+    position: absolute;
+    margin: 0 0 2em;
+    padding: 8% 3em 2em;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    gap: 1.5em 1em;
+
+
+    .callUs {
+        position: relative;
+        min-height: 25vh;
+        grid-column: 1/4;
+
+        p {
+            padding-top: 1em;
+            text-align: center;
+            font-size: 2.3em;
+            color: var(--brown);
+            line-height: 2em;
+            font-weight: 600;
+
+            a {
+                display: block;
+                padding: 0;
+            }
+        }
+    }
+
+
+
+    a {
+        display: block;
+        padding: 0;
+    }
+
+
+
+    h5 {
+        color: var(--textColorStrong);
+        font-size: 1em;
+    }
+
+    > div {
+
+        a,
+        p {
+            font-size: 0.9em;
+            margin-block: 0.5em;
+        }
+
+        p {
+            i {
+                margin-left: 0.5em;
+                font-size: 1.3em;
+            }
+        }
+
+        strong {
+            margin-left: 0.3em;
+        }
+
+        a {
+            transition: 0.5s;
+
+            &:hover {
+                color: var(--textColorStrong);
+            }
+        }
+    }
+
+    .socialmedia-footer {
+        display: flex;
+        margin-top: 4em;
+
+        a {
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 2.5em;
+            height: 2.5em;
+            text-align: center;
+            margin-left: 1em;
+            transition: 0.5s;
+            display: flex;
+
+            &:nth-child(1) {
+                background-image: url('/Content/images/img/linkedin.png');
+            }
+
+            &:nth-child(2) {
+                background-image: url('/Content/images/img/telegram.png');
+            }
+
+            &:nth-child(3) {
+                background-image: url('/Content/images/img/instagram.png');
+            }
+
+            &:nth-child(4) {
+                background-image: url('/Content/images/img/youtube.png');
+            }
+
+            &:nth-child(5) {
+                background-image: url('/Content/images/img/whatsapp.png');
+            }
+        }
+    }
+
+    .enamad {
+        align-self: center;
+    }
+
+    .logo-header-footer {
+        font-size: 0.8em;
+
+        p {
+            line-height: 0.8em;
+        }
+    }
+}
+
+// --start/teens page styles---
+.teens {
+    footer {
+        background-image: url(/Content/images/img/footer-blue.png);
+
+        .callUs p {
+            color: var(--textColorStrong);
+        }
+    }
+}
+
+
+// --start/queris----------
+@media (max-width:1200px) and (min-width:992px) {
+    footer {
+
+        .callUs {
+            min-height: 16vh;
+
+            p {
+                line-height: normal;
+            }
+        }
+    }
+}
+
+@media (max-width:991px) and (min-width:698px) {
+    footer {
+        padding-top: 3em;
+
+        .callUs {
+            min-height: auto;
+
+            p {
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$laptop) {
+    footer {
+        .callUs {
+            p {
+                font-size: 1.5em;
+            }
+        }
+    }
+}
+
+
+@include Variables.media(Variables.$tablet) {
+    footer {
+        background-size: 100% 41%;
+        display: block;
+        padding: 2em;
+        margin: 0 0 2em;
+        padding: 2em 0;
+        padding-top: 0;
+
+        > a,
+        > div {
+            padding-inline: 2em;
+        }
+
+        > div {
+            &:first-child {
+                padding-inline: 0;
+            }
+        }
+
+        .callUs {
+            background-color: transparent;
+            min-height: 13vh;
+            font-size: 0.9em;
+            z-index: 0;
+            margin-block: 0;
+            margin-bottom: 1em;
+
+            p {
+                width: 100%;
+                padding: 3.3em 0 0.8em;
+            }
+        }
+
+        .logo-header-footer {
+            grid-template-columns: 6.5em auto;
+        }
+
+        .logo-footer {
+            display: block;
+        }
+
+        .socialmedia-footer {
+            margin-top: 1em;
+        }
+
+        > div {
+            margin-block: 1em;
+        }
+
+        img {
+            width: 6em;
+        }
+    }
+    // teens page
+    .teens {
+        .callUs {
+
+            p {
+                
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$mobile) {
+
+    footer {
+        font-size : 1.1em;
+
+        > a,
+        > div {
+            padding-inline: 1em;
+        }
+
+        .logo-header-footer {
+            display: block !important;
+        }
+    }
+}

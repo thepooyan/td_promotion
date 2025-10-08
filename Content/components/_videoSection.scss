@@ -1,0 +1,196 @@
+@use "../source/Variables" as v;
+
+@mixin videoSection {
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin-bottom: 6em;
+
+    > .tabs {
+        display: flex;
+        gap: 3em;
+        --borderColor: #d6d6d6;
+        border-bottom: 2px solid var(--borderColor);
+
+        > span {
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--p);
+            position: relative;
+
+            &::after {
+                background-color: transparent;
+                transition: background-color 0.5s;
+                content: "";
+                display: inline-block;
+                position: absolute;
+                width: 100%;
+                top: 100%;
+                left: 0;
+                height: 2px;
+            }
+
+            &.active {
+                color: var(--blue);
+                position: relative;
+                transition: all 0.5s;
+
+                &::after {
+                    background-color: var(--blue);
+                }
+            }
+        }
+    }
+
+    > .videos {
+        position: relative;
+        display: none;
+        grid-template-columns: repeat(auto-fit,minmax(22%, 1fr));
+        gap: 1.5em;
+        animation-name: fade;
+        animation-duration: 0.7s;
+
+        &.active {
+            display: grid;
+        }
+
+        &.more {
+            > div {
+                &:nth-of-type(n + 9) {
+                    display: block;
+                }
+            }
+
+            .show-more {
+                &::after {
+                    transform: translateY(-47%) rotate(270deg) scale(1, 1.6);
+                }
+            }
+        }
+
+        > div {
+            &:nth-of-type(n + 9) {
+                display: none;
+            }
+
+            cursor: pointer;
+            animation-name: fade;
+            animation-duration: 0.7s;
+            max-width: 41vw;
+            margin: auto;
+            width: 100%;
+
+            > div {
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    content: "";
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    --wid: 2.5vw;
+                    --min: 2.3em;
+                    min-width: var(--min);
+                    min-height: var(--min);
+                    width: var(--wid);
+                    height: var(--wid);
+                    background-image: url("/Content/images/img/playIcon.svg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+
+
+                > img {
+                    width: 100% !important;
+                    aspect-ratio: 16/9;
+                    border-radius: 0.8em;
+                }
+            }
+
+            > span {
+                color: var(--textColorStrong);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+                padding-block: 0.5em;
+                font-size : .8em;
+            }
+        }
+
+        > .show-more {
+            position: absolute;
+            top: calc(100% + 2em);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--blue);
+            cursor: pointer;
+
+            &::after {
+                content: "<";
+                position: absolute;
+                right: calc(100% + .5em);
+                top: 50%;
+                transform: translateY(-47%) rotate(90deg) scale(1, 1.6);
+                transition: all .3s;
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        margin-top: 5em;
+
+        > .tabs {
+            border: none;
+            gap: 0.5em;
+            overflow-x: auto;
+            padding-bottom: 0.5em;
+
+            > span {
+                border: 1px solid var(--borderColor);
+                padding: 0.3em 1em;
+                border-radius: 0.5em;
+                flex-shrink: 0;
+
+                &.active {
+                    border-color: var(--blue);
+
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        > .videos {
+            grid-template-columns: 1fr;
+
+            > div {
+                max-width : 100%;
+                > div {
+                    &::after {
+                        --wid: 10.5vw;
+                    }
+
+                   
+                }
+
+                > span {
+                    text-align: right;
+                    -webkit-line-clamp: 2;
+                }
+            }
+        }
+    }
+}

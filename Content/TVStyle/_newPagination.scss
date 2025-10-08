@@ -1,0 +1,67 @@
+@mixin newPagination {
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row-reverse;
+    padding: 1em 0;
+    gap: 0.5em;
+    margin-top: 2em;
+
+    li {
+      cursor: pointer;
+
+      &.page-item {
+        padding: 0 1px;
+        text-align: center;
+
+        a {
+          display: flex;
+          align-items: center;
+          border-radius: 5px;
+          text-align: center;
+          color: #989898;
+          border: 1px solid #d1d1d1;
+          font-size: 0.9em;
+          transition: 0.1s;
+          width: 2em;
+          height: 2em;
+          justify-content: center;
+        }
+
+        &.active > a {
+          border: 0;
+          margin: 0;
+          color: white;
+          background-color: var(--textSecondColor);
+        }
+      }
+
+      &:first-child,
+      &:last-child {
+        > a {
+          --wid: 0.7em;
+          display: block;
+          width: var(--wid);
+          height: var(--wid);
+          border-left: 2px solid var(--textColorStrong);
+          border-bottom: 2px solid var(--textColorStrong);
+          transform: rotate(45deg);
+        }
+
+        &.disabled {
+          cursor: default;
+
+          > a {
+            border-color: #dadadb;
+          }
+        }
+      }
+
+      &:last-child {
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}

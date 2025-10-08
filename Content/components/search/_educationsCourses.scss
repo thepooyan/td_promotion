@@ -1,0 +1,258 @@
+@use "../../source/Variables";
+
+
+.content-tab {
+
+    section {
+        .item-content-tab {
+            background-color: #cccccc38;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 2em 1em;
+            margin-bottom: 1em;
+            border-radius: 20px;
+
+
+            .img-item-tab {
+                display: block;
+
+                img {
+                    flex: 0 0 324px;
+                    border-radius: 10px;
+                    width: 20em;
+
+                    &::before {
+                        background: radial-gradient(circle,#a7a7a7 0%,#7e7e7e 100%);
+                        display: block;
+                        border-radius: 0.7em;
+                        color: transparent;
+                        padding-bottom: 49.4%;
+                        height: 0;
+                    }
+                }
+
+                span {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 35%;
+                    bottom: 0;
+                    color: white;
+                    font-size: 1.3em;
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.4em 0.2em;
+                    text-align: center;
+                }
+
+                &.filmCover {
+                    border: .1em solid black;
+                    border-radius: 0.5em;
+                    position: relative;
+                    width: 20em;
+                    height: 12em;
+                    margin: 1em auto;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+
+                    &::before {
+                        content: "tahlildadeh.com";
+                        display: inline-block;
+                        width: 100%;
+                        background: #6f6f6fcf;
+                        height: 62%;
+                        position: absolute;
+                        top: 20%;
+                        right: 0;
+                        color: orange;
+                        text-align: left;
+                        padding-left: 0.5em;
+                        box-sizing: border-box;
+                    }
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        background: url("images/img/moive-icon.png");
+                        width: 2em;
+                        height: 2em;
+                        background-size: contain;
+                        top: 42%;
+                        right: calc(50% - 1em);
+                    }
+                }
+            }
+
+            .txt-content-tab {
+                flex: 0 0 calc(100% - 324px - 1.5em);
+
+
+                h4, span {
+                    color: #00b0f3;
+                }
+
+                h4 {
+                    line-height: 1.9em;
+                }
+
+                p {
+                    line-height: 2em;
+                    padding: 0;
+                    font-size: 1em;
+                    margin: 0.5em 0;
+                    text-align: justify;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                span {
+                    font-size: 0.85em;
+
+                    i {
+                        margin-left: 5px;
+                    }
+                }
+
+                ul:nth-of-type(1) {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    margin-top: 15px;
+
+                    .ditals-item {
+                        display: grid;
+                        grid-template-columns: auto auto;
+                        gap: 0.5em 10em;
+                    }
+
+                    li {
+                        &:last-child {
+
+                            a {
+                                color: #fff;
+                                background-color: #da007f;
+                                font-size: 0.8em;
+                                font-weight: 600;
+                                border-radius: 20px;
+                                width: 15em;
+                                text-align: center;
+                                transition: .5s;
+                                padding: 0.6em 0;
+                                display: inline-block;
+                                text-align: center;
+                                transition: 0.5s;
+
+                                &:hover {
+                                    background-color: #12ace7;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
+        @include Variables.media(Variables.$laptop) {
+
+            .item-content-tab {
+                .txt-content-tab {
+                    ul:nth-of-type(1) {
+                        display: block;
+
+                        .ditals-item {
+                            gap: 1em;
+                            text-align: right !important;
+                        }
+
+                        a {
+                            margin-top: 1em;
+                        }
+                    }
+                }
+            }
+        }
+
+        @include Variables.media(800px) {
+
+            .item-content-tab {
+                .txt-content-tab ul:nth-of-type(1) {
+                    li:last-child {
+                        text-align: center;
+                    }
+                }
+
+                display: block;
+
+                .img-item-tab {
+                    margin-bottom: 1em;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                h4, .img-item-tab {
+                    text-align: center;
+                }
+            }
+        }
+
+        @include Variables.media(Variables.$tablet) {
+            &.educationsCourses .filter-search > div:first-child .filter-item, .filter-search > div input {
+                width: 100%;
+            }
+
+            &.educationsCourses .filter-search > div:first-child {
+
+                .btn-filter-search {
+                    display: flex;
+                    justify-content: end;
+
+                    button {
+                        width: 10em;
+                    }
+                }
+            }
+        }
+
+
+        @include Variables.media(Variables.$mobile) {
+            .item-content-tab .txt-content-tab p {
+                margin: 0.7em 0;
+            }
+
+            .item-content-tab .txt-content-tab {
+                span {
+                    font-size: 0.8em;
+
+                    i {
+                        margin-left: 8px;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    .educationsCourses .filter-search > div label {
+        min-width: 4em;
+    }
+}

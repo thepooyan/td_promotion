@@ -1,0 +1,23 @@
+﻿.photoVeiwer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .7em;
+    margin-bottom: 1em;
+
+    img {
+        --wid: 5em;
+        width: var(--wid);
+        height: var(--wid);
+        object-fit: contain;
+        border: 0.1em solid #e2e2e2;
+        background-color: #f1f1f1;
+        border-radius: .2em;
+        cursor: pointer;
+        transition: .15s;
+
+        &:hover, &.showing {
+            transform: scale(1.2);
+        }
+    }
+}

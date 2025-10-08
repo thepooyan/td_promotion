@@ -1,0 +1,123 @@
+﻿@use '../source/_Variables.scss';
+
+.courseAd {
+    width: 80%;
+    margin: 3em auto;
+    box-shadow: 0 0 9px 3px #0000003b;
+    position: relative;
+
+    img {
+        width: 100%;
+        display: block;
+        max-width: unset;
+    }
+
+    a {
+        position: absolute;
+        bottom: 4%;
+        left: 1.2%;
+        background-color: #e84e1a;
+        border-radius: 2em;
+        padding: 0.1em 1.9em;
+        color: white;
+        font-weight: 600;
+        line-height: 1.7em;
+        font-size: 1.4vw;
+    }
+}
+.courseAd2 {
+    --blue: #00b0f3;
+    font-weight: bold;
+    border: 1px solid #bfbfbf;
+    border-radius: 10px;
+    background: linear-gradient(237deg, #f7f7f7, white);
+    display: flex;
+    justify-content: space-between;
+    width: 97%;
+    margin: 3em auto;
+    padding: 1.8em;
+    box-shadow: 0 0 7px 4px #00000042;
+
+    img {
+        margin: auto 0;
+        box-shadow: none;
+        flex: 0 0 40%;
+    }
+
+    section {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 1em;
+        font-size: 1.2em;
+
+        h2 {
+            text-align: right;
+            color: var(--blue);
+            font-size: 1.4em;
+            font-weight: 700;
+            padding-bottom: 1em;
+            margin: 0;
+            text-align: center;
+        }
+
+        p {
+            color: #4b4b4b;
+            text-align: justify;
+            overflow: hidden;
+            margin: 0;
+            font-size: 1em;
+            font-weight: 400;
+            line-height: 1.6em;
+            padding-bottom: 1em;
+        }
+
+        a.linkButton {
+            max-width: 25em;
+            width: 100%;
+            min-width: 13em;
+            margin: 0 auto;
+            margin-top: auto;
+            color: #fff;
+            background-color: #da007f;
+            font-weight: 600;
+            border-radius: 20px;
+            text-align: center;
+            transition: .5s;
+            display: block;
+            font-size: 1em;
+            padding: 0.1em 0;
+
+            &:hover {
+                background-color: var(--blue);
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$tablet + 100px) {
+        flex-direction: column;
+        width: 300px;
+        min-height: 10em;
+        margin: 4em auto;
+        justify-content: flex-start;
+
+        img {
+            flex: 0 0 auto;
+            margin: 0;
+        }
+
+        section {
+            min-height: 20em;
+
+            h2 {
+                text-align: center;
+                padding: .6em .2em;
+            }
+
+            p {
+                font-size: .9em;
+            }
+        }
+    }
+}

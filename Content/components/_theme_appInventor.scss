@@ -1,0 +1,10 @@
+@mixin theme {
+    &[data-theme='appInventor'] {
+        --mainTheme: #A4CE48;
+        --themeCompliment: #615031;
+        --button_image_1: url("/Content/images/img/robotic items/thumsUp.png");
+        --button_image_2: url("/Content/images/img/robotic items/pencil.png");
+        --themeHeader: url("/Content/images/img/appInventor items/book.png");
+        --weblogBack: #E8F0D9;
+    }
+}

@@ -1,0 +1,118 @@
+﻿@use '../source/_Variables.scss';
+.homeAd {
+    --scale: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(var(--scale) * 1.25vw);
+    background-color: #FBB03B;
+    height: 16.7em;
+    margin: 2em 0;
+
+    .guy {
+        position: absolute;
+        left: 19.3%;
+        width: 13.4em;
+        bottom: 0;
+    }
+
+    .logo {
+        position: absolute;
+        left: 4.2%;
+        width: 10.2em;
+    }
+
+    .resume {
+        right: 3%;
+        @include Variables.flex(fs, c);
+
+        img {
+            width: 18em;
+        }
+
+        span {
+            color: black;
+            position: absolute;
+            left: -13%;
+            top: 42%;
+            transform: rotate(-20deg);
+        }
+    }
+
+    > *:not(img, span) {
+        position: absolute;
+        color: white;
+        filter: drop-shadow(7px 5px 4px #ff4800)
+    }
+
+    h3 {
+        padding: 0;
+        margin: 0;
+        top: 5%;
+        font-size: 2.5em;
+        line-height: initial;
+    }
+
+    p {
+        line-height: initial;
+        margin: 1em 0;
+        top: 20%;
+        font-size: 1.8em;
+        right: 27.4%;
+        left: 31.3%;
+        text-align: center;
+    }
+
+    span {
+        position: absolute;
+        font-size: 1.2em;
+        top: 70%;
+        color: #EC1723;
+        font-weight: bold;
+    }
+
+    @include Variables.media(Variables.$tablet) {
+        --scale: 1.7;
+        height: 25em;
+
+
+        .logo {
+            top: 0;
+        }
+
+        .guy {
+            left: 3%;
+        }
+
+        .resume {
+            img {
+                width: 15em;
+            }
+
+            bottom: 0;
+        }
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        --scale: 2.8;
+        height: 31.5em;
+
+        .resume img {
+            width: 12em;
+        }
+
+        h3,
+        p {
+            right: 2%;
+        }
+
+        p {
+            top: 25%;
+        }
+
+        span {
+            top: 66%;
+        }
+    }
+}

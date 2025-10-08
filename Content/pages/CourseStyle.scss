@@ -1,0 +1,364 @@
+﻿@use "sass:meta";
+@use '../source/Variables';
+@use '../components/instaSide';
+@use '../components/newComment';
+@use "../components/commonQ";
+@use "../components/aboutTeacher";
+@use '../components/sideBar';
+@use '../components/modal';
+@use '../components/footer';
+@use '../components/_loader.scss';
+@use '../components/course/paymentStatus';
+@use '../components/homeblog';
+@use "../components/courseInfo" as ci;
+@use "../components/newCertificate" as nc;
+@use "../components/newTeacherCv" as ntc;
+@use "../components/addedToBasketModalStyle";
+@use "../components/courseTableOfContentStyle";
+.newCertificate {
+    @include nc.newCertificate;
+}
+
+.newTeacherCv {
+    @include ntc.newTeacherCv;
+}
+
+.section-id {
+    padding: 10px 0;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.whiteArea {
+    margin-top: 1em;
+
+    .courseGrid {
+        display: grid;
+        grid-template-columns: 235px auto;
+        margin-top: 4em;
+        margin-inline: 4%;
+
+        &.grid-col-1 {
+            grid-template-columns: 1fr;
+            max-width : 1280px;
+            margin-inline : auto;
+        }
+
+        > aside {
+            transition: .3s;
+        }
+
+        > main {
+            width: 99%;
+            border-radius: 14px;
+            overflow: hidden;
+            margin-right: 3px;
+            transition: 1s cubic-bezier(.23,1,.32,1),box-shadow .7s,border-color .7s;
+            position: relative;
+            left: 0;
+
+            #aboutTeacher {
+                font-size: 1.4em;
+            }
+        }
+
+        .videoSection {
+            font-size: 16px;
+        }
+
+        .tv-section {
+            padding-inline: 5em;
+        }
+
+        .videoModal {
+            > .m-body {
+                #comments {
+                    font-size: .9em;
+                }
+            }
+        }
+
+        &.fullSc {
+            > aside {
+                opacity: 0;
+            }
+
+            > main {
+                transition: 1s cubic-bezier(.23,1,.32,1),box-shadow .7s 1s,border-color .7s 1s;
+                width: 99vw;
+                border-color: white;
+                box-shadow: none;
+                left: 19em;
+            }
+        }
+    }
+
+    .blog-boxes- {
+        background-image: unset !important;
+    }
+
+    @include Variables.media(Variables.$tablet) {
+
+        .courseGrid {
+            > main {
+                #aboutTeacher {
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+}
+
+.courseInfo {
+    --test : #8796557;
+    --colorTheme: #638EAE;
+    margin-inline: 4%;
+
+    .body {
+        .tr {
+            z-index: 0;
+        }
+    }
+
+    @include ci.courseInfo;
+}
+
+.turnable-card-container {
+    display: flex;
+    gap: 1.5em;
+    font-size: 16px;
+    max-width: 100%;
+    margin: auto;
+    justify-content: center;
+    
+
+    .turnable-card {
+        width: 19.2em;
+        height: 25em;
+        perspective: 1000px;
+        flex-shrink: 0;
+        cursor : pointer;
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            position: relative;
+
+            .card-front,
+            .card-back {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                backface-visibility: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 1.2em;
+                box-shadow: 0 0 18px rgb(0 0 0 / 57%);
+                background-repeat: no-repeat;
+                background-size: cover;
+                overflow: hidden;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 4em;
+                gap: 1em;
+
+
+                > span, > p {
+                    z-index: 1;
+                    color: #fff !important;
+                    font-size: 1.2em;
+                    padding-inline: 0.9em;
+                    text-align: center;
+                    font-weight: 600;
+                }
+            }
+
+            .card-front {
+                > svg {
+                    width: 7em;
+                    height: 13em;
+                }
+            }
+
+            .card-back {
+                transform: rotateY(180deg);
+                padding-top: 0;
+                justify-content: center;
+
+                > .card-title {
+                    color: white;
+                    font-weight: 900;
+                    font-size: 5.5em;
+                    line-height: 1;
+                }
+            }
+        }
+
+        &:hover {
+            .card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        &:nth-child(1) {
+            .card-front, .card-back {
+                background-image: url('/Content/images/img/turnable-card-bg1.webp');
+            }
+        }
+
+        &:nth-child(2) {
+            .card-front, .card-back {
+                background-image: url('/Content/images/img/turnable-card-bg2.webp');
+            }
+        }
+
+        &:nth-child(3) {
+            .card-front, .card-back {
+                background-image: url('/Content/images/img/turnable-card-bg3.webp');
+            }
+        }
+    }
+
+    @include Variables.media(1370px) {
+        font-size: 1.14vw;
+        line-height: 1.4;
+        flex-wrap: wrap;
+
+        p {
+            line-height: 1.4 !important;
+        }
+    }
+
+    @include Variables.media(Variables.$laptop) {
+        font-size: 16px;
+    }
+
+    @include Variables.media(Variables.$tablet) {
+        font-size: 14px;
+    }
+}
+@keyframes signupButton {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    40% {
+        transform: rotate(-5deg);
+    }
+
+    60% {
+        transform: rotate(5deg);
+    }
+
+    80% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    90% {
+        transform: rotate(0deg) scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes fade {
+    0% {
+        transform: translate(0px, 2px);
+        color: Variables.$get-up;
+        opacity: 100%;
+    }
+
+    50% {
+        transform: translate(0px, -8px);
+        color: Variables.$get-up;
+        opacity: 25%;
+    }
+
+    100% {
+        transform: translate(0px, 2px);
+        color: Variables.$get-up;
+        opacity: 100%;
+    }
+}
+
+.signupButton {
+    width: fit-content;
+    font-family: inherit;
+    background-color: #ff5000;
+    color: #fff;
+    border-radius: 0.4em;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 0 auto;
+    padding: 1em 1em;
+    font-size: 22px;
+    margin-bottom: 40px;
+    font-weight: 600;
+    animation-name: signupButton;
+    animation-duration : 2s;
+    animation-iteration-count : infinite;
+}
+
+#certificate {
+    background-color: var(--colorTheme);
+    padding: 1.5em 3em;
+    border-radius: var(--radius);
+    margin-block: 3em;
+    margin-inline : 1em;
+
+    * {
+        color: white;
+        text-align: center;
+    }
+
+    > .h4, p {
+        margin-bottom: 1rem;
+    }
+
+    > .h4 {
+        font-weight: 600;
+        font-size: 1.1rem;
+    }
+    >p{
+        font-size : 1rem;
+    }
+
+    > a {
+        display: block;
+        width: fit-content;
+        margin: auto;
+        background-color: white;
+        text-decoration: none !important;
+        padding: 0.5em 1em;
+        border-radius: 9px;
+        font-weight: 500;
+        color: var(--colorTheme) !important;
+    }
+}
+
+.text-center {
+    display: flex !important;
+
+    .singup-site {
+        color: white;
+        background-color: #00cfff;
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+        padding: .2em 1.6em;
+        border-radius: 1em;
+        cursor: pointer;
+    }
+}
+
+@include meta.load-css('../components/course/journal');

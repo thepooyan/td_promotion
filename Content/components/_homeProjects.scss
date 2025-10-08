@@ -1,0 +1,108 @@
+﻿@use '../source/_Variables.scss';
+
+#homeProjects {
+    background: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(15em,2fr));
+    justify-items: center;
+    gap: 8em 2em;
+    padding-bottom: 10em;
+    position: relative;
+    font-size: 1.3em;
+
+    a.more {
+        position: absolute;
+        top: -4em;
+        left: 1.7em;
+        color: #149bd9;
+        font-weight: 800;
+
+        @include Variables.media(Variables.$tablet) {
+            top: auto;
+            bottom: 0;
+        }
+
+        i {
+            padding-right: .5em;
+        }
+    }
+
+    @media (max-width: 925px) {
+        font-size: 1.4em;
+    }
+
+    @media (max-width: 760px) and (min-width: 639px) {
+        grid-template-columns: repeat(auto-fit,minmax(14em,2fr));
+
+        .prj {
+            width: auto;
+        }
+    }
+}
+
+.theGrid {
+    .prj {
+        font-size: 1.3em;
+    }
+}
+
+.prj {
+    @include Variables.square(17em);
+    --radius: 45px;
+    border-radius: 0 var(--radius) 0 var(--radius);
+    color: white;
+    position: relative;
+    background-color: #c20000;
+
+    .wrap {
+        border: .5em solid #e2e2e2;
+        height: 100%;
+        --rad: 7em;
+        border-radius: 0 var(--rad) 0 var(--rad);
+
+        @include Variables.flex(c, c, column, .6em);
+
+        h3 {
+            text-align: center;
+        }
+
+        span {
+            order: 1;
+            font-size: 1.5em;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        &::before {
+            content: 'سورس کد';
+            order: 2;
+            font-weight: bold;
+        }
+
+        > div {
+            order: 3;
+            background: linear-gradient(to left, #fbee22, rgba(255, 255, 255, 0));
+            width: 100%;
+            text-align: center;
+            padding: .5em 0.4em;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+    }
+
+    p {
+        position: absolute;
+        top: 100%;
+        text-align: justify;
+        width: 85%;
+        max-height: 7.4em;
+        padding: 2em 0;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        display: -webkit-box;
+        font-size: 0.9em;
+        line-height: 1.7em;
+        color: #525252;
+    }
+}

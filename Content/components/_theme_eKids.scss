@@ -1,0 +1,10 @@
+@mixin theme {
+    &[data-theme='eKids'] {
+        --mainTheme: #49BDFF;
+        --themeCompliment: #615031;
+        --button_image_1: url("/Content/images/img/eKids items/stand.png");
+        --button_image_3: url("/Content/images/img/eKids items/cat.png");
+        --themeHeader: url("/Content/images/img/eKids items/main_logo.png");
+        --weblogBack: #D6EDFF;
+    }
+}

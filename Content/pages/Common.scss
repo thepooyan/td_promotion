@@ -1,0 +1,318 @@
+﻿@use '../source/Variables';
+@use '../source/Fonts';
+@use '../components/header';
+@use '../components/general';
+@use '../components/bannerImages';
+@use '../source/scroller';
+@use '../components/notFound';
+@use "../components/scrollProgress";
+@use "../components/modal";
+@use '../components/Attention';
+@use '../components/breadcrumb';
+@use "../components/boxesAds/boxesAds";
+@use "../components/newBreadcrumb" as nb;
+@use "../components/newAdsStyle";
+.collapsePart {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    cursor: pointer;
+
+    &::before {
+        content: '\002B';
+        font-size: 1.2em;
+        /* padding: .2em; */
+        width: 1em;
+        flex-shrink: 0;
+        height: 1em;
+        display: grid;
+        place-content: center;
+        border-radius: 50%;
+        border: 1px solid var(--textColorStrong);
+        color: var(--textColorStrong);
+    }
+
+    &.active {
+        &::before {
+            content: '\002D';
+        }
+    }
+
+    &.white {
+        &::before {
+            border: 1px solid white;
+            color: white;
+        }
+    }
+}
+.hidden-h1{
+    height : 0 !important;
+    overflow : hidden !important;
+}
+#homeFirstSection {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+#microserviceHeader {
+    font-size: 1vw;
+    position: relative;
+    margin-top: 10em;
+
+    > div {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        line-height: 3em;
+
+        > h1 {
+            font-size: 2.5em;
+        }
+
+        > span {
+            text-align: left;
+            font-size: 1.9em;
+        }
+    }
+
+    > picture {
+        &:nth-of-type(1) {
+            > img {
+                width: 100%;
+            }
+        }
+
+        &:nth-of-type(2) {
+            > img {
+                position: absolute;
+                top: 50%;
+                right: 12.7em;
+                transform: translateY(-50%);
+                width: 16em;
+            }
+        }
+    }
+
+    > img {
+        position: absolute;
+        top: -9em;
+        left: 3em;
+        width: 23em;
+    }
+
+    @include Variables.media(Variables.$tablet) {
+        > picture {
+            &:nth-of-type(2) {
+                > img {
+                    top: 56%;
+                    right: 47.7em;
+                    transform: unset;
+                    width: 35em;
+                    opacity: 0.5;
+                }
+            }
+        }
+
+        > img {
+            top: 20em;
+            left: 47em;
+            width: 46em;
+        }
+
+        > div {
+            > h1 {
+                font-size: 7.5em;
+
+                > span {
+                    display: block;
+                    position: absolute;
+                    width: max-content;
+
+                    &:nth-of-type(1) {
+                        top: -3em;
+                        right: -5em;
+                    }
+
+                    &:nth-of-type(2) {
+                        top: -1.4em;
+                        right: -2em;
+                    }
+                }
+            }
+
+            > span {
+                &:nth-of-type(1) {
+                    display: block;
+                    position: absolute;
+                    width: max-content;
+                    top: -0.4em;
+                    right: -1em;
+                    font-size: 4em;
+                }
+            }
+        }
+    }
+}
+#courseHeader {
+    font-size: 1vw;
+    background-image: url('/Content/images/img/pythonHeaderBg.webp');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: var(--colorCompliment);
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 10% 3%;
+    height: 13em;
+    margin-top: 7em;
+    position: relative;
+
+    > span {
+        color: #6B92B1;
+        position : relative;
+        font-size : 5em;
+        font-weight : 900;
+        border : 1em solid white;
+    }
+    >h1{
+        position :absolute;
+        opacity : 0;
+    }
+}
+
+#webDesignHeader {
+    color: var(--colorCompliment);
+    border-radius: var(--radius);
+    margin-top: 7em;
+    position: relative;
+
+    > section {
+        position: absolute;
+        line-height: 4em;
+        bottom: 4.6em;
+        right: 31.5em;
+        font-size: 0.86vw;
+
+        > span {
+            font-size: 2.4em;
+        }
+
+        > div {
+            position: absolute;
+            top: -3.5em;
+            left: -4em;
+            display: flex;
+            flex-direction: column;
+            font-size: 1.7em;
+            line-height: 2em;
+
+            > span:nth-child(2) {
+                text-align: left;
+                font-weight: 600;
+            }
+        }
+
+        > h1 {
+            font-size: 3em;
+            padding-right: 0.9em;
+        }
+    }
+}
+//cooperation
+.cooperation {
+    margin-bottom: 5em;
+    display: block;
+}
+
+//topside article
+.slider-classes .newswiper-card-Container {
+    opacity: 0;
+}
+
+// course header for better CLS
+.course-Details .whiteArea header {
+    position: relative;
+
+    h1 {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        line-height: 1.8em;
+        text-align: center;
+        left: 45%;
+        width: 43%;
+        font-size: 2.5em;
+        text-shadow: 5px 5px 9px rgba(0,0,0,.4);
+        transform:translateX(-50%);
+
+
+    }
+
+    img {
+        box-shadow: 7px 7px 15px rgba(89,86,86,.15);
+        margin-bottom: 20px;
+        width: 100%;
+        display: block;
+        min-height: 17.4vw;
+        background-color: grey;
+        color: transparent;
+    }
+}
+
+.p-ddu {
+    opacity: 0;
+}
+
+.filter-bar {
+    opacity: 0;
+}
+
+//because problem when calendar page loaded , roadMap banner style added here
+.top-title-calendar-courses {
+
+    > .calendar-roadMap-banner {
+        width: 100%;
+        margin-bottom: 2em;
+
+        > .img {
+            &:nth-child(2) {
+                display: none;
+            }
+        }
+    }
+
+    @include Variables.media(610px) {
+        .calendar-roadMap-banner {
+            > .img {
+                &:nth-child(1) {
+                    display: none;
+                }
+
+                &:nth-child(2) {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+.videoModal{
+    visibility : hidden;
+}
+
+#breadcrumb {
+    @include nb.newBreadcrumb;
+}
+
+[data-scrolltoid] {
+    cursor: pointer;
+}

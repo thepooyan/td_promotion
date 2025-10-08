@@ -1,0 +1,128 @@
+﻿@use "../source/Variables" as v;
+.part {
+    background-color: var(--colorTheme);
+    border-radius: .7em;
+    font-size: 1.2em;
+    color: var(--colorCompliment);
+    padding: 0.5em 0.7em;
+    margin-bottom: 0.5em !important;
+    border-bottom: none !important;
+
+    h2,
+    h3,
+    h4,
+    .h2,
+    .h3,
+    .h4 {
+        &:not(.exception) {
+            margin: 0;
+            margin-bottom: 0 !important;
+            padding: 0;
+            color: inherit;
+        }
+    }
+}
+.box {
+    background-color: var(--colorCompliment);
+    border: 0.1em solid var(--colorAlt);
+    border-radius: .7em;
+    padding: 1em 2em;
+    margin-bottom: 3rem;
+    --p: #383838;
+
+    &.project {
+        background-color: var(--colorAlt);
+        display: grid;
+        grid-template-columns: 25% auto;
+        grid-template-areas: "right left";
+        gap: 6em;
+        padding: 1em 5em;
+
+        * {
+            color: var(--colorCompliment) !important;
+        }
+
+        .left {
+            grid-area: left;
+            margin-block: auto;
+
+            h4 {
+                margin-top: 1em;
+            }
+        }
+
+        img {
+            margin-block: auto;
+            grid-area: right;
+        }
+    }
+
+    img {
+        cursor: unset !important;
+        max-width: 100%;
+        height: auto;
+    }
+
+    &:not(.project) {
+        > img {
+            height: auto;
+        }
+
+        .block-img {
+            width: auto;
+            margin: auto;
+            height: 300px;
+            float: none;
+            margin-bottom: 2em;
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        &:not(.project) {
+            padding: 1em 1em;
+
+            > img {
+                float: unset;
+                margin: 2em auto;
+
+                & + span {
+                    margin-top: 0;
+                }
+            }
+
+            .block-img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        &.project {
+            grid-template-columns: auto;
+            grid-template-areas: unset;
+            gap: 1em;
+            padding: 2em;
+
+            > img {
+                grid-area: unset;
+                width: 80%;
+                height: auto;
+            }
+
+            > .left {
+                grid-area: unset;
+            }
+
+            &.withLabel {
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@include v.media(v.$tablet){
+    .part{
+        font-size : 1em;
+    }
+}

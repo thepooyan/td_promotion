@@ -1,0 +1,117 @@
+@use '../source/_Variables.scss';
+.mainHeader {
+    --mainBlue: #1d71b9;
+
+    &.header-weblog {
+        padding-bottom: 0;
+    }
+
+
+    &.header-inner {
+        background-color: transparent;
+
+        .headerContainer {
+            display: block;
+            padding-inline: 2em;
+
+            nav.navBar {
+                padding: 0 1em;
+
+                > ul.mainNav {
+                    border: none;
+                    background-color: #FAF9FF;
+                    height: auto;
+                    justify-content: flex-start;
+                    border-bottom: .1em solid #CFCFCF;
+                    border-radius: unset;
+
+
+
+                    .item {
+                        --activeColor: #2086C8;
+                        position: relative;
+                        text-align: right;
+                        padding-left: 2em;
+                        flex: unset;
+
+                        &:hover {
+                            > a {
+                                color: var(--activeColor);
+                            }
+
+                            ul.CourseNav {
+                                top: calc(100% + .1em);
+                            }
+                        }
+
+
+
+                        .active {
+                            position: relative;
+                            color: var(--activeColor);
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                bottom: 0;
+                                right: -0.2em;
+                                width: 100%;
+                                height: 0.3em;
+                                border-radius: 0.2em;
+                                background-color: var(--activeColor);
+                            }
+                        }
+
+                        > a {
+                            font-size: 1.2em;
+                        }
+
+                        a {
+                            color: #383838;
+                            display: block;
+                        }
+
+                        ul.CourseNav,
+                        ul.CourseNav ul,
+                        ul.CommonNav {
+                            border: none;
+                            color: var(---lightBlack);
+                            z-index: 2;
+                            width: 18em;
+
+
+                            li {
+
+                                a {
+                                    width: 100%;
+                                    line-height: 2.5em;
+                                }
+
+
+                                &:hover {
+                                    background-color: #4b4b4b1a;
+                                    border-radius: 0;
+                                }
+
+                                &::after {
+                                    top: 6px;
+                                }
+
+                                &::after, a {
+                                    color: var(---lightBlack);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$laptop) {
+    .mainHeader.header-inner {
+        display: none;
+    }
+}
+

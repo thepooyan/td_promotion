@@ -1,0 +1,273 @@
+@use "../source/Variables";
+
+
+.mainHeader-inner-k {
+    display: grid;
+
+    a {
+        color: inherit;
+        font-weight: inherit;
+    }
+
+    &.mainHeader {
+        padding-bottom: 0;
+
+        .headerContainer nav.navBar > ul.mainNav ul.CourseNav li ul.InnerNav, .mainHeader .headerContainer nav.navBar > ul.mainNav ul.CourseNav ul li ul.InnerNav {
+            width: 282px;
+        }
+
+        .logo-header-footer {
+            grid-column: 1/2;
+            grid-template-columns: 8em auto;
+            transform: scale(0.8) translateX(10%);
+            padding: 0;
+            gap: 0 1em;
+
+            h1 {
+                font-size: 1.3em;
+            }
+
+            p {
+                font-size: 1em;
+                line-height: 2em;
+                align-self: center;
+                width: max-content;
+            }
+        }
+
+        .headerContainer {
+            display: grid;
+            grid-template-columns: auto 51% 20%;
+            grid-template-areas: inherit;
+            padding-left: 0;
+            padding-block: 0;
+            align-items: center;
+            margin-top: 0;
+            gap: 0;
+            padding: 0 3em;
+
+
+            nav.navBar {
+                grid-row: 1/2;
+                grid-column: 2/3;
+
+                > ul.mainNav {
+                    background-color: transparent;
+                    border: none;
+
+
+                    .item {
+                        position: relative;
+
+                        &.CommonNav {
+                            position: initial;
+                        }
+
+                        a {
+                            font-size: 14px;
+                            color: var(--textColorStrong);
+                        }
+                    }
+
+
+                    ul.CourseNav,
+                    ul.CourseNav ul,
+                    ul.CommonNav {
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .left-header {
+            grid-column: 3/4;
+            grid-row: 1/2;
+
+            .left {
+                height: auto;
+                font-size: 1.2em;
+            }
+
+            .search-inner-page-icon {
+                font-size: 2em;
+                cursor: pointer;
+                margin-left: 1em;
+            }
+        }
+
+        .search-inner-page {
+            .close-btn-search {
+                color: var(--tableHeadColor);
+                font-size: 3em;
+                top: 50%;
+                position: absolute;
+                transform: translateY(-50%);
+                right: 1em;
+                cursor: pointer;
+            }
+
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            top: -50em;
+            right: 0;
+            left: 0;
+            height: 100%;
+            padding: 1em;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+
+            &.active {
+                opacity: 1;
+                visibility: visible;
+                top: 0;
+
+                form {
+                    > div {
+                        input {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+
+
+            form {
+                width: 80%;
+                margin: 0 auto;
+
+                > div {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    position: relative;
+
+                    input {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 30px;
+                        padding: 0 4em 0 1em;
+                        opacity: 0;
+                        transition: 0.5s;
+                    }
+
+                    .search-btn {
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        right: 1em;
+                        background-color: transparent;
+
+                        i {
+                            font-size: 1.5em;
+                            color: var(--textColorStrong);
+                        }
+                    }
+                }
+            }
+        }
+
+        #search {
+            display: none;
+        }
+        //querris
+        /*        @media(max-width: 1400px) and (min-width: 992px) {
+
+            &.mainHeader {
+                .headerContainer {
+                    grid-template-columns: 30% auto auto;
+
+                    #search {
+                        display: flex;
+                        grid-row: 1/2;
+                        grid-column: 2/3;
+                        width: 100%;
+                    }
+                }
+            }
+        }*/
+
+        @include Variables.media(Variables.$screen) {
+
+
+            .headerContainer {
+                grid-template-columns: auto 55%;
+                padding: 0.5em 1em;
+                border-top: 0;
+                width: 100%;
+
+                #search {
+                    display: flex;
+                    grid-row: 1/2;
+                    grid-column: 2/4;
+                    width: 100%;
+                }
+
+                .search-inner-page-icon {
+                    display: none;
+                }
+
+                .left-header {
+                    top: 8.5%;
+                }
+            }
+
+            .topBar {
+                padding: 0.7em 1.5em;
+            }
+        }
+
+        @media(max-width:1200px) and (min-width:700px) {
+
+            &.mainHeader .logo-header-footer {
+                transform: scale(.9) translateX(5%);
+            }
+        }
+
+        @media(max-width:750px) {
+            .headerContainer {
+                display: block;
+                margin: 2em auto;
+                width: 80%;
+
+                #search {
+                    height: 50%;
+                }
+            }
+        }
+
+        @include Variables.media(Variables.$tablet) {
+            .logo-header-footer {
+                transform: scale(1) translateX(0);
+            }
+        }
+
+        @include Variables.media(Variables.$mobile) {
+            .logo-header-footer {
+                display: block !important;
+
+                img {
+                    width: 8em;
+                    margin: auto;
+                }
+
+                h1,
+                p {
+                    text-align: center;
+                    margin: auto;
+                }
+            }
+
+            .headerContainer {
+              
+                #search {
+                    height: 30%;
+                    width: 100%;
+                }
+
+                width: 100%;
+            }
+        }
+    }
+}

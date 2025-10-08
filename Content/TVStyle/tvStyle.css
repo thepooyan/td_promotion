@@ -1,0 +1,698 @@
+﻿@charset "UTF-8";
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+@keyframes videoModal {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0%;
+  }
+}
+@keyframes closeModal {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes videoModal {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0%;
+  }
+}
+@keyframes closeModal {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.videoModal {
+  --duration: 0.5s;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  font-size: 1vw;
+  background-color: rgb(255, 255, 255);
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transition: visibility var(--duration);
+}
+.videoModal.active {
+  animation-name: videoModal;
+  animation-duration: var(--duration);
+  visibility: visible;
+}
+.videoModal.loading::after {
+  position: absolute;
+  top: calc(50% - 2.5em);
+  left: calc(50% - 2.5em);
+  --thick: 8px;
+  content: "";
+  --wid: 5em;
+  width: var(--wid);
+  height: var(--wid);
+  border: var(--thick) solid #e0e0e0;
+  border-radius: 50%;
+  border-top: blue;
+  border-top: var(--thick) solid var(--blue);
+  animation: spin 1s infinite cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+.videoModal.close {
+  animation-name: closeModal;
+  animation-duration: var(--duration);
+}
+.videoModal > .closeVideoModal {
+  position: absolute;
+  top: 0.5em;
+  right: 0.9em;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  font-size: 2.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --wid: 1.1em;
+  width: var(--wid);
+  height: var(--wid);
+  background-color: #858585;
+  color: white;
+  cursor: pointer;
+  z-index: 3;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 15px;
+}
+.videoModal > .m-body {
+  width: 100%;
+  height: 100%;
+  padding-top: 6em;
+  position: relative;
+  overflow-y: auto;
+  --vidRadius: 1.4em;
+}
+.videoModal > .m-body .tvDetails {
+  font-size: 1vw;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  grid-template-areas: "body aside" "ads aside";
+  width: 93%;
+  column-gap: 1em;
+  margin: auto;
+  margin-top: 2em;
+  line-height: 1.7em;
+}
+.videoModal > .m-body .tvDetails > .body {
+  grid-area: body;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.videoModal > .m-body .tvDetails > .body .tags {
+  display: flex;
+  gap: 0.5em;
+  font-size: 0.7em;
+}
+.videoModal > .m-body .tvDetails > .body .tags .tag {
+  background-color: #e4eefa;
+  color: #4a9cd3;
+  border-radius: 0.6em;
+  padding-inline: 0.6em;
+}
+.videoModal > .m-body .tvDetails > .body > .tags {
+  display: none;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video {
+  position: relative;
+  width: 100%;
+  --borderRadius: 0.8em;
+  border-radius: var(--borderRadius);
+  cursor: pointer;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video > video {
+  position: relative;
+  z-index: 0;
+  aspect-ratio: 16/9;
+  width: 100%;
+  max-width: unset;
+  margin: 0;
+  border-radius: var(--borderRadius);
+  object-fit: cover;
+  background-color: black;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  --wid: 4em;
+  width: var(--wid);
+  height: var(--wid);
+  background-image: url("/content/images/img/playIcon.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100.1% 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video > div {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  font-size: 2.5em;
+  color: var(--white);
+  bottom: 4em;
+  left: 3.5em;
+  line-height: 4.7em;
+  font-weight: 900;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video > div > span {
+  font-size: 1.5em;
+  align-self: flex-end;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video.play::before {
+  display: none;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video.play::after {
+  display: none;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video.play > video {
+  object-fit: contain;
+}
+.videoModal > .m-body .tvDetails > .body > .sample-video.play > div {
+  display: none;
+}
+.videoModal > .m-body .tvDetails > .body > .title {
+  display: flex;
+  justify-content: space-between;
+}
+.videoModal > .m-body .tvDetails > .body > .title > h1 {
+  color: var(--textColorStrong);
+  font-size: 1.1em;
+}
+.videoModal > .m-body .tvDetails > .body > p {
+  font-size: 0.9em;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial {
+  display: flex;
+  justify-content: space-between;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial * {
+  user-select: none;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic {
+  font-size: 0.8em;
+  display: flex;
+  gap: 1.5em;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > div,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > span,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > a,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > div,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > span,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > a {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > div::before,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > span::before,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > a::before,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > div::before,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > span::before,
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > a::before {
+  content: "";
+  --wid: 1.3em;
+  width: var(--wid);
+  height: var(--wid);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0;
+  background-image: url("/content/images/img/tvDetailsIcons.svg");
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > span:nth-of-type(1)::before {
+  background-position: 0 42.2%;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .statistic > span:nth-of-type(2)::before {
+  background-position: 0 62.2%;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > * {
+  cursor: pointer;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > .dlLink::before {
+  background-position: 0 0.6%;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > .relativeLink {
+  display: flex;
+  gap: 0.3em;
+  align-items: center;
+  color: white;
+  background-color: #383838;
+  width: fit-content;
+  padding: 0.3em 0.9em;
+  border-radius: 0.4em;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > .relativeLink::before {
+  display: none;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > .relativeLink > svg {
+  --wid: 1.3em;
+  width: var(--wid);
+  height: var(--wid);
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > #copyUrlBtn {
+  position: relative;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > #copyUrlBtn::after {
+  position: absolute;
+  content: "لینک کپی شد";
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.1em 0.5em;
+  background-color: #888888;
+  color: white;
+  display: inline-block;
+  width: max-content;
+  padding: 0em 0.7em;
+  border-radius: 0.5em;
+  font-size: 0.7em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  visibility: hidden;
+  opacity: 0;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > #copyUrlBtn::before {
+  background-position: 0 20.8%;
+}
+.videoModal > .m-body .tvDetails > .body .statisticAndSocial > .social > #copyUrlBtn.copied::after {
+  visibility: visible;
+  opacity: 1;
+  top: calc(100% + 0.1em);
+}
+.videoModal > .m-body .tvDetails > .body > .teacher {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.videoModal > .m-body .tvDetails > .body > .teacher > img {
+  --wid: 2.3em;
+  width: var(--wid);
+  height: var(--wid);
+  border-radius: 50%;
+}
+.videoModal > .m-body .tvDetails > .body > .teacher > span {
+  font-size: 0.8em;
+}
+.videoModal > .m-body .tvDetails > .body > .rating {
+  display: flex;
+  font-size: 0.8em;
+  gap: 0.7em;
+}
+.videoModal > .m-body .tvDetails > .body > .rating > ul {
+  display: flex;
+}
+.videoModal > .m-body .tvDetails > .body > .rating > ul.disableEvent {
+  pointer-events: none;
+}
+.videoModal > .m-body .tvDetails > .body > .rating > ul > li {
+  cursor: pointer;
+}
+.videoModal > .m-body .tvDetails > .body > .rating > ul > li > svg {
+  --wid: 1.5em;
+  width: var(--wid);
+  height: var(--wid);
+}
+.videoModal > .m-body .tvDetails > .body > .rating > ul > li path {
+  stroke: #bebebe;
+}
+.videoModal > .m-body .tvDetails > .body > .rating > ul > li.hover path {
+  stroke: #e6c039;
+  fill: #e6c039;
+}
+.videoModal > .m-body .tvDetails > .slider {
+  grid-area: ads;
+  margin-top: 2em;
+  overflow: hidden;
+}
+.videoModal > .m-body .tvDetails > .slider > .title {
+  display: block;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 1em;
+  padding-right: 1em;
+  color: var(--textColorStrong);
+  border-right: 2px solid var(--mainBlue);
+}
+.videoModal > .m-body .tvDetails > .slider .owl-carousel {
+  position: relative;
+  --offset: 0.1em;
+}
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-prev,
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-next {
+  position: absolute;
+  --wid: 2em;
+  width: var(--wid);
+  height: var(--wid);
+  border: 1px solid #dddddd;
+  background-color: white;
+  top: 4.4em;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-prev::after,
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-next::after {
+  content: "";
+  --wid: 20%;
+  width: var(--wid);
+  height: var(--wid);
+  border: 1px solid black;
+  border-top: transparent;
+  border-right: transparent;
+  position: relative;
+}
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-next {
+  left: var(--offset);
+}
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-next::after {
+  left: 3%;
+  transform: rotate(45deg);
+}
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-prev {
+  right: var(--offset);
+}
+.videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-prev::after {
+  right: 3%;
+  transform: rotate(-135deg);
+}
+.videoModal > .m-body .tvDetails > .slider .item {
+  padding-block: 1em;
+}
+.videoModal > .m-body .tvDetails > .slider .videoCard {
+  width: 97%;
+  margin: auto;
+}
+.videoModal > .m-body .tvDetails > aside {
+  grid-area: aside;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.videoModal > .m-body .tvDetails > aside > .title {
+  color: var(--textColorStrong);
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+.videoModal > .m-body .tvDetails > aside > .item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+}
+.videoModal > .m-body .tvDetails > aside > .item > img {
+  aspect-ratio: 16/9;
+  border-radius: 0.5em;
+}
+.videoModal > .m-body .tvDetails > aside > .item > div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3em;
+  gap: 0.2em;
+}
+.videoModal > .m-body .tvDetails > aside > .item > div > h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: var(--textColorStrong);
+  font-size: 0.8em;
+}
+.videoModal > .m-body .tvDetails > aside > .item > div > span {
+  font-size: 0.75em;
+}
+.videoModal > .m-body .tvDetails > aside > .item > div > span:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  gap: 0.2em;
+}
+.videoModal > .m-body .tvDetails > aside > .item > div > span:nth-of-type(2)::before {
+  content: "";
+  --wid: 1.3em;
+  width: var(--wid);
+  height: var(--wid);
+  background-repeat: no-repeat;
+  background-size: 149%;
+  background-position: 23% 101%;
+  background-image: url("/content/images/img/tvDetailsIcons.svg");
+}
+.videoModal > .m-body .tvDetails #comments {
+  font-size: 0.8em;
+}
+@media (max-width: 698px) {
+  .videoModal > .m-body .tvDetails {
+    font-size: 4.5vw;
+    grid-template-columns: 1fr;
+    grid-template-areas: "body" "aside" "ads";
+    column-gap: 0;
+  }
+  .videoModal > .m-body .tvDetails > .body > .sample-video::after {
+    --wid: 2.3em;
+  }
+  .videoModal > .m-body .tvDetails > .body > .title > .tags {
+    display: none;
+  }
+  .videoModal > .m-body .tvDetails > .body > .tags {
+    display: flex;
+  }
+  .videoModal > .m-body .tvDetails > .body > .statisticAndSocial > .social > a > span,
+  .videoModal > .m-body .tvDetails > .body > .statisticAndSocial > .social > div > span {
+    display: none;
+  }
+  .videoModal > .m-body .tvDetails > .body > .statisticAndSocial > .social > #copyUrlBtn::after {
+    top: 50%;
+    left: 80%;
+    transform: translateY(-50%);
+  }
+  .videoModal > .m-body .tvDetails > .body > .statisticAndSocial > .social > #copyUrlBtn.copied::after {
+    top: 50%;
+    left: 120%;
+  }
+  .videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-prev,
+  .videoModal > .m-body .tvDetails > .slider .owl-carousel .owl-next {
+    top: 5.4em;
+  }
+  .videoModal > .m-body .tvDetails > aside {
+    gap: 1em;
+  }
+  .videoModal > .m-body .tvDetails > aside > .item {
+    grid-template-columns: 1fr;
+  }
+}
+.videoModal > .m-body .tvDetails {
+  margin-top: 2em;
+}
+@media (max-width: 698px) {
+  .videoModal > .closeVideoModal {
+    font-size: 7.3em;
+    top: 0.2em;
+    right: 0.3em;
+    box-shadow: unset;
+    z-index: 4;
+  }
+  .videoModal > .m-body {
+    grid-template-areas: "main" "aside" "comments";
+    grid-template-columns: 1fr;
+    padding-inline: 0;
+    gap: 0;
+    --vidRadius: 0;
+    padding-top: 0;
+  }
+}
+
+.videoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-bottom: 6em;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.videoSection > .tabs {
+  display: flex;
+  gap: 3em;
+  --borderColor: #d6d6d6;
+  border-bottom: 2px solid var(--borderColor);
+}
+.videoSection > .tabs > span {
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--p);
+  position: relative;
+}
+.videoSection > .tabs > span::after {
+  background-color: transparent;
+  transition: background-color 0.5s;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  height: 2px;
+}
+.videoSection > .tabs > span.active {
+  color: var(--blue);
+  position: relative;
+  transition: all 0.5s;
+}
+.videoSection > .tabs > span.active::after {
+  background-color: var(--blue);
+}
+.videoSection > .videos {
+  position: relative;
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
+  gap: 1.5em;
+  animation-name: fade;
+  animation-duration: 0.7s;
+}
+.videoSection > .videos.active {
+  display: grid;
+}
+.videoSection > .videos.more > div:nth-of-type(n + 9) {
+  display: block;
+}
+.videoSection > .videos.more .show-more::after {
+  transform: translateY(-47%) rotate(270deg) scale(1, 1.6);
+}
+.videoSection > .videos > div {
+  cursor: pointer;
+  animation-name: fade;
+  animation-duration: 0.7s;
+  max-width: 41vw;
+  margin: auto;
+  width: 100%;
+}
+.videoSection > .videos > div:nth-of-type(n + 9) {
+  display: none;
+}
+.videoSection > .videos > div > div {
+  position: relative;
+}
+.videoSection > .videos > div > div::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  --wid: 2.5vw;
+  --min: 2.3em;
+  min-width: var(--min);
+  min-height: var(--min);
+  width: var(--wid);
+  height: var(--wid);
+  background-image: url("/Content/images/img/playIcon.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.videoSection > .videos > div > div > img {
+  width: 100% !important;
+  aspect-ratio: 16/9;
+  border-radius: 0.8em;
+}
+.videoSection > .videos > div > span {
+  color: var(--textColorStrong);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  padding-block: 0.5em;
+  font-size: 0.8em;
+}
+.videoSection > .videos > .show-more {
+  position: absolute;
+  top: calc(100% + 2em);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--blue);
+  cursor: pointer;
+}
+.videoSection > .videos > .show-more::after {
+  content: "<";
+  position: absolute;
+  right: calc(100% + 0.5em);
+  top: 50%;
+  transform: translateY(-47%) rotate(90deg) scale(1, 1.6);
+  transition: all 0.3s;
+}
+@media (max-width: 698px) {
+  .videoSection {
+    margin-top: 5em;
+  }
+  .videoSection > .tabs {
+    border: none;
+    gap: 0.5em;
+    overflow-x: auto;
+    padding-bottom: 0.5em;
+  }
+  .videoSection > .tabs > span {
+    border: 1px solid var(--borderColor);
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+    flex-shrink: 0;
+  }
+  .videoSection > .tabs > span.active {
+    border-color: var(--blue);
+  }
+  .videoSection > .tabs > span.active::after {
+    display: none;
+  }
+  .videoSection > .videos {
+    grid-template-columns: 1fr;
+  }
+  .videoSection > .videos > div {
+    max-width: 100%;
+  }
+  .videoSection > .videos > div > div::after {
+    --wid: 10.5vw;
+  }
+  .videoSection > .videos > div > span {
+    text-align: right;
+    -webkit-line-clamp: 2;
+  }
+}

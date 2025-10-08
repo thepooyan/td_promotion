@@ -1,0 +1,79 @@
+﻿@use '../Components/footer';
+@use '../source/Variables' as v;
+@use "videoSectionNew" as vs;
+@use '../components/tvDetails' as td;
+@use '../components/newComment';
+
+.videoSection {
+    @include vs.videoSection;
+    grid-template-areas: "pageTitle pageTitle" "aside sort" "aside main";
+    grid-template-rows: unset;
+
+    > .pageTitle {
+        grid-area: pageTitle;
+        display: flex;
+        align-items: center;
+        gap: .3em;
+        color: #2086C8;
+        font-weight: 800;
+        font-size: 1.1em;
+
+        &::before {
+            content: "";
+            --wid: 1.7em;
+            width: var(--wid);
+            height: var(--wid);
+            background-repeat: no-repeat;
+            background-size: 123.9%;
+            background-position: 47% 81.7%;
+            background-image: url(/content/images/img/tvIcons.svg);
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        grid-template-areas: "pageTitle pageTitle" "aside sort" "main main";
+    }
+}
+.tvAds {
+    font-size: 1vw;
+    width: 92%;
+    margin: auto;
+    margin-top: 2em;
+}
+
+
+.tvDetails {
+    @include td.tvDetails;
+
+    #comments {
+
+        .commentReplyForm {
+            input {
+                max-width: unset;
+                width: 25%;
+                padding: 0.2em 1em;
+                font-size: 1.078em;
+            }
+        }
+
+        button {
+            font-size: 1.1em;
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        #comments {
+
+            .commentReplyForm {
+                input {
+                    width: 100%;
+                    padding: 0.6em 1em;
+                }
+            }
+
+            button {
+                font-size: 1.4em;
+            }
+        }
+    }
+}

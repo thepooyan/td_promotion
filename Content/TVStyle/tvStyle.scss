@@ -1,0 +1,11 @@
+@use "../components/videoSection" as vs;
+@use "../components/videoModal" as vm;
+@use "videoDetails" as vd;
+
+.videoModal {
+    @include vm.videoModal;
+}
+
+.videoSection {
+    @include vs.videoSection
+}

@@ -1,0 +1,308 @@
+@use "../source/Variables" as v;
+
+@mixin asideFilter {
+    grid-area: aside;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.18);
+    border-radius: 0.7em;
+    padding: 1.5em;
+    height: fit-content;
+    line-height: 1.7em;
+    --borderRadius: .6em;
+
+    .title {
+        font-weight: 800;
+        color: var(--boldTextColor);
+        font-size: .9em;
+    }
+
+    > .topSection {
+        padding-bottom: 0.8em;
+        border-bottom: 1px solid #efefef;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5em;
+
+        > span {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+            color: var(--boldTextColor);
+            font-weight: 800;
+
+            &::before {
+                content: "";
+                --wid: 1.7em;
+                width: var(--wid);
+                height: var(--wid);
+                background-repeat: no-repeat;
+                background-size: 122%;
+                background-position: 47% 13.5%;
+                background-image: url('/content/images/img/tvIcons.svg');
+            }
+        }
+    }
+
+    > .overlay {
+        display: none;
+    }
+
+    > .filterContainer {
+        > .ResTitle {
+            display: none;
+        }
+
+        > .filters {
+
+            > .links {
+                position: relative;
+                width: 100%;
+                border: 2px solid var(--inputBorderColor);
+                border-radius: 0.5em;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                cursor: pointer;
+                user-select: none;
+                border-top: 1px solid #efefef;
+                padding-block: 0.8em;
+
+                &:nth-of-type(1) {
+                    border-top: none;
+                }
+
+                > .categoryTitle {
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        padding: 0.15em;
+                        border-right: 1px solid black;
+                        border-bottom: 1px solid black;
+                        transform: translateY(-50%) rotate(45deg);
+                        transition: 0.3s;
+                    }
+                }
+
+                > .filterList {
+                    width: 100%;
+                    background-color: var(--checkBoxListBg);
+                    top: calc(100% + 0.8em);
+                    right: 0;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 0.5em;
+                    transition: all 0.3s;
+                    z-index: 2;
+                    height: 0;
+                    overflow: hidden;
+                    font-weight: 500;
+                    color: var(--textColor);
+
+                    > a {
+                        position: relative;
+                        cursor: pointer;
+                        padding-top: 0.5em;
+                        color: #2086C8;
+                        font-weight: 700;
+                        font-size: .9em;
+                    }
+                }
+
+                &.active {
+                    > .categoryTitle {
+                        &::after {
+                            transform: translateY(-50%) rotate(225deg);
+                        }
+                    }
+
+                    .filterList {
+                        height: var(--height);
+                    }
+                }
+            }
+        }
+    }
+
+    .search {
+        position: relative;
+        margin-block: 1em;
+
+        > input {
+            background-color: var(--bgGray);
+            padding: 0.8em 1.5em;
+            font-size: var(--smallFontSize);
+            border-radius: var(--borderRadius);
+            width: 100%;
+        }
+
+        > button {
+            position: absolute;
+            --wid: 1.5em;
+            width: var(--wid);
+            height: var(--wid);
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1.5em;
+            background-image: url(/content/images/img/searchIconSvg.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 0.7em;
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        padding: 0;
+        box-shadow: none;
+
+        > .topSection {
+            margin: 0;
+            border: none;
+            padding: 0;
+
+            > span {
+                padding: 0.6em;
+            }
+        }
+
+        > .tags {
+            display: none;
+        }
+
+        > .overlay {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+            z-index: 99;
+            transition: .3s;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .search {
+            margin-block: 0;
+            padding-top: 0.7em;
+            padding-inline: 1.5em;
+            background-color: white;
+
+            > button {
+                transform: translateY(-14%);
+                left: 3.5em;
+            }
+        }
+
+        > .filterContainer {
+            position: fixed;
+            width: 100%;
+            height: 50%;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            transition: .3s;
+            transform: translateY(100%);
+            display: flex;
+            flex-direction: column;
+
+            > .ResTitle {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                font-size: 1em;
+                padding-inline: 1.4em;
+                background-color: #fff;
+                z-index: 101;
+                padding-top: 1.2em;
+                padding-bottom: 0.7em;
+                --border-radius: 2.5em;
+                border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+                &::after {
+                    position: absolute;
+                    content: '';
+                    width: 81%;
+                    height: 1px;
+                    background-color: #E3E3E3;
+                    top: 100%;
+                    left: 6%;
+                }
+
+                > span {
+                    &:nth-of-type(1) {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.3em;
+
+                        &::before {
+                            content: "";
+                            --wid: 1.7em;
+                            width: var(--wid);
+                            height: var(--wid);
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            background-position: 0 13.1%;
+                            background-image: url('/content/images/img/tvIcons.svg');
+                        }
+                    }
+
+                    &#close {
+                        font-weight: 100;
+                        font-size: 2em;
+                    }
+                }
+            }
+
+            > .filters {
+                padding-bottom: 1em;
+                padding-top: 1em;
+                padding-inline: 1.8em;
+                background-color: white;
+                overflow: auto;
+                flex-grow: 1;
+
+                &::-webkit-scrollbar {
+                    width: 5px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: #dddddd;
+                    border-radius: 4px;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background: #1d71b9;
+                    border-radius: 4px;
+                }
+
+                > .links {
+                    border-top: none;
+                    padding-top: 0;
+
+                    > .filterList {
+                        > a {
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.active {
+            > .overlay {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            > .filterContainer {
+                transform: translateY(0%);
+            }
+        }
+    }
+}

@@ -1,0 +1,293 @@
+﻿@use "../components/newRoadMap/newRoadMap" as rm;
+@use "../source/Variables" as v;
+@use "../components/videoGrid";
+@use "../components/seoLandingLink" as sl;
+@use "../components/landingIntroSection" as intro;
+@use "../components/seoLandingStep" as step;
+@use "../components/homeBlog";
+@use "../components/footer";
+@use "../components/seoLandingStepDescription" as des;
+@use "../swiper.min.css";
+.seoLandingPage {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    color: var(--textColorStrong);
+    --boxShodow: 0 0 15px #00000012;
+
+    %max-width {
+        max-width: 1300px;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .full {
+        width: 100%;
+    }
+
+    .introVideo {
+        @extend %max-width;
+        @include intro.introSection;
+    }
+
+    .first-section {
+        background-color: #02233e;
+        padding-block: 5em;
+
+        .introVideo {
+            background-color: inherit;
+            padding: 0;
+            margin-bottom: 0;
+
+            h1 {
+                font-size: 2.5em;
+                color: #4bd6ff;
+                line-height: 1.5;
+                font-weight: 600;
+                margin-bottom: 0.6em;
+            }
+        }
+    }
+
+    .seoLandingLink {
+        @include sl.seoLandingLink;
+        margin: unset;
+    }
+
+    .videoGridContainer {
+        @extend %max-width;
+        font-size: 1em;
+    }
+
+    .seoLandingPageTitle {
+        font-size: 2em;
+        font-weight: 600;
+        position: relative;
+        margin-bottom: 1em;
+        padding-bottom: .8em;
+
+        > span {
+            color: var(--color);
+        }
+
+        &::after {
+            position: absolute;
+            content: '';
+            background-color: var(--color);
+            width: 1.5em;
+            height: 2px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &.noLine {
+            padding-bottom: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    .newRoadMap {
+        @include rm.newRoadMap;
+        padding-inline: 0;
+        padding-block: 3em 25em;
+        counter-reset: card;
+        font-size: .9vw;
+        width: 91em;
+        margin-inline: auto;
+        background-color: white;
+        border: 1px solid #1d71b952;
+        border-radius: 1em;
+        box-shadow: var(--boxShodow);
+        margin-top: 0;
+    }
+
+    .anchorBoxs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(11em, 14em));
+        gap: 2em;
+        margin-inline: auto;
+        padding-inline: 1em;
+
+        .anchorBoxsItem {
+            background-color: #fff;
+            border-radius: 1em;
+            box-shadow: var(--boxShodow);
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            padding-block: 1.3em;
+            align-items: center;
+
+            > svg {
+                width: 4em;
+                height: 4em;
+            }
+        }
+    }
+
+    .seoLandingCat {
+        @extend %max-width;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        box-shadow: var(--boxShodow);
+        --radius: 1em;
+        border-radius: var(--radius);
+        gap: 3em;
+        background-color: white;
+
+
+        > .imageSection {
+            background-color: var(--color);
+            border-radius: var(--radius);
+            padding: 2em 3em;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            align-items: center;
+            justify-content: center;
+
+            > .catTitle {
+                color: white;
+                font-weight: 600;
+                font-size: 1.6em;
+            }
+        }
+
+        > .context {
+            padding-top: 3em;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            font-size: .9em;
+
+            > .contextTitle {
+                color: var(--color);
+                font-weight: 700;
+                font-size: 1.2em;
+            }
+
+            > ul {
+                > li {
+                    display: flex;
+                    align-items: center;
+                    gap: .5em;
+
+                    &::before {
+                        @include v.arrowLeft(.4em, var(--color));
+                    }
+                }
+            }
+        }
+    }
+
+    > section {
+        margin-bottom: 3em;
+    }
+
+    .blog-boxes- {
+        background-color: unset;
+        width: 100%;
+        max-width: 1320px;
+    }
+
+    .seoLandingStep {
+        @include step.seoLandingStep;
+    }
+
+    .seoLandingStepDescription {
+        @include des.seoLandingStepDescription;
+    }
+
+    @include v.media(1300px) {
+        %max-width {
+            width: 90%;
+            margin-inline: auto;
+        }
+    }
+
+    @include v.media(v.$laptop) {
+        .first-section {
+            padding-block: 2em;
+
+            .introVideo {
+
+                h1 {
+                    font-size: 2em;
+                }
+            }
+        }
+
+        .seoLandingCat {
+            grid-template-columns: 1fr;
+            gap: 0;
+
+            > .imageSection {
+
+                > img {
+                    max-width: 23em;
+                }
+            }
+
+            > .context {
+                padding: .8em 2em;
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        .newRoadMap {
+            padding-inline: 1em;
+            font-size: 4.6vw;
+            width: 20em;
+            margin-top: 0;
+
+            > div {
+                &::after {
+                    width: 3em;
+                    height: 5.2em;
+                }
+
+                &.double {
+                    > .roadCourseCard {
+                        &:nth-child(1) {
+                            &::before {
+                                width: 3.7em;
+                                height: 6.3em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .seoLandingPageTitle {
+            font-size: 1.5em;
+        }
+
+        .anchorBoxs {
+            font-size: 0.8em;
+            gap: .7em;
+        }
+    }
+
+    @include v.media(v.$mobile) {
+        .anchorBoxs {
+            grid-template-columns: repeat(1, minmax(10em, 16em));
+        }
+
+        .seoLandingCat {
+
+            > .imageSection {
+                > .catTitle {
+                    font-size: 1.4em;
+                }
+            }
+        }
+    }
+}

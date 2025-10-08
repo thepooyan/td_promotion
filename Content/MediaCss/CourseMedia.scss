@@ -1,0 +1,60 @@
+﻿@use '../source/_Variables.scss';
+
+@use 'mediaPartials/_qcomment.scss';
+@use 'mediaPartials/_courseCalendar.scss';
+
+/* Extra small devices (962-697)*/
+@media only screen and (max-width: 962px) {
+
+    .whiteArea {
+
+        .courseGrid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 0;
+
+            aside {
+                display: none;
+            }
+            main {
+                border: none;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            &.fullSc {
+                main {left: 0}
+            }
+        }
+    }
+}
+@media (max-width:590px) {
+    #frmcatesearch .filter-bar {
+        display: block;
+
+        .filter-bar-item.btn-search .ask-me-question {
+            margin: 10px !important;
+        }
+
+        > div {
+            display: block;
+
+
+
+            .filter-bar-item select,
+            .filter-bar-item input {
+                width: 100%;
+            }
+        }
+    }
+}
+@media (max-width:480px){
+    .whiteArea {
+        .courseGrid {
+            .tv-section {
+                padding-inline : 1em;
+            }
+        }
+    }
+}

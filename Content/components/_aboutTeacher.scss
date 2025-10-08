@@ -1,0 +1,80 @@
+@use '../source/_Variables.scss' as v;
+
+#aboutTeacher {
+  --color: grey;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  background-color: var(--colorCompliment);
+  padding: 2em;
+  padding-bottom: 1px;
+
+  .top {
+    display: flex;
+    margin-bottom: 1em;
+    gap: 1em;
+
+    img {
+      width: 5em;
+      height: 5em;
+      background: transparent;
+      color: transparent;
+      border-radius: 50%;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      span {
+        &:first-child {
+          font-weight: 500;
+        }
+        &:nth-child(2) {
+          color: var(--color);
+        }
+      }
+    }
+  }
+
+  .main,
+  .description {
+    text-align: justify;
+  }
+
+  .main {
+    height: 0;
+    transition: 0.4s;
+    overflow: hidden;
+  }
+
+  button {
+    background: unset;
+    margin-right: auto;
+    height: 2em;
+    display: block;
+    margin-block: 1em;
+    color: #5280a0;
+    font-weight: 500;
+    font-size: 1em;
+
+    &::after {
+      @include v.fontAwsome("f078", 900);
+      font-size: 0.7em;
+      margin-right: 0.6em;
+      transition: .2s;
+      display: inline-block;
+    }
+  }
+
+  &.active {
+    .main {
+        height: var(--scrollHeight);
+    }
+    button {
+        &::after {
+            transform: rotate(180deg);
+        }
+    }
+  }
+}

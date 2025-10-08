@@ -1,0 +1,667 @@
+﻿@charset "UTF-8";
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/* Extra large devices (large laptops and desktops, 1200px till 993 and down) */
+@media only screen and (max-width: 1200px) {
+  .Qcomment .contain header::before {
+    width: 4em;
+  }
+  .Qcomment .contain header::after {
+    left: 0.5em;
+  }
+  .Qcomment .replyModal .content {
+    width: 93%;
+  }
+}
+/* Large devices (laptops/desktops, 992px till 769 and down) */
+@media only screen and (max-width: 992px) {
+  .Qcomment .contain header::after {
+    width: 2.5em;
+  }
+  .Qcomment .contain header::before {
+    width: 2.7em;
+    height: 4.5em;
+  }
+  .Qcomment .replyModal .content {
+    padding-bottom: 1.5em;
+  }
+  .Qcomment .replyModal .content .reply {
+    display: block;
+    width: 100%;
+  }
+  .Qcomment .replyModal .content button {
+    display: block;
+    float: none;
+    margin: 1em auto;
+    margin-bottom: 0;
+  }
+}
+/* Medium devices (landscape tablets, 768px till 601 and down) */
+@media only screen and (max-width: 768px) {
+  .Qcomment .contain header {
+    padding: 1em;
+    text-align: left;
+    font-size: 4.5em;
+  }
+  .Qcomment .contain header::after {
+    display: none;
+  }
+  .Qcomment .contain header::before {
+    height: 3.5em;
+  }
+  .Qcomment .contain .forms .formTab {
+    margin-right: 2em;
+  }
+  .Qcomment .contain .forms .send {
+    padding: 1em 6em;
+    padding-right: 6em;
+    padding-bottom: 1em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+  }
+  .Qcomment .contain .question > span, .Qcomment .contain .answer > span {
+    max-width: unset;
+  }
+  .Qcomment .replyModal .content {
+    padding-right: 2em;
+    padding-left: 2em;
+    width: 96%;
+    height: max-content;
+  }
+  .Qcomment .replyModal .content .reply {
+    width: 100%;
+  }
+  .Qcomment .replyModal .question > span, .Qcomment .replyModal .Qcomment .answer > span {
+    max-width: calc(100% - 9.2em);
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px till 481 and down) */
+@media only screen and (max-width: 600px) {
+  .Qcomment .contain header {
+    display: flex;
+    justify-content: fs;
+    align-items: center;
+    flex-direction: row;
+    gap: 0;
+    flex-direction: column;
+  }
+  .Qcomment .contain header::before {
+    position: static;
+  }
+  .Qcomment .contain .forms {
+    width: 98%;
+  }
+  .Qcomment .contain div section {
+    width: 89%;
+    margin-top: 0;
+  }
+  .Qcomment .contain div section .question, .Qcomment .contain div section .answer {
+    padding-top: 4em;
+    font-size: 0.75em;
+  }
+  .Qcomment .contain div section .question::before, .Qcomment .contain div section .answer::before {
+    top: 2em;
+  }
+  .Qcomment .contain div section .question + .question.combine, .Qcomment .contain div section .answer + .answer.combine {
+    padding-top: 0;
+  }
+  .Qcomment .replyModal .question span, .Qcomment .replyModal .answer span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+  .Qcomment .contain header {
+    font-size: 3em;
+  }
+  .Qcomment .contain .forms .logIn {
+    font-size: 1.2em;
+    text-align: center;
+    line-height: 1.5em;
+  }
+  .Qcomment .contain .forms .formTab.alone {
+    gap: 0;
+  }
+  .Qcomment .contain .forms .formTab.alone span {
+    font-size: 1.3em;
+    height: max-content;
+  }
+  .Qcomment .contain .forms .send {
+    padding: 0 0.5em;
+    padding-bottom: 0px;
+    padding-bottom: 1em;
+  }
+  .Qcomment .contain .forms .send button {
+    font-size: 1em;
+    width: 94%;
+    height: 4em;
+  }
+  .Qcomment .contain .forms .send p.success.show {
+    padding-top: 1em;
+  }
+  .Qcomment .contain > div > section .question + .question.combine {
+    margin-right: 6em;
+  }
+  .Qcomment .contain > div > section .answer + .answer.combine {
+    margin-left: 6em;
+  }
+  .Qcomment .contain > div > section .question > span i::before {
+    left: -18px;
+    font-size: 1.5em;
+  }
+  .Qcomment .contain > div > section .answer > span i::before {
+    right: -18px;
+    font-size: 1.5em;
+  }
+  .Qcomment .contain > div > section .question, .Qcomment .contain > div > section .answer {
+    gap: 0.7em;
+  }
+  .Qcomment .contain > div > section .question .icon, .Qcomment .contain > div > section .answer .icon {
+    font-size: 0.9em;
+  }
+  .Qcomment .contain > div > section .question .icon::after, .Qcomment .contain > div > section .answer .icon::after {
+    bottom: -2.6em;
+  }
+  .Qcomment .contain .buttons {
+    gap: 0;
+  }
+  .Qcomment .contain .buttons.twoButtons .more {
+    right: -8em;
+  }
+  .Qcomment .contain .buttons.twoButtons .close {
+    left: -14.5em;
+  }
+  .Qcomment .contain .buttons button {
+    padding: 0.7em 1.6em;
+    border-radius: 0 0 25px 25px;
+  }
+}
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/* Extra large devices (large laptops and desktops, 1200px till 993 and down) */
+@media only screen and (max-width: 1200px) {
+  .courseCalendar .header > span {
+    height: 45px;
+    line-height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+/* Large devices (laptops/desktops, 992px till 767 and down) */
+@media only screen and (max-width: 992px) {
+  .calendarContainer .calendarTitle {
+    width: 318px;
+    height: 136px;
+    font-size: 19px;
+    margin: auto;
+  }
+  .courseCalendar {
+    background: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 5px;
+  }
+  .courseCalendar .header {
+    display: none;
+  }
+  .courseCalendar .course {
+    flex-direction: column;
+    border-radius: 80px 0 80px 0px;
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    padding-bottom: 20px;
+    width: 285px;
+    background-color: white !important;
+    height: auto;
+    padding: 1em;
+    gap: 7px;
+    padding: 0;
+    z-index: 0;
+  }
+  .courseCalendar .course > span {
+    padding: 0;
+    font-weight: 300;
+  }
+  .courseCalendar .course > span:nth-child(7) {
+    color: orange;
+  }
+  .courseCalendar .course > span:nth-child(7)::before {
+    content: "پیشنیاز ";
+  }
+  .courseCalendar .course .signup > .btn-log.btn {
+    width: 130px;
+    background-color: #be1623;
+  }
+  .courseCalendar .course .courseHoldType {
+    top: 4px;
+    right: -37px;
+    transform: rotate(36deg);
+  }
+  .courseCalendar .course .courseName {
+    border-radius: 5px;
+    width: 100%;
+    padding: 15px 30px;
+    margin-top: 8px;
+  }
+  .courseCalendar .course .courseName span {
+    font-size: 1.2em;
+    font-weight: 600;
+    line-height: 23px;
+    display: inline;
+    color: #be1623;
+  }
+  .courseCalendar .course .courseButton {
+    margin: 19px 0;
+    font-weight: 600;
+    padding: 12px 0;
+    width: 126px;
+    border-radius: 30px;
+  }
+  .courseCalendar .course::before {
+    content: "";
+    background-color: #fea702;
+    height: 110%;
+    z-index: -7;
+    position: absolute;
+    width: 91%;
+  }
+  .courseCalendar .course::after {
+    content: "";
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    border-radius: 80px 0 80px 0;
+    border: 1px solid #a2a2a2;
+  }
+}
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+  .courseCalendar {
+    flex-direction: column;
+    align-content: center;
+  }
+}
+/* Extra small devices (962-697)*/
+@media only screen and (max-width: 962px) {
+  .whiteArea .courseGrid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 0;
+  }
+  .whiteArea .courseGrid aside {
+    display: none;
+  }
+  .whiteArea .courseGrid main {
+    border: none;
+    box-shadow: none;
+    width: 100%;
+  }
+  .whiteArea .courseGrid.fullSc main {
+    left: 0;
+  }
+  .whiteArea .titleContainer .title {
+    font-size: 22px !important;
+  }
+  .whiteArea .titleContainer .image {
+    position: static !important;
+  }
+  .whiteArea .normalDiv .titleContainer {
+    flex-direction: row-reverse;
+  }
+  .whiteArea .normalDiv .titleContainer .title {
+    font-size: 22px !important;
+  }
+  .whiteArea .normalDiv .titleContainer .image {
+    position: static !important;
+  }
+}
+/* Extra small devices (698-374)*/
+@media only screen and (max-width: 698px) {
+  .journal {
+    /*--------------------------------------------------------*/
+  }
+  .journal .getUp {
+    right: 5px;
+    bottom: 5px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #DA007F;
+  }
+  .journal .titleContainer {
+    margin: 0;
+  }
+  .journal .titleContainer .image {
+    display: none;
+    margin-bottom: 10px;
+  }
+  .journal .titleContainer .title {
+    padding: 0 0;
+    text-align: center !important;
+  }
+  .journal .title {
+    font-size: 19px !important;
+    text-align: center;
+  }
+  .journal ul,
+  .journal ol,
+  .journal .body {
+    padding: 0 !important;
+    font-size: 14px !important;
+  }
+  .journal ul ul,
+  .journal ul ol,
+  .journal ol ul,
+  .journal ol ol {
+    padding-right: 14px !important;
+  }
+  .journal .subtitle {
+    font-size: 15px !important;
+  }
+  .journal ul.disk > li {
+    list-style-type: none;
+  }
+  .journal ol {
+    list-style-type: none !important;
+  }
+  .journal ol > li {
+    list-style-type: none !important;
+  }
+  .journal p.attention {
+    font-size: 14px !important;
+  }
+  .journal p.attention > span {
+    font-size: 19px !important;
+  }
+  .journal .div0 ul,
+  .journal .div0 ol {
+    padding-right: 20px !important;
+  }
+  .journal .videoDiv .table td {
+    padding: 0;
+  }
+  .journal .whiteSmokeDiv {
+    background: none;
+    flex-direction: column;
+  }
+  .journal .whiteSmokeDiv .left {
+    padding: 0;
+  }
+  .journal .whiteSmokeDiv .outside {
+    background-image: linear-gradient(to left, #1D71B8, #E6007E);
+    border-radius: 50%;
+    padding: 21px;
+    margin: 0 auto;
+    width: 245px;
+  }
+  .journal .whiteSmokeDiv .outside .image {
+    padding: 95px 0px;
+    width: 100%;
+    background-color: white;
+    border-radius: 50%;
+    min-height: 0;
+  }
+  .journal .adsDiv h2 {
+    font-size: 40px;
+    line-height: 37px;
+  }
+  .journal .titlesDiv .section {
+    margin: 10px 0px;
+    font-size: 18px;
+    margin-bottom: 40px;
+    padding: 8px;
+  }
+  .journal .titlesDiv > ol,
+  .journal .titlesDiv > ol > li {
+    list-style-type: decimal !important;
+    margin-right: 4px;
+  }
+  .journal .projectBox {
+    background: none;
+    flex-direction: column-reverse;
+  }
+  .journal .projectBox .right {
+    border: 0;
+  }
+  .journal .projectBox .outside {
+    background-image: linear-gradient(to left, #FFC000, #E6007E);
+    border-radius: 50%;
+    padding: 21px;
+    margin: 0 auto;
+    width: 245px;
+  }
+  .journal .projectBox .outside .image {
+    padding: 95px 0px;
+    width: 100%;
+    background-color: white;
+    border-radius: 50%;
+    border: 0;
+    min-height: 0;
+  }
+  .journal .workshop .image {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .journal .workshop .title {
+    padding: 0;
+    border: none;
+  }
+  .journal .workshop .title .icon {
+    display: none;
+  }
+  .journal .workshop .title h3 {
+    font-size: 17px;
+  }
+  .journal .lightBlueDiv {
+    background: none;
+    flex-direction: column-reverse;
+  }
+  .journal .lightBlueDiv .title {
+    margin: 0;
+  }
+  .journal .lightBlueDiv .image {
+    padding-bottom: 226px;
+    width: 226px;
+    background-color: #D9EBFC;
+    border-radius: 50%;
+    background-size: 69%;
+    margin: 0 auto;
+  }
+  .journal .lightGrayDiv {
+    background: none;
+  }
+  .journal .lightGrayDiv .titleContainer {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-bottom: 35px;
+    height: auto;
+  }
+  .journal .lightGrayDiv .titleContainer .image {
+    display: inline-block;
+    padding-bottom: 72px;
+    width: 130px;
+  }
+  .journal .normalDiv .titleContainer {
+    padding: 10px 0px;
+  }
+  .journal .normalDiv .titleContainer .image {
+    display: none;
+  }
+  .journal .goalsDiv ul {
+    padding: 0;
+  }
+  .journal .lightGrayTable {
+    background: none;
+  }
+  .journal .lightGrayTable .img {
+    display: none;
+  }
+  .journal .lightGrayTable .image-res {
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 30px;
+    background: url("../../../../../../../../courses/courseContent/asset 2-8.png") no-repeat;
+    width: 100%;
+    background-size: 98%;
+    padding-bottom: 61%;
+  }
+  .journal .lightGrayTable .mytable {
+    margin-left: -2px;
+    margin-right: -4px;
+  }
+  .journal .lightGrayTable .mytable .tr {
+    display: flex;
+    justify-content: space-between;
+  }
+  .journal .lightGrayTable .mytable .tr.first .td {
+    width: 100%;
+  }
+  .journal .lightGrayTable .mytable .tr .td {
+    width: 100%;
+    font-size: 10px;
+    min-width: 0;
+  }
+  .journal .signupButton {
+    padding: 7px 16px;
+    font-size: 13px;
+  }
+  .container-me {
+    width: 100% !important;
+  }
+}
+/* Extra small devices (375 down)*/
+@media only screen and (max-width: 375px) {
+  .container-me {
+    width: 100%;
+  }
+  .header-image.res {
+    display: block;
+    width: 98%;
+    margin: auto;
+  }
+  .journal .lightBlueDiv {
+    padding: 0 !important;
+  }
+  .journal .lightBlueDiv .title {
+    margin-bottom: 10px !important;
+  }
+  .journal .title {
+    font-size: 16px !important;
+    padding: 5px 0px;
+  }
+  .journal .body,
+  .journal ul,
+  .journal ol {
+    font-size: 12px !important;
+    line-height: 22px !important;
+  }
+  .journal ul,
+  .journal ol {
+    margin-top: 10px;
+  }
+  .journal ul li,
+  .journal ol li {
+    font-size: 12px !important;
+    line-height: 22px !important;
+  }
+  .journal .titleContainer {
+    line-height: 2.5em;
+  }
+  .journal .div0 ul {
+    padding-right: 12px !important;
+    font-size: 13px !important;
+  }
+  .journal .div0 a[href="#threeD"] {
+    display: none;
+  }
+  .journal .subtitle + .thirdTitle {
+    margin-top: 20px;
+  }
+  .journal p.attention {
+    font-size: 12px !important;
+    padding: 10px;
+  }
+  .journal p.attention > span {
+    font-size: 15px !important;
+  }
+  .journal .collapsableContent {
+    margin: 5px 0;
+  }
+  .journal .subtitle,
+  .journal .titlesDiv > ol {
+    margin-bottom: 0px !important;
+  }
+  .journal .thirdTitle {
+    margin-bottom: 0px !important;
+    font-size: 14px !important;
+  }
+  .journal .titlesDiv .subtitle,
+  .journal .titlesDiv .section > .content {
+    font-size: 14px !important;
+  }
+  .journal .lightGrayDiv {
+    padding: 25px 10px !important;
+  }
+  .journal .lightGrayTable {
+    padding: 25px 10px !important;
+  }
+  .journal .lightGrayTable .tableContainer {
+    margin-right: -10px;
+    margin-left: -9px;
+  }
+  .journal .lightGrayTable .tableContainer .mytable {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .journal .workshop .image {
+    width: 86% !important;
+  }
+  .journal .workshop .title {
+    padding: 15px 0px !important;
+  }
+  .journal .workshop .title > h3 {
+    font-size: 15px !important;
+  }
+  .journal .threeD {
+    display: none;
+  }
+  .filter-bar .filter-bar-item {
+    padding: 0;
+  }
+  .videoTarget .Courses-card-grid.video-more.sideLayout {
+    flex-direction: column;
+  }
+  .videoTarget .Courses-card-grid.video-more.sideLayout .panel {
+    flex-direction: row;
+  }
+  .videoTarget .Courses-card-grid.video-more.sideLayout .panel span {
+    min-width: 180px;
+    padding: 0.2em;
+    font-size: 1.1em;
+    margin-left: 0.5em;
+  }
+}
+@media (max-width: 590px) {
+  #frmcatesearch .filter-bar {
+    display: block;
+  }
+  #frmcatesearch .filter-bar .filter-bar-item.btn-search .ask-me-question {
+    margin: 10px !important;
+  }
+  #frmcatesearch .filter-bar > div {
+    display: block;
+  }
+  #frmcatesearch .filter-bar > div .filter-bar-item select,
+  #frmcatesearch .filter-bar > div .filter-bar-item input {
+    width: 100%;
+  }
+}

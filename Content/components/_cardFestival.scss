@@ -1,0 +1,210 @@
+@use "../source/_Variables.scss";
+@use '../components/_gridItems.scss';
+@use '../components/_detailsArticle.scss';
+
+main {
+    padding: 2em;
+
+    @include Variables.media(Variables.$mobile) {
+        padding: 1em;
+    }
+}
+
+
+// ---start/card styles
+.card---course {
+    > div {
+        display: flex;
+        justify-content: center;
+    }
+    // grid-template-rows: repeat(3,minmax(28em,1fr));
+    padding: 2em 0 3em;
+    // --start/link more
+    .link--more {
+        display: block;
+        width: 100%;
+        background-color: #1F86C8;
+        text-align: center;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        transition: 0.5s;
+
+        a {
+            color: #fff;
+            padding: 0.5em;
+            display: block;
+            font-size: 1em;
+        }
+    }
+    // --end/link more
+
+    .card--item-course {
+        background-color: #fff;
+        position: relative;
+        border-radius: 8px;
+        box-shadow: 2px 3px 10px 0px rgb(0 0 0 / 16%);
+        font-size: 1.3em;
+        display: grid;
+        align-items: center;
+        grid-template-columns: inherit;
+        grid-template-rows: repeat(3,min-content) 3em 3.5em;
+        line-height: 1.9em;
+        // --start/discount number
+        &::after {
+            position: absolute;
+            content: attr(data-discount);
+            top: 0;
+            left: 0;
+            background-color: var(--redColor);
+            color: #fff;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 10px;
+            border-top-left-radius: 10px;
+            width: 15%;
+            height: 3em;
+            font-size: 1em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .img-course {
+                width: auto;
+            }
+        }
+        // --end/discount number
+
+        ul,
+        p,
+        h4 {
+            padding: 0 1em;
+        }
+
+        .img-course {
+            border-radius: 8px;
+            width: 100%;
+            padding: 1em 1em 0;
+        }
+
+
+
+        h4 {
+            color: #000;
+        }
+
+        p {
+            color: #000c;
+            font-size: 0.9em;
+            margin-bottom: 1em;
+
+            &.p-limit {
+                -webkit-line-clamp: 2;
+            }
+        }
+
+        p, h4 {
+            padding-top: 1em;
+        }
+
+        ul,
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+
+
+        ul {
+            color: #868686;
+            padding-top: 0.8em;
+            padding-bottom: 0.8em;
+
+            &:nth-of-type(1) {
+                font-size: 0.8em;
+
+
+
+                li {
+
+                    &:first-child {
+                        color: #1F86C8;
+                        justify-content: right;
+                        align-items: flex-start;
+
+                        span {
+                            color: #868686;
+                            margin-right: 0.2em;
+                        }
+                    }
+
+                    img,
+                    i {
+                        margin-left: 0.2em;
+                    }
+
+                    .icon {
+                        width: auto;
+                    }
+                }
+            }
+
+            &:nth-of-type(2) {
+                background-color: #F1F1F1;
+                font-weight: 600;
+
+
+
+                li {
+                    font-size: 0.9em;
+
+                    span,
+                    del {
+                        font-size: 1.2em;
+                    }
+                }
+
+                .discount-price {
+                    color: var(--redColor);
+
+                    span {
+                        margin-left: 0.2em;
+                    }
+                }
+            }
+        }
+
+        .info-bottom-card {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    }
+
+
+
+    @include Variables.media(Variables.$mobile) {
+
+
+        .card--item-course {
+            height: auto;
+            margin-bottom: 1em;
+
+            p {
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+@include Variables.media(Variables.$tablet) {
+    .festival--item {
+        &.card-grid-item {
+            .card--item-course {
+                margin: 0;
+                width: auto;
+            }
+        }
+    }
+}
+// ---end/card styles

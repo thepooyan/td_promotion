@@ -1,0 +1,118 @@
+@use '../source/Variables';
+@use '../components/gridItems';
+@use '../components/guideDashboard';
+
+.dashboard {
+    .basket-items {
+        margin-bottom: 5em;
+    }
+
+    .dFlex {
+
+        p {
+            color: var(--textMainColor);
+            position: relative;
+            margin: 0;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: .5em;
+
+            &::before {
+                content: '\f05a';
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+            }
+        }
+    }
+
+    .link-more {
+        margin-top: 0;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    a {
+        display: inline-block;
+
+        &.link-more {
+            margin-top: 0;
+            font-size: 12px;
+            background-color: #25a158;
+            color: white;
+            padding: 0.7em 1em;
+            border-radius: 0.5em;
+        }
+    }
+
+    .grid--items {
+
+        ul {
+            padding: 1em;
+        }
+
+        .resItem--course {
+            color: #000;
+            font-weight: 600;
+            margin-left: 1em;
+        }
+
+        .body-grid--items {
+
+            li {
+                &:last-child {
+                    display: flex;
+                    justify-content: end;
+                    flex-wrap: wrap;
+
+                    .link-more {
+                        margin: 0.1em;
+                    }
+                }
+            }
+        }
+
+        .title-course-basket-items {
+            font-weight: 600;
+            color: #000;
+        }
+    }
+
+    .copyable {
+
+        &.copied {
+            overflow: initial;
+
+            &::before {
+                display: none;
+            }
+        }
+
+        &.copied::after {
+            bottom: 30%;
+        }
+    }
+}
+
+
+
+@include Variables.media(Variables.$screen) {
+    ul.body-basket-items {
+        box-shadow: none;
+    }
+}
+
+@include Variables.media(Variables.$mobile) {
+
+        .body-grid--items {
+            font-size: 1em !important;
+
+            a {
+
+                &.link-more {
+                    width: 12em;
+                }
+            }
+        }
+    }

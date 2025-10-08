@@ -1,0 +1,156 @@
+/*start/peojects students*/
+@use '../source/_Variables.scss';
+.projects-students {
+    transform: scale(0.95);
+    text-align: right;
+    margin-top:5em;
+
+    .item {
+        width: 95%;
+        margin: auto;
+
+        a {
+            &.category {
+                color: var(--green);
+                margin-top: 1em;
+                display: block;
+                font-weight: 600;
+                font-size: 1.1em;
+                padding: 0;
+            }
+        }
+
+        p {
+            line-height: 2em;
+            margin-block: 1em;
+            color: var(--textColor);
+            text-align: right;
+        }
+
+        img {
+            object-fit: cover;
+
+            &.img-project {
+                height: 15em;
+                border-radius: 15px;
+            }
+        }
+
+        .user-info-k {
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            gap: 0.5em;
+
+            .img-user {
+                width: 3em;
+                height: 3em;
+                border-radius: 50%;
+                background-color: #ccc;
+
+            }
+        }
+
+        span {
+            font-size: 0.9em;
+            display: block;
+
+            &:last-child {
+
+                color: var(--textColorFade);
+            }
+        }
+    }
+
+
+    .owl-carousel {
+        padding-inline: 2em;
+        margin-block: 4em 2em;
+    }
+
+    .owl-carousel {
+        .owl-nav {
+            &.disabled {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            button {
+
+                margin: 2em;
+                font-size: 1.5em !important;
+
+                &.owl-next,
+                &.owl-prev {
+
+
+
+
+                    span {
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.teens {
+    .projects-students {
+        &.circle-bg {
+            &::after {
+                right: -4em;
+                bottom: 0;
+            }
+        }
+
+        > div {
+            display: grid;
+            grid-template-columns: 30% 70%;
+        }
+    }
+}
+
+
+
+@include Variables.media(Variables.$laptop) {
+    .projects-students {
+        .owl-carousel {
+            padding-inline: 0;
+        }
+
+        .tab .content-tab .owl-carousel .owl-nav button.owl-next.owl-next::after {
+            right: 40%;
+        }
+
+        .tab .content-tab .owl-carousel .owl-nav button.owl-prev.owl-prev::after {
+            left: 40%;
+        }
+    }
+
+    .teens {
+        .projects-students {
+            &.circle-bg {
+                &::after {
+                    right: 50%;
+                    top: 0;
+                    transform: translateX(50%);
+                }
+            }
+
+            > div {
+                grid-template-columns: 100%;
+            }
+
+            .img-smallDevice {
+                display: block;
+                margin: auto;
+            }
+        }
+    }
+}
+
+
+// -----

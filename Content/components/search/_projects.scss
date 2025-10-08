@@ -1,0 +1,47 @@
+.theGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 3em 1em;
+
+    .prj {
+        width: 17em;
+        height: 17em;
+        --radius: 45px;
+        border-radius: 0 var(--radius) 0 var(--radius);
+        color: #fff;
+        position: relative;
+        background-color: #c20000;
+      .wrap {
+            border: 0.5em solid #e2e2e2;
+            height: 100%;
+            --rad: 7em;
+            border-radius: 0 var(--rad) 0 var(--rad);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 0.6em;
+            &::before {
+                content: "سورس کد";
+                order: 2;
+                font-weight: bold;
+            }
+       span {
+                order: 1;
+                font-size: 1.5em;
+                font-weight: 900;
+                text-align: center;
+            }
+       h3{
+        order: 3;
+        background: linear-gradient(to left,#fbee22,rgba(255,255,255,0));
+        width: 100%;
+        text-align: center;
+        padding: 0.5em 0.4em;
+        font-size: 1.2em;
+        font-weight: 700;
+       }
+        }
+    }
+}

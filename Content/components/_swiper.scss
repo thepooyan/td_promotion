@@ -1,0 +1,120 @@
+﻿@use '../source/_Variables.scss';
+
+.slider-classes {
+    .newswiper-card-Container {
+        transform: translateX(28em);
+        opacity: 0;
+        transition: .3s;
+       
+    }
+
+    &.loaded {
+        .newswiper-card-Container {
+            transform: translateX(0);
+            opacity: 100;
+        }
+    }
+}
+
+.newswiper-card-Container {
+    border-radius: 10px;
+    background-color: white;
+    padding: 17px;
+    width: 100%;
+    border: 1px solid Variables.$gray-light;
+    position: relative;
+    max-width: 342px;
+    margin: 0 auto;
+    min-width: 293px;
+
+    * {
+        margin: 0;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .newswiper-title {
+        text-align: center;
+        color: Variables.$blue-light-title;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 20px 0;
+        height: 65px;
+        line-height: 19px;
+    }
+
+    .img {
+        width: 100%;
+        min-height: 135px;
+        background-color: #ccc;
+        border-radius: 10px;
+    }
+
+
+
+    .newswiper-image {
+        width: 100%;
+        transition: .6s;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        display: block;
+        height: 135px;
+        background-color: #ccc;
+        color: transparent;
+        border-radius: 10px;
+    }
+
+    .newswiper-body {
+        color: Variables.$body;
+        text-align: justify;
+        font-size: 1.1em;
+        height: 158px;
+        overflow: hidden;
+        padding: 0 22px;
+        line-height: 2em;
+    }
+
+    .newswiper-paddingWrap {
+        padding: 0 22px;
+        position: absolute;
+        bottom: 19px;
+        width: 90%;
+    }
+
+    .newswiper-container {
+        color: #12ace7;
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        font-size: 13px;
+        padding: 12px 0;
+        grid-row-gap: 10px;
+
+        > span {
+            line-height: 16px;
+        }
+    }
+
+    .newswiper-button {
+        color: white;
+        // background-color: orange;
+        background-color: Variables.$purple-strong;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 20px;
+        width: 191px;
+        margin: 0 auto;
+        text-align: center;
+        transition: .5s;
+        padding: 3px 0;
+        display: block;
+
+        &:hover {
+            background-color: Variables.$blue-light;
+            cursor: pointer;
+        }
+    }
+}

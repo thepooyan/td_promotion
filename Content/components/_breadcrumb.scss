@@ -1,0 +1,78 @@
+@use "../source/Variables";
+
+.TD-breadcrumb nav {
+    top: 0;
+    margin: 0;
+    height: auto !important;
+    z-index: 1;
+}
+
+.TD-breadcrumb .breadcrumb {
+    list-style: none;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.breadcrumb-item {
+    font-size: 1.2em;
+
+    &:last-child {
+        a {
+            cursor: default;
+            color: #000;
+
+            &:hover {
+                color: #000;
+            }
+        }
+    }
+}
+
+.TD-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    padding-left: .5rem;
+    padding-right: .5rem;
+    color: Variables.$blue;
+    font-weight:600;
+    content: "\f100";
+}
+
+.TD-breadcrumb nav a:hover {
+    color: Variables.$blue;
+}
+
+.breadcrumb {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0.75rem 1.3rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+
+
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #6c757d;
+    content: "/";
+}
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: underline;
+}
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #6c757d;
+}

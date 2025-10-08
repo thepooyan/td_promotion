@@ -1,0 +1,9 @@
+﻿@use "../components/boxesAds/boxesAds";
+@use '../components/articleCate';
+@use '../components/search/filterBar';
+@use '../components/customSelect';
+@use '../components/_loader.scss';
+@use '../components/footer';
+.p-ddu {
+    opacity: 100;
+}

@@ -1,0 +1,149 @@
+@use "../source/Variables" as v;
+.tableOfContents {
+    width: 100%;
+    max-width: 30em;
+    margin: auto;
+    margin-block: 1.5em;
+    border-radius: .5em;
+    padding: 1em;
+    font-size: 16px;
+    box-shadow: 0 0 15px #dfdfdf;
+
+    > .title {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        font-weight: 600;
+        color: #383838;
+
+        > svg {
+            color: rgb(0, 139, 231);
+        }
+    }
+
+    > .contents {
+        display: flex;
+        flex-direction: column;
+        max-height: 23em;
+        overflow: auto;
+        padding-left: 1em;
+        --sb-size: 6px;
+        --sb-track-color: #DFDFDF;
+        --sb-thumb-color: #009adc;
+
+        &::-webkit-scrollbar {
+            width: var(--sb-size);
+        }
+
+        &::-webkit-scrollbar-track {
+            background: var(--sb-track-color);
+            border-radius: 7px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--sb-thumb-color);
+            border-radius: 7px;
+        }
+
+        > span {
+            display: flex;
+            align-items: center;
+            gap: .5em;
+            font-size: 1em;
+            color: #64748B;
+            padding-block: .4em;
+            cursor: pointer;
+
+            > span {
+                background-image: linear-gradient( to right, #54b3d6, #54b3d6 50%, #000 50% );
+                background-size: 200% 100%;
+                background-position: -100%;
+                display: inline-block;
+                position: relative;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                transition: all 0.4s ease-in-out;
+
+                &::before {
+                    content: '';
+                    background: #54b3d6;
+                    display: block;
+                    position: absolute;
+                    bottom: -3px;
+                    left: 0;
+                    width: 0;
+                    height: 3px;
+                    transition: all 0.6s ease-in-out;
+                }
+
+                &:hover {
+                    background-position: 0;
+                }
+
+                &:hover::before {
+                    width: 100%;
+                }
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #f1f0f0;
+            }
+
+            &::before {
+                content: '\25CF';
+                color: #CBD5E1;
+            }
+        }
+
+        .collapsibleContent {
+            margin-bottom: 0;
+
+            li {
+                color : black;
+                cursor : pointer;
+                display : flex;
+                gap : .5em;
+                padding-right : .5em;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                &::before {
+                    content: '\25CF';
+                    color: #CBD5E1;
+                }
+
+                &:hover {
+                    color: #54b3d6;
+                    transition : all 0.4s;
+                }
+            }
+        }
+
+        .collapsible {
+            &.active {
+                border: none;
+
+                + .collapsibleContent {
+                    border-bottom: 1px solid #f1f0f0;
+                }
+            }
+        }
+    }
+
+
+    &.right {
+        margin-inline: unset;
+        margin-right: 7.5%;
+    }
+
+    @include v.media(v.$laptop) {
+        width: 100%;
+        font-size: 14px;
+
+        &.right {
+            margin-right: 0;
+            margin-inline: auto;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+﻿@mixin seoLandingLink {
+    background-color: var(--mainBlue);
+    padding: 0.6em 2em;
+    font-size: .875em;
+    border-radius: 0.6em;
+    width: fit-content;
+    margin: auto;
+    position: relative;
+    margin-top: auto;
+    overflow: hidden;
+    display : block;
+
+    > div {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        gap: 0.7em;
+        position: relative;
+        z-index: 1;
+
+        > svg {
+            --wid: 1.5em;
+            width: var(--wid);
+            height: var(--wid)
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: #234c7a;
+        transition: all .3s;
+        z-index: 0;
+        border-radius: 0.6em;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        &::after {
+            width: 100%;
+        }
+    }
+}

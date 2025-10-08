@@ -1,0 +1,139 @@
+@use '../source/_Variables.scss';
+ul.guide {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+
+    li {
+        box-shadow: 2px 5px 9px 1px #0000001c;
+        display: grid;
+        grid-template-rows: 19em 17em 3em;
+        grid-template-columns: repeat(3, minmax(5em,10em));
+        padding: 1.5em;
+        gap: 1.5em 0;
+        border-radius: 5px;
+
+        .explanPanel {
+            background-color: #fff;
+            color: #636567;
+            color: var(--text-dim-e1);
+            font-size: 0.9em;
+            line-height: 2em;
+            text-align: justify;
+            border-radius: 5px;
+            font-size: 0.9em;
+            grid-column: 1/4;
+
+
+            span {
+                font-size: 0.85em;
+                color: #636567;
+                margin-right: 5px;
+                text-align: justify;
+            }
+        }
+
+        img {
+            object-fit: contain;
+            width: 100%;
+            border-radius: 5px;
+            grid-row: 2/3;
+            grid-column: 1/4;
+        }
+
+        .linkExplanPanel {
+            text-align: center;
+            font-size: 0.75em;
+            margin-top: 10px;
+            padding: 0.8em 1em;
+            background-color: #1d71b9;
+            color: #fff;
+            border-radius: 5px;
+            grid-column: 2/3;
+            grid-row: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+
+            &:hover {
+                background-color: #185f9e;
+                box-shadow: 3px 2px 6px 2px #0000004d
+            }
+
+
+            i {
+                margin-right: 8px;
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$screen) {
+
+        li {
+            &:last-child {
+                grid-template-rows: 12em 14em 3em;
+            }
+
+            &:first-child {
+                grid-template-rows: 23em 12.5em 3em;
+            }
+        }
+    }
+
+    @include Variables.media(600px) {
+
+        li {
+
+
+            .linkExplanPanel {
+                grid-column: 1/4;
+            }
+        }
+    }
+
+    @include Variables.media(500px) {
+
+        li {
+            grid-template-rows: 25em 14em 3em;
+        }
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        .explanPanel {
+            font-size: 0.9em;
+        }
+
+        margin: 0;
+
+        li {
+
+            &:first-child {
+                grid-template-rows: 27em 12em 3em;
+            }
+
+            &:last-child {
+                grid-template-rows: 11em 14em 3em;
+            }
+        }
+    }
+
+    @include Variables.media(300px) {
+
+        li {
+
+
+            &:first-child {
+                grid-template-rows: 28.5em 9em 3em;
+            }
+
+            &:last-child {
+                grid-template-rows: 15em 10em 3em;
+            }
+        }
+    }
+}

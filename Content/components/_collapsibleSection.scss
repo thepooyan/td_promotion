@@ -1,0 +1,16 @@
+.collapsibleSection{
+    display: flex;
+    flex-direction: column;
+
+    >.content{
+        height: 0px;
+        overflow: hidden;
+        transition: all .3s;
+    }
+
+    &.active{
+        >.content{
+            height: var(--height);
+        }
+    }
+}

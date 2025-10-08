@@ -1,0 +1,23 @@
+    #paymentStatus {
+        border: 1px solid rgb(131, 131, 131);
+        padding: .7em;
+        border-radius: .2em;
+
+        .tr {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: .3em;
+        }
+
+        p {
+            margin-bottom: 2em;
+            color: green;
+            font-weight: bold;
+        }
+
+        &.fail {
+            p {
+                color: red;
+            }
+        }
+    }

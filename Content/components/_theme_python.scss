@@ -1,0 +1,11 @@
+@mixin theme {
+    &[data-theme='python'] {
+        --mainTheme: #C39C1A;
+        --themeCompliment: white;
+        --button_image_1: url("/Content/images/img/python items/python_crawling.png");
+        --button_image_2: url("/Content/images/img/python items/python_on_tree.png");
+        --button_image_3: url("/Content/images/img/python items/python_happy.png");
+        --themeHeader: url("/Content/images/img/python items/main_logo.png");
+        --weblogBack: #EEE6D1;
+    }
+}

@@ -1,0 +1,209 @@
+@use "sass:meta";
+@use "sass:color";
+@use '../source/_Variables.scss';
+@use '../source/Fonts';
+@use '../components/modal';
+@use '../components/profile';
+@use '../components/uploadDocs';
+@use '../components/customSelect';
+@use '../components/copyable';
+@use '../components/bankCard';
+@use '../components/gridItems';
+@use '../components/dashboard';
+
+
+.select {
+    --height: 10px;
+    position: relative;
+    direction: rtl;
+    cursor: pointer;
+    user-select: none;
+    transition: .2s;
+    height: 2.8em;
+    width: 100%;
+    border: 0;
+    border-radius: .6em;
+    padding: .7em .7em;
+    display: block;
+    font-family: inherit;
+    margin-top: .4em;
+    color: var(--textMainColor);
+    font-size: 1em;
+    background: var(--fourthColor);
+    margin-bottom: .2em;
+
+    .list {
+        color: var(--textMainColor);
+        background: var(--fourthColor);
+    }
+}
+
+:root {
+    --theme: #1D71B9;
+    --theme-2: #77BEFB;
+    --theme-3: #68C6F7;
+    --theme-4: #FF1A1A;
+    --theme-5: #51B555;
+    --back-dim: #4D4D4D;
+    --back-dim-o1: #eaeaea;
+    --back-dim-o05: #d2d2d2;
+    --text-bright: white;
+    --text-bright-o1: #95989a;
+    --text-bright-o2: #666;
+    --text-dim-e1: #636567;
+    --text-dim: #95989a;
+}
+
+a {
+    color: inherit; 
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+input {
+    font-family: inherit;
+    outline: none;
+}
+
+body {
+    direction: rtl;
+    font-family: yekanBakh;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.factors {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(22em, 1fr));
+    gap: 2em;
+    color: var(--textMainColor);
+
+    .factorItem {
+        padding: 1em;
+        box-shadow: var(--boxShadow);
+        border-radius: .5em;
+        position: relative;
+        background-color: var(--boxColor);
+
+        &::before {
+            position: absolute;
+            content: attr(index);
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+            --wid: 2em;
+            width: var(--wid);
+            height: var(--wid);
+            border-radius: 50%;
+            background-color: var(--secondaryColor);
+            display: grid;
+            place-content: center;
+            color: var(--textSecondColor);
+            box-shadow: var(--boxShadow);
+        }
+
+        > a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5em;
+            font-size: 1.1em;
+            font-weight: 700;
+            text-align: center;
+
+            > img {
+                width: 100%;
+                aspect-ratio: 16/9;
+                border-radius: 1em;
+            }
+        }
+
+        > .row {
+            display: flex;
+            justify-content: space-between;
+            padding-block: 0.6em;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid var(--dividerColor);
+            }
+
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+
+
+    .buttons {
+        margin-top: 1em;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: .4em;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+
+        .button {
+            font-size: .9em;
+            border-radius: .4em !important;
+            flex-shrink: 0;
+        }
+    }
+}
+
+.dashboardGuid {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    max-width: 800px;
+    margin: auto;
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        background-color: var(--fourthColor);
+        padding: 1.5em;
+        border-radius: .5em;
+        color: var(--textMainColor);
+
+
+        > img {
+            width: 100%;
+        }
+
+        > .smallButton {
+            display: flex !important;
+            align-items: center;
+            gap: .5em;
+        }
+    }
+}
+
+@include Variables.media(Variables.$tablet) {
+    .factors {
+        grid-template-columns: 1fr; 
+        padding-inline: 0.4em;
+    }
+
+    .dashboardGuid{
+        font-size : 14px;
+
+        >.item{
+            padding : 1em;
+        }
+    }
+}

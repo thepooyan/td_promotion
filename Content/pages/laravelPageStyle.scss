@@ -1,0 +1,86 @@
+﻿@use "../components/courseDetailTitr" as cd;
+@use "../source/Variables" as v;
+@use "../components/courseQuestion" as cq;
+
+.course-Details .whiteArea header h1 {
+    opacity: 0;
+}
+
+.course-Details .whiteArea header {
+    margin-inline: 4%;
+}
+
+.course-Details .whiteArea header img {
+    min-height: unset;
+    border-radius: 1.9em;
+}
+.courseDetailTitr {
+    @include cd.courseDetailTitr;
+    font-size: 0.87vw;
+
+    > div {
+        &:nth-of-type(1) {
+            flex-basis: 34em;
+
+            > h2 {
+                font-size: 3.2em;
+
+                > div {
+                    display: flex;
+                    flex-direction: column;
+
+                    > span {
+                        font-size: 0.55em;
+                        color: var(--textColorStrong);
+                    }
+                }
+
+                .laravelColor {
+                    color: var(--colorTheme);
+                }
+            }
+        }
+    }
+
+    @include v.media(v.$screen) {
+        font-size: .78vw;
+    }
+
+    @include v.media(962px) {
+        font-size: 1vw;
+    }
+
+    @include v.media(v.$tablet) {
+        font-size: 1.2vw;
+    }
+}
+
+.question {
+    @include cq.courseQuestion;
+
+    >div{
+        &:nth-child(2){
+            >img{
+                object-fit : contain;
+            }
+        }
+    }
+}
+.colorTheme {
+    color: var(--colorTheme) !important;
+}
+
+.box{
+    li{
+        &:last-child{
+            margin-bottom : 0;
+        }
+    }
+}
+
+.collapsePart {
+    &::before {
+        border: 1px solid white !important;
+        color: white !important;
+    }
+}

@@ -1,0 +1,115 @@
+﻿@use "../source/Variables" as v;
+
+.course-table-of-content {
+    font-size: 16px;
+    padding: 1.5em;
+    max-width: 650px;
+    margin-inline: auto;
+    box-shadow: 0 0 16px rgba(132,132,132,.22);
+    border-radius: .7em;
+    background-color: white;
+
+    &.full{
+        max-width : unset;
+    }
+
+    > .title {
+        display: flex;
+        color: #383838;
+        font-weight: 600;
+        align-items: center;
+        gap: .5em;
+        margin-bottom: 1em;
+
+        > svg {
+            --wid: 1.5em;
+            width: var(--wid);
+            height: var(--wid);
+        }
+    }
+
+    > .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.4em 0.7em;
+        border: 1px solid #E1E1E1;
+        color: var(--textColorStrong);
+        border-radius: .5em;
+        cursor: pointer;
+
+        svg {
+            --wid: 1.2em;
+            width: var(--wid);
+            height: var(--wid);
+        }
+
+        &:not(:last-child) {
+            margin-bottom: .3em;
+        }
+
+        &.collapsible-item {
+            display: flex;
+            flex-direction: column;
+            align-items: unset;
+            transition: all .3s;
+
+            > .collapsible-item-title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                > .collapse-item-btn {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+
+                    > #minus {
+                        display: none;
+                    }
+                }
+            }
+
+            > .collapsible-content {
+                transition: all .3s;
+                max-height: 0px;
+                overflow: hidden;
+
+                > li {
+                    list-style-type: disc;
+                    margin-right: 1.2em;
+                }
+            }
+
+            &.active {
+                background-color: rgba(32,134,200,.08);
+                border-color: rgb(32,134,200);
+
+                > .collapsible-item-title {
+                    font-weight: 700;
+                    border-bottom: 1px solid white;
+                    padding-bottom: .5em;
+
+                    > .collapse-item-btn {
+                        > #minus {
+                            display: block;
+                        }
+
+                        > #plus {
+                            display: none;
+                        }
+                    }
+                }
+
+                > .collapsible-content {
+                    padding-top: .6em;
+                    max-height: calc(var(--scrollHeight) + .6em);
+                }
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,110 @@
+nav ul li a {
+    padding: 0;
+}
+.title-menu-inner-page {
+    display: flex;
+    align-items: center;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    font-size: 1.3em;
+
+    p {
+        margin-right: 0.5em;
+    }
+}
+.items-menu-inner,
+.items-menu-inner a {
+    display: block;
+}
+.items-menu-inner > li > a {
+    padding: 0 !important;
+}
+.items-menu-inner .item {
+    color: var(---lightBlack);
+
+    a {
+        &:hover, &.active {
+            color: var(--blue);
+        }
+    }
+
+    &:hover::before,
+    .dropdown-items a:hover::before, .dropdown-items a.active:before {
+        background-color: var(--blue);
+    }
+}
+.items-menu-inner a {
+    font-size: 1.2em;
+}
+.items-menu-inner .item {
+    position: relative;
+    margin: 0.5em 2.5em 0.5em 1em;
+
+    &::after,
+    &::before {
+        transition: 0.3s;
+        position: absolute;
+        font-family: "Font Awesome 5 Free";
+        font-weight: 600;
+    }
+    &::before {
+        content: '';
+        right: -1.5em;
+        width: 0.7em;
+        height: 0.2em;
+        top: 1.2em;
+        background-color: #ccc;
+    }
+}
+
+.items-menu-inner .dropdown {
+    .dropdown-items {
+        max-height: 0;
+        overflow: hidden;
+        transition: ease-in-out 0.3s;
+        margin-top: 0.5em;
+
+        .link-item {
+            position: relative;
+            margin-right: 1em;
+
+            &::before {
+                position: absolute;
+                content: '';
+                right: -1em;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 0.3em;
+                height: 0.3em;
+                background-color: #ccc;
+                border-radius: 50%;
+                transition: 0.3s;
+            }
+        }
+    }
+    &.open {
+        > a,
+        &::after {
+            color: var(--blue);
+        }
+        &::after {
+            transform: rotate(180deg);
+        }
+        &::before {
+            transform: rotate(90deg);
+            background-color: var(--blue);
+        }
+        .dropdown-items {
+            max-height: 40vh;
+            height: auto;
+        }
+    }
+    &::after {
+        content: '\f078';
+        left: 0;
+        line-height: 1em;
+        top: 1em;
+    }
+}

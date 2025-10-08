@@ -1,0 +1,93 @@
+﻿@mixin sample-video {
+    position: relative;
+    width: 100%;
+    border-radius: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    &.play {
+        &::before {
+            display: none;
+        }
+
+        svg {
+            display: none;
+        }
+
+        > video {
+            object-fit: contain;
+        }
+    }
+
+    > video {
+        position: relative;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        max-width: unset;
+        margin: 0;
+        border-radius: 1em;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("/content/images/img/packageVideoOverLay.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 1;
+        border-radius: 1.4vw;
+    }
+    /*&::after {
+                    content: "";
+                    position: absolute;
+                    z-index: 2;
+                    --wid: 4vw;
+                    width: var(--wid);
+                    height: var(--wid);
+                    background-image: var(--icons);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: 100.1% 0;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }*/
+
+    svg {
+        position: absolute;
+        z-index: 2;
+        --wid: 4em;
+        width: var(--wid);
+        height: var(--wid);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+    > div {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        font-size: 1.3em;
+        color: var(--textColorStrong);
+        top: 103%;
+        right: 0;
+        font-weight: bold;
+    }
+
+    &.noCover {
+        margin-bottom: 1em;
+
+        &::before {
+            background-image: none;
+            background-color: #000;
+        }
+    }
+}

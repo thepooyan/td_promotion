@@ -1,0 +1,90 @@
+﻿@use "../source/Variables" as v;
+@mixin newBreadcrumb {
+    --color: #85c9f6;
+    border-radius: 0.2em;
+    grid-area: breadcrumb;
+    border-radius: .7em;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: auto;
+    background-color: white;
+    box-shadow: 0 7px 7px rgba(0,0,0,0.02);
+    width: fit-content;
+
+    &::-webkit-scrollbar-thumb {
+        height: 0;
+        width: 0;
+        background-image: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        height: 0;
+        width: 0;
+        background-image: none;
+    }
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+
+    &.forTv {
+        font-size: 1vw;
+        padding-inline: 0;
+        width: 93%;
+        margin: auto;
+    }
+
+    > a, > span {
+        flex-shrink: 0;
+        padding-block: 0.8em;
+        padding-right: 3em;
+        line-height: 1.5em;
+    }
+
+    > a {
+        color: #808080;
+        position: relative;
+
+        &:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            width: 2em;
+            height: 100%;
+            right: 100%;
+            top: 0;
+            background-image: url('/Content/images/img/breadCrumbArrow.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        &:first-child {
+            padding-right: 1.4em;
+        }
+
+        &:last-child {
+            color: #2086c8;
+            padding-left: 1em;
+        }
+    }
+
+    > span {
+        color: #2086c8;
+        padding-left: 1em;
+    }
+
+    @include v.media(v.$screen) {
+        margin-top: 1em;
+    }
+
+    @include v.media(v.$tablet) {
+        width: 100%;
+
+        &.forTv {
+            font-size: 3.8vw;
+            margin-top: 4em;
+            line-height: 1.7em;
+        }
+    }
+}

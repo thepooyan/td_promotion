@@ -1,0 +1,114 @@
+@use "sass:list";
+@use '../source/_Variables.scss';
+
+.msgs {
+    a {
+        color: blue;
+        font-weight: bold;
+    }
+
+    $colors: ((green,#38a538), (yellow,#cece00), (red,#e90000), (purple,#ca6eca));
+
+    @for $i from 1 through list.length($colors) {
+        $item: list.nth($colors, $i);
+        $name: list.nth($item, 1);
+        $color: list.nth($item, 2);
+
+        .notic-#{$name} {
+            background-color: $color;
+        }
+    }
+
+    [class^="notic"] {
+        color: white;
+        font-weight: bold;
+        padding: 0.3em .5em;
+        border-radius: 2em;
+    }
+    //!----- structure
+    > * {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6em 1.6em;
+        font-size: .75em;
+
+        &.head {
+            background-color: var(--secondaryColor);
+            color: var(--textSecondColor);
+            font-weight: bold;
+            border-radius: 1em 1em 0 0;
+        }
+
+        &:nth-child(2n) {
+            background-color: var(--back-dim-o1);
+        }
+
+        > * {
+            text-align: center;
+            $flex: 3%, 10%, 6%, 7%, 50%, 13%, 3%;
+
+            @for $i from 1 through list.length($flex) {
+                &:nth-child(#{$i}) {
+                    $value: list.nth($flex, $i);
+                    flex: 0 0 $value;
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$laptop) {
+        > * {
+            padding: 0.6em;
+
+            :nth-child(1) {
+                flex: 0 0 5%;
+            }
+
+            :nth-child(3) {
+                flex: 0 0 10%;
+            }
+
+            :nth-child(5) {
+                flex: 0 0 43%;
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$tablet) {
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        font-size: 1.2em;
+
+        > * {
+            &.head {
+                border-radius: unset;
+            }
+
+            > * {
+                &:first-child {
+                    display: none;
+                }
+
+                &:nth-child(2) {
+                    flex: 0 0 20%;
+                }
+
+                &:nth-child(3) {
+                    flex: 0 0 9%;
+                }
+
+                &:nth-child(5) {
+                    flex: 0 0 25%;
+                    max-height: 5em;
+                    overflow: hidden;
+                }
+
+                &:nth-child(6) {
+                    flex: 0 0 14%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,131 @@
+@use "../source/Variables" as v;
+@mixin asideFilter {
+  grid-area: aside;
+  box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.18);
+  border-radius: 0.7em;
+  padding: 1.5em;
+  height: fit-content;
+
+  > span {
+    padding-bottom: 0.8em;
+    margin-bottom: 1.5em;
+    border-bottom: 1px solid #efefef;
+    display: block;
+    position: relative;
+    padding-right: 2em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 1.3em;
+      height: 1.2em;
+      right: 0.3em;
+      top: 0.2em;
+      background-size: 12.9em;
+      background-position: -2.6em;
+      background-repeat: no-repeat;
+      background-image: url("/Content/images/img/packagePageIcon.png");
+    }
+  }
+
+  > .filters {
+    div {
+      position: relative;
+      padding-right: 2em;
+      cursor: pointer;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        --wid: 0.9em;
+        width: var(--wid);
+        height: var(--wid);
+        border: 1px solid gray;
+        right: 0.4em;
+        top: 0.4em;
+        border-radius: 0.3em;
+        transition: all 0.3s;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0.25em;
+        height: 0.6em;
+        transition: transform 0.3s;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        right: 0.7em;
+        top: 0.45em;
+        transform: rotateZ(45deg) scale(0);
+      }
+
+      &.checked {
+        &::before {
+          background-color: var(--textSecondColor);
+          border-color: var(--textSecondColor);
+        }
+
+        &::after {
+          transform: rotateZ(45deg) scale(1);
+        }
+      }
+    }
+  }
+
+  @include v.media(v.$laptop) {
+    padding: 0;
+    border: 1px solid #d1d1d1;
+    box-shadow: none;
+    border-radius: 0.5em;
+
+    > span {
+      &:first-child {
+        position: relative;
+        margin: 0;
+        padding: 0.7em;
+        padding-right: 2.5em;
+        cursor: pointer;
+
+        &::before {
+          right: 0.8em;
+          top: 1.1em;
+        }
+
+        &::after {
+          content: "";
+          --thick: 0.37em;
+          display: inline-block;
+          border: var(--thick) solid black;
+          padding: 0.7em;
+          border-top: var(--thick) solid transparent;
+          border-left: var(--thick) solid transparent;
+          transform: translate(0, -0.7em) rotate(45deg);
+          font-size: 3px;
+          border-radius: 0.5em;
+          height: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto 3em auto 2.3em;
+          transition: inherit;
+        }
+
+        &.active {
+          &::after {
+            transform: translate(0, 0.6em) rotate(45deg) scale(-1);
+          }
+        }
+      }
+    }
+
+    .filters {
+      display: none;
+      padding: 1em 1.7em;
+    }
+  }
+}

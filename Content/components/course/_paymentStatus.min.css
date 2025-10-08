@@ -1,0 +1,1 @@
+﻿#paymentStatus{border:1px solid #838383;padding:.7em;border-radius:.2em;}#paymentStatus .tr{display:grid;grid-template-columns:1fr 1fr;margin-bottom:.3em;}#paymentStatus p{margin-bottom:2em;color:#008000;font-weight:bold;}#paymentStatus.fail p{color:#f00;}

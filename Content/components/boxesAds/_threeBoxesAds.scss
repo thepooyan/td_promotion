@@ -1,0 +1,11 @@
+@use "../../source/Variables";
+
+.boxes-three{
+    grid-template-columns: repeat(3, 1fr);
+
+    @include Variables.media(Variables.$laptop){
+      
+        grid-template-columns: repeat(1, 1fr); 
+   
+}
+}

@@ -1,0 +1,176 @@
+@mixin seventh-section {
+  width: 100%;
+  height: 533px;
+  margin: auto;
+  display: flex;
+
+  justify-content: space-between;
+  margin-top: 50px;
+  .right {
+    width: 566px;
+    height: 31em;
+    position: relative;
+
+    @media (max-width: 1150px) {
+      width: 415px;
+      height: 27em;
+    }
+
+    @media (max-width: 1015px) {
+      display: none;
+    }
+    .background-green {
+      background-color: #FFAE00;
+      width: 270px;
+      height: 150px;
+      border-radius: 10px;
+      position: absolute;
+      font-size: 1.5em;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 0 20px -4px #FFAE00;
+      font-weight: 900;
+      color: #fff;
+      left: 0;
+      @media (max-width: 1150px) {
+        width: 205px;
+        height: 120px;
+        font-size: 1.2em;
+      }
+    }
+
+    .courseimg {
+      width: 270px;
+      height: 335px;
+      position: absolute;
+      right: 0;
+      object-fit: none;
+      border-radius: 1em;
+      @media (max-width: 1150px) {
+        width: 200px;
+        height: 300px;
+      }
+    }
+
+    .kidlaugh {
+      width: 270px;
+      height: 335px;
+      position: absolute;
+      left: 0;
+      object-fit: none;
+      bottom: 0;
+      border-radius: 1em;
+      background-color: #ffffff;
+      @media (max-width: 1150px) {
+        width: 200px;
+        height: 300px;
+      }
+    }
+    .background-yellow {
+      background-color: #284B84;
+      width: 270px;
+      height: 150px;
+      border-radius: 10px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-size: 1.5em;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 0 20px -4px #284B84;
+      font-weight: 900;
+      color: #fff;
+
+      @media (max-width: 1150px) {
+        width: 205px;
+        height: 120px;
+        font-size: 1.2em;
+      }
+    }
+  }
+
+  .left {
+    width: 605px;
+    height: 100%;
+    @media (max-width: 1015px) {
+      width: 100%;
+    }
+
+    .Q-title {
+      width: 100%;
+      background-color: transparent;
+      height: 55px;
+      border-right: 5px solid;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      font-size: 1.5em;
+      padding-right: 15px;
+      color: black;
+      font-weight: 900;
+      margin: 10px 0;
+
+      @media (max-width: 1015px) {
+        margin: 10px 1em;
+        width: 70%;
+      }
+    }
+    #commonQ {
+      .Q,
+      .A {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0.4em;
+        margin: auto;
+        margin-bottom: 3px;
+        padding: 0.8em 1em;
+        width: 605px;
+        background-color: #fff;
+              @media (max-width: 1150px) {
+                width: 95%;
+              }
+        &.Q {
+          font-weight: bold;
+          position: relative;
+          cursor: pointer;
+          user-select: none;
+
+          @media (max-width: 1150px) {
+            width: 95%;
+          }
+
+          &::before {
+            position: absolute;
+            left: 1em;
+            transition: 0.3s;
+          }
+
+          &.active {
+            &::before {
+              transform: rotate(180deg);
+            }
+
+            & + .A {
+              max-height: 20em;
+              padding-block: 0.8em;
+              border-width: 1px;
+
+              @media (max-width: 1150px) {
+                width: 95%;
+              }
+            }
+          }
+        }
+
+        &.A {
+          padding-block: 0;
+          max-height: 0;
+          overflow: hidden;
+          border-width: 0;
+          transition: 0.8s cubic-bezier(0.25, 0.1, 0.19, 0.93);
+        }
+      }
+    }
+  }
+}

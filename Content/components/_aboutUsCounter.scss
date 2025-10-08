@@ -1,0 +1,283 @@
+/*start/about us(counter)*/
+@use '../source/_Variables.scss';
+
+* {
+    -moz-margin: 0px;
+    -webkit-margin: 0px;
+}
+
+.kids {
+    .boxes-counter-s {
+        margin-top: 2.5em;
+    }
+}
+
+.boxes-counter-s {
+    background-size: cover;
+    display: grid;
+    align-items: center;
+    background-position: top;
+    padding-top: 1em;
+    background-repeat: no-repeat;
+    grid-template-rows: 8em auto;
+
+
+
+
+    h4 {
+        font-size: 2.4em;
+        color: var(--white);
+        text-align: center;
+        font-weight: 400;
+        padding-inline: 1em;
+        line-height: 1.9em;
+        padding-top: 1.6vw;
+    }
+
+    > div {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
+        margin: 0 8em;
+        place-items: center;
+        z-index: 1;
+
+        div {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 0.5em 1em;
+            text-align: center;
+            color: var(---lightBlack);
+            box-shadow: 0px 1px 5px 2px #00000026;
+            margin-block: 3.2vw 0;
+            width: 70%;
+            height: 10vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            p {
+                border-bottom: 1px solid rgb(152 152 152 / 32%);
+                padding-block: 1em;
+                text-align: center;
+                font-size: 1.2vw;
+            }
+
+            span {
+                padding-top: 0.5em;
+                font-size: 1.6vw;
+                font-weight: 600;
+                display: inline-block;
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$tablet){
+        >div{
+            >div{
+                >p{
+                    font-size:1em;
+                }
+                >span{
+                    font-size:1.5em;
+                }
+            }
+        }
+    }
+}
+
+.kids {
+    .boxes-counter-s {
+        background-image: url(/Content/images/img/bg-brown-small.png);
+        height: 19vw;
+        background-size: cover;
+
+        &::after {
+            position: absolute;
+            content: "";
+            background-image: url(/Content/images/img/line.png);
+            background-repeat: no-repeat;
+            min-width: 0;
+            width: 100%;
+            height: 48vw;
+            background-position: -4vw -1vw;
+            background-size: 107vw 50vw;
+            z-index: 0;
+        }
+    }
+}
+
+// --start/teens page
+.teens {
+    .boxes-counter-s {
+        background-repeat: no-repeat;
+        background-image: url(/Content/images/img/Rectangle.png);
+        min-height: 24em;
+        background-size: 100%;
+
+
+
+        > div {
+            grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+            margin: 0 4em;
+            z-index: 1;
+            width: 60%;
+            margin-right: auto;
+            gap: 0 1em;
+
+            div {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// --start/queris
+@include Variables.media(1410px) {
+    .teens .boxes-counter-s {
+        background-size : 100% 100%;
+
+
+        > div {
+            width: 83%;
+            margin: auto;
+            >div{
+                height : 13vw;
+
+                >p{
+                    font-size : 1.7vw;
+                }
+                >span{
+                    font-size : 2vw
+                }
+            }
+        }
+    }
+}
+@include Variables.media(1400px) {
+    
+
+    .kids {
+        .boxes-counter-s {
+
+
+            &::after {
+                background-position: -7vw -3.7vw;
+                background-size: 110vw 59vw;
+            }
+        }
+    }
+}
+@include Variables.media(1280px) {
+    .kids {
+        .boxes-counter-s {
+            &::after {
+              display:none;
+            }
+        }
+    }
+} @include Variables.media(Variables.$screen) {
+    
+
+ 
+}
+
+@include Variables.media(Variables.$laptop) {
+    .boxes-counter-s {
+        background-size: auto;
+
+        > div {
+            margin: 0;
+        }
+    }
+
+    .teens {
+        .boxes-counter-s {
+            grid-template-rows : 100%;
+
+            > div {
+                grid-template-columns : 1fr 1fr;
+
+                >div{
+                    height : 21vw;
+
+                    >p{
+                        font-size : 2.5vw;
+                    }
+
+                    >span{
+                        font-size : 3vw;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    .teens .boxes-counter-s {
+        margin-bottom: 2em;
+        grid-template-rows: 100%;
+    }
+}
+
+@include Variables.media(Variables.$tablet) {
+
+            .boxes-counter-s {
+                height:56vw !important;
+                background-size:100% 100% !important;
+                margin-bottom:5em;
+
+                h4{
+                    font-size:1.5em;
+                }
+                > div {
+
+                    div {
+                        height: 23vw
+                    }
+                }
+            }
+        }
+
+
+@include Variables.media(Variables.$mobile) {
+    .teens {
+        .boxes-counter-s {
+            > div {
+                width : 100%;
+                > div {
+                    height: 30vw;
+
+                    > p {
+                        font-size: 4vw;
+                    }
+
+                    > span {
+                        font-size: 4.1vw;
+                    }
+                }
+            }
+        }
+    }
+
+    .boxes-counter-s {
+        height: 96vw !important;
+        background-size: 100% 100% !important;
+        margin-bottom: 1em;
+
+        > div {
+            grid-template-columns: repeat(auto-fit,minmax(11em,1fr));
+
+            div {
+                width: 90%;
+                height: 31vw;
+            }
+        }
+
+
+        h4 {
+            margin-top: 2em;
+            font-size: 1.2em;
+        }
+    }
+}

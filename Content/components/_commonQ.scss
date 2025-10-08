@@ -1,0 +1,61 @@
+@use '../source/Variables' as v;
+
+#commonQ, .commonQ {
+
+    .Q,
+    .A {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 0.4em;
+        margin: auto;
+        margin-bottom: 3px;
+        padding: 0.8em 1em;
+        width: 84%;
+
+        &.Q {
+            font-weight: bold;
+            position: relative;
+            cursor: pointer;
+            user-select: none;
+
+            &::before {
+                @include v.fontAwsome("f078", 900);
+                position: absolute;
+                left: 1em;
+                transition: 0.3s;
+            }
+
+            &.active {
+                &::before {
+                    transform: rotate(180deg);
+                }
+
+                & + .A {
+                    max-height: 20em;
+                    padding-block: 0.8em;
+                    border-width: 1px;
+                }
+            }
+        }
+
+        &.A {
+            padding-block: 0;
+            max-height: 0;
+            overflow: hidden;
+            border-width: 0;
+            transition: 0.8s cubic-bezier(0.25, 0.1, 0.19, 0.93);
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        font-size: 14px;
+
+        .Q, .A {
+            width: 100%;
+            &.Q{
+                &::before{
+                    left : .3em;
+                }
+            }
+        }
+    }
+}

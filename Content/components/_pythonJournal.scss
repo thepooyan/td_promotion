@@ -1,0 +1,680 @@
+@use "sass:meta";
+@use "../source/Variables" as v;
+@use "../components/courseVideo" as cv;
+@use "../components/shared/innerContent" as ic;
+@use "../components/splitSection" as sp;
+@use "courseDetailTitr" as ct;
+.journal {
+    @include ic.innerContent;
+    --radius: 0.6em;
+    --h_compliment: var(--colorAlt);
+    margin-bottom: 3em;
+
+    @mixin fullscreen() {
+        margin-left: calc(-1 * var(---containerPadding));
+        margin-right: calc(-1 * var(---containerPadding));
+    }
+
+    &.logic {
+        --h_compliment: #515e7a;
+        --colorTheme: #515e7a;
+        --colorAlt: #515e7a;
+    }
+
+    .marginContent {
+        max-width: 1240px;
+        padding-inline: 1em;
+        margin: auto;
+    }
+
+    .courseDetailTitr {
+        @include ct.courseDetailTitr;
+        gap: 4em;
+
+        > div {
+            &:nth-of-type(1) {
+                flex-basis: 52em;
+            }
+
+            &:nth-of-type(2) {
+                align-items: center;
+            }
+        }
+    }
+
+    .split {
+        @include sp.split;
+    }
+
+    .courseVideo {
+        @include cv.courseVideo;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .chart {
+        font-size: 1.4vw;
+        font-weight: 500;
+        position: relative;
+        $colors: #a3de8a, #de87d8, #88d8e1, #c287e1, #dd8c89;
+        $positions: (0 50%)
+        , (50% 20%), (50% 80%), (100% 30%), (100% 70%);
+        height: 30em;
+        width: 45em;
+        margin: auto;
+        margin-block: 3em 9em !important;
+
+        > span {
+            --wid: 12em;
+            width: var(--wid);
+            height: var(--wid);
+            left: calc(var(--left) - calc(var(--wid) / 2));
+            top: calc(var(--top) - calc(var(--wid) / 2));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.6em;
+            background-color: var(--color);
+            color: #413d43;
+            position: absolute;
+            text-align: center;
+            padding: 2em;
+
+            @for $i from 1 through length($colors) {
+                $color: nth($colors, $i);
+                $position: nth($positions, $i);
+                $left: nth($position, 2);
+                $top: nth($position, 1);
+
+                &:nth-child(#{$i}) {
+                    --color: #{$color};
+                    --left: #{$left};
+                    --top: #{$top};
+                }
+            }
+
+            &:not(.center) {
+                --offset: 0.7em;
+
+                &::before,
+                &::after {
+                    content: "";
+                    background-color: inherit;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0.5;
+                    border-radius: 50%;
+                    z-index: -1;
+                    top: var(--offset);
+                }
+
+                &::before {
+                    top: unset;
+                    bottom: var(--offset);
+                }
+            }
+
+            &.center {
+                color: white;
+                --color: #4e7c9d;
+                --left: 50%;
+                --top: 65%;
+                font-weight: 700;
+
+                &::after {
+                    content: "";
+                    border: 0.1em solid white;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    transform: scale(0.95);
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .blueBlock,
+    ins {
+        background: url("/Content/images/courseDetails/blueBlock.webp");
+        background-size: cover;
+        width: 32.4em;
+        height: 20.5em;
+        padding-inline: 3.4em;
+        padding-block: 7.7em 1em;
+        margin: 4rem auto;
+        color: white;
+        font-size: 1.2em;
+        text-align: justify;
+        overflow: hidden;
+        position: relative;
+
+        &::before {
+            content: "“";
+            font-size: 6em;
+            position: absolute;
+            top: 1em;
+        }
+
+        * {
+            color: white !important;
+        }
+
+        &.withText {
+            &::after {
+                content: 'توجه';
+                position: absolute;
+                top: 1em;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 2.5em;
+            }
+        }
+    }
+
+    .h_iframe-aparat_embed_frame {
+        margin: 2em auto;
+        max-width: 44em;
+        margin-bottom: 2em;
+        display: block;
+        position: relative;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .part {
+        background-color: var(--colorTheme);
+        border-radius: .7em;
+        font-size: 1.2em;
+        color: var(--colorCompliment);
+        padding: 0.5em 0.7em;
+        margin-bottom: 0.5em !important;
+
+        h2,
+        h3,
+        h4,
+        .h2,
+        .h3,
+        .h4 {
+            margin: 0;
+            padding: 0;
+            color: inherit;
+        }
+    }
+
+    .box {
+        background-color: var(--colorCompliment);
+        border: 0.1em solid var(--colorAlt);
+        border-radius: .7em;
+        padding: 1em 2em;
+        margin-bottom: 3rem;
+        --p: #383838;
+
+        &.project {
+            background-color: var(--colorAlt);
+            display: grid;
+            grid-template-columns: 25% auto;
+            grid-template-areas: "right left";
+            gap: 6em;
+            padding: 1em 5em;
+
+            * {
+                color: var(--colorCompliment) !important;
+            }
+
+            .left {
+                grid-area: left;
+                margin-block: auto;
+
+                h4 {
+                    margin-top: 1em;
+                }
+            }
+
+            img {
+                margin-block: auto;
+                grid-area: right;
+            }
+        }
+
+        img {
+            box-shadow: unset !important;
+            cursor: unset !important;
+            max-width: 100%;
+            height: auto;
+        }
+
+        &:not(.project) {
+            > img {
+                width: 30%;
+                height: auto;
+                float: left;
+                margin-left: 3em;
+            }
+
+            .block-img {
+                width: auto;
+                margin: auto;
+                height: 300px;
+                float: none;
+                margin-bottom: 2em;
+            }
+        }
+    }
+
+    span.collapsible, button.collapsible {
+        background: var(--colorTheme);
+        color: var(--colorCompliment);
+        font-size: 1.2em;
+        border-radius: 50%;
+        width: 1em;
+        height: 1em;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        &::before {
+            content: "+";
+        }
+
+        + * {
+            height: 0;
+            overflow: hidden;
+            transition: 1s;
+        }
+
+        &.active {
+            &::before {
+                content: "-";
+            }
+
+            + * {
+                height: var(--scrollHeight);
+            }
+        }
+    }
+
+
+
+    &.logic {
+
+        .courseVideo {
+            max-width: 71em;
+
+            img {
+                --wid: 8vw;
+                min-width: 5.5em;
+                height: auto;
+            }
+        }
+
+        .box,
+        .part {
+            margin-inline: 5%;
+        }
+
+        > .box {
+            margin-bottom: .5em;
+        }
+    }
+
+    .whiteSmokeDiv,
+    .projectBox {
+        @include fullscreen;
+        --background: #E7E7E7;
+        display: grid;
+        gap: 1.3em;
+        grid-template-columns: 4fr 6fr;
+        grid-template-areas: "outside left";
+        padding: 1.4em;
+        margin-block: 2em;
+
+        > * {
+            border-radius: .8em;
+            background: white;
+            padding: 2em;
+        }
+
+        .outside {
+            grid-area: outside;
+            padding: 0;
+            min-height: 17em;
+
+            .image.backgroundLoaded {
+                background-size: auto;
+                background-image: url("/Courses/CourseContent/Asset 14-8.png");
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .left {
+            grid-area: left;
+
+            h2,
+            .title {
+                text-align: center;
+            }
+
+            p {
+                text-align: justify;
+            }
+        }
+
+        .bottom {
+            grid-column: 1 / 3;
+        }
+    }
+
+    .whiteSmokeDiv {
+        &.withImage {
+            > .outside {
+                background-color: transparent;
+
+                > img {
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+    @media (min-width : 1200px) {
+
+
+
+        &.logic {
+            p, dd {
+                line-height: 1.7em;
+            }
+
+            .courseDetailTitr {
+                .h2 {
+                    font-size: 1.5em;
+                }
+
+                p {
+                    line-height: 1.7em;
+                }
+            }
+
+            .split {
+                &.multipleImg {
+                    grid-template-columns: 1fr 34em;
+
+                    h3 {
+                        font-size: 1.3em;
+                    }
+
+                    .h4 {
+                        font-size: 1.2em;
+                    }
+
+                    p {
+                        line-height: 1.7em;
+                    }
+                }
+
+                &.singleImg {
+
+                    h2 {
+                        font-size: 1.5em;
+                    }
+
+                    p {
+                        line-height: 1.7em;
+                    }
+                }
+            }
+
+            > .part, > .box {
+                line-height: 1.7em;
+            }
+        }
+    }
+    /*@include v.media(1500px) {
+        .split {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 3em;
+
+            &.multipleImg {
+                .left {
+                    display: none;
+                }
+
+                .right {
+                    .imgWrap {
+                        display: block;*/
+    /* font-size: 1vw; */
+    /*--wid: 57vw;
+                        margin: auto;
+                        margin-block: 10em;
+                    }
+                }
+            }
+
+            &.singleImg {
+                .left {
+                    padding-inline: 0;
+
+                    .imgWrap:first-child {
+                        img {
+                            width: 60%;
+                        }
+                    }
+                }
+            }
+        }
+    }*/
+
+    @include v.media(v.$screen) {
+        &.logic {
+            .courseDetailTitr {
+                flex-direction: column-reverse;
+                margin-top: 4em;
+                gap: 4em;
+                width: 100%;
+
+                > div {
+                    &:nth-of-type(2) {
+                        margin: auto;
+                        width: fit-content;
+
+                        .imgWrap {
+                            --wid: 70em;
+                        }
+                    }
+                }
+            }
+        }
+
+        .chart {
+            font-size: 1.8vw;
+        }
+
+        .imgWrap {
+            font-size: 0.8em;
+        }
+
+        .marginContent {
+            margin-inline: 5%;
+        }
+    }
+
+    @include v.media(v.$laptop) {
+        .chart {
+            font-size: 2.1vw;
+        }
+
+        .box.project {
+            padding: 1em;
+            gap: 1em;
+            grid-template-columns: 34% auto;
+        }
+
+        .whiteSmokeDiv {
+            &.withImage {
+                flex-direction: column;
+                display: flex;
+                background: none;
+                gap: 2em;
+
+                > .outside {
+                    background: unset;
+                }
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        .chart {
+            font-size: 1.75vw;
+            width: 51.7em;
+            height: 43.9em;
+            margin-bottom: 14em !important;
+
+            > span {
+                font-size: 1.6em;
+                padding: 0;
+                $positions: (0 50%)
+                , (50% 17%), (50% 85%), (100% 20%), (100% 80%);
+
+                @for $i from 1 through length($positions) {
+                    $item: nth($positions, $i);
+                    $top: nth($item, 1);
+                    $left: nth($item, 2);
+
+                    &:nth-child(#{$i}) {
+                        --top: #{$top};
+                        --left: #{$left};
+                    }
+                }
+
+                &.center {
+                    --top: 73%;
+                }
+            }
+        }
+
+        .blueBlock,
+        ins {
+            font-size: 3vw;
+            width: 90vw;
+            height: auto;
+            padding: 6vw;
+            padding-top: 19.5vw;
+            background-size: 100% 100%;
+
+            &::before {
+                top: 12.8vw;
+            }
+        }
+
+        .part{
+            font-size : 1.1em;
+        }
+
+        .box {
+            &.project {
+                display: flex;
+                flex-direction: column;
+                padding-inline: 1.5em;
+
+                img {
+                    width: 15em;
+                    height: auto;
+                    margin: auto;
+                }
+            }
+
+            &:not(.project) {
+                > img {
+                    float: unset;
+                    margin: 2em auto;
+                    width: 80%;
+                }
+
+                .block-img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .body,
+        p,
+        ol,
+        ul {
+            font-size: 1rem;
+        }
+
+        .whiteSmokeDiv {
+            p {
+                font-size: .875rem !important;
+            }
+        }
+    }
+
+    @include v.media(v.$mobile) {
+        .imgWrap {
+            font-size: 0.6em;
+        }
+
+        .whiteSmokeDiv {
+            &.withImage {
+                > .outside {
+                    background: unset;
+                }
+            }
+        }
+
+        .whiteSmokeDiv {
+            padding: .6rem;
+        }
+
+
+        .whiteSmokeDiv {
+            flex-direction: column;
+            display: flex;
+            background: none;
+            gap: 2em;
+
+            .image {
+                order: 1;
+                background-color: var(--background);
+                border-radius: 50%;
+                padding-bottom: 100%;
+                background-size: 63%;
+            }
+
+            .right,
+            .left {
+                order: 2;
+            }
+        }
+
+        .whiteSmokeDiv {
+            .outside {
+                background: linear-gradient(to left, #1d71b8, #e6007e);
+                border-radius: 50%;
+                padding: 1.3em;
+
+                .image.backgroundLoaded {
+                    background-size: 105%;
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
+

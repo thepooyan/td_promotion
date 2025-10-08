@@ -1,0 +1,33 @@
+@use '../components/calendarCourses';
+@use '../components/tableDetailsCourse';
+@use '../components/aboutPrograming';
+@use '../components/footer';
+@use "../components/newRoadMap/roadMapInCourse";
+@use "../source/Variables" as v;
+.forCalendar {
+
+    %max-width {
+        max-width: 1360px;
+        margin-inline: auto;
+    }
+
+    .course-calendar, .top-title-calendar-courses, .bg-white, #About-programing {
+        @extend %max-width;
+    }
+
+    .cats, .roadCats {
+        width: 90em;
+        margin-inline: auto;
+    }
+    .cats{
+        margin-bottom : 4em;
+    }
+
+    padding-inline: 1.5em;
+
+    @include v.media(v.$tablet) {
+        .cats, .roadCats {
+            width: auto;
+        }
+    }
+}

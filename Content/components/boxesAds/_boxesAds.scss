@@ -1,0 +1,27 @@
+@use '../../source/Variables';
+@use 'oneBoxeAds';
+@use 'twoBoxesAds';
+@use 'threeBoxesAds';
+@use 'fourBoxesAds';
+
+.container {
+    padding: 1em;
+}
+
+.boxesAds {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+    gap: 1em;
+    margin-bottom : 1em;
+
+    @include Variables.media(595px) {
+        grid-column: 1/3;
+    }
+
+    &.boxes-two {
+
+        @include Variables.media(Variables.$laptop) {
+            grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+        }
+    }
+}

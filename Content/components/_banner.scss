@@ -1,0 +1,178 @@
+@use '../source/_Variables.scss';
+
+.kids {
+    .banner--inner {
+        background-image: url(/Content/images/img/banner.png);
+        background-size: 100% 100%;
+        margin-bottom: 0 !important;
+
+        @include Variables.media(Variables.$laptop) {
+            font-size: 0.9em;
+
+            &::before {
+                transform: translate(-21%,33%) scale(.6);
+                height: 22em;
+            }
+
+            &::after {
+                height: 17em;
+                width: 19em;
+                transform: scale(0.6) rotate(214deg) translate(-50%);
+            }
+        }
+
+        @include Variables.media(Variables.$tablet) {
+
+            &::before {
+                transform: translate(-38%, 37%) scale(0.4);
+            }
+
+            &::after {
+                transform: scale(0.5) rotate(214deg) translate(-100%);
+            }
+
+        }
+
+        @include Variables.media(Variables.$mobile) {
+
+
+            background-size: 196% 97%;
+            min-height : 28em;
+
+            &::after,
+            &::before {
+                display: none;
+            }
+
+        }
+    }
+    // --start/teens page style
+}
+.teens {
+
+    .banner--inner {
+        background-image: url(/Content/images/img/banner-teens.png);
+        min-height: 55em;
+        position: unset;
+        padding: 5em 4em 0 3em;
+        margin-bottom: 4em;
+
+
+
+        h1 {
+            position: unset;
+            text-align: right;
+            font-size: 2.3em;
+            transform: unset;
+            width: 100%;
+
+            span {
+                color: #61AAEE;
+                display: block;
+                font-weight: 900;
+                font-size: 2.2em;
+                margin-block: 0.8em;
+                opacity: 1;
+            }
+        }
+
+        ul {
+            width: 100%;
+            color: var(-\2dwhite);
+            font-size: 1.7em;
+            line-height: 3em;
+
+            > li {
+                position: relative;
+                padding-right: 2em;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    width: 1.6em;
+                    height: 1.6em;
+                    background-image: url(/Content/images/img/robatFinger.png);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    top: 0.5em;
+                    right: 0;
+                }
+
+                h2 {
+                    display: inline-block;
+                }
+
+                strong {
+                    font-size: .7em;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$laptop) {
+        .banner--inner {
+            min-height: 30em;
+            padding: 2em 3em 0;
+
+            ul {
+                font-size: 1.5em;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$tablet) {
+
+        .banner--inner {
+            min-height: 24em;
+            padding: 2em 2em 0 2em;
+
+            ul {
+                font-size: 1em;
+                font-weight : 700;
+                
+                li{
+                    strong{
+                        font-weight : 700;
+                    }
+                }
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    }
+
+
+    @include Variables.media(Variables.$mobile) {
+
+
+        .banner--inner {
+            background-size: cover;
+            min-height: 21em;
+            margin-bottom: 2em;
+            display: grid;
+            padding: 0em 1em 0;
+
+            h1 {
+                font-size: 2.1em;
+                font-weight: 600;
+                align-self: center;
+
+                span {
+                    font-size: 1.5em;
+                    margin-block: 0.3em;
+                }
+            }
+
+            p {
+                display: none;
+            }
+        }
+    }
+}

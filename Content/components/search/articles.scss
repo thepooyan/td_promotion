@@ -1,0 +1,87 @@
+@use "../../source/Variables";
+
+
+
+.filter-search > div:first-child {
+    display: block !important;
+
+    button {
+        display: flex;
+    }
+}
+
+.img-item-tab {
+    position: relative;
+
+    div {
+        position: absolute;
+        top: 0;
+        bottom: 20%;
+        left: 0;
+        right: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: center;
+        margin: .5em;
+        overflow: hidden;
+    }
+
+    h5 {
+        color: #000;
+        line-height: 2;
+        margin: auto;
+    }
+}
+
+.txt-content-tab {
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+
+        .stars-more {
+            direction: ltr;
+
+            i {
+                color: #0000001f;
+                font-size: 1.1em;
+
+                &.active {
+                    color: #ffd000e0;
+                }
+            }
+        }
+
+        a {
+            color: #fff;
+            background-color: #fdc220;
+            line-height: 2.1;
+            display: inline-block;
+            width: 8em;
+            text-align: center;
+            font-size: 0.9em;
+            border-radius: 5px;
+            margin-top: 0.5em;
+            padding: 0.2em 0.5em;
+        }
+    }
+}
+
+//this is ayoobi
+@include Variables.media(Variables.$laptop) {
+
+    .txt-content-tab {
+        div {
+            display: block;
+        }
+
+        ul:last-child {
+            margin-top: 0.8em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

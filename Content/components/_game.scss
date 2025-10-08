@@ -1,0 +1,166 @@
+@use '../source/_Variables.scss';
+.game-section {
+    background-color: #EEF3DE;
+    display: grid;
+    grid-template-areas: "title title" "guideGame game" "guideGame game";
+    grid-template-columns: 51% 45%;
+    gap: 3em;
+    padding: 2em 3em;
+    direction: ltr;
+    margin-bottom: 3em;
+
+    .title-game {
+        grid-area: title;
+        line-height: 1.8;
+
+        h4 {
+
+            text-align: center;
+            color: var(--brown);
+            font-size: 1.7em;
+
+            direction: rtl;
+
+        }
+    }
+
+    .guide-game {
+        direction: rtl;
+        padding-top: 3em;
+
+        .description-game {
+            overflow: hidden;
+            max-height: 10em;
+        }
+
+        > div {
+            display: flex;
+            justify-content: left;
+            direction: ltr;
+            gap: 3em;
+            flex-wrap: wrap;
+            margin-block: 2em 3em;
+
+            ul {
+                margin-left: 1em;
+
+                li {
+                    &:not(:first-child) {
+                        list-style: disc;
+                    }
+                }
+            }
+        }
+
+        a {
+
+
+            padding: 0.2em 1em;
+            margin-top: 2em;
+            margin-right: auto;
+        }
+    }
+
+    .game {
+        border-radius: 10px;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+
+        a {
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%);
+            margin: 0;
+        }
+
+        img {
+            border-radius: 10px;
+            background-color: var(--textColorFade);
+            height: 100%;
+
+
+        }
+    }
+
+    a {
+
+        display: block;
+        width: fit-content;
+        background-color: var(--yellow);
+        color: var(--textColorStrong);
+        border-radius: 10px;
+    }
+}
+
+.teens .game-section {
+    background-color: var(--boxGray);
+
+    a {
+        background-color: var(--blue);
+        color: var( --white);
+    }
+}
+
+@include Variables.media(Variables.$laptop) {
+    .game-section {
+        display: block;
+
+        .title-game {
+            margin-bottom: 1.5em;
+            font-size: 0.8em;
+        }
+
+        .guide-game {
+            margin-bottom: 2em;
+
+            a {
+                display: none;
+            }
+        }
+
+        .game {
+            a {
+                display: block;
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$mobile) {
+    .game-section {
+        padding: 2em 1em;
+
+
+        .title-game h4 {
+            font-size: 1.5em;
+        }
+
+        .title-icon img {
+            width: 2em;
+        }
+
+        .guide-game {
+            padding-top: 1em;
+
+            p {
+                &:first-child {
+                    font-weight: 900;
+                }
+
+            }
+
+            > div {
+                display: none;
+            }
+        }
+
+        .game a {
+            top: 40%;
+        }
+    }
+
+
+}

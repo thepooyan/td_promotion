@@ -1,0 +1,255 @@
+﻿@use '../source/Variables' as v;
+@use '../components/footer';
+@use "../TVStyle/videoSectionNew" as vs;
+@use "../components/newBreadcrumb" as nb;
+.videoSection {
+    @include vs.videoSection;
+    grid-template-areas: "breadcrumb breadcrumb" "pageTitle pageTitle" "aside sort" "aside main";
+
+    > #breadcrumb {
+        @include nb.newBreadcrumb;
+        grid-area: breadcrumb;
+        font-size: .85em;
+    }
+
+    > .pageTitle {
+        grid-area: pageTitle;
+        display: flex;
+        align-items: center;
+        gap: .3em;
+        color: #2086C8;
+        font-weight: 800;
+        font-size: 1.1em;
+
+        &::before {
+            content: "";
+            --wid: 1.7em;
+            width: var(--wid);
+            height: var(--wid);
+            background-repeat: no-repeat;
+            background-size: 153%;
+            background-position: 47% 74.7%;
+            background-image: url(/content/images/img/tvIcons.svg);
+        }
+    }
+
+    > main {
+        > .videos {
+            padding-inline: .4em;
+        }
+    }
+
+    .cardItem {
+        --blueColorText: #2086C8;
+
+        * {
+            line-height: 1.5em;
+        }
+
+        > div {
+            padding: 1em;
+            box-shadow: 0px 4px 8px 0px rgba(140, 140, 140, 0.18);
+            --borderRadius: .75em;
+            border-radius: var(--borderRadius);
+            display: flex;
+            flex-direction: column;
+
+            > .img {
+
+                > img {
+                    border-radius: var(--borderRadius);
+                }
+            }
+
+            > h3 {
+                color: var(--textColorStrong);
+                font-size: 1em;
+                margin-top: 1em;
+                font-weight: 600;
+            }
+
+            > p {
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+                margin-top: unset !important;
+                height: 3em;
+                font-size: .875em;
+            }
+
+            > .teacher-name {
+                padding-block: 0.5em 0.7em;
+                margin-top: auto;
+                display: flex;
+                font-size: .875em;
+                margin-top: 1.3em;
+                align-items: center;
+
+                svg {
+                    --wid: 2em;
+                    width: var(--wid);
+                    height: var(--wid);
+                }
+
+                > span {
+                    &:first-child {
+                        color: var(--blueColorText);
+                        position: relative;
+                        font-size: .857em;
+                        display: flex;
+                        gap: .4em;
+                        align-items: center;
+                    }
+                }
+            }
+
+            > div {
+                &:last-child {
+                    border-top: 1px solid #efefef;
+                    padding-top: 1em;
+                    display: flex;
+                    justify-content: space-between;
+                    min-height: 5.3em;
+
+                    > .p-price {
+                        text-align: left;
+                        font-size: 1.2em;
+                        display: flex;
+                        flex-direction: column;
+                        color: var(--textColorStrong);
+
+                        > .mainPrice {
+                            display: flex;
+                            align-items: center;
+                            font-weight: 700;
+                            gap: .3em;
+
+                            &::after {
+                                content: 'تومان';
+                                font-size: .6em;
+                                font-weight: 500;
+                            }
+                        }
+
+                        > .amountBeforeDiscount {
+                            color: #C9C9C9;
+                            font-size: 0.7em;
+                            text-align: right;
+                            text-decoration: line-through;
+                        }
+
+                        &.p-free {
+                            font-size: 1.1em;
+
+                            > .mainPrice {
+                                &::after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    > a {
+                        color: var(--blueColorText);
+                        font-size: .875em;
+                        font-weight: 700;
+                        display: flex;
+                        gap: .3em;
+
+                        > svg {
+                            --wid: 1.14em;
+                            width: var(--wid);
+                            height: var(--wid);
+                        }
+                    }
+
+                    > .tags {
+                        margin-top: auto !important;
+                    }
+                }
+            }
+        }
+
+        &.packageCard {
+            --packageCardBorderRadius: 1.125em;
+            display: flex;
+            flex-direction: column;
+
+            > img {
+                border-radius: var(--packageCardBorderRadius);
+                height: auto;
+                aspect-ratio: 18/9;
+                width: 100%;
+            }
+
+            > div {
+                padding-block: .8em;
+                margin-top: .6em;
+                border-radius: var(--packageCardBorderRadius);
+                flex-grow: 1;
+
+                > h3 {
+                    margin-top: 0;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    margin-bottom: .7em;
+                }
+
+                > p {
+                    -webkit-line-clamp: 2;
+                    margin-top: auto !important;
+                }
+
+                > .teacher-name {
+                    margin-top: .3em;
+                }
+
+                > div {
+                    &:last-child {
+                        flex-wrap: wrap;
+
+                        .tags {
+                            width: 100%;
+                            flex-shrink: 0;
+                            display: flex;
+                            gap: 0.5em;
+                            margin-top: .7em;
+                            border-top: none;
+                            padding-block: 0;
+
+                            .tag {
+                                font-size: .75em;
+                                background-color: #e4eefa;
+                                color: var(--blueColorText);
+                                border-radius: .6em;
+                                padding: .25em .5em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        grid-template-areas: "breadcrumb breadcrumb" "pageTitle pageTitle" "aside sort" "main main";
+
+        .cardItem {
+            &.packageCard {
+                > img {
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+.tvAds {
+    font-size: 1vw;
+    width: 92%;
+    margin: auto;
+    margin-top: 2em;
+}

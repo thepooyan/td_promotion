@@ -1,0 +1,49 @@
+@use "../source/Variables" as v;
+
+@mixin courseQuestion {
+  display: flex;
+  gap: 2em;
+  padding-inline: 2em;
+  margin-bottom: 3em;
+
+  > div {
+    &:nth-child(1) {
+      flex-basis: 60%;
+    }
+
+    &:nth-child(2) {
+      flex-basis: 40%;
+      align-self: center;
+      > img {
+        box-shadow: unset;
+        max-width: unset;
+        max-height: unset;
+        margin: unset;
+        cursor: unset!important;
+        box-shadow : unset!important;
+        &:hover{
+            box-shadow : unset!important;
+        }
+      }
+    }
+  }
+
+  @include v.media(v.$laptop) {
+    flex-direction: column;
+    >div{
+      &:nth-child(2){
+
+        >img{
+          max-width: 100%;
+          height : auto;
+        }
+      }
+    }
+  }
+  @include v.media(v.$tablet) {
+    
+  }
+
+  @include v.media(v.$mobile) {
+  }
+}

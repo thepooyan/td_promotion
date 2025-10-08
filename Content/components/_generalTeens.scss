@@ -1,0 +1,66 @@
+@use "../source/Variables";
+
+html {
+    font-size: 1em
+}
+.section-txt {
+    margin-bottom: 3em;
+}
+.teens {
+
+
+
+    .last-section {
+        margin-top: 2em;
+    }
+
+    .title-style-article {
+        color: var(--textColorStrong);
+
+        span {
+            color: var(--blue);
+        }
+
+        &::after {
+
+            background-color: var(--blue);
+        }
+    }
+
+    .link-more-k {
+        background-color: var(--blue);
+        color: var(--white);
+    }
+
+    .title-style-o {
+
+        .strong-title {
+            color: var(--blue);
+        }
+    }
+}
+
+.circle-bg {
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 20em;
+        height: 20em;
+        border: 1px solid var(--circleBg);
+        border-radius: 50%;
+        z-index: -1;
+    }
+}
+
+@include Variables.media(Variables.$laptop) {
+ 
+
+    .circle-bg {
+
+        &::after {
+          display:none;
+        }
+    }
+}

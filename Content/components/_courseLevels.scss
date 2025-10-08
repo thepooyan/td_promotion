@@ -1,0 +1,72 @@
+@use "../source/Variables" as v;
+
+@mixin courseLevels {
+    margin-top: 2.5em;
+
+    > div {
+        &:first-child {
+            background-color: var(--colorTheme);
+            border-radius: 0.4em;
+            padding-right: .8em;
+            margin-bottom: 2em;
+
+            > span {
+                background-image: url("../Content/images/img/Subtract.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: inline-block;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: var(--colorTheme);
+                font-weight: 600;
+                height: 2.5em;
+                width: 6.4em;
+            }
+        }
+    }
+    // > p {
+    //   padding-right: 0.5em;
+    //   &::before {
+    //     content: "\2022";
+    //     margin-left: 0.7em;
+    //     color: var(--textColor);
+    //   }
+    // }
+    > ul > img {
+        margin: auto;
+        margin-block: 2em;
+        height: auto;
+        width: 80%;
+        border-radius: var(--radius);
+        box-shadow: unset;
+        max-width: unset;
+        max-height: 29em;
+        object-fit: contain;
+        cursor: unset !important;
+
+        &:hover {
+            box-shadow: unset !important;
+        }
+    }
+
+    @include v.media(1500px) {
+
+    }
+
+    @include v.media(v.$screen) {
+    }
+
+    @include v.media(v.$laptop) {
+    }
+
+    @include v.media(v.$tablet) {
+        > ul > img {
+            width: 100% !important;
+            height: auto;
+        }
+    }
+
+    @include v.media(v.$mobile) {
+    }
+}

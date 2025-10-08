@@ -1,0 +1,62 @@
+<main>
+  <img id="image" src="https://www.tahlildadeh.com/Data/Image/c553666a-dec2-47d7-bb1b-82f2ba655395241006-2925537.jpg" alt="">
+  <img src="https://www.tahlildadeh.com/Data/Image/c553666a-dec2-47d7-bb1b-82f2ba655395241006-2925537.jpg" alt="">
+  <img src="https://www.tahlildadeh.com/Data/Image/c553666a-dec2-47d7-bb1b-82f2ba655395241006-2925537.jpg" alt="">
+  <img id="image2" src="https://www.tahlildadeh.com/Data/Image/c553666a-dec2-47d7-bb1b-82f2ba655395241006-2925537.jpg" alt="">
+</main>
+
+<script>
+  const img = document.querySelector('#image');
+  const img2 = document.querySelector('#image2');
+  const images = document.querySelectorAll('main img');
+  
+  setTimeout(() => {
+    //  callModal(img , 'classname' , true).then(()=>{
+    //   alert('بسته شد')
+    // })
+
+
+    // callModal.notif(img, 'className' , 2000).then(()=>{
+    //   alert('بسته شد')
+    // })
+
+
+    // callModal.fail('عملیات با شکست مواجه شد' ,2000).then(()=>{
+    //   alert('بسته شد')
+    // })
+
+
+    // callModal.success('عملیات با موفقت انجام شد' ,2000).then(()=>{
+    //   alert('بسته شد')
+    // })
+
+    
+    // callModal.confirm('آیا با انجام این کار موافقید؟')
+    // .then(()=>{
+    //   alert('موافقید')
+    // })
+    // .catch(()=>{
+    //   alert('موافق نیستید')
+    // })
+
+
+    // callModal.custom('className' , (showModal , closeModal)=>{
+    //   showModal(img);
+    //   // setTimeout(()=>{
+    //   //   closeModal()
+    //   // } , 2000)
+    // } , {close : 'all' , scrollLock : true})
+    // .then(()=>{
+    //   alert('بسته شد')
+    // })
+
+    callModal.spinner();
+
+    // callModal.image('https://www.tahlildadeh.com/Data/Image/c553666a-dec2-47d7-bb1b-82f2ba655395241006-2925537.jpg' , {zoom : true})
+
+
+}, 2000)
+
+
+  
+</script>

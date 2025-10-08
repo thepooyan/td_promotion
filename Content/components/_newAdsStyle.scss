@@ -1,0 +1,137 @@
+﻿@use "../source/_Variables.scss" as v;
+
+.newAds {
+    font-size: 13px;
+    line-height: 2em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+    gap: 1.5em;
+    margin-inline: 2em;
+    max-width: 52em;
+    margin-top: 3em;
+    margin-bottom: 2em;
+    position: relative;
+
+    &.single {
+        grid-template-columns: 1fr;
+    }
+
+    &.full {
+        max-width: 100%;
+    }
+
+    &.diactive {
+        display: none;
+    }
+
+    > .close {
+        position: absolute;
+        bottom: calc(100% + .5em);
+        right: 0;
+        display: flex;
+        gap: 0.2em;
+        align-items: center;
+        color: #969696;
+        cursor: pointer;
+
+        > svg {
+            transition: .1s;
+        }
+
+        &:hover {
+            > svg {
+                color: #d70000;
+            }
+        }
+    }
+
+    > .newAdsBox {
+        background-color: var(--bg);
+        padding: .5em;
+        border-radius: 1em;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            border-radius: .8em;
+        }
+
+        > p {
+            font-size: 1em !important;
+            line-height: 1.8 !important;
+            margin-bottom: 0 !important;
+            color: black;
+            text-align: justify;
+            line-height: 1.5em;
+        }
+
+        > .title {
+            margin-block: 1em .4em;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--textColorStrong) !important;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            text-decoration: none !important;
+            margin-bottom: .4em !important;
+        }
+
+
+
+        > a {
+            &:last-child {
+                display: flex;
+                gap: .5em;
+                align-items: center;
+                color: #2086C8;
+                justify-content: flex-end;
+                display: none;
+
+                > svg {
+                    --wid: 1.2em;
+                    width: var(--wid);
+                    height: var(--wid);
+                }
+            }
+        }
+    }
+
+    &.four {
+        img {
+            border-radius: .8em;
+            height: 10em;
+        }
+    }
+
+    @include v.media(1400px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include v.media(v.$screen) {
+        font-size: 14px;
+
+        > .newAdsBox {
+            > .title {
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        grid-template-columns: 1fr;
+        font-size: 12px;
+
+
+        > .newAdsBox {
+
+            > .title, > p, > a:last-child {
+                display: none;
+            }
+
+            &:nth-of-type(3), &:nth-of-type(4) {
+                display: none;
+            }
+        }
+    }
+}

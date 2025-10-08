@@ -1,0 +1,96 @@
+@use '../components/general';
+@use '../source/Fonts';
+@use "../source/scroller";
+@use "../source/Variables";
+@use '../components/header';
+
+@use '../components/_footerKids&Teens.scss' as footer;
+@use '../components/headerInner';
+@use "../MediaCss/mediaPartials/header" as header2;
+//Due to the problem when loading the page, it has been styled here
+.logo-header-footer img {
+    grid-row: 1/3;
+}
+
+.kids-course-info {
+    padding: 0 2em;
+    display: flex;
+    gap: 1em;
+
+    > div {
+        flex-basis: 50%;
+    }
+
+    > .kids-info-img {
+        display: flex;
+
+        > img {
+            margin: auto;
+            width: 100%;
+            max-width: 61em;
+        }
+    }
+
+    .kids-info-text {
+
+        .kids-info-img-res {
+            display: none;
+        }
+    }
+}
+
+.kids .banner--inner img {
+    left: 52%;
+    width: 20em;
+    bottom: 0;
+    transform: translate(-50%,-70%) scale(1.2);
+}
+
+.kids {
+    .banner--inner {
+        min-height: 37em;
+        position: relative;
+
+
+        img,
+        h1 {
+            position: absolute;
+        }
+
+        h1 {
+            top: 10.4em;
+            font-size: 2.8em;
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+        }
+
+        @include Variables.media(Variables.$tablet) {
+
+            > img {
+                font-size: 0.8em;
+            }
+        }
+
+        @include Variables.media(Variables.$mobile) {
+
+            > img {
+                transform: translate(-50%,-46%) !important;
+            }
+
+            font-size: 0.8em;
+            margin-bottom: 5em;
+
+            h1 {
+                font-size: 1.8em;
+                top: 12em;
+            }
+
+            > img {
+                font-size: 0.9em;
+                transform: translate(-50%, 11%) scale(1);
+            }
+        }
+    }
+    // --start/teens page style
+}

@@ -1,0 +1,149 @@
+﻿@use '../source/_Variables.scss';
+
+.articleCate {
+    --color: rgb(65, 195, 65);
+    box-shadow: 0 0 40px rgba(29, 58, 83, .15);
+    border-radius: .3em;
+    margin-bottom: 1em;
+    background: inherit;
+    clear: both;
+    padding: 0;
+    padding-bottom: 1em;
+    //structure
+
+    button {
+        cursor: pointer;
+    }
+    //structure
+
+    h3 {
+        position: relative;
+        margin-right: 3.4em;
+        padding: 0.9em 0;
+
+        span {
+            font-family: 'yekanBakh';
+            font-size: 1.4em;
+            line-height: 1.4em;
+        }
+    }
+
+    .grid {
+        width: 100%;
+        display: grid;
+        justify-items: center;
+        justify-content: flex-start;
+        grid-template-columns: repeat(auto-fit,54px);
+        column-gap: 5em;
+        padding: 0 2.4em;
+        row-gap: 1.8em;
+        margin: 0.1em 0;
+
+        > a {
+            width: max-content;
+            transition: .3s;
+
+            .img {
+                --wid: 4.4em;
+                width: var(--wid);
+                height: var(--wid);
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: auto;
+                    max-width: 100%;
+                    max-height: 100%;
+                    color: transparent;
+                    object-fit : contain;
+                    /*   &::before {
+                        display: block;
+                        background: #e3e3e3;
+                        width: 100%;
+                        height: 100%;
+                        color: transparent;
+                        border-radius: .2em;
+                    }*/
+                }
+            }
+
+            span {
+                display: block;
+                text-align: center;
+                max-width: 7.7em;
+                line-height: 1.3em;
+                margin-top: 1em;
+                font-size: 1.2em;
+                font-weight: 600;
+                padding: 0 0.2em
+            }
+
+
+
+            &:hover {
+                filter: drop-shadow(0px 0px 4px #000000ba);
+            }
+        }
+
+        &.multipleRows {
+            justify-content: center;
+        }
+    }
+
+    &.half {
+        width: 49.6%; //49.6%
+        float: right;
+        margin-left: .8%;
+        clear: unset;
+        padding-bottom: 0;
+        position: relative;
+
+        &:nth-of-type(2n+1) {
+            margin-left: 0;
+            float: left;
+        }
+
+        .grid {
+            height: 11em;
+            margin-bottom: .5em;
+        }
+
+        &:not(.noOverflow) {
+            position: relative;
+
+            .grid {
+                height: unset;
+                /* max-height: 11em;*/
+            }
+
+            button {
+                position: absolute;
+                top: 1.6em;
+                left: 0;
+            }
+        }
+    }
+    //media
+    @include Variables.media(Variables.$screen) {
+
+        &.half {
+            width: 100%;
+            float: unset;
+            margin-left: 0;
+            clear: both;
+            padding-bottom: 1.1em !important;
+
+            .grid {
+                height: unset;
+                max-height: var(--closeHeight);
+                margin-bottom: 1.4em !important;
+            }
+
+            &:not(.noOverflow) button {
+                position: static;
+            }
+        }
+    }
+}

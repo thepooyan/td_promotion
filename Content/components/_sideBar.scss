@@ -1,0 +1,127 @@
+﻿.courseGrid {
+    .sidebarContent {
+        margin: 0;
+        .inputFlex::before {
+            width: 115%;
+        }
+        .inputContent {
+            font-size: 12px;
+        }
+    }
+}
+.sidebarContent {
+    padding: 1em;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 1em;
+
+    .inputFlex {
+        display: flex;
+        flex-direction: column;
+        margin: 1em .3em;
+        gap: 5px;
+        position: sticky;
+        width: 100%;
+        top: 80px;
+        padding: 0 1em;
+        margin: 0 -1em;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+
+        &::before {
+            content: '';
+            background-color: white;
+            width: 107%;
+            height: 8em;
+            position: relative;
+            bottom: 1em;
+        }
+
+        > label {
+            background-color: white;
+            position: absolute;
+            top: 0;
+            bottom: 46px;
+            border: 1px solid #e94d1b;
+            color: #f39200;
+            padding: .3em;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2em;
+            border-radius: 11px;
+            cursor: pointer;
+            z-index: 1;
+            transition: top .3s,bottom .3s, background-color .1s;
+            font-weight: 500;
+            height: 2.8em;
+
+            &.active {
+                background-color: #f39200;
+                color: white;
+                top: 46px;
+                bottom: 0;
+                z-index: 2;
+            }
+        }
+    }
+
+    .inputContent {
+        display: none;
+        font-size: 15px;
+
+        a {
+            cursor: pointer
+        }
+
+        h3.title {
+            color: #2170b7;
+            text-align: center;
+            font-size: 1.1em;
+            padding: .9em 0;
+            line-height: 1.4em;
+        }
+
+        ol {
+            li {
+                margin-bottom: .4em;
+                list-style: decimal outside;
+                margin-right: 1em;
+
+                .fa-arrow-alt-circle-down {
+                    color: #2170b7;
+                }
+
+                .item {
+                    line-height: 1.5em;
+                    margin-left: .5em;
+                }
+            }
+        }
+
+
+        &.i2 li {
+            list-style-type: disc;
+            list-style-position: inside;
+            line-height: 1em;
+            margin-bottom: 1em;
+
+            .course {
+                font-size: 1.1em;
+                line-height: 1.6em;
+                margin-bottom: 1.2em;
+            }
+
+            &:first-child {
+                margin-top: 1em;
+            }
+        }
+
+        &.active {
+            display: block;
+        }
+    }
+}

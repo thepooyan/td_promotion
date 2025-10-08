@@ -1,0 +1,320 @@
+﻿/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+.videoGridContainer {
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: auto;
+  align-items: center;
+  margin-block: 2em;
+  position: relative;
+}
+.videoGridContainer > .videoGridTitle {
+  font-size: 1.5em;
+  font-weight: 600;
+  --color: green;
+  position: relative;
+  margin-bottom: 1em;
+  padding-bottom: 0.8em;
+}
+.videoGridContainer > .videoGridTitle > span {
+  color: var(--color);
+}
+.videoGridContainer > .videoGridTitle::after {
+  position: absolute;
+  content: "";
+  background-color: var(--color);
+  width: 1.5em;
+  height: 2px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.videoGridContainer > .videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+  gap: 1.5em;
+  width: 100%;
+}
+.videoGridContainer > .videoGrid > .videoGridItem {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  background-color: white;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video {
+  position: relative;
+  width: 100%;
+  border-radius: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /*&::after {
+                  content: "";
+                  position: absolute;
+                  z-index: 2;
+                  --wid: 4vw;
+                  width: var(--wid);
+                  height: var(--wid);
+                  background-image: var(--icons);
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  background-position: 100.1% 0;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+              }*/
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.play::before {
+  display: none;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.play svg {
+  display: none;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.play > video {
+  object-fit: contain;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video > video {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: unset;
+  margin: 0;
+  border-radius: 1em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/content/images/img/packageVideoOverLay.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+  border-radius: 1.4vw;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video svg {
+  position: absolute;
+  z-index: 2;
+  --wid: 4em;
+  width: var(--wid);
+  height: var(--wid);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video > div {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  font-size: 1.3em;
+  color: var(--textColorStrong);
+  top: 103%;
+  right: 0;
+  font-weight: bold;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.noCover {
+  margin-bottom: 1em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.noCover::before {
+  background-image: none;
+  background-color: #000;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video > video {
+  aspect-ratio: 16/9;
+  width: 100%;
+  height: auto;
+  background-color: black;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video svg {
+  --wid: 3em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  font-size: 0.9em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .info > div:nth-of-type(1) {
+  font-weight: 600;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .info > div:nth-of-type(2) {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  color: #616161;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a {
+  background-color: var(--mainBlue);
+  padding: 0.6em 2em;
+  font-size: 0.875em;
+  border-radius: 0.6em;
+  width: fit-content;
+  margin: auto;
+  position: relative;
+  margin-top: auto;
+  overflow: hidden;
+  display: block;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a > div {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 0.7em;
+  position: relative;
+  z-index: 1;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a > div > svg {
+  --wid: 1.5em;
+  width: var(--wid);
+  height: var(--wid);
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #234c7a;
+  transition: all 0.3s;
+  z-index: 0;
+  border-radius: 0.6em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a:hover {
+  text-decoration: none;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a:hover::after {
+  width: 100%;
+}
+.videoGridContainer > .videoGrid > .videoGridItem:nth-child(n+7) {
+  display: none;
+}
+.videoGridContainer > .seoLandingLink {
+  display: none;
+}
+.videoGridContainer.active > .videoGrid > .videoGridItem:nth-child(n+7) {
+  display: flex;
+}
+.videoGridContainer.active > .seoLandingLink {
+  display: block;
+  margin-top: 2em;
+  padding-block: 0.9em;
+  align-self: flex-end;
+}
+.videoGridContainer .seeMore {
+  position: absolute;
+  bottom: 0em;
+  left: 0;
+  background-image: linear-gradient(to top, #ffffff 45%, transparent);
+  padding-block: 8.7em 2.2em;
+  color: #1d71b9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  user-select: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 700;
+  border-radius: 0 0 1em 1em;
+  gap: 0.5em;
+}
+.videoGridContainer .seeMore:after {
+  content: "\f063";
+  font-family: "Font Awesome 5 Free";
+  font-size: 0.8em;
+}
+.videoGridContainer .seeMore.active {
+  position: relative;
+  background-image: unset;
+  padding-block: 3em;
+}
+.videoGridContainer .seeMore.active:after {
+  content: "\f062";
+}
+@media (max-width: 698px) {
+  .videoGridContainer {
+    font-size: 14px;
+  }
+  .videoGridContainer > .videoGridTitle {
+    font-size: 1.2em;
+  }
+  .videoGridContainer > .videoGrid > .videoGridItem:nth-child(n+4) {
+    display: none;
+  }
+  .videoGridContainer.active > .videoGrid > .videoGridItem:nth-child(n+4) {
+    display: flex;
+  }
+}
+
+.journal .part {
+  border-radius: 0.2em;
+  background-color: rgba(173, 207, 179, 0.4);
+  font-size: 1.2em;
+  color: black;
+  padding: 0.5em 0.6em;
+  border-right: 12px solid #608b68;
+  cursor: pointer;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding-left: 1em;
+}
+.journal .part.collapsePart::before {
+  content: "";
+  border: 2px solid #608b68;
+  color: #608b68;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  transform: rotate(45deg);
+  border-radius: 0;
+  width: 0.3em;
+  height: 0.3em;
+  transition: all 0.3s;
+  margin-top: -0.4em;
+}
+.journal .part.collapsePart.active::before {
+  transform: rotate(225deg);
+  margin-top: 0.3em;
+}
+.journal .box {
+  background-color: rgba(234, 255, 250, 0.1882352941);
+  border: unset;
+  border-radius: 0.2em;
+  box-shadow: 0 0 15px rgba(123, 187, 83, 0.2196078431);
+  background-color: #f4fff6;
+}
+.journal .box ul li:last-child, .journal .box ol li:last-child {
+  margin-bottom: 0;
+}
+.journal .box ul li:not(:last-child), .journal .box ol li:not(:last-child) {
+  margin-bottom: 0.4em;
+}
+.journal .box ul.disclosure-closed li, .journal .box ol.disclosure-closed li {
+  list-style-type: disclosure-closed;
+}
+.journal .box img {
+  height: auto;
+  margin: auto;
+  margin-block: 1em;
+  border-radius: 1em;
+}
+.journal .box img:not(:last-child) {
+  margin-top: 2em;
+}
+@media (max-width: 698px) {
+  .journal .part {
+    font-size: 1em;
+  }
+}

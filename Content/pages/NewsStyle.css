@@ -1,0 +1,973 @@
+﻿@charset "UTF-8";
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+.Qcomment {
+  /*    .title {
+      margin-right: 3em;
+      position: relative;
+
+      .pic {
+          background: none;
+          background-size: 100%;
+          @include scalePics(288px, 206px, 2);
+          position: relative;
+          transition: .8s;
+          background-position: 150px 0;
+
+          &.backgroundLoaded {
+              background: url("images/img/Asset/ 26.svg") no-repeat;
+              background-position: initial;
+          }
+
+          .text {
+              white-space: nowrap;
+              font-weight: bold;
+              position: absolute;
+              right: 90px;
+              bottom: 20px;
+              font-size: 19px;
+              color: $themeBlue;
+          }
+      }
+  }*/
+  --background: #faf9ff;
+  --header-border: #7fcedd;
+  --header-shadow: #6497bc;
+  --header-text: #f39200;
+  --admin-sig: purple;
+  --quers-sig: #0097f3;
+  --ans-sig: green;
+  --comment-blue: #1d3bbb;
+}
+.Qcomment .question,
+.Qcomment .answer {
+  display: flex;
+  justify-content: fs;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+  position: relative;
+  gap: 2em;
+  padding-bottom: 1em;
+  font-size: 11px;
+  --icon-width: 6em;
+}
+.Qcomment .question > span,
+.Qcomment .answer > span {
+  background-color: white;
+  max-width: calc(62% - 15.2em);
+  padding: 0.6em 1.3em;
+  border-radius: 25px 25px 0 25px;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin: 1em 0;
+  position: relative;
+}
+.Qcomment .question > span span,
+.Qcomment .answer > span span {
+  position: absolute;
+  bottom: -2.2em;
+  right: 1em;
+  direction: ltr;
+  font-size: 13px;
+}
+.Qcomment .question > span span::before,
+.Qcomment .answer > span span::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  padding-right: 0.2em;
+}
+.Qcomment .question > span span:nth-child(1)::before,
+.Qcomment .answer > span span:nth-child(1)::before {
+  content: attr(data-date) " \f133";
+}
+.Qcomment .question > span span:nth-child(2),
+.Qcomment .answer > span span:nth-child(2) {
+  right: 10em;
+}
+.Qcomment .question > span span:nth-child(2)::before,
+.Qcomment .answer > span span:nth-child(2)::before {
+  content: attr(data-time) " \f017";
+}
+.Qcomment .question > span i::before,
+.Qcomment .answer > span i::before {
+  content: "\f3e5";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 800;
+  font-style: normal;
+  position: absolute;
+  left: -1.6em;
+  font-size: 1.3em;
+  color: var(--ans-sig);
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: min-content;
+}
+.Qcomment .question .icon,
+.Qcomment .answer .icon {
+  width: var(--icon-width);
+  height: var(--icon-width);
+  border-radius: 50%;
+  background-size: 100%;
+  position: relative;
+  flex: 0 0 var(--icon-width);
+}
+.Qcomment .question .icon.backgroundLoaded,
+.Qcomment .answer .icon.backgroundLoaded {
+  background-image: url("images/img/Asset 4.png");
+}
+.Qcomment .question .icon.backgroundLoaded[data-admin],
+.Qcomment .answer .icon.backgroundLoaded[data-admin] {
+  background-image: url("images/img/Asset 2.png");
+}
+.Qcomment .question .icon::before,
+.Qcomment .answer .icon::before {
+  content: "Q";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  background-color: var(--quers-sig);
+  position: absolute;
+  top: -0.5em;
+  right: -0.5em;
+  z-index: 2;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+  font-size: 1.8em;
+  padding: 0.8em;
+  line-height: 0;
+  width: 0;
+}
+.Qcomment .question .icon[data-admin]::after,
+.Qcomment .answer .icon[data-admin]::after {
+  content: attr(data-admin);
+}
+.Qcomment .question .icon[data-user]::after,
+.Qcomment .answer .icon[data-user]::after {
+  content: attr(data-user);
+}
+.Qcomment .question .icon::after,
+.Qcomment .answer .icon::after {
+  position: absolute;
+  right: calc(var(--icon-width) / 2.8);
+  bottom: -2em;
+  width: 0;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.4em;
+}
+.Qcomment .question .icon[data-admin]::before,
+.Qcomment .answer .icon[data-admin]::before {
+  content: "\f013";
+  background-color: var(--admin-sig);
+  left: -0.5em;
+  right: unset;
+}
+.Qcomment .question:last-child,
+.Qcomment .answer:last-child {
+  padding-bottom: 3em;
+}
+.Qcomment .question:nth-child(6),
+.Qcomment .answer:nth-child(6) {
+  padding-bottom: 3em;
+}
+.Qcomment .validationMsg {
+  color: red;
+  font-weight: 700;
+  transition: 0.2s;
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+}
+.Qcomment .validationMsg.show {
+  max-height: 3em;
+}
+.Qcomment input,
+.Qcomment textarea {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-family: inherit;
+  padding: 1.2em 1em;
+  font-size: 1.2em;
+}
+.Qcomment label {
+  position: absolute;
+  top: -1.3em;
+  right: 2em;
+  background-color: white;
+  padding: 0.2em 0.4em;
+  color: var(--comment-blue);
+  font-weight: 800;
+  height: 2em;
+}
+.Qcomment button[type=submit] {
+  grid-area: commentButton;
+  width: 8em;
+  height: 3em;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  border: none;
+  background: #1c43c2;
+  background: -moz-linear-gradient(90deg, #1c43c2 32%, #19cde8 71%) !important;
+  background: -webkit-linear-gradient(90deg, #1c43c2 32%, #19cde8 71%) !important;
+  background: linear-gradient(90deg, #1c43c2 32%, #19cde8 71%) !important;
+  cursor: pointer;
+  margin-right: auto;
+  font-family: inherit;
+  font-weight: 600;
+}
+.Qcomment p.success {
+  grid-area: confirmation;
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+  max-height: 0;
+  color: var(--comment-blue);
+  font-weight: 700;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+  gap: 0.4em;
+  font-size: 1.2em;
+}
+.Qcomment p.success i {
+  font-size: 1.3em;
+  color: green;
+}
+.Qcomment p.success.show {
+  max-height: 3em;
+  opacity: 100;
+}
+.Qcomment .contain {
+  padding: 5em 0;
+  background-color: var(--background);
+}
+.Qcomment .contain header {
+  background-color: white;
+  box-shadow: 2px 2px 10px var(--header-shadow);
+  color: var(--header-text);
+  text-align: center;
+  width: 90%;
+  margin: auto;
+  font-size: 5em;
+  font-weight: 900;
+  border: 2px solid var(--header-border);
+  padding: 2em;
+  border-radius: 14px;
+  position: relative;
+  margin-bottom: 1.5em;
+}
+.Qcomment .contain header::before {
+  content: "";
+  background: no-repeat;
+  width: 5em;
+  display: inline-block;
+  background-size: contain;
+  position: absolute;
+  bottom: 0;
+  top: 0.2em;
+  right: 0.2em;
+  height: 5.64em;
+  background-position: center;
+}
+.Qcomment .contain header::after {
+  content: "";
+  background: no-repeat;
+  width: 4em;
+  height: 3.4em;
+  display: inline-block;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 2em;
+  background-position: center;
+}
+.Qcomment .contain header.backgroundLoaded::after {
+  background-image: url("images/img/QAsset 1.png");
+}
+.Qcomment .contain header.backgroundLoaded::before {
+  background-image: url("images/img/Asset 3.png");
+}
+.Qcomment .contain .forms {
+  width: 91%;
+  margin: auto;
+  overflow: visible;
+}
+.Qcomment .contain .forms .formTab {
+  margin-right: 6em;
+}
+.Qcomment .contain .forms .formTab span {
+  user-select: none;
+  background-color: #d5d5d5;
+  border-radius: 10px 10px 0 0;
+  padding: 0.1em 2em;
+  cursor: pointer;
+  font-size: 1.3em;
+  display: inline-block;
+  transition: 0.3s;
+}
+.Qcomment .contain .forms .formTab span.active {
+  background-color: white;
+}
+.Qcomment .contain .forms .formTab.alone {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+.Qcomment .contain .forms .formTab.alone span {
+  border-radius: 10px;
+  margin-top: 1em;
+  margin-right: 0.4em;
+  font-size: 1.7em;
+  padding: 0.3em 3.1em;
+}
+.Qcomment .contain .forms .formTab.alone span:hover {
+  box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.188);
+}
+.Qcomment .contain .forms .logIn {
+  margin: 0 4em;
+  font-size: 1.4em;
+}
+.Qcomment .contain .forms .logIn a {
+  color: #11a5c1;
+  font-weight: bold;
+}
+.Qcomment .contain .forms .send {
+  box-shadow: 0px 0px 5px rgba(104, 104, 104, 0.329);
+  background-color: white;
+  border-radius: 15px;
+  padding: 3em 6em;
+  padding-bottom: 5em;
+  display: grid;
+  grid-template-columns: 83% auto;
+  grid-template-areas: "confirmation confirmation" "commentTitle commentButton" "comment comment";
+  gap: 2em 0;
+}
+.Qcomment .contain .forms .send .commentTitle {
+  grid-area: commentTitle;
+  position: relative;
+}
+.Qcomment .contain .forms .send .commentTitle input {
+  width: 100%;
+  height: 50px;
+}
+.Qcomment .contain .forms .send .comment {
+  grid-area: comment;
+  position: relative;
+}
+.Qcomment .contain .forms .send .comment label::before {
+  content: "نظر";
+}
+.Qcomment .contain .forms .send .comment textarea {
+  width: 100%;
+  height: 10em;
+}
+.Qcomment .contain .forms .send button::after {
+  content: "نظر";
+}
+.Qcomment .contain .forms.q .send .comment label::before, .Qcomment .contain .forms.q .send button::after {
+  content: "سوال";
+}
+.Qcomment .contain > div {
+  overflow-Y: hidden;
+}
+.Qcomment .contain > div section {
+  width: 85%;
+  margin: auto;
+  margin-top: 3em;
+  transition: 2s;
+}
+.Qcomment .contain > div section.fast {
+  transition: 0.5s;
+}
+.Qcomment .contain > div section .answer {
+  flex-direction: row-reverse;
+}
+.Qcomment .contain > div section .answer .icon:not([data-admin]) {
+  transform: scaleX(-1);
+}
+.Qcomment .contain > div section .answer .icon:not([data-admin])::before {
+  content: "A";
+  right: -0.5em;
+  left: unset;
+  background-color: var(--ans-sig);
+}
+.Qcomment .contain > div section .answer .icon:not([data-admin])::before, .Qcomment .contain > div section .answer .icon:not([data-admin])::after {
+  transform: scaleX(-1);
+}
+.Qcomment .contain > div section .answer span {
+  border-radius: 25px 25px 25px 0;
+}
+.Qcomment .contain > div section .answer span span {
+  left: 1em;
+  right: unset;
+}
+.Qcomment .contain > div section .answer span span:nth-child(2) {
+  left: 9em;
+}
+.Qcomment .contain > div section .answer span i::before {
+  display: block;
+  transform: scaleX(-1);
+  left: unset;
+  right: -1.6em;
+}
+.Qcomment .contain > div section .question::before {
+  content: attr(data-title);
+  position: absolute;
+  right: 8em;
+  top: -1em;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.Qcomment .contain > div section .question [data-admin] {
+  transform: scaleX(-1);
+}
+.Qcomment .contain > div section .question [data-admin]::before, .Qcomment .contain > div section .question [data-admin]::after {
+  transform: scaleX(-1);
+}
+.Qcomment .contain > div section .answer + .answer.combine,
+.Qcomment .contain > div section .question + .question.combine {
+  margin-left: 8em;
+  padding-top: 1em;
+  padding-bottom: 1.3em;
+}
+.Qcomment .contain > div section .answer + .answer.combine .icon,
+.Qcomment .contain > div section .question + .question.combine .icon {
+  display: none;
+}
+.Qcomment .contain > div section .answer + .answer.combine::before,
+.Qcomment .contain > div section .question + .question.combine::before {
+  display: none;
+}
+.Qcomment .contain > div section .question + .question.combine {
+  margin-right: 8em;
+}
+.Qcomment .contain > div section .question + .question {
+  padding-top: 5em;
+}
+.Qcomment .contain > div section .question + .question::before {
+  top: 3em;
+}
+.Qcomment .contain > div section .answer + .answer {
+  padding-top: 8em;
+}
+.Qcomment .contain hr {
+  width: 87%;
+  height: 0.1em;
+  background-color: #bbb;
+  margin: auto;
+  margin-top: 2em;
+}
+.Qcomment .contain .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+  gap: 2em;
+  position: relative;
+  overflow: visible;
+}
+.Qcomment .contain .buttons button {
+  padding: 0.8em 3em;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0 0px 35px 35px;
+  font-size: 14px;
+  background: linear-gradient(90deg, #fe8622 32%, #feab21 71%);
+  color: #333;
+  font-weight: 700;
+  font-family: inherit;
+  opacity: 100;
+  transition: 0.3s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 5;
+  width: max-content;
+}
+.Qcomment .contain .buttons button.close {
+  opacity: 0;
+  z-index: 2;
+}
+.Qcomment .contain .buttons.twoButtons .more {
+  right: -13em;
+}
+.Qcomment .contain .buttons.twoButtons .close {
+  left: -13em;
+  opacity: 100;
+}
+.Qcomment .replyModal {
+  position: fixed;
+  top: 6em;
+  right: 0;
+  z-index: -10;
+  transition: 0.5s;
+  opacity: 0;
+}
+.Qcomment .replyModal.active {
+  z-index: 20;
+  opacity: 100;
+}
+.Qcomment .replyModal.active .content {
+  transform: scale(1);
+  opacity: 100;
+  transition: opacity 0s, transform 0.4s;
+}
+.Qcomment .replyModal .overlay {
+  width: 100vw;
+  height: calc(100vh - 72px);
+  background-color: rgba(128, 128, 128, 0.478);
+  cursor: pointer;
+}
+.Qcomment .replyModal .content {
+  transition: opacity 0.2s, transform 0.6s;
+  opacity: 0;
+  transform: scale(0);
+  width: 80%;
+  margin: auto;
+  background-color: #e7e7e7;
+  padding: 3em;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: max-content;
+  border-radius: 12px;
+}
+.Qcomment .replyModal .content i.fa-times {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  font-size: 1.6em;
+  cursor: pointer;
+}
+.Qcomment .replyModal .content .question, .Qcomment .replyModal .content .answer {
+  padding-bottom: 4em;
+}
+.Qcomment .replyModal .content .question span i, .Qcomment .replyModal .content .answer span i {
+  display: none;
+}
+.Qcomment .replyModal .content .reply {
+  position: relative;
+  display: inline-block;
+  width: 80%;
+}
+.Qcomment .replyModal .content .reply label {
+  border-radius: 10px 10px 0 0;
+  padding: 0 0.8em;
+}
+.Qcomment .replyModal .content .reply textarea {
+  width: 100%;
+  height: 9em;
+}
+.Qcomment .replyModal .content button {
+  float: left;
+  margin-left: 4%;
+  margin-top: 4%;
+}
+.Qcomment.minimal .contain .buttons button {
+  display: none;
+}
+.Qcomment.empty .contain .buttons, .Qcomment.empty .contain hr {
+  display: none;
+}
+
+/*  instaSide   */
+.instaSide {
+  background-color: white;
+  border-radius: 9px;
+  padding: 1em;
+  font-size: 16px;
+}
+.instaSide h2 {
+  text-align: center;
+  padding-bottom: 0.9em;
+  color: #be1622;
+  font-size: 1.3em;
+}
+.instaSide a {
+  border: 0.25em solid #be1622;
+  background-color: white;
+  border-radius: 12px;
+  width: 17em;
+  display: block;
+  margin: auto;
+  padding: 0.7em;
+  height: 37.7em;
+  overflow: hidden;
+}
+.instaSide a > * {
+  padding-bottom: 0.6em;
+}
+.instaSide a .header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5em;
+}
+.instaSide a .header span {
+  font-size: 1em;
+  font-weight: 700;
+}
+.instaSide a .header img {
+  width: 2.5em;
+  border-radius: 50%;
+  border: 0.2em solid #be1622;
+  padding: 0.1em;
+}
+.instaSide a > img {
+  width: 100%;
+  display: block;
+}
+.instaSide a .options {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8em;
+}
+.instaSide a .options > * {
+  font-size: 1em;
+  padding-top: 0.2em;
+}
+.instaSide a > p {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+.courseGrid .instaSide {
+  background: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12.5px;
+}
+.courseGrid .instaSide h2 {
+  font-size: 1.6em;
+}
+.courseGrid .instaSide a {
+  border: 0.3em solid #be1622;
+}
+.courseGrid .instaSide a .header img {
+  width: 3.3em;
+}
+.courseGrid .instaSide a .header span {
+  font-size: 1.3em;
+}
+.courseGrid .instaSide a .options > * {
+  font-size: 1.3em;
+}
+.courseGrid .instaSide a > p {
+  font-size: 0.85em;
+}
+
+footer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 40% auto;
+  grid-template-areas: "logo logo logo" "links contact enamad" "links contact enamad" "text text text";
+  color: var(--textColorStrong);
+  background-color: white;
+  padding: 4em 5em 2em;
+  margin-top: 1em;
+  gap: 1em;
+}
+footer p,
+footer a {
+  font-size: 1.2em;
+}
+footer .h5 {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  font-weight: 600;
+}
+footer .logo-footer {
+  grid-area: logo;
+  justify-self: right;
+}
+footer .logo-footer img {
+  height: auto;
+}
+footer .links-footer {
+  display: grid;
+  grid-area: links;
+  grid-template-areas: "title title" "rightLinks leftLinks";
+  grid-template-rows: 4em;
+  gap: 0 2em;
+}
+footer .links-footer .h5 {
+  grid-area: title;
+}
+footer .links-footer > div a {
+  display: list-item;
+  margin-right: 1em;
+  list-style: disc;
+}
+footer .links-footer > div:first-child {
+  grid-area: rightLinks;
+}
+footer .links-footer > div:last-child {
+  grid-area: leftLinks;
+}
+footer .contact-footer {
+  grid-area: contact;
+}
+footer .contact-footer #mobile > span {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer .contact-footer #mobile > span > span:nth-of-type(2) {
+  flex-basis: auto;
+}
+footer .contact-footer p {
+  display: flex;
+  align-items: start;
+  margin-bottom: 1em;
+}
+footer .contact-footer p::before {
+  content: "";
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  margin-left: 0.5em;
+  background-image: url("/Content/images/img/footerIcon1.png");
+  background-repeat: no-repeat;
+  background-size: 657%;
+  flex-shrink: 0;
+}
+footer .contact-footer p:nth-of-type(1)::before {
+  background-position: 0 0.1em;
+}
+footer .contact-footer p:nth-of-type(2)::before {
+  background-position: -2.1em 0.1em;
+  background-size: 533%;
+}
+footer .contact-footer p:nth-of-type(3)::before {
+  background-position: -5.7em 0em;
+}
+footer .contact-footer p:nth-of-type(4)::before {
+  background-position: -8.5em 0.1em;
+}
+footer .contact-footer p:nth-of-type(5)::before {
+  background-position: -11.3em 0.1em;
+}
+footer .contact-footer .socialmedia-footer {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer .contact-footer .socialmedia-footer a {
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  --wid: 3em;
+  width: var(--wid);
+  height: var(--wid);
+  background-image: url("/Content/images/img/HeaderAndFooterIcons.webp");
+  background-repeat: no-repeat;
+  background-size: 514%;
+  background-position: 0 0;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(1) {
+  background-position: -181px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(2) {
+  background-position: -134px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(3) {
+  background-position: -89px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(4) {
+  background-position: -43px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(5) {
+  background-position: 2px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(6) {
+  background-size: cover;
+}
+footer .enamad-footer {
+  grid-area: enamad;
+  width: 10em;
+  justify-self: left;
+  align-self: end;
+  margin-top: 1em;
+}
+footer > p {
+  background-color: var(--white);
+  color: var(--blue);
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5em 1em;
+  grid-area: text;
+  border-radius: var(--borderRadius);
+  margin-top: 2em;
+}
+@media (max-width: 992px) {
+  footer {
+    grid-template-areas: "logo logo logo" "links links links" "contact contact contact" "enamad enamad enamad" "text text text";
+  }
+}
+@media (max-width: 992px) and (min-width: 479px) {
+  footer .links-footer {
+    grid-template-areas: "title title" "rightLinks rightLinks" "leftLinks leftLinks";
+    grid-gap: 0;
+  }
+  footer .links-footer > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  footer .links-footer > div a {
+    display: list-item;
+    margin-right: 1em;
+    list-style: disc;
+    margin-left: 1.5em;
+  }
+  footer .links-footer > div:first-child, footer .links-footer > div:last-child {
+    grid-column: 1/2;
+  }
+}
+@media (max-width: 480px) {
+  footer {
+    padding: 4em 2em 2em;
+    grid-template-areas: "logo" "links" "contact" "enamad" "text ";
+    grid-template-columns: 100%;
+  }
+  footer .enamad-footer {
+    grid-column: 1/2;
+    justify-self: right;
+  }
+}
+@media (max-width: 330px) {
+  footer .links-footer {
+    display: block;
+  }
+}
+
+.courseGrid .sidebarContent {
+  margin: 0;
+}
+.courseGrid .sidebarContent .inputFlex::before {
+  width: 115%;
+}
+.courseGrid .sidebarContent .inputContent {
+  font-size: 12px;
+}
+
+.sidebarContent {
+  padding: 1em;
+  background-color: white;
+  border-radius: 8px;
+  margin-top: 1em;
+}
+.sidebarContent .inputFlex {
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0.3em;
+  gap: 5px;
+  position: sticky;
+  width: 100%;
+  top: 80px;
+  padding: 0 1em;
+  margin: 0 -1em;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.sidebarContent .inputFlex::before {
+  content: "";
+  background-color: white;
+  width: 107%;
+  height: 8em;
+  position: relative;
+  bottom: 1em;
+}
+.sidebarContent .inputFlex > label {
+  background-color: white;
+  position: absolute;
+  top: 0;
+  bottom: 46px;
+  border: 1px solid #e94d1b;
+  color: #f39200;
+  padding: 0.3em;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  border-radius: 11px;
+  cursor: pointer;
+  z-index: 1;
+  transition: top 0.3s, bottom 0.3s, background-color 0.1s;
+  font-weight: 500;
+  height: 2.8em;
+}
+.sidebarContent .inputFlex > label.active {
+  background-color: #f39200;
+  color: white;
+  top: 46px;
+  bottom: 0;
+  z-index: 2;
+}
+.sidebarContent .inputContent {
+  display: none;
+  font-size: 15px;
+}
+.sidebarContent .inputContent a {
+  cursor: pointer;
+}
+.sidebarContent .inputContent h3.title {
+  color: #2170b7;
+  text-align: center;
+  font-size: 1.1em;
+  padding: 0.9em 0;
+  line-height: 1.4em;
+}
+.sidebarContent .inputContent ol li {
+  margin-bottom: 0.4em;
+  list-style: decimal outside;
+  margin-right: 1em;
+}
+.sidebarContent .inputContent ol li .fa-arrow-alt-circle-down {
+  color: #2170b7;
+}
+.sidebarContent .inputContent ol li .item {
+  line-height: 1.5em;
+  margin-left: 0.5em;
+}
+.sidebarContent .inputContent.i2 li {
+  list-style-type: disc;
+  list-style-position: inside;
+  line-height: 1em;
+  margin-bottom: 1em;
+}
+.sidebarContent .inputContent.i2 li .course {
+  font-size: 1.1em;
+  line-height: 1.6em;
+  margin-bottom: 1.2em;
+}
+.sidebarContent .inputContent.i2 li:first-child {
+  margin-top: 1em;
+}
+.sidebarContent .inputContent.active {
+  display: block;
+}

@@ -1,0 +1,388 @@
+@use '../../source/Variables' as v;
+
+@mixin newRoadMap {
+    padding-inline: 3em;
+    margin-top: 5em;
+    padding-bottom: 22em;
+    counter-reset: card;
+
+    > div {
+        height: 24.8em;
+        background-position: right;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+
+        .roadCourseCard {
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, .16);
+            border-radius: 1em;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 54em;
+            width: 20em;
+            padding: 1em;
+            line-height: 1.5em;
+            font-size: .85em;
+            z-index : 3;
+
+            h2 {
+                font-size: 1.15em;
+                margin-block: 0.8em;
+                color: var(--textColorStrong);
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+
+            p {
+                font-size: 1em;
+                height: 4.7em;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+                margin-bottom: 1.5em;
+                line-height : 1.6em;
+            }
+
+            .teacher {
+                display: block;
+                margin-bottom: .7em;
+                display: flex;
+                align-items: center;
+
+                &::before {
+                    content: 'مدرس :';
+                    color: var(--mainBlue);
+                }
+
+                &::after {
+                    order: -1;
+                    content: '';
+                    background-image: url('/content/images/img/roadMap/roadIcons.svg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    --wid: 1.5em;
+                    width: var(--wid);
+                    height: var(--wid);
+                }
+            }
+
+            > div {
+                padding-top: 1em;
+                border-top: 1px solid #efefef;
+                display: flex;
+                justify-content: space-between;
+
+                > span {
+                    display: flex;
+                    align-items: center;
+                    color: var(--textColorStrong);
+                    gap: .2em;
+
+                    &::after {
+                        content: 'تومان';
+                        font-size: .8em;
+                    }
+                }
+
+                a {
+                    color: var(--mainBlue);
+                    display: flex;
+                    align-items: center;
+
+                    &::after {
+                        content: '';
+                        background-image: url('/content/images/img/roadMap/roadIcons.svg');
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position-x: -2.1em;
+                        --wid: 1.4em;
+                        width: var(--wid);
+                        height: var(--wid);
+                    }
+                }
+            }
+
+            &.need {
+                background-color: #F2F2F2;
+
+                &::before {
+                    content: 'هم نیاز';
+                    position: absolute;
+                    top: 0;
+                    left: 3em;
+                    padding: 0.3em 0.9em;
+                    background-color: var(--mainBlue);
+                    color: white;
+                    border-radius: 0 0 0.8em 0.8em;
+                }
+            }
+
+            &:after {
+                counter-increment: card;
+                content: counter(card);
+                --wid: 2em;
+                width: var(--wid);
+                height: var(--wid);
+                bottom: calc(100% + .5em);
+                right: 0;
+                border-radius: 50%;
+                box-shadow: 0 0 15px rgba(0, 0, 0, .16);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                color: var(--textColorStrong);
+            }
+        }
+
+        &.double {
+            &:nth-child(odd) {
+                .roadCourseCard {
+                    &:nth-child(1) {
+                        left: 39em;
+                    }
+
+                    &:nth-child(2) {
+                        left: 68em;
+                    }
+
+                    &.need {
+                        > .arrow {
+                            position: absolute;
+                            top: 7%;
+                            right: 110%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 5em;
+                            gap: 0.5em;
+                            color: #2086C8;
+
+                            > img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(even) {
+                .roadCourseCard {
+                    &:nth-child(1) {
+                        left: 54em;
+                    }
+
+                    &:nth-child(2) {
+                        left: 25em;
+                    }
+
+                    &.need {
+                        > .arrow {
+                            position: absolute;
+                            top: 7%;
+                            left: 110%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 5em;
+                            gap: 0.5em;
+                            color: #2086C8;
+
+                            > img {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.single {
+            &:nth-child(odd) {
+                .roadCourseCard {
+                    left: 39em;
+                }
+            }
+        }
+
+        &:nth-child(even) {
+            background-image: url('/content/images/img/roadMap/road2.svg');
+
+            &:last-child {
+                background-image: url('/content/images/img/roadMap/road5.svg');
+                background-size: contain;
+                height: 36.6em;
+                background-position-y: -0.2em;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    display: inline-block;
+                    background-image: url('/content/images/img/roadMap/students.svg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 34em;
+                    height: 34.1em;
+                    left: 25.2em;
+                    top: 24.5em;
+                    z-index : 2;
+                }
+            }
+        }
+
+        &:nth-child(odd) {
+            background-image: url('/content/images/img/roadMap/road3.svg');
+
+            &:last-child {
+                background-image: url('/content/images/img/roadMap/road4.svg');
+                background-size: contain;
+                height: 36.7em;
+                background-position-x: -0.2em;
+                background-position-y: -2.4em;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    display: inline-block;
+                    background-image: url('/content/images/img/roadMap/students.svg');
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 34em;
+                    height: 34.1em;
+                    left: 29.7em;
+                    top: 20.5em;
+                    z-index : 2;
+                }
+
+                .roadCourseCard {
+                    left: 39em;
+                }
+            }
+        }
+
+        &:first-child {
+            background-image: url(/content/images/img/roadMap/road1.svg);
+            background-size: contain;
+            background-position: bottom;
+            background-position-y: 8em;
+            background-position-x: 0em;
+
+            &::before {
+                content: '';
+                position: absolute;
+                display: inline-block;
+                background-image: url('/content/images/img/roadMap/car.svg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                --wid: 6.5em;
+                width: 19em;
+                height: 10.6em;
+                left: 2.1em;
+                top: 5.8em;
+            }
+        }
+
+        &:last-child {
+            .roadCourseCard {
+                top: 34%;
+            }
+        }
+    }
+
+    @include v.media(v.$tablet) {
+        margin-top: 6em;
+        padding-inline: 1.4em;
+
+        > div {
+            height: auto !important;
+            background-image: none !important;
+            margin-top: 5.1em;
+
+            &::after {
+                content: '';
+                width: 12.3vw;
+                height: 21vw;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-image: url('/content/images/img/roadMap/roadRes.svg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                z-index: 0;
+            }
+
+            &:first-child {
+                margin-top: 0;
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            &:last-child {
+                &::before {
+                    content: "";
+                    width: 12.3vw;
+                    height: 21vw;
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-image: url(/content/images/img/roadMap/roadRes.svg);
+                    background-size: contain;
+                    background-repeat: repeat-y;
+                    z-index: 0;
+                }
+
+                &::after {
+                    width: 19em !important;
+                    height: 19.1em !important;
+                    left: 9.1em !important;
+                    top: 25.5em !important;
+                }
+            }
+
+            .roadCourseCard {
+                position: static;
+                transform: translate(0);
+                width: 100%;
+            }
+
+            &.double {
+                > .roadCourseCard {
+                    &:nth-child(2) {
+                        margin-top: 6em;
+                    }
+
+                    &:nth-child(1) {
+                        &::before {
+                            content: "";
+                            width: 12.3vw;
+                            height: 21vw;
+                            position: absolute;
+                            top: 100%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            background-image: url(/content/images/img/roadMap/roadRes.svg);
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            z-index: 0;
+                        }
+                    }
+
+                    &.need {
+                        > .arrow {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

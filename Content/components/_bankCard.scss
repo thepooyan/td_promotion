@@ -1,0 +1,40 @@
+﻿@use '../source/_Variables.scss';
+.bankCard {
+    --width: 35em;
+    width: var(--width);
+    position: relative;
+    cursor: pointer;
+    transition: .2s;
+    margin: auto;
+    color: black;
+
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    span {
+        position: absolute;
+        bottom: 38%;
+        width: 100%;
+        text-align: center;
+        font-size: calc(var(--width) / 12);
+    }
+
+    p {
+        position: absolute;
+        right: 10%;
+        bottom: 20%;
+        font-size: calc(var(--width) / 23);
+        font-weight: bold;
+        margin: 0;
+    }
+
+    &:hover {
+        filter: drop-shadow(3px 3px 5px rgb(0 0 0 / 30%));
+    }
+
+    @include Variables.media(544px) {
+        --width: 262px;
+    }
+}

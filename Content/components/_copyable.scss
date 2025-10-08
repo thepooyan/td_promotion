@@ -1,0 +1,23 @@
+﻿.copyable {
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+        content: "کپی شد!";
+        position: absolute;
+        background: grey;
+        color: white;
+        padding: 0.4em 0.6em;
+        border-radius: 20px 20px 20px 0;
+        bottom: 40%;
+        opacity: 0;
+        transition: 0.1s;
+        width: max-content;
+        right: 0;
+    }
+
+    &.copied::after {
+        bottom: 50%;
+        opacity: 100;
+    }
+}

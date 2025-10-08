@@ -1,0 +1,268 @@
+﻿@use "sass:list";
+@use '../source/_Variables.scss';
+$calendarBackground: white;
+$calendarBackgroundAlt: rgb(241, 241, 241);
+
+.calendarContainer {
+    .calendarTitle {
+        background-color: #fff;
+        background: url("images/img/CalendarHeader.png") no-repeat;
+        background-size: contain;
+        width: 360px;
+        height: 150px;
+        color: white;
+        @include Variables.flex(c, c);
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0 70px;
+        line-height: 24px;
+        text-align: center;
+    }
+
+    @at-root .courseCalendar {
+        @include Variables.flex(s, c, column);
+        background-color: $calendarBackground;
+        padding: 10px 5px;
+        margin: 10px 30px;
+        margin-bottom: 0px;
+
+        .header,
+        .course {
+            width: 100%;
+            @include Variables.flex(c, c);
+
+            > * {
+                text-align: center;
+                padding: 10px 0;
+                margin: 0 3px;
+                line-height: 19px;
+            }
+
+            $calendarSizes: 4, 1, 3/2, 2/3, 1, 15/8, 2, 1;
+
+            @for $index from 1 through list.length($calendarSizes) {
+                $size: list.nth($calendarSizes, $index);
+
+                > *:nth-child(#{$index}) {
+                    flex: $size;
+                }
+            }
+        }
+
+        .header {
+            > span {
+                font-size: 13px;
+                font-family: inherit;
+                font-weight: 500;
+                border-radius: 5px;
+                color: white;
+                padding: 13px 0;
+            }
+
+            $calendarHeaderColors: #00a19b, #ffa304, #fb5b73, #27a2e8, #4d5ce9, #00a19b, #ffa304, #9d9d9b;
+
+            @for $index from 1 through list.length($calendarHeaderColors) {
+                $color: list.nth($calendarHeaderColors, $index);
+
+                > span:nth-child(#{$index}) {
+                    background-color: $color;
+                }
+            }
+        }
+
+        .course {
+            height: 58px;
+            position: relative;
+
+            > span {
+                font-weight: bold;
+                color: #42515a !important;
+            }
+
+            .courseName span {
+                width: 17vw;
+                display: inline-block;
+            }
+
+            .signup {
+                > .btn-log.btn {
+                    background-color: Variables.$calendarButtonRed;
+                    font-size: 14px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    cursor: pointer;
+                    font-weight: bold;
+                }
+
+                font-weight: bold;
+            }
+
+            .courseStartDate span {
+                color: #be1623;
+            }
+
+            .courseLength::after {
+                content: " ساعت";
+            }
+
+            .courseTuition::after {
+                content: " تومان";
+            }
+
+            &:nth-child(odd) {
+                background-color: $calendarBackgroundAlt;
+            }
+
+            .courseHoldType {
+                position: absolute;
+                background-color: Variables.$calendarButtonRed;
+                color: white !important;
+                border-radius: 20px 10px;
+                padding: 5px 6px;
+                transform: rotate(20deg);
+                right: -30px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+
+
+.btn-log {
+    background: Variables.$main-blue;
+    color: Variables.$bg-color;
+    height: 35px;
+    font-size: 1.2em;
+    line-height: 26px;
+    border-radius: 0;
+}
+
+.btn, .grid-container .books-part .stars-more > a {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.tab-calender #tabPortfolios2 h1 {
+    text-align: center;
+    padding: 0.6em 1em;
+    font-size: 1.8em;
+    background: #be1623;
+    color: white;
+    width: max-content;
+    margin: auto;
+    margin-top: auto;
+    border-radius: 32px;
+    border: .2em solid #b80000;
+    box-shadow: 0 0 5px #000000c2;
+    margin-top: 1em;
+    position: relative;
+    transition: .1s;
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 88%;
+        bottom: -18px;
+        width: 78px;
+        height: 54px;
+        background: url("images/img/Header-Footer.png");
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-size: auto;
+        background-position: -5px -9px;
+        background-size: 678%;
+    }
+}
+
+/*---festival styles*/
+.festival {
+
+
+    @at-root .courseCalendar {
+
+
+        .header,
+        .course {
+
+
+
+
+            $calendarSizes: 4, 1.5,1, 2, 2, 1;
+
+            @for $index from 1 through list.length($calendarSizes) {
+                $size: list.nth($calendarSizes, $index);
+
+                > *:nth-child(#{$index}) {
+                    flex: $size;
+                }
+            }
+        }
+
+        .header {
+
+
+            $calendarHeaderColors: #00a19b, #ffa304, #fb5b73, #27a2e8,#4d5ce9, #9d9d9b;
+
+            @for $index from 1 through list.length($calendarHeaderColors) {
+                $color: list.nth($calendarHeaderColors, $index);
+
+                > span:nth-child(#{$index}) {
+                    background-color: $color;
+                }
+            }
+        }
+
+        .course {
+
+
+            > span {
+                font-weight: bold;
+                color: #42515a !important;
+
+                &:nth-child(4) {
+                    /* color: #be1623 !important;*/
+                    font-weight: 600;
+                }
+            }
+
+
+
+
+
+
+
+            .courseHoldType {
+                padding: 0.5em 1em;
+                font-size: 1.2em
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .courseCalendar .course > span:nth-child(5)::before {
+            content: "پیشنیاز  ";
+        }
+
+        .courseCalendar .course > span:nth-child(7)::before {
+            content: "";
+        }
+    }
+}
+

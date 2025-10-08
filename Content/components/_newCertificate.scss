@@ -1,0 +1,42 @@
+﻿@use "../source/Variables" as v;
+@mixin newCertificate {
+    display: flex;
+    align-items: flex-end;
+    gap: 2em;
+    margin-block: 4em;
+
+    > .text {
+        display: flex;
+        flex-direction: column;
+        border-left: 6px solid #2086C8;
+        border-radius: 1em;
+        gap: .5em;
+        padding-block: 1.5em;
+        padding-left: 1em;
+
+        > .c-title {
+            font-size: 1.25em;
+            font-weight: 900;   
+            color: #383838;
+        }
+    }
+
+    @include v.media(v.$laptop){
+        flex-direction : column;
+        gap : 1em;
+
+        >img{
+            height : auto;
+        }
+
+        >.text{
+            border-left : none;
+            padding-block : 0;
+            padding-left : 0;
+
+            >.c-title{
+                font-size : 1em;
+            }
+        }
+    }
+}

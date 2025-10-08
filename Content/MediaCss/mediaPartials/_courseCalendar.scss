@@ -1,0 +1,137 @@
+﻿@use "../../source/_Variables.scss";
+
+/* Extra large devices (large laptops and desktops, 1200px till 993 and down) */
+@media only screen and (max-width: 1200px) {
+    .calendarContainer {
+        @at-root .courseCalendar {
+            .header {
+                > span {
+                    height: 45px;
+                    line-height: 12px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
+
+/* Large devices (laptops/desktops, 992px till 767 and down) */
+@media only screen and (max-width: 992px) {
+    .calendarContainer {
+        .calendarTitle {
+            width: 318px;
+            height: 136px;
+            font-size: 19px;
+            margin: auto;
+        }
+
+        @at-root .courseCalendar {
+            background: none;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: stretch;
+            gap: 5px;
+
+            .header {
+                display: none;
+            }
+
+            .course {
+                flex-direction: column;
+                border-radius: 80px 0 80px 0px;
+                position: relative;
+                margin-top: 30px;
+                margin-bottom: 70px;
+                padding-bottom: 20px;
+                width: 285px;
+                background-color: white !important;
+                height: auto;
+                padding: 1em;
+                gap: 7px;
+                padding: 0;
+                z-index: 0;
+
+                > span {
+                    padding: 0;
+                    font-weight: 500;
+
+                    &:nth-child(7) {
+                        color: orange;
+
+                        &::before {
+                            content: "پیشنیاز ";
+                        }
+                    }
+                }
+
+                .signup > .btn-log.btn {
+                    width: 130px;
+                    background-color: Variables.$calendarButtonRed;
+                }
+
+                .courseHoldType {
+                    top: 4px;
+                    right: -37px;
+                    transform: rotate(36deg);
+                }
+
+                .courseName {
+                    border-radius: 5px;
+                    width: 100%;
+                    padding: 15px 30px;
+                    margin-top: 8px;
+
+                    span {
+                        font-size: 1.2em;
+                        font-weight: 600;
+                        line-height: 23px;
+                        display: inline;
+                        color: Variables.$calendarButtonRed;
+                    }
+                }
+
+                .courseButton {
+                    margin: 19px 0;
+                    font-weight: 600;
+                    padding: 12px 0;
+                    width: 126px;
+                    border-radius: 30px;
+                }
+
+                &::before {
+                    content: "";
+                    background-color: Variables.$calendarYellow;
+                    height: 110%;
+                    z-index: -7;
+                    position: absolute;
+                    width: 91%;
+                }
+
+                &::after {
+                    content: "";
+                    background-color: #fff;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    position: absolute;
+                    border-radius: 80px 0 80px 0;
+                    border: 1px solid #a2a2a2;
+                }
+            }
+        }
+    }
+}
+
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+    .calendarContainer {
+        @at-root .courseCalendar {
+            flex-direction: column;
+            align-content: center;
+        }
+    }
+}

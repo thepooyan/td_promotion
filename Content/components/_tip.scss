@@ -1,0 +1,24 @@
+@use "../source/Variables" as v;
+@mixin tip{
+    width: 100%;
+    border-radius: var(--radius);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 23em;
+    padding-block: 4em;
+    padding-inline: 8em 5em;
+    margin-bottom: 3em;
+
+    >*{
+        color: white !important;
+    }
+
+    >h4{
+        font-size: 1.4em;
+        margin-bottom: 1em;
+    }
+
+    @include v.media(v.$tablet) {
+        padding: 2em;
+      }
+}

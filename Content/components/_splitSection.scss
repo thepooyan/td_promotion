@@ -1,0 +1,211 @@
+﻿@use '../source/_Variables.scss' as v;
+
+@mixin split {
+    display: grid;
+    grid-template-columns: 1fr;
+    --p: #383838;
+
+    &.multipleImg,
+    &.singleImg {
+        grid-template-columns: 2r 1fr;
+        grid-template-areas: "right left";
+        column-gap: 2em;
+        --p: #383838;
+
+
+        .left {
+            grid-area: left;
+            padding-inline: 2em 0em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .imgWrap {
+                font-size: 0.8vw;
+                --wid: 33em;
+                --color: var(--colorAlt);
+                width: var(--wid);
+                height: var(--wid);
+                position: relative;
+                margin-bottom: 7em;
+
+                &:nth-child(2) {
+                    --wid: 21em;
+                }
+
+                &:nth-child(3) {
+                    --wid: 14em;
+                    margin-right: 20em;
+                }
+
+                img {
+                    border-radius: 50%;
+                    width: 100%;
+                    height: 100%;
+                    cursor: unset;
+                    margin: auto;
+                    max-width: unset !important;
+                    max-height: unset !important;
+                    object-fit: cover;
+                }
+
+                &::after,
+                &::before {
+                    content: "";
+                    border: 0.1em solid var(--color);
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    top: -0.7em;
+                    transform: scale(1.08);
+                    z-index: 0;
+                    opacity: 0.8;
+                }
+
+                &::before {
+                    top: -0.1em;
+                    left: -0.5em;
+                    transform: scale(1.05);
+                    opacity: 0.6;
+                }
+            }
+        }
+
+        .right {
+            grid-area: right;
+
+            h3 {
+                margin-top: 0;
+            }
+        }
+    }
+
+    &.multipleImg {
+        .right {
+            .imgWrap {
+                display: none;
+            }
+        }
+
+        .imgWrap {
+            font-size: 0.8vw;
+            --wid: 33em;
+            --color: var(--colorAlt);
+            width: var(--wid);
+            height: var(--wid);
+            position: relative;
+            margin-bottom: 7em;
+
+            img {
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                cursor: unset;
+                margin: auto;
+                max-width: unset !important;
+                max-height: unset !important;
+                object-fit: cover;
+            }
+
+            &::after,
+            &::before {
+                content: "";
+                border: 0.1em solid var(--color);
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                top: -0.7em;
+                transform: scale(1.08);
+                z-index: 0;
+                opacity: 0.8;
+            }
+
+            &::before {
+                top: -0.1em;
+                left: -0.5em;
+                transform: scale(1.05);
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &.singleImg {
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 2em;
+
+        .left {
+            display: flex;
+            align-items: center;
+
+            .imgWrap:first-child {
+                font-size: 0.8vw;
+                --wid: 100%;
+                --color: var(--colorAlt);
+                width: var(--wid);
+                height: auto;
+                position: static;
+                margin-bottom: 0;
+
+                > img {
+                    border-radius: 0;
+                    object-fit: contain;
+                    box-shadow: none;
+                    width: auto;
+                    height: auto;
+                }
+
+                &::after, &::before {
+                    display: none;
+                }
+            }
+
+            .imgWrap:not(:first-child) {
+                display: none;
+            }
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    @include v.media(1500px) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 3em;
+
+        &.multipleImg {
+            .left {
+                display: none;
+            }
+
+            .right {
+                .imgWrap {
+                    display: block;
+                    /* font-size: 1vw; */
+                    --wid: 57vw;
+                    max-width: 500px;
+                    max-height: 500px;
+                    margin: auto;
+                    margin-block: 10em;
+                }
+            }
+        }
+
+        &.singleImg {
+            .left {
+                padding-inline: 0;
+
+                .imgWrap:first-child {
+                    img {
+                        width: 60%;
+                    }
+                }
+            }
+        }
+    }
+}

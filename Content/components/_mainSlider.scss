@@ -1,0 +1,152 @@
+﻿@use '../source/Variables' as Variables;
+
+#mainSlider {
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    main {
+        padding-bottom: 27%;
+
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: auto;
+            opacity: 0;
+            transition: .2s opacity;
+            background-color: #c4c4c4;
+            color: transparent;
+            border-radius: 1.5em;
+
+
+            &.active {
+                opacity: 100;
+            }
+
+            &::after {
+                content: "تصویر پیدا نشد";
+                position: absolute;
+                color: white;
+                width: max-content;
+                height: max-content;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                font-size: 1.9em;
+                font-weight: bold;
+            }
+        }
+    }
+
+    > span {
+        line-height: 2em;
+        position: absolute;
+        left: 1em;
+        bottom: 1em;
+        background-color: white;
+        padding: .3em 1em;
+        border-radius: 1.5em;
+        font-weight: bold;
+        font-size: 1.3em;
+        pointer-events: none;
+    }
+
+    button {
+        font-size: 1.2em;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background-color: transparent;
+        --radius: .5em;
+
+        &:hover::before {
+            background-color: #3e3e3e58;
+        }
+
+        &::before {
+            @include Variables.fontAwsome("f105", 900);
+            background-color: #3e3e3e38;
+            color: white;
+            padding: 0.9em 0.7em;
+            border-radius: var(--radius) 0 0 var(--radius);
+            font-size: 2em;
+        }
+
+        &#left {
+            left: 0;
+
+            &::before {
+                content: '\f104';
+                border-radius: 0 var(--radius) var(--radius) 0;
+            }
+        }
+    }
+
+    .dots {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: 1em;
+        display: flex;
+        justify-content: center;
+        gap: 0.4em;
+        direction: ltr;
+
+        span {
+            background-color: rgba(29, 29, 29, .5);
+            border-radius: 50%;
+            display: block;
+            @include Variables.square(1em);
+            cursor: pointer;
+            transition: .2s;
+
+            &:hover,
+            &.active {
+                background-color: white;
+            }
+        }
+    }
+
+    &.single,
+    &.empty {
+        button {
+            display: none;
+        }
+    }
+
+    &.empty main:before {
+        content: 'اسلایدر خالی است!  :/';
+        position: absolute;
+        background-color: grey;
+        color: white;
+        font-size: 2em;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    @include Variables.media(Variables.$tablet) {
+        main {
+            padding-bottom: 82%;
+            img{
+                border-radius : 1em;
+            }
+        }
+
+        button {
+            font-size: .8em;
+        }
+
+        > span {
+            font-size: .9em;
+        }
+    }
+}

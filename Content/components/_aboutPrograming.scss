@@ -1,0 +1,26 @@
+﻿@use '../source/_Variables.scss';
+
+
+#About-programing {
+    .calendarDescription {
+        padding: 2em;
+        font-size: 15px;
+        margin-inline: 2em;
+
+        @include Variables.media(Variables.$mobile) {
+            padding: 2em 1em;
+            margin-inline: 0;
+        }
+
+        > h2 {
+            text-align: center;
+            color: blue;
+        }
+
+        hr {
+            &:before {
+                background-color: #faf9ff;
+            }
+        }
+    }
+}

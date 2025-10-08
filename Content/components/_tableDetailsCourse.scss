@@ -1,0 +1,203 @@
+.table-course {
+
+
+    .res-titles-details-course {
+        display: none;
+        padding: 0.3em 1em;
+        border-radius: 5px;
+
+        &.red {
+            background-color: #EE384E;
+            color: var(--white);
+        }
+    }
+
+    .titles-details-course,
+    > div > div {
+        display: grid;
+        grid-template-columns: 17% repeat(5,8.5%) 13% 7% 9% 8%;
+        justify-content: center;
+        align-items: center;
+        gap: 0 0.4em;
+
+        .link-more {
+            margin-inline: auto !important;
+        }
+    }
+
+    > div {
+        text-align: center;
+        border-radius: var(--borderRadiusBig);
+
+        h4 {
+            font-size: 1.2em;
+        }
+
+
+
+
+        &:last-child {
+            background-color: var(--white);
+            box-shadow: var(--boxshadow);
+            padding: 1em 0.5em;
+
+            > div {
+                padding-block: 1em;
+                border-radius: var(--borderRadiusBig);
+
+                .day {
+                    margin-left: 0.2em;
+                }
+
+                div,
+                p {
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 1.15em;
+                    line-height: 1.8em;
+                    color: #383838;
+
+                    > a {
+                        color: blue;
+                    }
+                }
+
+                div.res-text {
+                    display: none;
+                }
+
+                span {
+                    display: block;
+                }
+
+                .status-course {
+                    font-size: 1.2em;
+
+                    a {
+                        margin: 0 auto;
+                        width: fit-content;
+                        padding: 0.1em 1em;
+                        font-size: 1.1em;
+                    }
+
+                    p {
+                        color: var(--redColor);
+                        display: none;
+                    }
+                }
+
+                &:nth-child(even) {
+                    background-color: var(--bgLightGray);
+                }
+            }
+        }
+    }
+
+    .titles-details-course {
+        margin-bottom: 0.5em;
+        line-height: 5em;
+        padding: 0.5em;
+    }
+
+    @media (min-width: 1200px) {
+        a.link-more {
+            margin-top: 0;
+            padding: 0.2em 1em;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        .link-more {
+            width: 100%;
+        }
+
+        .price-course {
+            display: block !important;
+        }
+
+        > div:last-child > div div.res-text {
+            display: block;
+            margin-top: 1em;
+        }
+
+        .name-course {
+            font-size: 1.7em !important;
+            color: var(--textColorStrong);
+        }
+
+        .titles-details-course {
+            display: none !important;
+        }
+
+        .res-titles-details-course,
+        > div > div,
+        > div:last-child > div p {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        > div:last-child {
+            padding: 0;
+            background-color: transparent;
+            box-shadow: unset;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1em;
+
+            > div {
+                padding: 2em;
+                margin-bottom: 1em;
+
+                &:nth-child(even) {
+                    background-color: unset;
+                }
+
+                > p {
+                    font-weight: 600;
+
+                    &:not(:first-child) {
+                        background-color: rgba(255,255,255,.5);
+                        border-radius: 0.8em;
+                        padding-block: 0.3em;
+                        position: relative;
+                        border: 1px solid #fff;
+                        margin-inline: 13%;
+                        color: #484848;
+                    }
+
+                    &:last-child {
+                        background-color: unset;
+                        border-radius: unset;
+                        padding-block: unset;
+                        position: unset;
+                        border: unset;
+                        margin-inline: unset;
+                        color: unset;
+                    }
+                }
+
+                h4, p {
+                    font-size: 1.2em;
+                }
+
+                span {
+                    display: inline-block;
+                }
+
+                .status-course {
+                    width: 100%;
+                    margin-top: 2em;
+
+                    a {
+                        width: 100%;
+                        padding: 0.5em;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

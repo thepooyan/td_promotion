@@ -1,0 +1,59 @@
+@mixin gallery {
+  width: 100%;
+  height: 30em;
+  position: relative;
+  // margin-block: 9em;
+
+  @media (max-width: 650px) {
+    margin-block: unset;
+    margin-bottom: 15em;
+  }
+
+  @media (max-width: 470px) {
+    margin-block: unset;
+    margin-bottom: 30em;
+  }
+
+  @media (max-width: 385px) {
+    margin-block: unset;
+        margin-bottom: 35em;
+  }
+  .imgContainer {
+    background-image: url(/Content/images/allGuys.png);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .downTxt {
+    position: absolute;
+    bottom: -5em;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    @media (max-width: 470px) {
+      bottom: -7em;
+    }
+    .title {
+      font-weight: 900;
+      font-size: 1.6em;
+      margin-block: 1em;
+
+      @media (max-width: 470px) {
+
+    font-size: 1.6em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-inline: 1em;
+      }
+    }
+    > p {
+      width: 80%;
+      margin: auto;
+      text-align: center;
+      height: 9em;
+    }
+  }
+}

@@ -1,0 +1,2621 @@
+﻿@charset "UTF-8";
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+/*---------------MIXINS & FUNCTIONS--------------------------*/
+.videoGridContainer {
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 1300px;
+  margin: auto;
+  align-items: center;
+  margin-block: 2em;
+  position: relative;
+}
+.videoGridContainer > .videoGridTitle {
+  font-size: 1.5em;
+  font-weight: 600;
+  --color: green;
+  position: relative;
+  margin-bottom: 1em;
+  padding-bottom: 0.8em;
+}
+.videoGridContainer > .videoGridTitle > span {
+  color: var(--color);
+}
+.videoGridContainer > .videoGridTitle::after {
+  position: absolute;
+  content: "";
+  background-color: var(--color);
+  width: 1.5em;
+  height: 2px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.videoGridContainer > .videoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+  gap: 1.5em;
+  width: 100%;
+}
+.videoGridContainer > .videoGrid > .videoGridItem {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  background-color: white;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video {
+  position: relative;
+  width: 100%;
+  border-radius: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /*&::after {
+                  content: "";
+                  position: absolute;
+                  z-index: 2;
+                  --wid: 4vw;
+                  width: var(--wid);
+                  height: var(--wid);
+                  background-image: var(--icons);
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  background-position: 100.1% 0;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+              }*/
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.play::before {
+  display: none;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.play svg {
+  display: none;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.play > video {
+  object-fit: contain;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video > video {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: unset;
+  margin: 0;
+  border-radius: 1em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/content/images/img/packageVideoOverLay.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+  border-radius: 1.4vw;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video svg {
+  position: absolute;
+  z-index: 2;
+  --wid: 4em;
+  width: var(--wid);
+  height: var(--wid);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video > div {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  font-size: 1.3em;
+  color: var(--textColorStrong);
+  top: 103%;
+  right: 0;
+  font-weight: bold;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.noCover {
+  margin-bottom: 1em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video.noCover::before {
+  background-image: none;
+  background-color: #000;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video > video {
+  aspect-ratio: 16/9;
+  width: 100%;
+  height: auto;
+  background-color: black;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .sample-video svg {
+  --wid: 3em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: space-between;
+  font-size: 0.9em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .info > div:nth-of-type(1) {
+  font-weight: 600;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > .info > div:nth-of-type(2) {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  color: #616161;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a {
+  background-color: var(--mainBlue);
+  padding: 0.6em 2em;
+  font-size: 0.875em;
+  border-radius: 0.6em;
+  width: fit-content;
+  margin: auto;
+  position: relative;
+  margin-top: auto;
+  overflow: hidden;
+  display: block;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a > div {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 0.7em;
+  position: relative;
+  z-index: 1;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a > div > svg {
+  --wid: 1.5em;
+  width: var(--wid);
+  height: var(--wid);
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #234c7a;
+  transition: all 0.3s;
+  z-index: 0;
+  border-radius: 0.6em;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a:hover {
+  text-decoration: none;
+}
+.videoGridContainer > .videoGrid > .videoGridItem > a:hover::after {
+  width: 100%;
+}
+.videoGridContainer > .videoGrid > .videoGridItem:nth-child(n+7) {
+  display: none;
+}
+.videoGridContainer > .seoLandingLink {
+  display: none;
+}
+.videoGridContainer.active > .videoGrid > .videoGridItem:nth-child(n+7) {
+  display: flex;
+}
+.videoGridContainer.active > .seoLandingLink {
+  display: block;
+  margin-top: 2em;
+  padding-block: 0.9em;
+  align-self: flex-end;
+}
+.videoGridContainer .seeMore {
+  position: absolute;
+  bottom: 0em;
+  left: 0;
+  background-image: linear-gradient(to top, #ffffff 45%, transparent);
+  padding-block: 8.7em 2.2em;
+  color: #1d71b9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+  user-select: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 700;
+  border-radius: 0 0 1em 1em;
+  gap: 0.5em;
+}
+.videoGridContainer .seeMore:after {
+  content: "\f063";
+  font-family: "Font Awesome 5 Free";
+  font-size: 0.8em;
+}
+.videoGridContainer .seeMore.active {
+  position: relative;
+  background-image: unset;
+  padding-block: 3em;
+}
+.videoGridContainer .seeMore.active:after {
+  content: "\f062";
+}
+@media (max-width: 698px) {
+  .videoGridContainer {
+    font-size: 14px;
+  }
+  .videoGridContainer > .videoGridTitle {
+    font-size: 1.2em;
+  }
+  .videoGridContainer > .videoGrid > .videoGridItem:nth-child(n+4) {
+    display: none;
+  }
+  .videoGridContainer.active > .videoGrid > .videoGridItem:nth-child(n+4) {
+    display: flex;
+  }
+}
+
+.blog-boxes- > #article-slider, .blog-boxes- > #weblog-slider, .blog-boxes- > .title {
+  --maxWidth: 1320px;
+  max-width: var(--maxWidth);
+  margin: auto;
+}
+
+.blog-boxes- {
+  font-size: 16px;
+  padding-block: 2.5em 1.5em;
+  background-color: #fff;
+}
+.blog-boxes- > .title {
+  padding-right: 1.5em;
+  margin-bottom: 1em !important;
+}
+.blog-boxes- > .title > h2 {
+  padding: 0;
+  font-size: 1.5em;
+  font-weight: 900;
+  color: var(--textColorStrong);
+}
+.blog-boxes- > #article-slider, .blog-boxes- > #weblog-slider {
+  padding: 8em 1.5em 1em;
+}
+.blog-boxes- > #article-slider .swiper-button-prev, .blog-boxes- > #article-slider .swiper-button-next, .blog-boxes- > #weblog-slider .swiper-button-prev, .blog-boxes- > #weblog-slider .swiper-button-next {
+  display: none;
+  --wid: 39px;
+  width: var(--wid);
+  height: var(--wid);
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+}
+.blog-boxes- > #article-slider .card-blog, .blog-boxes- > #weblog-slider .card-blog {
+  position: relative;
+  padding: 0.5em;
+  box-shadow: -2px 2px 9px 0 rgba(0, 0, 0, 0.14);
+  background-color: #fff;
+  border-radius: 16px;
+  padding-top: 4.9em;
+  display: flex;
+  max-width: 310px;
+  margin: auto;
+}
+.blog-boxes- > #article-slider .card-blog .cardImg, .blog-boxes- > #weblog-slider .card-blog .cardImg {
+  aspect-ratio: 16/10.5;
+  width: 280px;
+  position: absolute;
+  top: -7em;
+  margin: auto;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 16px;
+}
+.blog-boxes- > #article-slider .card-blog .cardImg > img, .blog-boxes- > #weblog-slider .card-blog .cardImg > img {
+  height: 100%;
+  border-radius: 16px;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog {
+  background-color: var(--white);
+  padding-inline: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog .cardTitle h4, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog .cardTitle h4 {
+  text-align: right;
+  font-size: 1em;
+  color: var(--textColorStrong);
+  font-weight: 600;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog p, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog p {
+  margin-top: auto;
+  font-size: 0.875em;
+  line-height: 1.5em;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog p.p-limit, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog p.p-limit {
+  -webkit-line-clamp: 3;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog .link-arrow, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog .link-arrow {
+  display: flex;
+  justify-content: left;
+  bottom: 9px;
+  left: 2em;
+  margin-top: auto;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog .link-arrow a, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog .link-arrow a {
+  color: var(--blue);
+  position: relative;
+  margin-left: 1.5em;
+  font-size: 12px;
+  width: fit-content;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog .link-arrow a::after, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog .link-arrow a::after {
+  position: absolute;
+  background-image: url("/Content/images/img/Arrow - Left.png");
+  content: "";
+  color: var(--blue);
+  left: -1.5em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9em;
+  width: 1em;
+  height: 2em;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.5s;
+}
+.blog-boxes- > #article-slider .card-blog .txt-card-blog .link-arrow a:hover::after, .blog-boxes- > #weblog-slider .card-blog .txt-card-blog .link-arrow a:hover::after {
+  left: -2em;
+}
+.blog-boxes- .link-more {
+  width: fit-content;
+  margin: 2em auto;
+}
+.blog-boxes-.lastArticle {
+  background-color: #F8F8F8;
+}
+@media (max-width: 1350px) {
+  .blog-boxes- > div {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+  }
+}
+@media (max-width: 1300px) {
+  .blog-boxes- > #article-slider .swiper-button-prev, .blog-boxes- > #article-slider .swiper-button-next, .blog-boxes- #weblog-slider .swiper-button-prev, .blog-boxes- #weblog-slider .swiper-button-next {
+    display: flex;
+  }
+}
+@media (max-width: 1200px) {
+  .blog-boxes- {
+    height: auto;
+  }
+  .blog-boxes- article {
+    padding-bottom: 3em;
+  }
+}
+@media (max-width: 1050px) {
+  .blog-boxes- > div {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 650px;
+  }
+}
+@media (max-width: 698px) {
+  .blog-boxes- > div {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 320px;
+  }
+  .blog-boxes- > div .card-blog .txt-card-blog .cardTitle h4 {
+    font-size: 1.4em;
+  }
+  .blog-boxes- > div .card-blog .txt-card-blog p {
+    font-size: 1.2em;
+  }
+  .blog-boxes- article {
+    padding: 0 1em;
+  }
+  .blog-boxes- article > img {
+    width: 25%;
+    top: 0;
+  }
+  .blog-boxes- article > div > div .card-blog .txt-card-blog {
+    padding: 6.5em 1em 1em;
+  }
+  .blog-boxes- article > div > div .card-blog .txt-card-blog h5 {
+    font-size: 0.9em;
+  }
+}
+@media (max-width: 480px) {
+  .blog-boxes- {
+    background-size: 43em 10em;
+  }
+  .blog-boxes- .title {
+    margin-bottom: 0 !important;
+  }
+  .blog-boxes- .title > h2 {
+    font-size: 1em;
+  }
+  .blog-boxes- > #article-slider, .blog-boxes- #weblog-slider {
+    padding-top: 23vw;
+  }
+  .blog-boxes- > #article-slider .card-blog, .blog-boxes- #weblog-slider .card-blog {
+    padding-top: 21vw;
+    width: 65vw;
+  }
+  .blog-boxes- > #article-slider .card-blog .cardImg, .blog-boxes- #weblog-slider .card-blog .cardImg {
+    width: 58.5vw;
+    top: 0;
+    transform: translate(-50%, -50%);
+  }
+  .blog-boxes- article {
+    padding: 0 0.5em;
+  }
+  .blog-boxes- article > img {
+    width: 40%;
+  }
+}
+
+footer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 40% auto;
+  grid-template-areas: "logo logo logo" "links contact enamad" "links contact enamad" "text text text";
+  color: var(--textColorStrong);
+  background-color: white;
+  padding: 4em 5em 2em;
+  margin-top: 1em;
+  gap: 1em;
+}
+footer p,
+footer a {
+  font-size: 1.2em;
+}
+footer .h5 {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+  font-weight: 600;
+}
+footer .logo-footer {
+  grid-area: logo;
+  justify-self: right;
+}
+footer .logo-footer img {
+  height: auto;
+}
+footer .links-footer {
+  display: grid;
+  grid-area: links;
+  grid-template-areas: "title title" "rightLinks leftLinks";
+  grid-template-rows: 4em;
+  gap: 0 2em;
+}
+footer .links-footer .h5 {
+  grid-area: title;
+}
+footer .links-footer > div a {
+  display: list-item;
+  margin-right: 1em;
+  list-style: disc;
+}
+footer .links-footer > div:first-child {
+  grid-area: rightLinks;
+}
+footer .links-footer > div:last-child {
+  grid-area: leftLinks;
+}
+footer .contact-footer {
+  grid-area: contact;
+}
+footer .contact-footer #mobile > span {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer .contact-footer #mobile > span > span:nth-of-type(2) {
+  flex-basis: auto;
+}
+footer .contact-footer p {
+  display: flex;
+  align-items: start;
+  margin-bottom: 1em;
+}
+footer .contact-footer p::before {
+  content: "";
+  width: 2em;
+  height: 2em;
+  display: inline-block;
+  margin-left: 0.5em;
+  background-image: url("/Content/images/img/footerIcon1.png");
+  background-repeat: no-repeat;
+  background-size: 657%;
+  flex-shrink: 0;
+}
+footer .contact-footer p:nth-of-type(1)::before {
+  background-position: 0 0.1em;
+}
+footer .contact-footer p:nth-of-type(2)::before {
+  background-position: -2.1em 0.1em;
+  background-size: 533%;
+}
+footer .contact-footer p:nth-of-type(3)::before {
+  background-position: -5.7em 0em;
+}
+footer .contact-footer p:nth-of-type(4)::before {
+  background-position: -8.5em 0.1em;
+}
+footer .contact-footer p:nth-of-type(5)::before {
+  background-position: -11.3em 0.1em;
+}
+footer .contact-footer .socialmedia-footer {
+  display: flex;
+  flex-wrap: wrap;
+}
+footer .contact-footer .socialmedia-footer a {
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-top: 0.5em;
+  --wid: 3em;
+  width: var(--wid);
+  height: var(--wid);
+  background-image: url("/Content/images/img/HeaderAndFooterIcons.webp");
+  background-repeat: no-repeat;
+  background-size: 514%;
+  background-position: 0 0;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(1) {
+  background-position: -181px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(2) {
+  background-position: -134px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(3) {
+  background-position: -89px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(4) {
+  background-position: -43px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(5) {
+  background-position: 2px -81px;
+}
+footer .contact-footer .socialmedia-footer a:nth-of-type(6) {
+  background-size: cover;
+}
+footer .enamad-footer {
+  grid-area: enamad;
+  width: 10em;
+  justify-self: left;
+  align-self: end;
+  margin-top: 1em;
+}
+footer > p {
+  background-color: var(--white);
+  color: var(--blue);
+  font-weight: 600;
+  text-align: center;
+  padding: 0.5em 1em;
+  grid-area: text;
+  border-radius: var(--borderRadius);
+  margin-top: 2em;
+}
+@media (max-width: 992px) {
+  footer {
+    grid-template-areas: "logo logo logo" "links links links" "contact contact contact" "enamad enamad enamad" "text text text";
+  }
+}
+@media (max-width: 992px) and (min-width: 479px) {
+  footer .links-footer {
+    grid-template-areas: "title title" "rightLinks rightLinks" "leftLinks leftLinks";
+    grid-gap: 0;
+  }
+  footer .links-footer > div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  footer .links-footer > div a {
+    display: list-item;
+    margin-right: 1em;
+    list-style: disc;
+    margin-left: 1.5em;
+  }
+  footer .links-footer > div:first-child, footer .links-footer > div:last-child {
+    grid-column: 1/2;
+  }
+}
+@media (max-width: 480px) {
+  footer {
+    padding: 4em 2em 2em;
+    grid-template-areas: "logo" "links" "contact" "enamad" "text ";
+    grid-template-columns: 100%;
+  }
+  footer .enamad-footer {
+    grid-column: 1/2;
+    justify-self: right;
+  }
+}
+@media (max-width: 330px) {
+  footer .links-footer {
+    display: block;
+  }
+}
+
+.themeTitle, .themeSubtitle {
+  color: #383838;
+  --borderlength: 1.5rem;
+  font-weight: 600;
+  border-bottom: 0.19rem solid transparent;
+  border-image: linear-gradient(to right, transparent 0% calc(100% - var(--borderlength)), var(--h_compliment) calc(100% - var(--borderlength)) 100%);
+  border-image-slice: 1;
+  padding-bottom: 0.8rem;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+.themeTitle span, .themeSubtitle span {
+  color: var(--h_compliment);
+}
+.themeTitle.center, .themeSubtitle.center {
+  text-align: center;
+}
+
+.seoLandingPage {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: var(--textColorStrong);
+  --boxShodow: 0 0 15px #00000012;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent, .seoLandingPage .seoLandingCat, .seoLandingPage .videoGridContainer, .seoLandingPage .introVideo {
+  max-width: 1300px;
+  width: 100%;
+  margin-inline: auto;
+}
+.seoLandingPage .full {
+  width: 100%;
+}
+.seoLandingPage .introVideo {
+  max-width: 1300px;
+  width: 100%;
+  margin-inline: auto;
+  background-color: #083154;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 2.5em;
+  border-radius: 1em;
+  margin-bottom: 5em;
+  box-shadow: var(--boxShodow);
+  align-items: center;
+  gap: 2em;
+}
+.seoLandingPage .introVideo .seoLandingPageTitle {
+  font-size: 1.6em;
+}
+.seoLandingPage .introVideo > .context {
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.seoLandingPage .introVideo > .context > p {
+  margin-bottom: 1em;
+  text-align: justify;
+}
+.seoLandingPage .introVideo > .video > img {
+  aspect-ratio: 16/9;
+  border-radius: 1em;
+}
+.seoLandingPage .introVideo > .video > .sample-video {
+  position: relative;
+  width: 100%;
+  border-radius: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /*&::after {
+                  content: "";
+                  position: absolute;
+                  z-index: 2;
+                  --wid: 4vw;
+                  width: var(--wid);
+                  height: var(--wid);
+                  background-image: var(--icons);
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  background-position: 100.1% 0;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+              }*/
+}
+.seoLandingPage .introVideo > .video > .sample-video.play::before {
+  display: none;
+}
+.seoLandingPage .introVideo > .video > .sample-video.play svg {
+  display: none;
+}
+.seoLandingPage .introVideo > .video > .sample-video.play > video {
+  object-fit: contain;
+}
+.seoLandingPage .introVideo > .video > .sample-video > video {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: unset;
+  margin: 0;
+  border-radius: 1em;
+}
+.seoLandingPage .introVideo > .video > .sample-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/content/images/img/packageVideoOverLay.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 1;
+  border-radius: 1.4vw;
+}
+.seoLandingPage .introVideo > .video > .sample-video svg {
+  position: absolute;
+  z-index: 2;
+  --wid: 4em;
+  width: var(--wid);
+  height: var(--wid);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.seoLandingPage .introVideo > .video > .sample-video > div {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  font-size: 1.3em;
+  color: var(--textColorStrong);
+  top: 103%;
+  right: 0;
+  font-weight: bold;
+}
+.seoLandingPage .introVideo > .video > .sample-video.noCover {
+  margin-bottom: 1em;
+}
+.seoLandingPage .introVideo > .video > .sample-video.noCover::before {
+  background-image: none;
+  background-color: #000;
+}
+.seoLandingPage .introVideo > .video > .videoInfo {
+  display: flex;
+  color: white;
+  justify-content: center;
+  font-size: 0.9em;
+  flex-wrap: wrap;
+}
+.seoLandingPage .introVideo > .video > .videoInfo > .item {
+  display: flex;
+  align-items: center;
+  line-height: 1.3;
+  padding-inline: 1em;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+.seoLandingPage .introVideo > .video > .videoInfo > .item:not(:last-child) {
+  border-left: 1px solid white;
+}
+@media (max-width: 1300px) {
+  .seoLandingPage .introVideo {
+    margin-inline: 1em;
+    width: auto;
+  }
+}
+@media (max-width: 992px) {
+  .seoLandingPage .introVideo {
+    grid-template-columns: 1fr;
+    padding: 1.5em;
+    margin-inline: 0.5em;
+  }
+  .seoLandingPage .introVideo .seoLandingPageTitle {
+    font-size: 1.3em;
+  }
+  .seoLandingPage .introVideo > .context > p {
+    font-size: 0.875em;
+  }
+  .seoLandingPage .introVideo .seoLandingLink {
+    font-size: 0.75em;
+  }
+}
+.seoLandingPage .first-section {
+  background-color: #02233e;
+  padding-block: 5em;
+}
+.seoLandingPage .first-section .introVideo {
+  background-color: inherit;
+  padding: 0;
+  margin-bottom: 0;
+}
+.seoLandingPage .first-section .introVideo h1 {
+  font-size: 2.5em;
+  color: #4bd6ff;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-bottom: 0.6em;
+}
+.seoLandingPage .seoLandingLink {
+  background-color: var(--mainBlue);
+  padding: 0.6em 2em;
+  font-size: 0.875em;
+  border-radius: 0.6em;
+  width: fit-content;
+  margin: auto;
+  position: relative;
+  margin-top: auto;
+  overflow: hidden;
+  display: block;
+  margin: unset;
+}
+.seoLandingPage .seoLandingLink > div {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  gap: 0.7em;
+  position: relative;
+  z-index: 1;
+}
+.seoLandingPage .seoLandingLink > div > svg {
+  --wid: 1.5em;
+  width: var(--wid);
+  height: var(--wid);
+}
+.seoLandingPage .seoLandingLink::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #234c7a;
+  transition: all 0.3s;
+  z-index: 0;
+  border-radius: 0.6em;
+}
+.seoLandingPage .seoLandingLink:hover {
+  text-decoration: none;
+}
+.seoLandingPage .seoLandingLink:hover::after {
+  width: 100%;
+}
+.seoLandingPage .videoGridContainer {
+  font-size: 1em;
+}
+.seoLandingPage .seoLandingPageTitle {
+  font-size: 2em;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1em;
+  padding-bottom: 0.8em;
+}
+.seoLandingPage .seoLandingPageTitle > span {
+  color: var(--color);
+}
+.seoLandingPage .seoLandingPageTitle::after {
+  position: absolute;
+  content: "";
+  background-color: var(--color);
+  width: 1.5em;
+  height: 2px;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.seoLandingPage .seoLandingPageTitle.noLine {
+  padding-bottom: 0;
+}
+.seoLandingPage .seoLandingPageTitle.noLine::after {
+  display: none;
+}
+.seoLandingPage .newRoadMap {
+  padding-inline: 3em;
+  margin-top: 5em;
+  padding-bottom: 22em;
+  counter-reset: card;
+  padding-inline: 0;
+  padding-block: 3em 25em;
+  counter-reset: card;
+  font-size: 0.9vw;
+  width: 91em;
+  margin-inline: auto;
+  background-color: white;
+  border: 1px solid rgba(29, 113, 185, 0.3215686275);
+  border-radius: 1em;
+  box-shadow: var(--boxShodow);
+  margin-top: 0;
+}
+.seoLandingPage .newRoadMap > div {
+  height: 24.8em;
+  background-position: right;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.16);
+  border-radius: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 54em;
+  width: 20em;
+  padding: 1em;
+  line-height: 1.5em;
+  font-size: 0.85em;
+  z-index: 3;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard h2 {
+  font-size: 1.15em;
+  margin-block: 0.8em;
+  color: var(--textColorStrong);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard p {
+  font-size: 1em;
+  height: 4.7em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-bottom: 1.5em;
+  line-height: 1.6em;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard .teacher {
+  display: block;
+  margin-bottom: 0.7em;
+  display: flex;
+  align-items: center;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard .teacher::before {
+  content: "مدرس :";
+  color: var(--mainBlue);
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard .teacher::after {
+  order: -1;
+  content: "";
+  background-image: url("/content/images/img/roadMap/roadIcons.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  --wid: 1.5em;
+  width: var(--wid);
+  height: var(--wid);
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard > div {
+  padding-top: 1em;
+  border-top: 1px solid #efefef;
+  display: flex;
+  justify-content: space-between;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard > div > span {
+  display: flex;
+  align-items: center;
+  color: var(--textColorStrong);
+  gap: 0.2em;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard > div > span::after {
+  content: "تومان";
+  font-size: 0.8em;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard > div a {
+  color: var(--mainBlue);
+  display: flex;
+  align-items: center;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard > div a::after {
+  content: "";
+  background-image: url("/content/images/img/roadMap/roadIcons.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -2.1em;
+  --wid: 1.4em;
+  width: var(--wid);
+  height: var(--wid);
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard.need {
+  background-color: #F2F2F2;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard.need::before {
+  content: "هم نیاز";
+  position: absolute;
+  top: 0;
+  left: 3em;
+  padding: 0.3em 0.9em;
+  background-color: var(--mainBlue);
+  color: white;
+  border-radius: 0 0 0.8em 0.8em;
+}
+.seoLandingPage .newRoadMap > div .roadCourseCard:after {
+  counter-increment: card;
+  content: counter(card);
+  --wid: 2em;
+  width: var(--wid);
+  height: var(--wid);
+  bottom: calc(100% + 0.5em);
+  right: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: var(--textColorStrong);
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(odd) .roadCourseCard:nth-child(1) {
+  left: 39em;
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(odd) .roadCourseCard:nth-child(2) {
+  left: 68em;
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(odd) .roadCourseCard.need > .arrow {
+  position: absolute;
+  top: 7%;
+  right: 110%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5em;
+  gap: 0.5em;
+  color: #2086C8;
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(odd) .roadCourseCard.need > .arrow > img {
+  width: 100%;
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(even) .roadCourseCard:nth-child(1) {
+  left: 54em;
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(even) .roadCourseCard:nth-child(2) {
+  left: 25em;
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(even) .roadCourseCard.need > .arrow {
+  position: absolute;
+  top: 7%;
+  left: 110%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 5em;
+  gap: 0.5em;
+  color: #2086C8;
+}
+.seoLandingPage .newRoadMap > div.double:nth-child(even) .roadCourseCard.need > .arrow > img {
+  width: 100%;
+}
+.seoLandingPage .newRoadMap > div.single:nth-child(odd) .roadCourseCard {
+  left: 39em;
+}
+.seoLandingPage .newRoadMap > div:nth-child(even) {
+  background-image: url("/content/images/img/roadMap/road2.svg");
+}
+.seoLandingPage .newRoadMap > div:nth-child(even):last-child {
+  background-image: url("/content/images/img/roadMap/road5.svg");
+  background-size: contain;
+  height: 36.6em;
+  background-position-y: -0.2em;
+}
+.seoLandingPage .newRoadMap > div:nth-child(even):last-child::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  background-image: url("/content/images/img/roadMap/students.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 34em;
+  height: 34.1em;
+  left: 25.2em;
+  top: 24.5em;
+  z-index: 2;
+}
+.seoLandingPage .newRoadMap > div:nth-child(odd) {
+  background-image: url("/content/images/img/roadMap/road3.svg");
+}
+.seoLandingPage .newRoadMap > div:nth-child(odd):last-child {
+  background-image: url("/content/images/img/roadMap/road4.svg");
+  background-size: contain;
+  height: 36.7em;
+  background-position-x: -0.2em;
+  background-position-y: -2.4em;
+}
+.seoLandingPage .newRoadMap > div:nth-child(odd):last-child::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  background-image: url("/content/images/img/roadMap/students.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 34em;
+  height: 34.1em;
+  left: 29.7em;
+  top: 20.5em;
+  z-index: 2;
+}
+.seoLandingPage .newRoadMap > div:nth-child(odd):last-child .roadCourseCard {
+  left: 39em;
+}
+.seoLandingPage .newRoadMap > div:first-child {
+  background-image: url(/content/images/img/roadMap/road1.svg);
+  background-size: contain;
+  background-position: bottom;
+  background-position-y: 8em;
+  background-position-x: 0em;
+}
+.seoLandingPage .newRoadMap > div:first-child::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  background-image: url("/content/images/img/roadMap/car.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  --wid: 6.5em;
+  width: 19em;
+  height: 10.6em;
+  left: 2.1em;
+  top: 5.8em;
+}
+.seoLandingPage .newRoadMap > div:last-child .roadCourseCard {
+  top: 34%;
+}
+@media (max-width: 698px) {
+  .seoLandingPage .newRoadMap {
+    margin-top: 6em;
+    padding-inline: 1.4em;
+  }
+  .seoLandingPage .newRoadMap > div {
+    height: auto !important;
+    background-image: none !important;
+    margin-top: 5.1em;
+  }
+  .seoLandingPage .newRoadMap > div::after {
+    content: "";
+    width: 12.3vw;
+    height: 21vw;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url("/content/images/img/roadMap/roadRes.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .seoLandingPage .newRoadMap > div:first-child {
+    margin-top: 0;
+  }
+  .seoLandingPage .newRoadMap > div:first-child::before {
+    display: none;
+  }
+  .seoLandingPage .newRoadMap > div:last-child::before {
+    content: "";
+    width: 12.3vw;
+    height: 21vw;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url(/content/images/img/roadMap/roadRes.svg);
+    background-size: contain;
+    background-repeat: repeat-y;
+    z-index: 0;
+  }
+  .seoLandingPage .newRoadMap > div:last-child::after {
+    width: 19em !important;
+    height: 19.1em !important;
+    left: 9.1em !important;
+    top: 25.5em !important;
+  }
+  .seoLandingPage .newRoadMap > div .roadCourseCard {
+    position: static;
+    transform: translate(0);
+    width: 100%;
+  }
+  .seoLandingPage .newRoadMap > div.double > .roadCourseCard:nth-child(2) {
+    margin-top: 6em;
+  }
+  .seoLandingPage .newRoadMap > div.double > .roadCourseCard:nth-child(1)::before {
+    content: "";
+    width: 12.3vw;
+    height: 21vw;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url(/content/images/img/roadMap/roadRes.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .seoLandingPage .newRoadMap > div.double > .roadCourseCard.need > .arrow {
+    display: none !important;
+  }
+}
+.seoLandingPage .anchorBoxs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(11em, 14em));
+  gap: 2em;
+  margin-inline: auto;
+  padding-inline: 1em;
+}
+.seoLandingPage .anchorBoxs .anchorBoxsItem {
+  background-color: #fff;
+  border-radius: 1em;
+  box-shadow: var(--boxShodow);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding-block: 1.3em;
+  align-items: center;
+}
+.seoLandingPage .anchorBoxs .anchorBoxsItem > svg {
+  width: 4em;
+  height: 4em;
+}
+.seoLandingPage .seoLandingCat {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  box-shadow: var(--boxShodow);
+  --radius: 1em;
+  border-radius: var(--radius);
+  gap: 3em;
+  background-color: white;
+}
+.seoLandingPage .seoLandingCat > .imageSection {
+  background-color: var(--color);
+  border-radius: var(--radius);
+  padding: 2em 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+}
+.seoLandingPage .seoLandingCat > .imageSection > .catTitle {
+  color: white;
+  font-weight: 600;
+  font-size: 1.6em;
+}
+.seoLandingPage .seoLandingCat > .context {
+  padding-top: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  font-size: 0.9em;
+}
+.seoLandingPage .seoLandingCat > .context > .contextTitle {
+  color: var(--color);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+.seoLandingPage .seoLandingCat > .context > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.seoLandingPage .seoLandingCat > .context > ul > li::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 0.4em solid transparent;
+  border-bottom: 0.4em solid transparent;
+  border-right: 0.4em solid var(--color);
+}
+.seoLandingPage > section {
+  margin-bottom: 3em;
+}
+.seoLandingPage .blog-boxes- {
+  background-color: unset;
+  width: 100%;
+  max-width: 1320px;
+}
+.seoLandingPage .seoLandingStep {
+  background-color: var(--color);
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent {
+  padding-block: 1em 2em;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > span {
+  font-size: 1.125em;
+  text-align: center;
+  display: block;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .stepTitle {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-block: 1.5em 2em;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .stepTitle > .stepTitleText {
+  position: relative;
+  font-weight: 600;
+  font-size: 1.6em;
+  z-index: 1;
+  background-color: var(--color);
+  width: fit-content;
+  margin: auto;
+  padding-inline: 1.5em;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .stepTitle::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2392156863);
+  top: 50%;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepText {
+  text-align: justify;
+  line-height: 2.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepText p, .seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepText ul, .seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepText li {
+  text-align: justify;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepText ul {
+  padding-right: 1em;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepText ul li {
+  list-style-type: disc;
+}
+.seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepImage img {
+  width: 75%;
+  margin: auto;
+}
+@media (max-width: 698px) {
+  .seoLandingPage .seoLandingStep > .seoLandingStepContent > .stepTitle > .stepTitleText {
+    font-size: 1.3em;
+  }
+  .seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext {
+    grid-template-columns: 1fr;
+  }
+  .seoLandingPage .seoLandingStep > .seoLandingStepContent > .seoLandingStepContext > .seoLandingStepText {
+    font-size: 0.875em;
+  }
+}
+.seoLandingPage .seoLandingStepDescription {
+  max-width: 800px;
+  margin-inline: auto;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.0901960784);
+  background-color: white;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content {
+  --background: white;
+  --a: #fc6542;
+  --p: #383838;
+  --h: #383838;
+  --h_compliment: #1d71b9;
+  --h_orange: #C39C19;
+  /*---------------MIXINS & FUNCTIONS--------------------------*/
+  /*---------------MIXINS & FUNCTIONS--------------------------*/
+  /*---------------MIXINS & FUNCTIONS--------------------------*/
+  /*---------------MIXINS & FUNCTIONS--------------------------*/
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .orange {
+  color: orange !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .red {
+  color: red !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .green {
+  color: green !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .blue {
+  color: blue !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .yellow {
+  color: yellow !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .blue-mamad {
+  color: #4584b6 !important;
+  --h_compliment: #4584b6;
+  --colorTheme: #4584b6;
+  --colorAlt: #4584b6;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .orange span {
+  color: var(--h_orange) !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .italic {
+  font-style: italic !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .underline {
+  text-decoration: underline;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content a {
+  color: var(--h);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content a:hover {
+  text-decoration: underline;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content a:not([href^="#"]):not(.normal) {
+  text-decoration: underline;
+  color: var(--a);
+  text-underline-offset: 6px;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception), .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception) {
+  color: #383838;
+  --borderlength: 1.5rem;
+  font-weight: 600;
+  border-bottom: 0.19rem solid transparent;
+  border-image: linear-gradient(to right, transparent 0% calc(100% - var(--borderlength)), var(--h_compliment) calc(100% - var(--borderlength)) 100%);
+  border-image-slice: 1;
+  padding-bottom: 0.8rem;
+  text-align: right;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception) span, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception) span {
+  color: var(--h_compliment);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).center, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).center {
+  text-align: center;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).orange, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).orange {
+  border-image: linear-gradient(to right, transparent 0% calc(100% - var(--borderlength)), var(--h_orange) calc(100% - var(--borderlength)) 100%);
+  border-image-slice: 1;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).orange span, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).orange span {
+  color: var(--h_orange);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).noLine, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).noLine {
+  border: none !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).noLine::after, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).noLine::after {
+  display: none !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).center, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).center {
+  text-align: center;
+  border: none;
+  position: relative;
+  margin-bottom: 2em !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).center::after, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).center::after {
+  content: "";
+  display: block;
+  height: 1em;
+  width: 0.1em;
+  background-color: var(--h_compliment);
+  position: absolute;
+  top: calc(100% + 0.2em);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception).center.noLine, .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception).center.noLine {
+  margin-bottom: 1rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h3:not(.exception), .seoLandingPage .seoLandingStepDescription > .td-content h3:not(.exception) {
+  color: #383838;
+  --borderlength: 1.5rem;
+  font-weight: 600;
+  border-bottom: 0.19rem solid transparent;
+  border-image: linear-gradient(to right, transparent 0% calc(100% - var(--borderlength)), var(--h_compliment) calc(100% - var(--borderlength)) 100%);
+  border-image-slice: 1;
+  padding-bottom: 0.8rem;
+  text-align: right;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  padding-bottom: 0.5rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h3:not(.exception) span, .seoLandingPage .seoLandingStepDescription > .td-content h3:not(.exception) span {
+  color: var(--h_compliment);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h3:not(.exception).center, .seoLandingPage .seoLandingStepDescription > .td-content h3:not(.exception).center {
+  text-align: center;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h3:not(.exception).noLine, .seoLandingPage .seoLandingStepDescription > .td-content h3:not(.exception).noLine {
+  border: none !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h3:not(.exception).noLine::after, .seoLandingPage .seoLandingStepDescription > .td-content h3:not(.exception).noLine::after {
+  display: none !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h3:not(.exception).center.noLine, .seoLandingPage .seoLandingStepDescription > .td-content h3:not(.exception).center.noLine {
+  margin-bottom: 1rem !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception), .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception) {
+  color: #383838;
+  --borderlength: 1.5rem;
+  font-weight: 600;
+  border-bottom: 0.19rem solid transparent;
+  border-image: linear-gradient(to right, transparent 0% calc(100% - var(--borderlength)), var(--h_compliment) calc(100% - var(--borderlength)) 100%);
+  border-image-slice: 1;
+  padding-bottom: 0.8rem;
+  text-align: right;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception) span, .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception) span {
+  color: var(--h_compliment);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception).center, .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception).center {
+  text-align: center;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception).noLine, .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception).noLine {
+  border: none !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception).noLine::after, .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception).noLine::after {
+  display: none !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception).center, .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception).center {
+  text-align: center;
+  border: none;
+  position: relative;
+  margin-bottom: 2em !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception).center::after, .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception).center::after {
+  content: "";
+  display: block;
+  height: 1em;
+  width: 0.1em;
+  background-color: var(--h_compliment);
+  position: absolute;
+  top: calc(100% + 0.2em);
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception).noLine, .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception).noLine {
+  margin-bottom: 1rem !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .heighlight {
+  color: var(--colorHeighlight) !important;
+  font-weight: 500;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .heighlight2 {
+  color: var(--colorAlt);
+  font-weight: 500;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .body:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content p:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception) {
+  line-height: 1.9rem;
+  color: var(--p);
+  font-size: 1rem;
+  text-align: justify;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content pre.exception {
+  line-height: 1.9rem;
+  color: var(--p);
+  font-size: 1rem;
+  text-align: justify;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content b,
+.seoLandingPage .seoLandingStepDescription > .td-content .bold {
+  font-weight: 600 !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content strong {
+  font-weight: inherit;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception) > li,
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception) > li {
+  /*margin-right: 1.1rem;*/
+  list-style-type: none;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception) > a,
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception) > a {
+  display: list-item;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception).disk > li, .seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception).disk > a,
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception).disk > li,
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception).disk > a {
+  display: list-item;
+  margin-right: 0.9rem;
+  list-style-type: disc;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception).circle > li,
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception).circle > li {
+  list-style-type: circle;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception) ul, .seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception) ol,
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception) ul,
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception) ol {
+  margin-right: 1em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ol > li {
+  list-style-type: decimal !important;
+  margin-right: 1.7rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content li:last-child {
+  margin-bottom: 2em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content img:not(.exception):not(.normal) {
+  max-width: 50%;
+  max-height: 25rem;
+  margin: 2rem auto;
+  display: block;
+  width: auto;
+  transition: 0.2s;
+  margin-bottom: 4rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content img:not(.exception):not(.normal) + span {
+  margin-top: -3rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content img:not(.exception):not(.normal).fullscreen {
+  max-width: unset;
+  width: 100%;
+  max-height: unset;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content img:not(.exception):not(.normal):not(.unclickable) {
+  cursor: pointer;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content img:not(.exception):not(.normal):not(.unclickable):hover,
+.seoLandingPage .seoLandingStepDescription > .td-content img:not(.exception):not(.normal):not(.unclickable) .active {
+  box-shadow: 2px 2px 11px rgba(0, 0, 0, 0.44);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content img + span {
+  display: block;
+  text-align: center;
+  padding: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .float-img {
+  float: left;
+  margin-right: 2em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .float-img > img {
+  max-width: 25em !important;
+  object-fit: contain;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content video:not(.exception) {
+  width: 100%;
+  height: auto;
+  max-width: 57rem;
+  display: block;
+  margin: 2rem auto;
+  box-shadow: 2px 2px 7px rbga(0, 0, 0, 0.231372549);
+  border-radius: 0.5rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content blockquote {
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 0.3em;
+  border-right: 0.4em solid var(--h3);
+  font-weight: 700;
+  padding: 3em;
+  position: relative;
+  max-width: 50em;
+  margin: auto;
+  line-height: 2em;
+  text-align: justify;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content blockquote::before {
+  content: ",,";
+  position: absolute;
+  top: 0.2em;
+  font-size: 2.2em;
+  right: 0.8em;
+}
+@media (max-width: 480px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content blockquote {
+    font-size: 0.85rem;
+  }
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ins {
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  background: #f9f9f9;
+  display: block;
+  border-right: 0.3em solid;
+  padding: 1.3em;
+  border-image: linear-gradient(#f9f9f9 25%, var(--h3) 25%, var(--h3) 75%, #f9f9f9 75%);
+  border-image-slice: 1;
+  border-radius: 0.7em;
+  margin-block: 2rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content hr {
+  width: 80%;
+  height: 1px;
+  background-color: #d3d3d3;
+  margin: 5em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content hr::before {
+  content: ",,";
+  background: white;
+  font-size: 4em;
+  padding: 0 0.9em;
+  position: relative;
+  bottom: 0.2em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content mark {
+  color: var(--h);
+  font-size: 1rem;
+  font-weight: bold;
+  background: none;
+  max-width: 50%;
+  text-align: justify;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content mark.left {
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  float: left;
+  border-right: 0.25em solid black;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content mark.right {
+  padding-left: 0.5em;
+  margin-left: 0.5em;
+  float: right;
+  border-left: 0.25em solid black;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable {
+  display: block;
+  margin: auto;
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 0.4rem;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  width: fit-content;
+  overflow-x: auto;
+  max-width: 100%;
+  font-size: 0.95rem;
+  clear: both;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable .tr {
+  display: table-row;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable .tr.head {
+  background-color: #348edc;
+  color: white;
+  font-weight: bold;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable .tr .td {
+  display: table-cell;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable .tr .td.justify {
+  text-align: justify;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable .tr:nth-child(2n) {
+  background: #f9f9f9;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable.not-center .tr:not(.head) .td {
+  text-align: justify;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable.vertical {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .myTable.vertical .td {
+  display: flex;
+  flex-direction: column;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  gap: 5%;
+  margin-bottom: 5em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage img {
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.515));
+  width: 100% !important;
+  max-width: unset !important;
+  max-height: 35em !important;
+  margin-bottom: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage img::before {
+  content: attr(data-title);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage img + span {
+  margin-top: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage.one {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage.one img {
+  object-fit: contain;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage.one-two {
+  grid-template-columns: 50% 50%;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage.one-two.reverse {
+  grid-template-columns: 40% 59%;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage.three {
+  grid-template-columns: repeat(3, auto);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage.four {
+  grid-template-columns: repeat(4, auto);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collage.five {
+  grid-template-columns: repeat(5, auto);
+}
+@media (max-width: 698px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .collage.one-sm {
+    grid-template-columns: 1fr;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .collage.two-sm {
+    grid-template-columns: repeat(2, auto);
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .collage.three-sm {
+    grid-template-columns: repeat(3, auto);
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .collage.four-sm {
+    grid-template-columns: repeat(4, auto);
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .collage.five-sm {
+    grid-template-columns: repeat(5, auto);
+  }
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox {
+  border: 2px solid #ecae00;
+  background-color: #fff2cf;
+  border-radius: 5px;
+  margin: 3rem 0;
+  margin-top: 5rem;
+  position: relative;
+  font-size: 1.3rem;
+  padding: 1rem 1.2rem;
+  padding-top: 2.5rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox h1, .seoLandingPage .seoLandingStepDescription > .td-content .TipBox h2, .seoLandingPage .seoLandingStepDescription > .td-content .TipBox h3, .seoLandingPage .seoLandingStepDescription > .td-content .TipBox h4,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h1,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h2,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h3,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h4 {
+  border: none;
+  text-align: center;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox h1::after, .seoLandingPage .seoLandingStepDescription > .td-content .TipBox h2::after, .seoLandingPage .seoLandingStepDescription > .td-content .TipBox h3::after, .seoLandingPage .seoLandingStepDescription > .td-content .TipBox h4::after,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h1::after,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h2::after,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h3::after,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox h4::after {
+  display: none;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox::before,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox::before {
+  content: "";
+  background-image: url("/Content/images/img/qu.png");
+  width: 3.8rem;
+  height: 3.9rem;
+  display: block;
+  position: absolute;
+  right: 0.2rem;
+  top: -2.2rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox span,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox span {
+  font-size: 1.2rem;
+  color: #f09000;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox span img,
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox span img {
+  display: none;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox p:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox p:not(.exception) {
+  font-size: 1rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .TipBox img[src*=tip],
+.seoLandingPage .seoLandingStepDescription > .td-content .tipBox img[src*=tip] {
+  display: none;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .attention {
+  background: radial-gradient(silver, #e2e2e2, #fff);
+  border: 0.1em solid #cecece;
+  padding: 2em;
+  border-radius: 1.2em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .attention span {
+  color: var(--h);
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  font-size: 1.3rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content ul:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content ol:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content p:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content h1:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content h2:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content h3:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content h4:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content .title:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content .subtitle:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content .h4:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content .h3:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content .h2:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content ins:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content .attention:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content blockquote:not(:last-child),
+.seoLandingPage .seoLandingStepDescription > .td-content .body:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .ltr {
+  direction: ltr !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .h-auto {
+  height: auto !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .linkNote + br + span {
+  word-wrap: break-word;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog {
+  font-size: 1.2em;
+  display: flex;
+  gap: 2em;
+  width: fit-content;
+  margin: auto;
+  border: 2px dashed red;
+  padding: 2em;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 2em;
+  color: var(--textColorStrong) !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog:hover {
+  border-color: #b71724;
+  background-color: #fef3f4;
+  text-decoration: none;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog .title {
+  color: #e31e2e;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog > .img {
+  flex-basis: 25%;
+  flex-shrink: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog > .img > img {
+  width: 100%;
+  max-width: unset;
+  max-height: 10em;
+  margin: unset;
+  margin-right: auto;
+  display: block;
+  box-shadow: none;
+  aspect-ratio: unset;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog > span {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 698px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog {
+    border: none;
+    background-color: #f5f5f5;
+    width: 100%;
+    padding: 1em;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog .title {
+    font-size: 1.2em;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog .img {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog {
+    font-size: 1.6em;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .recommend-blog .title {
+    font-size: 1.2em;
+  }
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .node {
+  --h_compliment: #608b68;
+  --colorTheme: #608b68;
+  --colorAlt: #608b68;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .micro {
+  --h_compliment: #0052cc;
+  --colorTheme: #0052cc;
+  --colorAlt: #0052cc;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .ddd {
+  --h_compliment: #27c3dd;
+  --colorTheme: #27c3dd;
+  --colorAlt: #27c3dd;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .logic {
+  --h_compliment: #515e7a;
+  --colorTheme: #515e7a;
+  --colorAlt: #515e7a;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .python-project-color {
+  --h_compliment: #54BAB9;
+  --colorTheme: #54BAB9;
+  --colorAlt: #54BAB9;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .csharp-project-color {
+  --h_compliment: #f8ad9d;
+  --colorTheme: #f8ad9d;
+  --colorAlt: #f8ad9d;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .machine-learning-project-color {
+  --h_compliment: #31E1F7;
+  --colorTheme: #31E1F7;
+  --colorAlt: #31E1F7;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .java-project-color {
+  --h_compliment: #FFA5A5;
+  --colorTheme: #FFA5A5;
+  --colorAlt: #FFA5A5;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .web-design-project-color {
+  --h_compliment: #f08080;
+  --colorTheme: #f08080;
+  --colorAlt: #f08080;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .django-project-color {
+  --h_compliment: #a0c4ff;
+  --colorTheme: #a0c4ff;
+  --colorAlt: #a0c4ff;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .default-project-color {
+  --h_compliment: #c20000;
+  --colorTheme: #c20000;
+  --colorAlt: #c20000;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .access-project-color {
+  --h_compliment: #006A71;
+  --colorTheme: #006A71;
+  --colorAlt: #006A71;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .php-project-color {
+  --h_compliment: #ffd670;
+  --colorTheme: #ffd670;
+  --colorAlt: #ffd670;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .orange-color {
+  --h_compliment: orange;
+  --colorTheme: orange;
+  --colorAlt: orange;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .blue-theme-color {
+  --h_compliment: #1d71b9;
+  --colorTheme: #1d71b9;
+  --colorAlt: #1d71b9;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .divTable .h_iframe-aparat_embed_frame, .seoLandingPage .seoLandingStepDescription > .td-content .divTable video {
+  width: 52vw;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .cursor {
+  cursor: pointer !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsible::before {
+  content: "+" !important;
+  content: "+" !important;
+  /* font-size: 0.9em; */
+  color: #007bff !important;
+  font-weight: 600;
+  font-size: 1.3em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsible + .collapsibleContent {
+  max-height: 0;
+  overflow: hidden;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsible + .collapsibleContent.active {
+  max-height: var(--maxHeight);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsible.active::before {
+  content: "-" !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsible.active + .collapsibleContent {
+  overflow: visible;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .part {
+  background-color: var(--colorTheme);
+  border-radius: 0.7em;
+  font-size: 1.2em;
+  color: var(--colorCompliment);
+  padding: 0.5em 0.7em;
+  margin-bottom: 0.5em !important;
+  border-bottom: none !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .part h2:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content .part h3:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content .part h4:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content .part .h2:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content .part .h3:not(.exception),
+.seoLandingPage .seoLandingStepDescription > .td-content .part .h4:not(.exception) {
+  margin: 0;
+  margin-bottom: 0 !important;
+  padding: 0;
+  color: inherit;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box {
+  background-color: var(--colorCompliment);
+  border: 0.1em solid var(--colorAlt);
+  border-radius: 0.7em;
+  padding: 1em 2em;
+  margin-bottom: 3rem;
+  --p: #383838;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box.project {
+  background-color: var(--colorAlt);
+  display: grid;
+  grid-template-columns: 25% auto;
+  grid-template-areas: "right left";
+  gap: 6em;
+  padding: 1em 5em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box.project * {
+  color: var(--colorCompliment) !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box.project .left {
+  grid-area: left;
+  margin-block: auto;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box.project .left h4 {
+  margin-top: 1em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box.project img {
+  margin-block: auto;
+  grid-area: right;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box img {
+  cursor: unset !important;
+  max-width: 100%;
+  height: auto;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box:not(.project) > img {
+  height: auto;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .box:not(.project) .block-img {
+  width: auto;
+  margin: auto;
+  height: 300px;
+  float: none;
+  margin-bottom: 2em;
+}
+@media (max-width: 698px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .box:not(.project) {
+    padding: 1em 1em;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .box:not(.project) > img {
+    float: unset;
+    margin: 2em auto;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .box:not(.project) > img + span {
+    margin-top: 0;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .box:not(.project) .block-img {
+    width: 100%;
+    height: auto;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .box.project {
+    grid-template-columns: auto;
+    grid-template-areas: unset;
+    gap: 1em;
+    padding: 2em;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .box.project > img {
+    grid-area: unset;
+    width: 80%;
+    height: auto;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .box.project > .left {
+    grid-area: unset;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .box.project.withLabel::before {
+    display: none;
+  }
+}
+@media (max-width: 698px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .part {
+    font-size: 1em;
+  }
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .red {
+  color: red;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .blue {
+  color: blue;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .green {
+  color: green;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content pre:not(.exception) {
+  white-space: break-spaces;
+  direction: ltr;
+  text-align: left;
+  background: #1F1F1F;
+  color: #ffffff;
+  padding: 1em;
+  border-radius: 1em;
+  margin: 1em 0;
+  font-size: 1.1rem;
+  position: relative;
+  font-family: monospace !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content pre:not(.exception) > button {
+  background: #FFFFFF;
+  padding: 0.6em 1em;
+  border-radius: 0.6em;
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  font-size: 12px;
+  font-family: yekanbakh;
+  direction: rtl;
+  transition: 0.2s;
+  width: 3.8em;
+  white-space: nowrap;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content pre:not(.exception) > button:hover {
+  background-color: #e8e8e8;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content pre:not(.exception) > button.copied {
+  width: 5.6em;
+  background-color: rgb(67, 159, 67);
+  color: white;
+  cursor: unset;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  background-color: #97B8E1;
+  border-radius: 0.8em;
+  justify-content: space-between;
+  padding: 1.5em 2em 1.2em 1em;
+  margin-block: 2em;
+  font-size: 16px;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context {
+  align-self: flex-start;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context > h3 {
+  font-size: 1.9em;
+  color: #E9E3D5;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context > h3, .seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context > p, .seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context a {
+  color: #FFFAE7;
+  text-decoration: none;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context p {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context p.boldText {
+  color: #565656;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > .context p.boldText a {
+  color: #565656;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > img {
+  width: 23em;
+  flex-shrink: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsibleSection {
+  display: flex;
+  flex-direction: column;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsibleSection > .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 0em !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsibleSection > .title::after {
+  content: "";
+  --wid: .3em;
+  width: var(--wid);
+  height: var(--wid);
+  border-right: 2px solid #383838;
+  border-bottom: 2px solid #383838;
+  transform: rotate(45deg);
+  transition: all 0.3s;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsibleSection > .content {
+  height: 0px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsibleSection.active > .title {
+  margin-bottom: 0.5em !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsibleSection.active > .title::after {
+  transform: rotate(225deg);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .collapsibleSection.active > .content {
+  height: var(--height);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .w-30 {
+  width: 30% !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .w-50 {
+  width: 50% !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .w-80 {
+  width: 80% !important;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .newAds {
+  font-size: 15px;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents {
+  width: 100%;
+  max-width: 30em;
+  margin: auto;
+  margin-block: 1.5em;
+  border-radius: 0.5em;
+  padding: 1em;
+  font-size: 16px;
+  box-shadow: 0 0 15px #dfdfdf;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .title {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  font-weight: 600;
+  color: #383838;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .title > svg {
+  color: rgb(0, 139, 231);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents {
+  display: flex;
+  flex-direction: column;
+  max-height: 23em;
+  overflow: auto;
+  padding-left: 1em;
+  --sb-size: 6px;
+  --sb-track-color: #DFDFDF;
+  --sb-thumb-color: #009adc;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 7px;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 7px;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents > span {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 1em;
+  color: #64748B;
+  padding-block: 0.4em;
+  cursor: pointer;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents > span > span {
+  background-image: linear-gradient(to right, #54b3d6, #54b3d6 50%, #000 50%);
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  position: relative;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease-in-out;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents > span > span::before {
+  content: "";
+  background: #54b3d6;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.6s ease-in-out;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents > span > span:hover {
+  background-position: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents > span > span:hover::before {
+  width: 100%;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents > span:not(:last-child) {
+  border-bottom: 1px solid #f1f0f0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents > span::before {
+  content: "●";
+  color: #CBD5E1;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents .collapsibleContent {
+  margin-bottom: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents .collapsibleContent li {
+  color: black;
+  cursor: pointer;
+  display: flex;
+  gap: 0.5em;
+  padding-right: 0.5em;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents .collapsibleContent li:last-child {
+  margin-bottom: 0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents .collapsibleContent li::before {
+  content: "●";
+  color: #CBD5E1;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents .collapsibleContent li:hover {
+  color: #54b3d6;
+  transition: all 0.4s;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents .collapsible.active {
+  border: none;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents > .contents .collapsible.active + .collapsibleContent {
+  border-bottom: 1px solid #f1f0f0;
+}
+.seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents.right {
+  margin-inline: unset;
+  margin-right: 7.5%;
+}
+@media (max-width: 992px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents {
+    width: 100%;
+    font-size: 14px;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .tableOfContents.right {
+    margin-right: 0;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 1200px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .divTable .h_iframe-aparat_embed_frame, .seoLandingPage .seoLandingStepDescription > .td-content .divTable video {
+    width: 72vw;
+    max-width: 100%;
+    margin: auto;
+  }
+}
+@media (max-width: 992px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage {
+    flex-direction: column;
+    padding: 1.3em;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage > img {
+    width: 100%;
+    max-width: 36em;
+  }
+}
+@media (max-width: 698px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .float-img {
+    float: unset;
+    margin-right: inherit;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .float-img > img {
+    max-width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .seoLandingPage .seoLandingStepDescription > .td-content .simpleTextImage {
+    font-size: 14px;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content p:not(.exception),
+  .seoLandingPage .seoLandingStepDescription > .td-content ol:not(.exception),
+  .seoLandingPage .seoLandingStepDescription > .td-content ul:not(.exception) {
+    font-size: 14px;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .h2:not(.exception), .seoLandingPage .seoLandingStepDescription > .td-content h2:not(.exception) {
+    font-size: 1.35rem;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .h4:not(.exception), .seoLandingPage .seoLandingStepDescription > .td-content h4:not(.exception) {
+    font-size: 1.15rem;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content .h3:not(.exception), .seoLandingPage .seoLandingStepDescription > .td-content h3:not(.exception) {
+    font-size: 1.25rem;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content mark {
+    max-width: 100%;
+    margin: 0 0 1em 0;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content img {
+    width: 100%;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content img:not(.normal) {
+    width: 100%;
+    max-width: 100% !important;
+  }
+}
+.seoLandingPage .seoLandingStepDescription > .seoLandingLink {
+  margin-top: 2em;
+}
+@media (max-width: 800px) {
+  .seoLandingPage .seoLandingStepDescription {
+    margin-inline: 1em;
+  }
+}
+@media (max-width: 480px) {
+  .seoLandingPage .seoLandingStepDescription {
+    padding: 1em;
+  }
+  .seoLandingPage .seoLandingStepDescription > .td-content {
+    padding: 0;
+  }
+  .seoLandingPage .seoLandingStepDescription > .seoLandingLink {
+    font-size: 0.75em;
+  }
+}
+@media (max-width: 1300px) {
+  .seoLandingPage .introVideo, .seoLandingPage .videoGridContainer, .seoLandingPage .seoLandingCat, .seoLandingPage .seoLandingStep > .seoLandingStepContent {
+    width: 90%;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 992px) {
+  .seoLandingPage .first-section {
+    padding-block: 2em;
+  }
+  .seoLandingPage .first-section .introVideo h1 {
+    font-size: 2em;
+  }
+  .seoLandingPage .seoLandingCat {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .seoLandingPage .seoLandingCat > .imageSection > img {
+    max-width: 23em;
+  }
+  .seoLandingPage .seoLandingCat > .context {
+    padding: 0.8em 2em;
+  }
+}
+@media (max-width: 698px) {
+  .seoLandingPage .newRoadMap {
+    padding-inline: 1em;
+    font-size: 4.6vw;
+    width: 20em;
+    margin-top: 0;
+  }
+  .seoLandingPage .newRoadMap > div::after {
+    width: 3em;
+    height: 5.2em;
+  }
+  .seoLandingPage .newRoadMap > div.double > .roadCourseCard:nth-child(1)::before {
+    width: 3.7em;
+    height: 6.3em;
+  }
+  .seoLandingPage .seoLandingPageTitle {
+    font-size: 1.5em;
+  }
+  .seoLandingPage .anchorBoxs {
+    font-size: 0.8em;
+    gap: 0.7em;
+  }
+}
+@media (max-width: 480px) {
+  .seoLandingPage .anchorBoxs {
+    grid-template-columns: repeat(1, minmax(10em, 16em));
+  }
+  .seoLandingPage .seoLandingCat > .imageSection > .catTitle {
+    font-size: 1.4em;
+  }
+}

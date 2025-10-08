@@ -1,0 +1,269 @@
+@use '../source/Variables' as v;
+@use "homeSectionTitle" as hst;
+@mixin simpleTitleSection {
+    > h2 {
+        padding: 0;
+        font-size: 1.5em;
+        font-weight: 900;
+        color: var(--textColorStrong);
+    }
+}
+%homeSectionsWidth {
+    --maxWidth: 1320px;
+    max-width: var(--maxWidth);
+    margin: auto;
+}
+.blog-boxes- {
+    font-size: 16px;
+    padding-block: 2.5em 1.5em;
+    background-color : #fff;
+
+    > .title {
+        @extend %homeSectionsWidth;
+        @include simpleTitleSection;
+        padding-right: 1.5em;
+        margin-bottom: 1em !important;
+    }
+
+    > #article-slider, > #weblog-slider {
+        @extend %homeSectionsWidth;
+        padding: 8em 1.5em 1em;
+
+        .swiper-button-prev, .swiper-button-next {
+            display: none;
+            --wid: 39px;
+            width: var(--wid);
+            height: var(--wid);
+            border-radius: 50%;
+            background-color: rgb(255 255 255);
+        }
+
+        .card-blog {
+            position: relative;
+            padding: 0.5em;
+            box-shadow: -2px 2px 9px 0 rgba(0,0,0,.14);
+            background-color: #fff;
+            border-radius: 16px;
+            padding-top: 4.9em;
+            display: flex;
+            max-width: 310px;
+            margin: auto;
+
+            .cardImg {
+                aspect-ratio: 16 / 10.5;
+                width: 280px;
+                position: absolute;
+                top: -7em;
+                margin: auto;
+                text-align: center;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 16px;
+
+                > img {
+                    height: 100%;
+                    border-radius: 16px;
+                }
+            }
+
+
+            .txt-card-blog {
+                background-color: var(--white);
+                padding-inline: 1.5em;
+                display: flex;
+                flex-direction: column;
+
+                .cardTitle {
+                    h4 {
+                        text-align: right;
+                        font-size: 1em;
+                        color: var(--textColorStrong);
+                        font-weight: 600;
+                        overflow: hidden;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 1;
+                        -webkit-box-orient: vertical;
+                    }
+                }
+
+                p {
+                    margin-top: auto;
+                    font-size: .875em;
+                    line-height: 1.5em;
+
+                    &.p-limit {
+                        -webkit-line-clamp: 3;
+                    }
+                }
+                // ---
+                .link-arrow {
+                    display: flex;
+                    justify-content: left;
+                    bottom: 9px;
+                    left: 2em;
+                    margin-top: auto;
+
+                    a {
+                        color: var(--blue);
+                        position: relative;
+                        margin-left: 1.5em;
+                        font-size: 12px;
+                        width: fit-content;
+
+                        &::after {
+                            position: absolute;
+                            background-image: url('/Content/images/img/Arrow - Left.png');
+                            content: '';
+                            color: var(--blue);
+                            left: -1.5em;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            font-size: 0.9em;
+                            width: 1em;
+                            height: 2em;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            transition: 0.5s;
+                        }
+
+                        &:hover::after {
+                            left: -2em;
+                        }
+                    }
+                }
+                // ---
+            }
+        }
+    }
+
+
+
+    .link-more {
+        width: fit-content;
+        margin: 2em auto;
+    }
+
+    &.lastArticle {
+        background-color: #F8F8F8
+    }
+    //start queris
+    @media (max-width:1350px) {
+        > div {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1000px;
+        }
+    }
+
+    @media (max-width:1300px) {
+        > #article-slider, #weblog-slider {
+            .swiper-button-prev, .swiper-button-next {
+                display: flex;
+            }
+        }
+    }
+
+    @media (max-width:1200px) {
+        height: auto;
+
+        article {
+            padding-bottom: 3em;
+        }
+    }
+
+    @media (max-width:1050px) {
+        > div {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 650px;
+        }
+    }
+
+    @media (max-width:768px) {
+    }
+
+    @include v.media(v.$tablet) {
+        > div {
+            grid-template-columns: repeat(1, 1fr);
+            max-width: 320px;
+
+            .card-blog {
+                .txt-card-blog {
+                    .cardTitle {
+                        h4 {
+                            font-size: 1.4em;
+                        }
+                    }
+
+
+                    p {
+                        font-size: 1.2em;
+                    }
+                }
+            }
+        }
+
+        article {
+            padding: 0 1em;
+
+            > img {
+                width: 25%;
+                top: 0;
+            }
+
+            > div > div .card-blog {
+
+
+                .txt-card-blog {
+                    padding: 6.5em 1em 1em;
+
+                    h5 {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+    }
+
+    @include v.media(480px) {
+    }
+
+    @include v.media(v.$mobile) {
+        background-size: 43em 10em;
+
+        .title {
+            margin-bottom: 0 !important;
+
+            > h2 {
+                font-size: 1em;
+            }
+        }
+
+        &.lastArticle {
+        }
+
+        > #article-slider, #weblog-slider {
+            padding-top: 23vw;
+
+            .card-blog {
+                padding-top: 21vw;
+                width: 65vw;
+
+                .cardImg {
+                    width: 58.5vw;
+                    top: 0;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        > div {
+        }
+
+        article {
+            padding: 0 0.5em;
+
+            > img {
+                width: 40%;
+            }
+        }
+    }
+}

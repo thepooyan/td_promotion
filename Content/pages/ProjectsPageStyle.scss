@@ -1,0 +1,156 @@
+﻿@use '../source/Variables';
+@use "../components/boxesAds/boxesAds";
+@use '../components/_loader.scss';
+@use '../components/footer';
+@use "../components/instaSide";
+@use '../components/search/filterBar';
+@use '../components/customSelect';
+@use "../components/pagination";
+@use "../components/sideBar";
+@use '../components/homeProjects';
+@use '../components/shared/innerContent' as i;
+
+.td-content {
+    @include i.innerContent;
+}
+.mian-col-item {
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 0 20px;
+    grid-auto-flow: dense;
+
+
+
+    &.hasDetials {
+        grid-template-areas:
+            "sideInfo content interaction" "sideBar content interaction" "sideBar content interaction";
+
+        .sideBarInfo {
+            grid-area: sideInfo;
+        }
+
+        .content {
+            grid-area: content
+        }
+
+        .sideBar {
+            grid-area: sideBar
+        }
+
+        .interaction {
+            grid-area: interaction;
+        }
+    }
+}
+
+.section-id {
+    padding: 10px;
+}
+
+.theGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 3em 1em;
+}
+.tab + a {
+    cursor: pointer;
+    display: block;
+    color: #333;
+    font-size: 1.3em;
+    flex-grow: 3;
+    text-align: center;
+    transition: 0.3s background-color ease, 0.3s box-shadow ease;
+    padding: 5px 10px;
+    text-align: right;
+}
+
+.tab + a:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 0 #f4f4f4 inset;
+}
+.in-page-tab .tab + a {
+    color: Variables.$sec-blue;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid Variables.$sec-blue;
+    margin: 0 5px;
+    margin-bottom: 10px;
+    border-radius: 5px !important;
+}
+
+.in-page-tab .tab:checked + a {
+    border-radius: 10px;
+    color: #ffffff;
+    text-align: center;
+    border: none;
+    background: #f09433;
+    background: -moz-linear-gradient(90deg, #fe8622 32%, #feab21 71%);
+    background: -webkit-linear-gradient(90deg, #fe8622 32%, #feab21 71%);
+    background: linear-gradient(90deg, #fe8622 32%, #feab21 71%);
+}
+.course-Details .video-part {
+    display: -webkit-box;
+    flex-wrap: wrap;
+}
+input.tab {
+    display: none;
+}
+.TD-pagination .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row-reverse;
+    padding-bottom: 1em;
+}
+
+.TD-pagination .pagination li.page-item {
+    width: 32px;
+    height: 30px;
+    padding: 0 1px;
+    text-align: center;
+}
+
+.TD-pagination .pagination li.page-item a {
+    border-radius: 5px;
+    text-align: center;
+    color: #989898;
+    padding: 12px;
+    height: 30px;
+}
+
+.TD-pagination .pagination li.page-item.active a.page-link {
+    border: none;
+    height: 30px;
+    margin: 0;
+    color: #333 !important;
+}
+
+
+@media (max-width: 1200px) {
+    .mian-col-item {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .mian-col-item.reverse-768 {
+        display: flex;
+        flex-direction: column-reverse;
+
+        &.forFilms, &.bookPart {
+            .sideInfoBar {
+                order: 2;
+            }
+
+            .sideBar {
+                order: 1;
+            }
+
+            .content {
+                order: 3;
+            }
+        }
+    }
+}

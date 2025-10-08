@@ -1,0 +1,238 @@
+﻿@use "sass:list";
+@use '../../source/_Variables.scss';
+/* Extra large devices (large laptops and desktops, 1200px till 993 and down) */
+@media only screen and (max-width: 1200px) {
+    .footer {
+        .rightTop {
+            .layer {
+                .text {
+                    margin: 0;
+                }
+            }
+
+            .inputwrapper {
+                .icon {
+                    top: 3.15px;
+                }
+
+                .emailInput {
+                    width: 205px;
+                    padding: 7px 16px;
+                }
+            }
+        }
+
+        .rightBottom {
+            .eNamad {
+                width: 110px;
+                position: relative;
+                left: 20px;
+            }
+        }
+
+        .centerBottom {
+            .wholeNav {
+                .nav1 {
+                    gap: 12px;
+                    justify-content: space-between;
+
+                    > .item {
+                    }
+                }
+            }
+        }
+
+        .leftBottom {
+            justify-content: center;
+        }
+
+        .rightBottom {
+            justify-content: center;
+        }
+    }
+}
+
+/* Large devices (laptops/desktops, 992px till 769 and down) */
+@media only screen and (max-width: 992px) {
+    .footer {
+        .leftBottom {
+            .telegraph {
+                font-size: 15px;
+            }
+        }
+
+        .rightTop {
+            .layer {
+                position: relative;
+
+                .img {
+                    position: absolute;
+                    top: -60px;
+                }
+            }
+
+            .inputwrapper {
+                .emailInput {
+                    width: 170px;
+                }
+            }
+        }
+
+        .centerBottom {
+            .wholeNav .nav1 .item {
+                line-height: 21px;
+            }
+        }
+    }
+}
+
+/* Medium devices (landscape tablets, 768px till 601 and down) */
+@media only screen and (max-width: 768px) {
+    .footer {
+        height: auto;
+        grid-template-columns: 25% 25% 25% 25%;
+
+        .centerTop {
+            grid-column: 1 / 5;
+            grid-row: 1/2;
+        }
+
+        .centerCenter {
+            grid-column: 1/5;
+            grid-row: 2/3;
+        }
+
+        .centerBottom {
+            grid-column: 1/5;
+            grid-row: 3/4;
+            margin: 35px 0;
+
+            .wholeNav {
+                width: 100%;
+
+                .nav1 {
+                    margin: auto;
+                    height: auto;
+                }
+
+                .line {
+                    margin-top: 17px;
+                    margin-bottom: 13px;
+                }
+            }
+        }
+
+        .rightTop {
+            grid-column: 1 / 3;
+            grid-row: 4/5;
+
+            .layer .img {
+                position: static;
+            }
+        }
+
+        .leftTop {
+            grid-column: 3 / 5;
+            grid-row: 4/5;
+        }
+
+        .rightCenter {
+            grid-column: 1 / 3;
+            grid-row: 5/6;
+        }
+
+        .leftCenter {
+            grid-column: 3 / 5;
+            grid-row: 5/6;
+        }
+
+        .rightBottom {
+            grid-column: 1/5;
+            grid-row: 6/7;
+            margin-top: 45px;
+
+            .eNamad {
+                width: 110px;
+                border-width: 5px;
+            }
+        }
+
+        .leftBottom {
+            display: none;
+        }
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px till 481 and down) */
+@media only screen and (max-width: 600px) {
+    .footer {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 20px 7px;
+
+        $footerOrder: centerTop, centerCenter, rightTop, rightCenter, leftTop, leftCenter, rightBottom;
+
+        @for $i from 1 through list.length($footerOrder) {
+            $item: list.nth($footerOrder, $i);
+
+            .#{$item} {
+                order: $i;
+            }
+        }
+
+        > * {
+            margin-bottom: 40px;
+        }
+
+        .leftTop,
+        .rightTop,
+        .centerTop,
+        .rightBottom {
+            margin-bottom: 0;
+        }
+
+        .leftBottom {
+            display: none;
+        }
+
+        .centerBottom {
+            display: none;
+        }
+
+        .rightTop {
+            .layer {
+                align-self: auto;
+            }
+        }
+
+        .centerCenter {
+            .layer2 {
+                gap: 20px;
+            }
+
+            .hr {
+                width: 100%;
+            }
+        }
+
+        .rightBottom {
+            .eNamad {
+                position: static;
+            }
+        }
+    }
+}
+
+/* Extra small devices (phones, 480px till 320 and down) */
+@media screen and (max-width: 480px) {
+    .footer {
+        .centerTop .layer1 p.address {
+            font-size: 9pt;
+        }
+
+        .centerCenter .layer2 .item > a {
+            font-size: 8pt;
+        }
+    }
+}

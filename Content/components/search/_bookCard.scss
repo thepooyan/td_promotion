@@ -1,0 +1,155 @@
+@use "../../source/Variables";
+
+
+ 
+ 
+ .content-tab section.library {
+ .filter-search > div input, .filter-search > div select{
+    width: 11em;
+    @include Variables.media(620px){
+        width: 100%;
+    }
+        } 
+        .filter-search > div label{
+            min-width: 80px !important;
+        }
+
+     .item-content-tab{
+    display: block;
+
+
+
+
+}
+
+ }
+ 
+ 
+
+.Courses-card-grid.book-main {
+    grid-template-columns: repeat(auto-fit,minmax(322px,2fr))!important;
+    row-gap: 25px!important;
+    gap: 0;
+    justify-items: center;
+}
+
+.Courses-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,2fr))!important;
+    grid-gap: 25px 20px;
+    overflow: hidden;
+    grid-auto-flow: dense;
+    justify-content: space-evenly;
+}
+.bookCard {
+    background-color: #fff;
+    font-family: inherit;
+    $bookScale: 1.1;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 20em;
+    height: 34.7em;
+    margin: auto;
+    /*    width: 420px;
+    height: 643px;*/
+    border: 1px solid #888888;
+    /*    padding: 40px 30px;
+    padding-top: 20px;*/
+    padding: 1.25em;
+
+    .bookImage {
+        width: 12.25em;
+        height: 17.31em;
+        /*        width: 240px;
+        height: 340px;*/
+        margin: 0 auto;
+        display: block;
+        color: transparent;
+    }
+
+    .bookTitle {
+        text-align: center;
+        color: #1d71b8;
+        font-size: 1.18em;
+        font-weight: bold;
+        line-height: 1.8em;
+        overflow: hidden;
+        max-height: 3.75em;
+        margin: 1.12em 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .bookDescription {
+        /*font-size: 16px/$bookScale;*/
+        /*line-height: 25px;*/
+        color: #575757;
+        text-align: justify;
+        overflow: hidden;
+        /*width: 420px;*/
+        font-size: 0.85em;
+        line-height: 1.6em;
+        height: 6.6em;
+        font-weight: 500;
+        /*height: 150px;*/
+
+        &::before {
+            content: "  ";
+        }
+    }
+
+    .bookLowerPanel {
+        margin-top: 1.75em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .bookButton {
+            border: none;
+            border-radius: 30px;
+            padding: 0.75em 0;
+            background-color: #fcb917;
+            font-size: 1em / $bookScale;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 3px 3px 5px rgba($color: #b2b2b2, $alpha: 0.75);
+            min-width: 12em;
+            color: black;
+            line-height: initial;
+            text-align: center;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .bookRightSide {
+            .bookSpans {
+               
+                font-size: 0.8em;
+                color: #1d71b8;
+                font-weight: bold;
+                margin: 0;
+                max-width: 10em;
+                max-height: 1.56em;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+@include Variables.media(Variables.$mobile){
+    .tab .content-tab section.library{
+           .item-content-tab{
+
+background-color: #fff;
+padding:1em ;
+
+
+} 
+    }
+
+}
+@media (max-width:400px){
+    .library{
+        font-size: 0.9em;
+    }
+}

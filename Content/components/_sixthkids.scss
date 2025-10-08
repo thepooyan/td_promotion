@@ -1,0 +1,184 @@
+@use "../source/Variables" as v;
+
+@mixin sixth-section {
+  width: 100%;
+  height: 625px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 10em;
+  @media (max-width: 500px) {
+    margin-top: 6em;
+    margin-bottom: 6em;
+  }
+  .opinions {
+    position: absolute;
+    width: 100%;
+    /* margin: auto; */
+    height: 147px;
+    padding-inline: 1em;
+    /* margin: auto; */
+    height: 147px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @media (max-width: 600px) {
+      margin-block: 2em;
+    }
+    .your-opinion-text {
+      text-align: center;
+      font-size: 2em;
+      font-weight: 900;
+      width: 100%;
+      color: #fff;
+
+      @media (max-width: 600px) {
+        font-size: 1.7em;
+      }
+    }
+
+    p {
+      width: 100%;
+      margin: auto;
+      text-align: center;
+      color: #fff;
+    }
+  }
+
+  .background-blue {
+    width: 800px;
+    height: 600px;
+    border-radius: 2em;
+    background-color: #c0dbf1;
+    position: relative;
+    z-index: -2;
+    /* transform: translate(-50%, 0); */
+    margin: auto;
+
+    @media (max-width: 810px) {
+      width: 600px;
+      height: 500px;
+    }
+
+    @media (max-width: 600px) {
+      width: 328px;
+      height: 600px;
+    }
+  }
+
+  .slid-container {
+    height: 25em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 9%;
+    transform: translate(0%, 10%);
+    overflow: hidden;
+    @media (max-width: 600px) {
+      top: 15%;
+      height: 27em;
+    }
+    .owl-stage-outer {
+      overflow: visible !important;
+    }
+
+    .owl-stage {
+      overflow: visible !important;
+    }
+
+    .owl-item {
+      padding: 1em; // فاصله بین آیتم‌ها
+    }
+
+    .owl-nav {
+      display: flex;
+      position: absolute;
+      width: 7em;
+      bottom: 0em;
+      /* right: 50%; */
+      /* transform: translateX(50%); */
+      align-items: center;
+      justify-content: space-between;
+      height: 3em;
+      margin: auto;
+      left: 0;
+      right: 0;
+      .owl-prev,
+      .owl-next {
+        width: 3em;
+        height: 3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: static; // 🔧 این باعث میشه flex به درستی کار کنه
+        border-radius: 50%;
+        background-color: #fff;
+
+        i {
+          font-size: 1.5em;
+        }
+      }
+    }
+
+    .item {
+      background-color: #fff;
+      border-radius: 1em;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      padding: 1em;
+      height: 18em;
+      @media (max-width: 600px) {
+        width: 290px;
+        margin: auto;
+        padding: 0.5em;
+      }
+
+      &:hover {
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+        transform: translateY(-4px);
+      }
+
+      .name-container {
+        width: 99%;
+        height: 124px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid lightgray;
+        .stars {
+          font-size: 10px;
+        }
+
+        .img-container {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 100px;
+          }
+
+          .info-text {
+            margin-right: 0.8em;
+
+            p:nth-child(1) {
+              font-weight: 800;
+            }
+            .scratch-text {
+              font-size: 0.9em;
+            }
+          }
+        }
+      }
+
+      .opinions-text {
+        padding-top: 1em;
+        display: flex;
+        align-items: center;
+        @media (max-width: 600px) {
+          height: 9.5em;
+        }
+      }
+    }
+  }
+}

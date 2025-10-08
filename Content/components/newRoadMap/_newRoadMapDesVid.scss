@@ -1,0 +1,128 @@
+@use '../../source/Variables' as v;
+
+@mixin newRoadMapDesVid {
+  display: flex;
+  gap: 1em;
+  padding-inline: 14em;
+
+  .des {
+    line-height: 1.5em;
+    width: 40%;
+
+    >.title {
+      margin-bottom: .5em;
+      font-size: 1.2em;
+    }
+
+    >p,
+    .title {
+      color: var(--textColorStrong);
+    }
+  }
+
+  .sample-video {
+    position: relative;
+    width: 60%;
+    height: 26.5em;
+    border-radius: 1.4em;
+    cursor: pointer;
+    margin-bottom: 1.5em;
+
+    &.play {
+      &::before {
+        display: none;
+      }
+
+      &::after {
+        display: none;
+      }
+
+      >div {
+        display: none;
+      }
+    }
+
+    >video {
+      position: relative;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      max-width: unset;
+      margin: 0;
+      border-radius: 1.4em;
+      object-fit: contain;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      z-index: 1;
+      border-radius: 1.4em;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      --wid: 3em;
+      width: var(--wid);
+      height: var(--wid);
+      background-image: url('/content/images/img/roadMap/playIcon.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 100.1% 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    >div {
+      position: absolute;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      font-size: 2.5em;
+      color: var(--white);
+      bottom: 4em;
+      left: 3.5em;
+      line-height: 4.7em;
+      font-weight: 900;
+
+      >span {
+        font-size: 1.5em;
+        align-self: flex-end;
+      }
+    }
+
+    &.noCover {
+      &::before {
+        background-image: none;
+        background-color: #000;
+      }
+    }
+  }
+
+  @include v.media(v.$tablet) {
+    flex-direction: column-reverse;
+    padding-inline: 1.4em;
+
+    .des {
+      width: 100%;
+    }
+
+    .sample-video {
+      width: 100%;
+      height: 12.2em;
+      margin-bottom: 0;
+
+      &::after{
+        --wid : 2.5em;
+      }
+    }
+  }
+}

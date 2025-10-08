@@ -1,0 +1,127 @@
+﻿#search {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+    align-items: center;
+
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #1d71b9;
+        color: #fff;
+        font-size: 1.1em;
+        width: 5em;
+        border: 1px solid #1d71b9;
+        border-radius: 8px 0 0 8px;
+    }
+
+    input {
+        font-size: 1.4em;
+        padding: 0.3em 1.3em;
+        padding-right: 1.9em;
+        width: 30em;
+        border-radius: 999px;
+        background-color: rgba(32, 134, 200, .0901960784);
+        width: 100%;
+        font-size: 1.2em;
+        padding-right: 2.4em;
+        height: 2.9em;
+        box-shadow: 0px 2px 5px #0000001f;
+
+        &::placeholder {
+            font-weight: 400;
+            color: #18588163;
+        }
+
+
+
+        &:focus ~ ul:not(:empty) {
+            visibility: visible;
+            opacity: 100;
+            top: 100%;
+        }
+    }
+
+    ul {
+        font-size: 1.3em;
+        position: absolute;
+        background-color: #F6F6F6;
+        border-top: 0;
+        top: calc(100% - 1em);
+        width: 100%;
+        padding: .2em 0;
+        overflow: hidden;
+        transition: .2s;
+        visibility: hidden;
+        opacity: 0;
+        z-index: 1000;
+        padding-top: 1em;
+        border-radius: 0 0 8px 8px;
+
+        a {
+            display: block;
+            padding: 1em 1em;
+            position: relative;
+            transition: .2s;
+
+            &::before {
+                content: attr(data-icon);
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                font-size: 1.4em;
+                margin-left: 1em;
+                color: rgb(0, 149, 255);
+                width: 1em;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            &:hover {
+                background-color: rgb(243, 243, 243);
+            }
+
+            span {
+                color: rgb(0, 153, 255);
+                font-weight: 600;
+            }
+        }
+
+        > span {
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .loader {
+        position: absolute;
+        font-size: 0.4em;
+        --thick: 1.2em;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transition: .2s;
+        opacity: 0;
+        left: 0;
+    }
+
+    &.loading .loader {
+        opacity: 100;
+        left: 1.6em;
+    }
+
+    > img {
+        position: absolute;
+        height: min-content;
+        right: 0.1em;
+        color: var(--textColor);
+        font-size: 1.5em;
+        cursor: pointer;
+        padding: 1em 0.5em;
+        transition: .2s;
+        width: 2em;
+    }
+}

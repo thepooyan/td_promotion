@@ -1,0 +1,201 @@
+﻿@mixin sectionTitle {
+    display: grid;
+    grid-template-columns: auto max-content auto;
+    align-items: center;
+
+    > span, h2 {
+        flex-basis: 33%;
+    }
+
+    > h2 {
+        text-align: center;
+        font-size: 2.8em;
+        color: var(--textColorStrong);
+        padding-inline: 1em !important;
+    }
+
+    > span {
+        height: .2em;
+        position: relative;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: -1.8em;
+            top: 50%;
+            transform: translateY(-50%);
+            --wid: 1.4em;
+            width: var(--wid);
+            height: var(--wid);
+            background-color: #1d71b9;
+            border-radius: 50%;
+        }
+
+        &:nth-of-type(1) {
+            background: linear-gradient(to left, transparent 20%, #1d71b9);
+        }
+
+        &:nth-of-type(2) {
+            background: linear-gradient(to right, transparent 20%, #1d71b9);
+
+            &::after {
+                left: unset;
+                right: -1.8em;
+            }
+        }
+    }
+
+    
+
+    @media only screen and (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 0;
+
+        > span {
+            &:nth-of-type(1) {
+                display: none;
+            }
+
+            &:nth-of-type(2) {
+                background: linear-gradient(to top,transparent 20%,#1d71b9);
+                flex-basis: unset;
+                width: 0.2em;
+                height: 3.2em;
+                margin-top: 2em;
+
+                &::after {
+                    left: unset;
+                    right: 50%;
+                    top: -36%;
+                    transform: translateX(50%);
+                    --wid: 1em;
+                }
+            }
+        }
+
+        > h2 {
+            font-size: 1.5em;
+        }
+
+        &.top {
+            flex-direction: column-reverse;
+            margin-bottom : 0;
+            gap : 25px;
+
+            > span {
+                background: linear-gradient(to bottom,transparent 20%,#1d71b9);
+
+                &:nth-of-type(2) {
+                    margin-top: 0;
+
+                    &::after{
+                        top : 105%;
+    }
+}
+            }
+        }
+    }
+}
+@mixin sectionTitleRight {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+
+    > span, h2 {
+        width: 100%;
+        text-align: right;
+    }
+
+    > h2 {
+        font-size: 2.8em;
+        color: var(--mainBlue);
+    }
+
+    > span {
+        height: .2em;
+        position: relative;
+        width: 97.5%;
+        background: linear-gradient(to right, transparent 20%, #1d71b9);
+
+        &::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            right: -1.9em;
+            top: 50%;
+            transform: translateY(-50%);
+            --wid: 1.4em;
+            width: var(--wid);
+            height: var(--wid);
+            background-color: #1d71b9;
+            border-radius: 50%;
+        }
+    }
+
+
+
+    @media only screen and (max-width: 768px) {
+        align-items: center;
+        gap: 0;
+        padding-top: 3em;
+        position: relative;
+
+        > span {
+            background: linear-gradient(to top,transparent 20%,#1d71b9);
+            flex-basis: unset;
+            width: 0.2em !important;
+            height: 3.2em;
+            margin-top: 2em;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            &::after {
+                left: unset;
+                right: 50%;
+                top: -36%;
+                transform: translateX(50%);
+                --wid: 1em;
+            }
+        }
+
+        > h2 {
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        &.top {
+            flex-direction: column-reverse;
+            position: relative;
+
+            > span {
+                position: absolute;
+                bottom: calc(100% - 1.2em);
+                left: 50%;
+                transform: translateX(-50%);
+                background: linear-gradient(to bottom,transparent 20%,#1d71b9);
+
+                &::after {
+                    top: calc(100% + 0.2em);
+                }
+            }
+        }
+
+        &.bottom {
+            padding-top: 0;
+            padding-bottom : 1em;
+
+            > span {
+                top: calc(100% - 1.2em);
+
+                &::after {
+                    top: unset;
+                    bottom: calc(100% + 0.2em);
+                }
+            }
+        }
+    }
+}

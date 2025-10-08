@@ -1,0 +1,202 @@
+// --start/blog kids
+
+@use '../source/_Variables.scss';
+
+
+.blog--k {
+    background-image: url(/public/Content/images/img/bg-green.png);
+    position: relative;
+    background-position: top;
+    background-repeat: no-repeat;
+
+    article {
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        min-height: 127vh;
+        padding: 0 2em 0;
+        text-align: center;
+
+        > img {
+            width: 15%;
+            position: absolute;
+            right: 5%;
+            top: -3em;
+        }
+
+        .title-style-o::after {
+            color: var(--white);
+        }
+
+        > div {
+            padding-top: 10em;
+
+            > div {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+                gap: 1em;
+                margin-top: 4em;
+
+                .card-blog--k {
+                    position: relative;
+                    margin-top: 3em;
+                    padding: 0.5em;
+
+                    img {
+                        width: 85%;
+                        height: 10em;
+                        position: absolute;
+                        top: -4em;
+                        margin: auto;
+                        text-align: center;
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    img,
+                    .txt-card-blog--k {
+                        border-radius: 10px;
+                    }
+
+                    .txt-card-blog--k {
+                        background-color: var(--white);
+                        padding: 7em 1.5em 1em;
+
+                        h5 {
+                            font-size: 1em;
+                        }
+
+                        p {
+                            &.p-limit {
+                                -webkit-line-clamp: 2;
+                            }
+
+                            margin-block: 0.5em;
+                            line-height: 1.8;
+                        }
+
+                        a {
+                            color: var(--green);
+                        }
+                        // ---
+                        .link-arrow {
+                            display: flex;
+                            justify-content: left;
+
+                            a {
+                                margin-left: 0.5em;
+
+                                &::after {
+                                    left: 0;
+                                    font-size: 0.9em;
+                                }
+
+                                &:hover::after {
+                                    left: -0.5em;
+                                }
+                            }
+                        }
+                        // ---
+                    }
+                }
+            }
+        }
+    }
+    //start queris
+    @media (max-width:1400px) {
+        min-height: 99vh;
+    }
+
+    @media (max-width:1200px) {
+        article {
+            padding-bottom: 3em;
+        }
+    }
+
+    @include Variables.media(Variables.$tablet) {
+
+
+        article {
+            padding: 0 1em;
+
+            > img {
+                width: 25%;
+                top: 0;
+            }
+
+            > div > div .card-blog--k {
+
+
+                .txt-card-blog--k {
+                    padding: 6.5em 1em 1em;
+
+                    h5 {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$mobile) {
+        article {
+            padding: 0 0.5em;
+
+            > img {
+                width: 40%;
+            }
+        }
+    }
+}
+
+.teens {
+
+    .blog--k {
+        background-color: var(--bgGray);
+
+        a.link-more {
+            padding: 0.2em 1em;
+        }
+
+        @include Variables.media(Variables.$mobile) {
+            article {
+                .title-style-o::after {
+                    color: var(--blue);
+                }
+
+                > div {
+                    padding-top: 2em;
+
+
+                    > div {
+                        grid-template-columns: repeat(auto-fit, minmax(16em, 1fr));
+                        gap: 2em 0.5em;
+
+                        a {
+                            width: 5em;
+                        }
+
+                        .txt-card-blog--k {
+
+                            p {
+                                &.p-limit {
+                                    -webkit-line-clamp: 4;
+                                }
+
+                                font-size: 0.9em;
+                            }
+
+                            a {
+                                color: var(--blue);
+
+                                &::after {
+                                    color: var(--blue);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

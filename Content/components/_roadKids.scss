@@ -1,0 +1,82 @@
+@mixin second-section {
+
+    position: relative;
+    width: 100%;
+
+    .line {
+        display: block;
+        background-color: #295F98;
+        width: 100vw;
+        position: absolute;
+        height: 5px;
+        top: 58%;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .cards-container-title {
+        margin: auto;
+        width: 411px;
+        height: 50px;
+        text-align: center;
+        font-size: 2em;
+        font-weight: 900;
+
+        .yellow-title-text {
+            color: #E59D00;
+        }
+    }
+ 
+    .cards-container {
+        height: 313px;
+        position: relative;
+        display: flex;
+        margin: auto;
+        justify-content: space-around;
+        /* grid-template-columns: repeat(4, 1fr); */
+        justify-content: space-between;
+        padding-right: 10px;
+
+        .card-forCardsCon {
+            width: 251px;
+            height: 219px;
+            background-color: #fff;
+            border-radius: 10px;
+            border-right: 5px solid #295F98;
+            z-index: 2;
+            position: relative;
+            top: 16%;
+            padding: 38px;
+
+
+
+            .circle-next-card {
+                width: 67px;
+                height: 67px;
+                border-radius: 50%;
+                display: flex;
+                background-color: #fff;
+                align-items: center;
+                justify-content: center;
+                border: 4px solid #295F98;
+                position: absolute;
+                top: 36%;
+                right: -36px;
+                font-size: 2em;
+                font-weight: 600;
+                color: #363636;
+            }
+
+
+            .text-in-span {
+                display: block;
+                width: 165px;
+                height: 85px;
+                margin-top: 10px;
+
+            }
+
+        }
+    }
+}

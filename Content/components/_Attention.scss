@@ -1,0 +1,208 @@
+﻿@use '../source/_Variables.scss';
+@keyframes bounce {
+    0% {
+        transform: translate(0,0);
+    }
+
+    100% {
+        transform:  translate(7px,-6px);
+    }
+}
+.attentionBanner {
+    position: relative;
+    z-index: 2;
+    height: 2.9em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    gap: 0;
+    font-size: 3em;
+    font-weight: 900;
+    padding: 0 1em;
+    margin-bottom : .3em;
+
+    .background {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: -1;
+        height: 100%;
+    }
+
+    .ResBg {
+        display: none;
+        position : relative;
+    }
+
+    i {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: .7em;
+        padding: 0.3em;
+        z-index: 2;
+        color: #fff;
+    }
+
+
+
+    .text {
+        color: #fff;
+        width: 80%;
+        font-size: .6em;
+        text-align: center;
+
+        span {
+            color: #fff;
+            padding-left: 0.5em;
+            width: 1.2em;
+            display: inline-block;
+            direction: ltr;
+        }
+    }
+
+
+    &.inform {
+        .text span {
+            display: none;
+        }
+    }
+
+    &.done {
+        display: none;
+    }
+
+
+
+
+    p {
+        text-align: center;
+    }
+}
+
+.newAttentionBanner {
+    width: 100%;
+    background: linear-gradient(90deg, #6677CC, #4455AA);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    padding: 0 20px;
+    font-size: 16px;
+    gap: 1em;
+    padding-block: 1em;
+    margin-bottom: .8em;
+
+
+
+    > div {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+
+        .emoji {
+            width: 40px;
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+
+        .newAttentionBanner-text {
+            font-size: 1.2em;
+        }
+
+        .newAttentionBanner-text-res {
+            display: none;
+        }
+    }
+
+
+    .newAttentionBanner-button {
+        background: #fc0;
+        color: #333;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        font-size: 1.1em;
+        font-weight: bold;
+        border-radius: .6em;
+        transition: all .3s ease-in-out;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, .3);
+
+        &:hover {
+            background: #ffaa00;
+            transform: scale(1.05);
+        }
+    }
+}
+@media (max-width: 1200px){
+    .attentionBanner {
+        font-size: 2.3em;
+    }
+}
+
+@media(max-width: 992px) {
+    .attentionBanner {
+        font-size: 1.8em;
+        height: 3em;
+        
+    }
+}
+
+@media (max-width: 768px) {
+    .attentionBanner {
+        font-size: 1.9em;
+        flex-direction: column;
+        height: auto;
+        padding: 0;
+
+        .DesBg {
+            display: none;
+        }
+
+        .ResBg {
+            display: block;
+        }
+
+        i {
+            font-size: 1.1em;
+            padding: 0 0.2em;
+        }
+    }
+
+    .newAttentionBanner{
+        font-size : 13px;
+    }
+}
+@media (max-width: 698px){
+    .newAttentionBanner {
+        gap: .5em;
+        padding: 1.2em;
+        font-size: 12px;
+
+        > div {
+            display: flex;
+            align-items: center;
+
+            .emoji {
+                width: 30px;
+            }
+
+            .newAttentionBanner-text {
+                display: none;
+            }
+
+            .newAttentionBanner-text-res {
+                display: block;
+                text-align: center;
+                line-height: 1.5;
+                font-size: 1.3em;
+            }
+        }
+
+        .newAttentionBanner-button {
+            font-size: 1em;
+            flex-shrink: 0;
+        }
+    }
+}

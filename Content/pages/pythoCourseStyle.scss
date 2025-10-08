@@ -1,0 +1,434 @@
+@use '../source/Variables' as v;
+@use '../components/modal';
+@use "../components/_pythonJournal";
+@use "../components/aboutTeacher";
+@use '../components/footer';
+@use "../components/commonQ";
+@use '../components/homeBlog';
+@use "../components/newComment";
+@use "../components/courseInfo" as ci;
+@use "../components/newCertificate" as nc;
+@use "../components/newTeacherCv" as ntc;
+@use "../components/newRoadMap/roadMapInCourse";
+@use "../components/addedToBasketModalStyle";
+@use "../components/courseTableOfContentStyle";
+.newCertificate {
+    @include nc.newCertificate;
+}
+
+.newTeacherCv {
+    @include ntc.newTeacherCv;
+}
+body {
+    --h_compliment: var(--colorAlt);
+    height: unset;
+    background-color: #f9f9ff !important;
+}
+.text-center {
+    display: flex !important;
+
+    .singup-site {
+        color: white;
+        background-color: #00cfff;
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+        padding: .2em 1.6em;
+        border-radius: 1em;
+        cursor: pointer;
+    }
+}
+.blog-boxes- {
+    width: 90%;
+    margin: auto;
+}
+.d-flex {
+    display: flex !important;
+}
+.d-none {
+    display: none !important;
+}
+.IsBeginHeldNow{
+    justify-content:center;
+    align-items:center;
+}
+main#course {
+    --colorCompliment: white;
+    --radius: 1em;
+    --shadow: 0px 0px 15px #00000014;
+    --colorHeighlight: #308fcc;
+    margin: 3em 4%;
+
+    &.microservice {
+        > .main {
+            grid-template-columns: auto;
+        }
+    }
+
+    > * {
+        margin-bottom: 6em;
+    }
+
+    > header {
+        //header code in common.scss for fast initial load reason
+    }
+
+    > .courseInfo {
+        @include ci.courseInfo;
+    }
+
+    > .main {
+        display: grid;
+        grid-template-columns: 22em auto;
+        gap: 2em;
+        font-size: 1.3em;
+
+        > aside {
+            font-size: 0.9em;
+            height: 100%;
+            --mb: 1.1em;
+
+            > div {
+                top: 112px;
+                height: fit-content;
+                box-shadow: var(--shadow);
+                border-radius: var(--radius);
+                border: 1.5em solid transparent;
+                overflow: hidden;
+
+                .collapsePart {
+                    &::before {
+                        font-size: 0.9em;
+                        border: 1px solid #308fcc;
+                        color: #308fcc;
+                    }
+                }
+            }
+
+            h3 {
+                color: var(--colorHeighlight);
+                font-weight: 500;
+                margin-bottom: var(--mb);
+                line-height: 1.3em;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+            .list {
+                margin-bottom: var(--mb);
+                counter-reset: counter;
+                display: flex;
+                flex-direction: column;
+
+                a {
+                    margin-right: 1.3em;
+                    text-align: right;
+
+                    &::before {
+                        counter-increment: counter;
+                        content: counter(counter)". ";
+                    }
+                }
+            }
+        }
+
+        > article {
+            > .certificate {
+                background-color: var(--colorTheme);
+                padding: 1.5em 3em;
+                border-radius: var(--radius);
+                margin-block: 3em;
+
+                * {
+                    color: white;
+                    text-align: center;
+                }
+
+                > .h4, p {
+                    margin-bottom: 1rem;
+                }
+
+                > .h4 {
+                    font-weight: 600;
+                    font-size: 1.1rem;
+                }
+
+                > a {
+                    display: block;
+                    width: fit-content;
+                    margin: auto;
+                    background-color: white;
+                    text-decoration: none !important;
+                    padding: 0.5em 1em;
+                    border-radius: 9px;
+                    font-weight: 500;
+                    color: var(--colorTheme) !important;
+                }
+            }
+
+            .signupButton {
+                width: fit-content;
+                font-family: inherit;
+                background-color: var(--colorTheme);
+                color: white;
+                border-radius: 33px;
+                display: block;
+                margin: 0 auto;
+                padding: 14px 30px;
+                font-size: 22px;
+                margin-bottom: 40px;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &.microservice, &.logic-course {
+        > .main {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &.logic-course {
+        margin-inline: 0;
+
+        .courseInfo, #aboutTeacher, .certificate {
+            margin-inline: 5%;
+        }
+
+        .logicBanner {
+            font-size: 1vw;
+            position: relative;
+            margin-inline: 5%;
+
+            img {
+                width: 100%;
+                border-radius: 1.5em;
+            }
+
+            h1 {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                color: white;
+                font-weight: bold;
+                font-size: 1.5em;
+                width: 100%;
+                text-align: center;
+                padding-right: 5em;
+            }
+        }
+    }
+
+    ~ .blog-boxes- {
+        width: auto !important;
+        margin-inline: 4% !important;
+        background-image: unset !important;
+    }
+
+    ~ #comments {
+        width: auto !important;
+        margin-inline: 4% !important;
+    }
+
+    .videoAndQuestion {
+        display: flex;
+        flex-direction: column;
+        gap: 6em;
+        margin-bottom: 3em;
+
+        > .item {
+            display: flex;
+            gap: 2%;
+
+            &:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+
+            > .context, > .sample-video {
+                width: 49%;
+                flex-shrink: 0;
+            }
+
+            > .sample-video {
+                video {
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .sample-video {
+        position: relative;
+        width: 100%;
+        border-radius: 1em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &.play {
+            &::before {
+                display: none;
+            }
+
+            svg {
+                display: none;
+            }
+
+            > video {
+                object-fit: contain;
+            }
+        }
+
+        > video {
+            position: relative;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            max-width: unset;
+            margin: 0;
+            border-radius: 1em;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("/content/images/img/packageVideoOverLay.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 1;
+            border-radius: 1.4vw;
+        }
+        /*&::after {
+                    content: "";
+                    position: absolute;
+                    z-index: 2;
+                    --wid: 4vw;
+                    width: var(--wid);
+                    height: var(--wid);
+                    background-image: var(--icons);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-position: 100.1% 0;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }*/
+
+        svg {
+            position: absolute;
+            z-index: 2;
+            --wid: 4em;
+            width: var(--wid);
+            height: var(--wid);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+        }
+
+        > div {
+            position: absolute;
+            z-index: 2;
+            display: flex;
+            font-size: 1.3em;
+            color: var(--textColorStrong);
+            top: 103%;
+            right: 0;
+            font-weight: bold;
+        }
+
+        &.noCover {
+            margin-bottom: 1em;
+
+            &::before {
+                background-image: none;
+                background-color: #000;
+            }
+        }
+    }
+
+    @media (min-width : 1200px) {
+        &.logic-course {
+
+            .road-map-details {
+                p {
+                    font-size: 1.3vw;
+                    line-height: 1.5em;
+                }
+            }
+        }
+    }
+
+    @include v.media(1650px) {
+    }
+
+    @include v.media(1260px) {
+        > header {
+        }
+    }
+
+    @include v.media(v.$screen) {
+        margin-inline: 1.6em;
+
+        .videoAndQuestion {
+            gap: 3em;
+
+            > .item {
+                flex-direction: column-reverse !important;
+
+                > .context, > .sample-video {
+                    width: 100%;
+                }
+            }
+        }
+
+        > header {
+        }
+
+        > .main {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+
+    @include v.media(v.$laptop) {
+    }
+
+    @include v.media(v.$tablet) {
+        > header {
+            background-image: url('/Content/images/img/pythonHeaderBgRes.webp');
+            height: 52em;
+        }
+
+        > * {
+            margin-bottom: 1rem;
+        }
+
+        &.logic-course {
+            .logicBanner {
+                h1 {
+                    font-size: 4.5em;
+                    padding-inline: 1em;
+                    line-height: 1.5em;
+                }
+            }
+        }
+
+        .sample-video {
+            > svg {
+                --wid: 11vw;
+            }
+        }
+    }
+
+    @include v.media(v.$mobile) {
+    }
+}

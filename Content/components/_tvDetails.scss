@@ -1,0 +1,512 @@
+﻿@use '../source/_Variables.scss' as v;
+@mixin tvDetails {
+    font-size: 1vw;
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    grid-template-areas:
+        "body aside" "ads aside";
+    width: 93%;
+    column-gap: 1em;
+    margin: auto;
+    margin-top: 2em;
+    line-height: 1.7em;
+
+    > .body {
+        grid-area: body;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        .tags {
+            display: flex;
+            gap: 0.5em;
+            font-size: 0.7em;
+
+            .tag {
+                background-color: #e4eefa;
+                color: #4a9cd3;
+                border-radius: 0.6em;
+                padding-inline: 0.6em;
+            }
+        }
+
+        > .tags {
+            display: none;
+        }
+
+        > .sample-video {
+            position: relative;
+            width: 100%;
+            --borderRadius: 0.8em;
+            border-radius: var(--borderRadius);
+            cursor: pointer;
+
+            > video {
+                position: relative;
+                z-index: 0;
+                aspect-ratio: 16/9;
+                width: 100%;
+                max-width: unset;
+                margin: 0;
+                border-radius: var(--borderRadius);
+                object-fit: cover;
+                background-color: black;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                z-index: 2;
+                --wid: 4em;
+                width: var(--wid);
+                height: var(--wid);
+                background-image: url("/content/images/img/playIcon.svg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: 100.1% 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            > div {
+                position: absolute;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                font-size: 2.5em;
+                color: var(--white);
+                bottom: 4em;
+                left: 3.5em;
+                line-height: 4.7em;
+                font-weight: 900;
+
+                > span {
+                    font-size: 1.5em;
+                    align-self: flex-end;
+                }
+            }
+
+            &.play {
+                &::before {
+                    display: none;
+                }
+
+                &::after {
+                    display: none;
+                }
+
+                > video {
+                    object-fit: contain;
+                }
+
+                > div {
+                    display: none;
+                }
+            }
+        }
+
+        > .title {
+            display: flex;
+            justify-content: space-between;
+
+            > h1 {
+                color: var(--textColorStrong);
+                font-size: 1.1em;
+            }
+
+            .tags {
+            }
+        }
+
+        > p {
+            font-size: 0.9em;
+        }
+
+        .statisticAndSocial {
+            display: flex;
+            justify-content: space-between;
+
+            * {
+                user-select: none;
+            }
+
+            > .social,
+            > .statistic {
+                font-size: 0.8em;
+                display: flex;
+                gap: 1.5em;
+
+                > div,
+                > span,
+                > a {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.2em;
+
+                    &::before {
+                        content: "";
+                        --wid: 1.3em;
+                        width: var(--wid);
+                        height: var(--wid);
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        background-position: 0;
+                        background-image: url("/content/images/img/tvDetailsIcons.svg");
+                    }
+                }
+            }
+
+            > .statistic {
+                > span {
+                    &:nth-of-type(1) {
+                        &::before {
+                            background-position: 0 42.2%;
+                        }
+                    }
+
+                    &:nth-of-type(2) {
+                        &::before {
+                            background-position: 0 62.2%;
+                        }
+                    }
+                }
+            }
+
+            > .social {
+                > * {
+                    cursor: pointer;
+                }
+
+                > .dlLink {
+
+                    &::before {
+                        background-position: 0 0.6%;
+                    }
+                }
+
+                > .relativeLink {
+                    display: flex;
+                    gap: .3em;
+                    align-items: center;
+                    color: white;
+                    background-color: #383838;
+                    width: fit-content;
+                    padding: 0.3em 0.9em;
+                    border-radius: 0.4em;
+
+                    &::before{
+                        display : none;
+                    }
+
+                    > svg {
+                        --wid: 1.3em;
+                        width: var(--wid);
+                        height: var(--wid)
+                    }
+                }
+
+                > #copyUrlBtn {
+                    position: relative;
+
+                    &::after {
+                        position: absolute;
+                        content: "لینک کپی شد";
+                        top: calc(80%);
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 0.1em 0.5em;
+                        background-color: #888888;
+                        color: white;
+                        display: inline-block;
+                        width: max-content;
+                        padding: 0em 0.7em;
+                        border-radius: 0.5em;
+                        font-size: 0.7em;
+                        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                        transition: all 0.3s;
+                        visibility: hidden;
+                        opacity: 0;
+                    }
+
+                    &::before {
+                        background-position: 0 20.8%;
+                    }
+
+                    &.copied {
+                        &::after {
+                            visibility: visible;
+                            opacity: 1;
+                            top: calc(100% + 0.1em);
+                        }
+                    }
+                }
+            }
+        }
+
+        > .teacher {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+
+            > img {
+                --wid: 2.3em;
+                width: var(--wid);
+                height: var(--wid);
+                border-radius: 50%;
+            }
+
+            > span {
+                font-size: 0.8em;
+            }
+        }
+
+
+
+        > .rating {
+            display: flex;
+            font-size: 0.8em;
+            gap: 0.7em;
+
+            > ul {
+                display: flex;
+
+                &.disableEvent {
+                    pointer-events: none;
+                }
+
+                > li {
+                    cursor: pointer;
+
+                    > svg {
+                        --wid: 1.5em;
+                        width: var(--wid);
+                        height: var(--wid);
+                    }
+
+                    path {
+                        stroke: #bebebe;
+                    }
+
+                    &.hover {
+                        path {
+                            stroke: #e6c039;
+                            fill: #e6c039;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    > .slider {
+        grid-area: ads;
+        margin-top: 2em;
+        overflow: hidden;
+
+        > .title {
+            display: block;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 1em;
+            padding-right: 1em;
+            color: var(--textColorStrong);
+            border-right: 2px solid var(--mainBlue);
+        }
+
+        .owl-carousel {
+            position: relative;
+            --offset: 0.1em;
+
+            .owl-prev,
+            .owl-next {
+                position: absolute;
+                --wid: 2em;
+                width: var(--wid);
+                height: var(--wid);
+                border: 1px solid #dddddd;
+                background-color: white;
+                top: 4.4em;
+                border-radius: 50%;
+                box-shadow: 0 0 4px rgb(0 0 0 / 12%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0.8;
+
+                &::after {
+                    content: "";
+                    --wid: 20%;
+                    width: var(--wid);
+                    height: var(--wid);
+                    border: 1px solid black;
+                    border-top: transparent;
+                    border-right: transparent;
+                    position: relative;
+                }
+            }
+
+            .owl-next {
+                left: var(--offset);
+
+                &::after {
+                    left: 3%;
+                    transform: rotate(45deg);
+                }
+            }
+
+            .owl-prev {
+                right: var(--offset);
+
+                &::after {
+                    right: 3%;
+                    transform: rotate(-135deg);
+                }
+            }
+        }
+
+        .item {
+            padding-block: 1em;
+        }
+
+        .videoCard {
+            width: 97%;
+            margin: auto;
+        }
+    }
+
+    > aside {
+        grid-area: aside;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+
+        > .title {
+            color: var(--textColorStrong);
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+
+        > .item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5em;
+
+            > img {
+                aspect-ratio: 16/9;
+                border-radius: 0.5em;
+            }
+
+            > div {
+                display: flex;
+                flex-direction: column;
+                line-height: 1.3em;
+                gap: 0.2em;
+
+                > h3 {
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    color: var(--textColorStrong);
+                    font-size: 0.8em;
+                }
+
+                > span {
+                    font-size: 0.75em;
+
+                    &:nth-of-type(2) {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.2em;
+
+                        &::before {
+                            content: "";
+                            --wid: 1.3em;
+                            width: var(--wid);
+                            height: var(--wid);
+                            background-repeat: no-repeat;
+                            background-size: 149%;
+                            background-position: 23% 101%;
+                            background-image: url("/content/images/img/tvDetailsIcons.svg");
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #comments {
+        font-size: .8em;
+    }
+
+    @include v.media(v.$tablet) {
+        font-size: 4.5vw;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "body" "aside" "ads";
+        column-gap: 0;
+
+        > .body {
+            > .sample-video {
+                &::after {
+                    --wid: 2.3em;
+                }
+            }
+
+            > .title {
+                > .tags {
+                    display: none;
+                }
+            }
+
+            > .tags {
+                display: flex;
+            }
+
+            > .statisticAndSocial {
+                > .social {
+                    > a,
+                    > div {
+                        > span {
+                            display: none;
+                        }
+                    }
+
+                    > #copyUrlBtn {
+                        &::after {
+                            top: 50%;
+                            left: 80%;
+                            transform: translateY(-50%);
+                        }
+
+                        &.copied {
+                            &::after {
+                                top: 50%;
+                                left: 120%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        > .slider {
+            .owl-carousel {
+                .owl-prev,
+                .owl-next {
+                    top: 5.4em;
+                }
+            }
+        }
+
+        > aside {
+            gap: 1em;
+
+            > .item {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}

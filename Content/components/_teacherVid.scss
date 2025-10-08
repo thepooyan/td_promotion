@@ -1,0 +1,389 @@
+﻿@use '../source/_Variables.scss';
+@use "courseVideo" as cv;
+
+@function imgPath($image) {
+    @return url('images/img/#{$image}')
+}
+
+#teacherVideoPlaceholder {
+    font-size: 1.5em;
+
+
+    @include Variables.media(Variables.$screen){
+        height : auto !important;
+        margin-bottom : 4em;
+    }
+}
+
+#teacherVideo {
+    --light-blue: #01afee;
+    --dark-blue: #4baee5;
+    --text-grey: #3e3e40;
+    background-color: white;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 3em;
+    --leftBasis: 45%;
+    --rightBasis: 55%;
+    position: relative;
+
+    .teacher {
+        flex-basis: var(--leftBasis);
+        position: absolute;
+        z-index: 2;
+        width: 40vw;
+        height: 24vw;
+        background-image: url(/Content/images/img/teacherVideoBg.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom center;
+        margin-inline: auto;
+        left: 4vw;
+
+        img {
+            width: 26vw;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            object-fit: contain;
+            object-position: bottom;
+        }
+    }
+
+    .cucumber {
+        z-index: 1;
+        order: 3;
+        flex-basis: var(--rightBasis);
+        height: 50%;
+        border-radius: 0 500px 500px 0;
+        margin-top: 4em;
+
+        .tv {
+            --radius: .5em;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: pointer;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgb(26 26 26 / 50%);
+                border-radius: var(--radius);
+            }
+
+            > img {
+                position: absolute;
+                --wid: 3em;
+                width: var(--wid);
+                height: var(--wid);
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+            }
+
+            &.play {
+                &::after {
+                    display: none;
+                }
+
+                > img {
+                    display: none;
+                }
+            }
+
+
+            video {
+                width: 100%;
+                height: 100%;
+                border-radius: var(--radius);
+            }
+        }
+    }
+
+    .videoTab {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+        order: 1;
+        flex-basis: var(--rightBasis);
+        height: 50%;
+        overflow: hidden;
+
+        > div {
+            position: relative;
+
+            &.owl-carousel {
+                .owl-item {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .item {
+                    padding-bottom: 3em;
+                    cursor: pointer;
+
+                    > span {
+                        --wid: 5em;
+                        width: var(--wid);
+                        height: var(--wid);
+                        border-radius: 50%;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: 2px solid #dddddd;
+
+                        &::after {
+                            content: "مهندس \A" attr(data-name);
+                            white-space: pre-wrap;
+                            text-align: center;
+                            position: absolute;
+                            top: calc(100%);
+                            font-size: 0.8em;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: max-content;
+                            color: var(--p);
+                            font-weight: 600;
+                        }
+
+                        > img {
+                            --wid: 92%;
+                            width: var(--wid);
+                            height: var(--wid);
+                            border-radius: 50%;
+                        }
+
+                        &.active {
+                            border: 2px solid var(--mainBlue);
+                        }
+                    }
+                }
+
+                .owl-nav {
+                    button {
+                        background-color: #fff !important;
+                        border-radius: 50%;
+                        --wid: 1.9em;
+                        width: var(--wid);
+                        height: var(--wid);
+                        position: absolute;
+                        --offset: 0.2em;
+                        top: 3.2em;
+                        margin: auto;
+                        font-size: 1.1em !important;
+                        box-shadow: 0 0 15px rgba(0,0,0,.1490196078);
+                        transition: .2s;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: inherit !important;
+
+                        &::before {
+                            @include Variables.fontAwsome('f053', 900);
+                        }
+
+                        &.owl-prev {
+                            right: var(--offset);
+
+                            &::before {
+                                content: '\f054';
+                            }
+                        }
+
+                        &.owl-next {
+                            left: var(--offset);
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(2) {
+                display: none;
+
+                h3 {
+                    margin-bottom: .7em;
+                    color: var(--textColorStrong);
+                }
+
+                p {
+                    color: var(--p);
+                }
+            }
+        }
+    }
+
+    .moreVideos {
+        order: 4;
+        flex-basis: var(--leftBasis);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        align-content: end;
+        padding-inline: 1.5em;
+        flex-wrap: wrap;
+        margin-top: 7vw;
+
+        .item {
+            position: relative;
+            flex-basis: 48%;
+            aspect-ratio: 16/9;
+            --radius: .5em;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgb(26 26 26 / 50%);
+                border-radius: var(--radius);
+            }
+
+            > span {
+                position: absolute;
+                top: 100%;
+                width: 100%;
+                left: 0;
+                font-size: 0.8em;
+                color: var(--textColorStrong);
+                font-weight: 700;
+            }
+
+            > img {
+                &:nth-of-type(1) {
+                    position: absolute;
+                    --wid: 2em;
+                    width: var(--wid);
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    z-index: 1;
+                }
+
+                &:nth-of-type(2) {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: var(--radius);
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$screen) {
+        flex-direction: column;
+        height: auto;
+        padding: 3em 1em 2em 1em;
+        flex-wrap: nowrap;
+
+        .teacher {
+            order: 1;
+            width: 93%;
+            height: 55vw;
+            max-height: unset;
+            flex-basis: unset;
+            margin-bottom: 3em;
+            position: relative;
+            left: unset;
+
+            > img {
+                height: 61vw;
+                width: auto
+            }
+        }
+
+        .cucumber {
+            order: 3;
+            margin-bottom: 1em;
+            margin-top: 1em;
+        }
+
+        .videoTab {
+            order: 2;
+            flex-basis: unset;
+            height: auto;
+            width: 100%;
+            gap: 1em;
+            margin-bottom: 1em;
+
+            > div {
+                &.owl-carousel {
+                    .item {
+                        span {
+                            --wid: 4em;
+
+                            &::after {
+                                font-size: 0.6em;
+                                line-height: 2em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .moreVideos {
+            order: 4;
+            padding: 0;
+            flex-direction: row-reverse;
+            margin-top: 1em;
+
+            .moreItem {
+                order: 1;
+                margin-top: 4em;
+                justify-content: center;
+
+                > a {
+                    background-color: var(--mainBlue);
+                    color: white;
+                    padding: .5em 1em;
+                    border-radius: 1em;
+
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+
+            > .item {
+                display: none;
+
+
+                &:nth-of-type(-n + 2) {
+                    display: block;
+                    flex-basis: 49%;
+                }
+
+                &.active {
+                    > span {
+                        color: var(--mainBlue);
+                    }
+                }
+            }
+        }
+    }
+
+    @include Variables.media(Variables.$tablet) {
+        .videoTab {
+            > div {
+                &:nth-child(2) {
+                    h3 {
+                        font-size: 1em;
+                    }
+
+                    p {
+                        font-size: .8em;
+                    }
+                }
+            }
+        }
+    }
+}
