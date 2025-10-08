@@ -387,42 +387,7 @@
           </form>
         </div>
         <div class="hero-illustration">
-          <svg width="300" height="300" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                    <feMerge>
-                        <feMergeNode in="coloredBlur"/>
-                        <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                </filter>
-                <linearGradient id="ticketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="var(--violet)" />
-                    <stop offset="100%" stop-color="#2563EB" />
-                </linearGradient>
-            </defs>
-        
-            <!-- Background Glow -->
-            <circle cx="100" cy="100" r="90" fill="var(--violet)" opacity="0.1" filter="url(#glow)"/>
-        
-            <!-- Lottery Ticket Body -->
-            <g transform="rotate(-15 100 100)">
-                <path d="M50 70 Q 50 60 60 60 H 140 Q 150 60 150 70 V 140 H 50 V 70 Z" fill="url(#ticketGradient)" stroke="var(--border)" stroke-width="1.5"/>
-                
-                <!-- Perforated line -->
-                <path d="M 50 110 H 150" stroke-dasharray="4 4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
-            
-                <!-- Star on ticket -->
-                <path d="M100 80 L 104 89 L 114 90 L 106 96 L 108 106 L 100 101 L 92 106 L 94 96 L 86 90 L 96 89 Z" fill="var(--brand)"/>
-            </g>
-
-            <!-- Floating elements -->
-            <circle cx="40" cy="50" r="5" fill="var(--brand)" filter="url(#glow)"/>
-            <circle cx="160" cy="70" r="8" fill="var(--brand)" filter="url(#glow)"/>
-            <circle cx="155" cy="150" r="4" fill="var(--brand)" filter="url(#glow)"/>
-            <path d="M30 140 L 35 145 L 40 140 L 35 135 Z" fill="var(--violet)" opacity="0.8"/>
-            <path d="M170 110 L 175 115 L 180 110 L 175 105 Z" fill="var(--violet)" opacity="0.8"/>
-          </svg>
+          <img src="./Content/images/promotion/chest.png"/>
         </div>
       </div>
     </section>

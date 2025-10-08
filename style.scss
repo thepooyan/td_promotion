@@ -19,14 +19,18 @@ main {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background: var(--bg);
+  background: linear-gradient(135deg,#092753,#000A23,#092753);
   color: var(--text);
 }
 
 .container {
   max-width: 1240px;
   margin: auto;
-  padding: 24px;
+  padding: 80px 24px;
+}
+
+.hidden {
+  display: none !important;
 }
 
 h1, h2, h3, h4 {
@@ -92,6 +96,10 @@ h1, h2, h3, h4 {
     align-items: center;
     justify-content: center;
     min-height: 350px;
+
+    img {
+      background: radial-gradient( circle at 50%, rgba(255, 245, 64, 0.41), transparent 54%);
+    }
   }
 
   .hero-lottery-form {
@@ -164,7 +172,7 @@ h1, h2, h3, h4 {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 26px;
+  gap: 40px;
   padding-bottom: 24px;
 }
 
@@ -346,8 +354,6 @@ h1, h2, h3, h4 {
   display: grid;
   place-items: center;
   z-index: 50;
-
-  &.hidden { display: none !important; }
 
   .panel {
     width: min(550px, 94vw);
