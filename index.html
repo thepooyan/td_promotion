@@ -569,6 +569,106 @@
     <footer class="container"><small>© آموزشگاه تحلیل داده</small></footer>
   </main>
 
+  <section id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="panel" role="document">
+      <div class="head">
+        <h4 id="modal-title">ثبت‌نام</h4>
+        <button class="x" onclick="closeModal()">بستن</button>
+      </div>
+      
+      <form id="modal-form" onsubmit="return handleModalSubmit(event)">
+        <div class="grid2">
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label for="mf-name">نام و نام‌خانوادگی</label>
+            <input id="mf-name" required placeholder="مثلاً علی محمدی" />
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label for="mf-mobile">موبایل</label>
+            <input id="mf-mobile" required placeholder="09xxxxxxxxx" />
+          </div>
+          <div class="form-group" style="grid-column: 1 / -1;">
+            <label for="mf-mode">نحوه برگزاری</label>
+            <select id="mf-mode" required>
+              <option value="">انتخاب…</option>
+              <option>حضوری</option>
+              <option>آنلاین</option>
+              <option>حضوری آنلاین</option>
+            </select>
+          </div>
+        </div>
+        <div id="pay-block">
+          <div class="grid2">
+             <div class="form-group">
+              <label for="mf-fee">شهریه دوره (تومان)</label>
+              <input id="mf-fee" disabled />
+            </div>
+            <div class="form-group">
+              <label for="mf-discount">کد تخفیف</label>
+              <div style="display: flex; gap: 8px;">
+                <input id="mf-discount" placeholder="اختیاری" style="flex-grow: 1;" />
+                <button type="button" class="btn ghost" onclick="applyDiscount()" style="padding: 10px 14px; font-weight: 700;">اعمال</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" style="margin-top: 10px;">
+            <label for="mf-amount">مبلغ نهایی برای پرداخت (تومان)</label>
+            <input id="mf-amount" disabled />
+            <div class="note" id="mf-discount-status" style="margin-top: 4px;"></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px; border-top: 1px solid var(--border); padding-top: 16px;">
+          <button type="button" class="btn ghost" onclick="closeModal()">انصراف</button>
+          <button id="action-btn" class="btn primary" type="submit">پرداخت و ثبت‌نام</button>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <!-- SMS Verification Modal -->
+  <section id="verification-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="panel">
+      <div class="head">
+        <h4 id="verification-title">اعتبارسنجی پیامکی</h4>
+        <button class="x" onclick="closeVerificationModal()">بستن</button>
+      </div>
+      <div id="verification-content">
+        <form id="verification-form" onsubmit="return handleVerificationSubmit(event)">
+            <div class="form-group">
+            <label for="vf-code">کد تایید</label>
+            <p class="note" style="margin-top:-4px; margin-bottom: 8px;">کد ۴ رقمی ارسال شده به شماره موبایل خود را وارد کنید.</p>
+            <input id="vf-code" type="number" required placeholder="----" />
+            <div class="note" id="vf-error" style="color: var(--danger); margin-top: 4px;"></div>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px;">
+            <button type="button" class="btn ghost" onclick="closeVerificationModal()">انصراف</button>
+            <button class="btn primary" type="submit">تایید کد</button>
+            </div>
+        </form>
+      </div>
+      <div id="verification-success" class="hidden" style="text-align: center; padding: 20px 0;">
+          <p style="font-size: 18px; color: var(--ok); font-weight: bold;">ثبت‌نام شما در قرعه‌کشی با موفقیت انجام شد.</p>
+          <p class="note">پنجره به زودی بسته می‌شود.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Modal -->
+  <section id="cart-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="panel">
+        <div class="head">
+            <h4>سبد خرید</h4>
+            <button class="x" onclick="closeCartModal()">بستن</button>
+        </div>
+        <div id="cart-summary">
+            <!-- Data will be populated by JS -->
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px; border-top: 1px solid var(--border); padding-top: 16px;">
+            <button type="button" class="btn ghost" onclick="closeCartModal()">بازگشت</button>
+            <button class="btn primary" onclick="proceedToPayment()">تایید و پرداخت</button>
+        </div>
+    </div>
+  </section>
+
   <link href="./style.scss" rel="stylesheet"/>
   <script type="module" src="js.js" defer></script>
 </body>
