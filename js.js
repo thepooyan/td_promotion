@@ -1,5 +1,12 @@
 const pricingConfig = {'ai-tools': 3200000, 'web': 3400000, 'python': 3300000, 'gamedev': 3600000};
 
+const bind = (query, event, callback) => {
+    const ele = document.querySelector(query)
+    if (ele) {
+        ele.addEventListener(event, callback)
+    }
+}
+
 document.querySelectorAll('.card').forEach(card=>{
     const key = card.getAttribute('data-course');
     const p = pricingConfig[key] || Number(card.getAttribute('data-price')||0);
@@ -313,3 +320,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
     });
 });
+
+bind("#lottery-form", "submit", handleLotterySubmit)
