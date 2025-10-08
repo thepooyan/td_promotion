@@ -1,5 +1,5 @@
 :root {
-  --bg: #111827;
+  --bg: #092131;
   --card: #1F2937;
   --text: #F3F4F6;
   --muted: #9CA3AF;
@@ -59,11 +59,13 @@ h1, h2, h3, h4 {
 
   .hero-timer {
     display: flex;
+    justify-content: center;
     gap: 16px;
     margin-bottom: 24px;
 
     .timer-unit {
       text-align: center;
+      width: 4rem;
 
       .value {
         display: block;
@@ -71,7 +73,7 @@ h1, h2, h3, h4 {
         font-weight: 900;
         line-height: 1;
         color: var(--violet);
-        background: linear-gradient(135deg, var(--brand), var(--violet));
+        background: linear-gradient(135deg,#2086C8,#2086C8);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 4px;
@@ -139,7 +141,7 @@ h1, h2, h3, h4 {
       right: 0;
       width: 60%;
       height: 4px;
-      background: linear-gradient(135deg, var(--brand), var(--violet));
+      background: linear-gradient(135deg,#2086C8, var(--bg));
       border-radius: 2px;
     }
   }
@@ -298,7 +300,7 @@ h1, h2, h3, h4 {
   transition: transform .15s ease, box-shadow .2s ease;
 
   &.primary {
-    background: linear-gradient(135deg, var(--brand), var(--violet));
+    background: linear-gradient(135deg,#2086C8,#2086C8);
     color: #fff;
     box-shadow: 0 8px 18px rgba(59,130,246,.25), 0 6px 14px rgba(245,158,11,.18);
     overflow: hidden;
