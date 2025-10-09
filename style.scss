@@ -100,6 +100,7 @@ h1, h2, h3, h4 {
       background: radial-gradient( circle at 50%, rgba(255, 245, 64, 0.41), transparent 54%);
       max-height: 32rem;
       object-fit: contain;
+      object-position: left;
     }
   }
 
@@ -328,10 +329,20 @@ h1, h2, h3, h4 {
     }
   }
 
+  &.success {
+    background: #3C6;
+    box-shadow: none;
+  }
   &.ghost {
     background: #374151;
     color: var(--text);
     border: 1px solid #4B5563;
+  }
+  &.cancel {
+    background: #bdbdbd;
+    color: var(--text);
+    border: unset;
+    font-weight: unset;
   }
 }
 
@@ -347,7 +358,7 @@ h1, h2, h3, h4 {
 
   .panel {
     width: min(550px, 94vw);
-    background: var(--card);
+    background: white;
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 24px;
@@ -368,12 +379,12 @@ h1, h2, h3, h4 {
   }
 
   .x {
-    background: #374151;
-    border: 1px solid #4B5563;
-    color: var(--text);
+    color: var(--violet);
     border-radius: 10px;
-    padding: 8px 10px;
     cursor: pointer;
+    background: unset;
+    font-size: 2.2rem;
+    transform: rotate(45deg);
   }
 
   .grid2 {
@@ -383,7 +394,6 @@ h1, h2, h3, h4 {
   }
 
   .note {
-    font-size: 12px;
     color: #9CA3AF;
   }
 }
@@ -453,6 +463,8 @@ h1, h2, h3, h4 {
     border: 1px solid #4B5563;
     border-radius: 12px;
     background-color: #374151;
+    border: 1px solid #8DC9FF;
+    background: #C6E1F9;
     color: var(--text);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
@@ -466,6 +478,10 @@ h1, h2, h3, h4 {
   input:disabled {
     background-color: #1F2937;
     color: var(--muted);
+  }
+
+  .form-group {
+    font-size: 16px;
   }
 }
 

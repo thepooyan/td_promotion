@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
 });
 
-// bind("#lottery-form", "submit", handleLotterySubmit)
+bind("#lottery-form", "submit", handleLotterySubmit)
 // bind("#verification-form", "submit", handleVerificationSubmit)
 
 // bind("#paymentBtn", "click", proceedToPayment)

@@ -373,7 +373,7 @@
             <div class="timer-unit"><span id="timer-hours" class="value">00</span><span class="label">ساعت</span></div>
             <div class="timer-unit"><span id="timer-days" class="value">00</span><span class="label">روز</span></div>
           </div>
-          <form id="lottery-form" class="hero-lottery-form">
+          <form id="lottery-form" class="hero-lottery-form submit:handleLotterySubmit">
             <input id="lf-name" name="name" required placeholder="نام و نام‌خانوادگی" />
             <input id="lf-mobile" name="mobile" required placeholder="شماره موبایل" />
             <select id="lf-school" name="school" required>
@@ -536,10 +536,10 @@
     <div class="panel" role="document">
       <div class="head">
         <h4 id="modal-title">ثبت‌نام</h4>
-        <button class="x" onclick="closeModal()">بستن</button>
+        <button class="x" onclick="closeModal()">+</button>
       </div>
       
-      <form id="modal-form" onsubmit="return handleModalSubmit(event)">
+      <form id="modal-form" class="submit:handleModalSubmit">
         <div class="grid2">
           <div class="form-group" style="grid-column: 1 / -1;">
             <label for="mf-name">نام و نام‌خانوادگی</label>
@@ -592,19 +592,19 @@
     <div class="panel">
       <div class="head">
         <h4 id="verification-title">اعتبارسنجی پیامکی</h4>
-        <button class="x click:closeVerificationModal">بستن</button>
+        <button class="x click:closeVerificationModal">+</button>
       </div>
       <div id="verification-content">
         <form id="verification-form" onsubmit="return handleVerificationSubmit(event)">
             <div class="form-group">
             <label for="vf-code">کد تایید</label>
             <p class="note" style="margin-top:-4px; margin-bottom: 8px;">کد ۴ رقمی ارسال شده به شماره موبایل خود را وارد کنید.</p>
-            <input id="vf-code" type="number" required placeholder="----" />
+            <input id="vf-code" type="tel" style="text-align: center;" required placeholder="----" />
             <div class="note" id="vf-error" style="color: var(--danger); margin-top: 4px;"></div>
             </div>
             <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px;">
-            <button type="button" class="btn ghost click:closeVerificationModal">انصراف</button>
-            <button class="btn primary" type="submit">تایید کد</button>
+            <button type="button" class="btn ghost click:closeVerificationModal cancel">انصراف</button>
+            <button class="btn primary success" type="submit">تایید کد</button>
             </div>
         </form>
       </div>
@@ -620,7 +620,7 @@
     <div class="panel">
         <div class="head">
             <h4>سبد خرید</h4>
-            <button class="x click:closeCartModal">بستن</button>
+            <button class="x click:closeCartModal">+</button>
         </div>
         <div id="cart-summary">
             <!-- Data will be populated by JS -->
