@@ -526,3 +526,15 @@ footer {
 @media (max-width: 640px) {
   .facts { grid-template-columns: 1fr; }
 }
+
+#verification-title {
+  &.success {
+    color: var(--ok);
+    display: flex;
+    gap: 0.6rem;
+
+    svg {
+      width: 1.2rem;
+    }
+  }
+}
