@@ -2,7 +2,7 @@
   --bg: #092131;
   --card: #1F2937;
   --text: #363636;
-  --muted: #9CA3AF;
+  --muted: #363636;
   --brand: #F59E0B;
   --violet: #3B82F6;
   --border: rgba(255, 255, 255, .1);
@@ -26,7 +26,7 @@ main {
 .container {
   max-width: 1240px;
   margin: auto;
-  padding: 80px 24px;
+  padding: 30px 24px;
 }
 
 .hidden {
@@ -43,7 +43,6 @@ h1, h2, h3, h4 {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 32px;
-  padding: 40px 0;
 
   .hero-content {
     h1 {
@@ -99,6 +98,8 @@ h1, h2, h3, h4 {
 
     img {
       background: radial-gradient( circle at 50%, rgba(255, 245, 64, 0.41), transparent 54%);
+      max-height: 32rem;
+      object-fit: contain;
     }
   }
 
@@ -145,20 +146,20 @@ h1, h2, h3, h4 {
     &::after {
       content: '';
       position: absolute;
-      bottom: -4px;
       right: 0;
       width: 60%;
       height: 4px;
-      background: linear-gradient(135deg,#2086C8, var(--bg));
+      bottom: -14px;
+      background: linear-gradient(135deg, #2086C8, #f8ad01);
       border-radius: 2px;
     }
   }
 
   p {
     font-size: 16px;
-    color: var(--muted);
-    max-width: 600px;
-    margin: 8px auto 0;
+    color: #363636;
+    margin: 27px auto 0;
+    text-align: center;
   }
 }
 
@@ -179,7 +180,7 @@ h1, h2, h3, h4 {
 /* Card */
 .card {
   position: relative;
-  background: #C6E1F9;
+  background: #DEEFFE;
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 18px;
@@ -227,8 +228,8 @@ h1, h2, h3, h4 {
 
     h3 {
       margin: 0;
-      font-size: 19px;
       letter-spacing: .1px;
+      font-size: 1.5rem;
     }
   }
 
@@ -263,8 +264,6 @@ h1, h2, h3, h4 {
     li {
       list-style: none;
       background: #374151;
-      border: 1px solid #4B5563;
-      border-radius: 999px;
       padding: 8px 12px;
       font-size: 13.5px;
       font-weight: 700;
@@ -272,11 +271,16 @@ h1, h2, h3, h4 {
       overflow: hidden;
       text-overflow: ellipsis;
       color: var(--text);
+      background: #C6E1F9;
+      border: 1px solid #8DC9FF;
+      border-radius: 8px;
     }
   }
 
   .row {
-    display: flex;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     align-items: center;
     justify-content: space-between;
@@ -284,7 +288,10 @@ h1, h2, h3, h4 {
     margin-top: auto;
   }
 
-  .price { font-weight: 900; }
+  .price { 
+    font-weight: 500;
+    font-size: 1.2rem;
+   }
 
   .divider {
     height: 1px;
@@ -312,6 +319,7 @@ h1, h2, h3, h4 {
     color: #fff;
     box-shadow: 0 8px 18px rgba(59,130,246,.25), 0 6px 14px rgba(245,158,11,.18);
     overflow: hidden;
+    width: 100%;
 
     &:hover {
       transform: translateY(-1px);
@@ -407,9 +415,9 @@ h1, h2, h3, h4 {
   gap: 16px;
 
   .faq-item {
-    border: 1px solid var(--border);
     border-radius: 16px;
-    background-color: var(--card);
+    border: 1px solid rgb(255, 255, 255);
+    background-color: #EBF6FF;
     overflow: hidden;
 
     .faq-question {
@@ -444,6 +452,7 @@ h1, h2, h3, h4 {
       transition: max-height 0.3s ease-out;
 
       p {
+        font-size: 16px;
         padding: 0 24px 18px;
         margin: 0;
         color: var(--muted);
