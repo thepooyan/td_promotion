@@ -185,18 +185,7 @@ function handleVerificationSubmit(e) {
         document.getElementById('verification-title').textContent = 'موفقیت‌آمیز بود!';
         
         const { name, mobile, school } = lotteryUserData;
-        const lines = [ 'شرکت در قرعه‌کشی', 'نام: ' + name, 'موبایل: ' + mobile, 'مدرسه: ' + school ];
-        const text = lines.join('\n');
-        const phone = '989121234567'; // Your WhatsApp number
-        const url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(text);
-        
-        setTimeout(() => {
-            window.open(url, '_blank');
-        }, 1000); // 1-second delay
-        
-        setTimeout(() => {
-            closeVerificationModal();
-        }, 3000); // 3-second total delay
+        alert(JSON.stringify(lotteryUserData, null, 2))
     }
 
     } else {
@@ -322,3 +311,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 bind("#lottery-form", "submit", handleLotterySubmit)
+bind("#verification-form", "submit", handleVerificationSubmit)
