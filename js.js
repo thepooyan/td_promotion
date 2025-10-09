@@ -23,7 +23,9 @@ let currentFee = 0;
 let appliedDiscount = 0;
 let registrationData = {}; // To hold data for verification step
 
-function openModal(key, title){
+function openModal(e) {
+    const key = e.target.dataset.course;
+    const title = e.target.dataset.des;
     currentCourseKey = key; 
     currentCourseTitle = title || key;
     currentFee = pricingConfig[key] || 0;
