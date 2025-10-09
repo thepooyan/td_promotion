@@ -42,7 +42,7 @@ function openModal(e) {
     document.getElementById('mf-fee').value = currentFee.toLocaleString('fa-IR');
     document.getElementById('mf-amount').value = currentFee.toLocaleString('fa-IR');
     
-    const modal = document.getElementById('modal');
+    const modal = document.getElementById('promoModal');
     modal.classList.remove('hidden'); 
     modal.setAttribute('aria-hidden','false');
 }
