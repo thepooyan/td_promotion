@@ -394,7 +394,7 @@ h1, h2, h3, h4 {
   }
 
   .note {
-    color: #9CA3AF;
+    font-size: 14px;
   }
 }
 
@@ -467,6 +467,11 @@ h1, h2, h3, h4 {
     background: #C6E1F9;
     color: var(--text);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    display: block;
+    word-spacing: 80px;
 
     &:focus {
       outline: none;
@@ -482,6 +487,7 @@ h1, h2, h3, h4 {
 
   .form-group {
     font-size: 16px;
+    padding-block: 2rem;
   }
 }
 

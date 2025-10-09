@@ -591,14 +591,15 @@
   <section id="verification-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="panel">
       <div class="head">
-        <h4 id="verification-title">اعتبارسنجی پیامکی</h4>
-        <button class="x click:closeVerificationModal">+</button>
+        <div>
+          <h4 id="verification-title">اعتبارسنجی پیامکی</h4>
+          <p class="note">کد ۴ رقمی ارسال شده به شماره موبایل خود را وارد کنید.</p>
+        </div>
+          <button class="x click:closeVerificationModal">+</button>
       </div>
       <div id="verification-content">
         <form id="verification-form" class="submit:handleVerificationSubmit">
             <div class="form-group">
-            <label for="vf-code">کد تایید</label>
-            <p class="note" style="margin-top:-4px; margin-bottom: 8px;">کد ۴ رقمی ارسال شده به شماره موبایل خود را وارد کنید.</p>
             <input id="vf-code" type="tel" style="text-align: center;" required placeholder="----" />
             <div class="note" id="vf-error" style="color: var(--danger); margin-top: 4px;"></div>
             </div>

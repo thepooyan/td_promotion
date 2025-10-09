@@ -324,7 +324,7 @@ validEvents.forEach(validEvent => {
         let classnames = click.className.split(" ")
         let events = classnames.filter(c => c.startsWith(`${validEvent}:`)).map(c => c.substring(6))
         events.forEach(event => {
-            click.addEventListener(validEvent, () => eval(event + "()"))
+            click.addEventListener(validEvent, eval(event))
         })
     })
 })
