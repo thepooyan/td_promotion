@@ -191,23 +191,6 @@ h1, h2, h3, h4 {
   box-shadow: 0 10px 30px rgba(0,0,0,.2);
   overflow: hidden;
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: auto -20% -20% auto;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    filter: blur(48px);
-    opacity: .2;
-    pointer-events: none;
-  }
-
-  &.ai::after { background: radial-gradient(closest-side, var(--c-ai), transparent); }
-  &.web::after { background: radial-gradient(closest-side, var(--c-web), transparent); }
-  &.py::after { background: radial-gradient(closest-side, var(--c-py), transparent); }
-  &.gm::after { background: radial-gradient(closest-side, var(--c-gm), transparent); }
-
   .cap {
     display: flex;
     align-items: center;
@@ -308,7 +291,7 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: .5rem;
   border: 0;
-  border-radius: 14px;
+  border-radius: 8px;
   padding: 13px 18px;
   font-weight: 900;
   cursor: pointer;

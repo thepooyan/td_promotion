@@ -315,3 +315,5 @@ bind("#verification-form", "submit", handleVerificationSubmit)
 
 bind("#paymentBtn", "click", proceedToPayment)
 bind("#cartReturnBtn", "click", closeCartModal)
+
+document.querySelectorAll("")
