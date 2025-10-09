@@ -310,10 +310,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
 });
 
-bind("#lottery-form", "submit", handleLotterySubmit)
-bind("#verification-form", "submit", handleVerificationSubmit)
+// bind("#lottery-form", "submit", handleLotterySubmit)
+// bind("#verification-form", "submit", handleVerificationSubmit)
 
-bind("#paymentBtn", "click", proceedToPayment)
-bind("#cartReturnBtn", "click", closeCartModal)
+// bind("#paymentBtn", "click", proceedToPayment)
+// bind("#cartReturnBtn", "click", closeCartModal)
 
-document.querySelectorAll("")
+const validEvents = ["click", "submit"]
+
+validEvents.forEach(validEvent => {
+    const events = document.querySelectorAll(`[class*="${validEvent}:"]`)
+    events.forEach(click => {
+        let classnames = click.className.split(" ")
+        let events = classnames.filter(c => c.startsWith(`${validEvent}:`)).map(c => c.substring(6))
+        events.forEach(event => {
+            click.addEventListener(validEvent, () => eval(event + "()"))
+        })
+    })
+})
