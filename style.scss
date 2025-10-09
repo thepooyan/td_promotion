@@ -357,7 +357,7 @@ h1, h2, h3, h4 {
   z-index: 50;
 
   .panel {
-    width: min(550px, 94vw);
+    width: min(430px, 94vw);
     background: white;
     border: 1px solid var(--border);
     border-radius: 24px;
@@ -468,7 +468,6 @@ h1, h2, h3, h4 {
     color: var(--text);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
-    width: 70%;
     margin: auto;
     display: block;
     word-spacing: 80px;
@@ -487,7 +486,7 @@ h1, h2, h3, h4 {
 
   .form-group {
     font-size: 16px;
-    padding-block: 2rem;
+    padding-block: 1rem;
   }
 }
 

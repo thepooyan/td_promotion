@@ -182,6 +182,7 @@ function handleVerificationSubmit(e) {
         // Proceed with lottery
         document.getElementById('verification-content').classList.add('hidden');
         document.getElementById('verification-success').classList.remove('hidden');
+        document.querySelector('#verification-modal .note').classList.add('hidden')
         document.getElementById('verification-title').textContent = 'موفقیت‌آمیز بود!';
         
         const { name, mobile, school } = lotteryUserData;
