@@ -48,7 +48,7 @@ function openModal(e) {
 }
 
 function closeModal(){ 
-    const modal = document.getElementById('modal'); 
+    const modal = document.getElementById('promoModal'); 
     modal.classList.add('hidden'); 
     modal.setAttribute('aria-hidden','true'); 
 }
