@@ -569,7 +569,7 @@
               <label for="mf-discount">کد تخفیف</label>
               <div style="display: flex; gap: 8px;">
                 <input id="mf-discount" placeholder="اختیاری" style="flex-grow: 1;" />
-                <button type="button" class="btn ghost" onclick="applyDiscount()" style="padding: 10px 14px; font-weight: 700;">اعمال</button>
+                <button type="button" class="btn ghost js:applyDiscount" style="padding: 10px 14px; font-weight: 700;">اعمال</button>
               </div>
             </div>
           </div>
@@ -592,7 +592,7 @@
     <div class="panel">
       <div class="head">
         <h4 id="verification-title">اعتبارسنجی پیامکی</h4>
-        <button class="x" onclick="closeVerificationModal()">بستن</button>
+        <button class="x js:closeVerificationModal">بستن</button>
       </div>
       <div id="verification-content">
         <form id="verification-form" onsubmit="return handleVerificationSubmit(event)">
@@ -603,7 +603,7 @@
             <div class="note" id="vf-error" style="color: var(--danger); margin-top: 4px;"></div>
             </div>
             <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px;">
-            <button type="button" class="btn ghost" onclick="closeVerificationModal()">انصراف</button>
+            <button type="button" class="btn ghost js:closeVerificationModal">انصراف</button>
             <button class="btn primary" type="submit">تایید کد</button>
             </div>
         </form>
@@ -620,14 +620,14 @@
     <div class="panel">
         <div class="head">
             <h4>سبد خرید</h4>
-            <button class="x" onclick="closeCartModal()">بستن</button>
+            <button class="x js:closeCartModal">بستن</button>
         </div>
         <div id="cart-summary">
             <!-- Data will be populated by JS -->
         </div>
         <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px; border-top: 1px solid var(--border); padding-top: 16px;">
-            <button type="button" class="btn ghost" onclick="closeCartModal()">بازگشت</button>
-            <button class="btn primary" onclick="proceedToPayment()">تایید و پرداخت</button>
+            <button type="button" class="btn ghost js:closeCartModal">بازگشت</button>
+            <button class="btn primary js:proceedToPayment">تایید و پرداخت</button>
         </div>
     </div>
   </section>
