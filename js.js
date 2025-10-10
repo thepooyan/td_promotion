@@ -18,7 +18,10 @@ function openModal(e) {
     const key = e.target.dataset.course;
     const title = e.target.dataset.des;
     const currentFee = e.target.dataset.fee;
-    if (!key || !title || !currentFee) throw new Error(`Open modal called with data-course: ${key} data-des: ${title} data-fee: ${currentFee}`)
+    if (!key || !title || !currentFee) {
+        console.error(`Open modal called with data-course: ${key} data-des: ${title} data-fee: ${currentFee}`)
+        return
+    }
     currentCourseKey = key; 
     currentCourseTitle = title;
     appliedDiscount = 0;
@@ -241,8 +244,15 @@ function proceedToPayment() {
 
 // ===== Countdown Engine =====
 function startHeroTimer() {
-    const deadline = new Date('2025-10-25T23:59:59').getTime();
-    
+    const timer = document.querySelector(".hero-timer")
+    const deadlineStr = timer.dataset.deadline
+
+    if (!timer || !deadlineStr) {
+        console.error("Hero Timer not found (.hero-timer)")
+        return
+    }
+
+    const deadline = new Date(deadlineStr).getTime();
     const timerInterval = setInterval(() => {
     const now = Date.now();
     const timeLeft = deadline - now;
