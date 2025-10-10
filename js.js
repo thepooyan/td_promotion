@@ -264,13 +264,11 @@ function startHeroTimer() {
         return;
     }
 
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
     const pad = n => String(n).padStart(2, '0');
-    document.getElementById('timer-days').textContent = pad(days);
     document.getElementById('timer-hours').textContent = pad(hours);
     document.getElementById('timer-minutes').textContent = pad(minutes);
     document.getElementById('timer-seconds').textContent = pad(seconds);
