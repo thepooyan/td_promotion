@@ -73,7 +73,7 @@ async function applyDiscount() {
     }
 }
 
-function handleModalSubmit(e){
+async function handleModalSubmit(e){
     e.preventDefault();
     const name = (document.getElementById('mf-name').value||'').trim();
     const mobile = digitOnly((document.getElementById('mf-mobile').value||'').trim());
@@ -86,6 +86,15 @@ function handleModalSubmit(e){
 
     // Store data and open verification modal instead of redirecting
     const finalAmount = currentFee - appliedDiscount;
+    let data = {
+        token: "...",
+        courseId: currentCourseKey,
+        fullname: name,
+        number: mobile,
+        classType: mode,
+        discountCode: "??"
+    }
+    let res = await axios.post("/CourseSignup", data)
     registrationData = {
         course: currentCourseTitle, 
         key: currentCourseKey, 
@@ -166,8 +175,10 @@ async function handleVerificationSubmit(e) {
     e.preventDefault();
     const enteredCode = document.getElementById('vf-code').value;
     const errorEl = document.getElementById('vf-error');
+    let res = await axios.post("/ConfirmSentOtp", {otp: enteredCode})
+    //save token
 
-    if (parseInt(enteredCode, 10) === verificationCode) {
+    if (res.data.ok) {
     // Success
     errorEl.textContent = '';
     
