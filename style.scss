@@ -532,3 +532,30 @@ footer {
     }
   }
 }
+
+.cart-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #dadada;
+  font-size: 16px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .label {
+    color: var(--muted);
+  }
+
+  .value {
+    font-weight: bold;
+  }
+}
+
+.cart-total {
+  .value {
+    color: var(--violet);
+    font-size: 20px;
+  }
+}
