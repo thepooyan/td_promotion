@@ -38,7 +38,7 @@ function openModal(e) {
     document.getElementById('mf-discount').value = '';
     document.getElementById('mf-discount-status').textContent = '';
     
-    document.getElementById('modal-title').textContent = `ثبت‌نام — ${title}`;
+    document.getElementById('modal-title').innerHTML = `ثبت‌نام <br/> ${title}`;
     document.getElementById('mf-fee').value = currentFee.toLocaleString('fa-IR');
     document.getElementById('mf-amount').value = currentFee.toLocaleString('fa-IR');
     
