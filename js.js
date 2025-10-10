@@ -1,18 +1,9 @@
-const pricingConfig = {'ai-tools': 3200000, 'web': 3400000, 'python': 3300000, 'gamedev': 3600000};
-
 const bind = (query, event, callback) => {
     const ele = document.querySelector(query)
     if (ele) {
         ele.addEventListener(event, callback)
     }
 }
-
-document.querySelectorAll('.card').forEach(card=>{
-    const key = card.getAttribute('data-course');
-    const p = pricingConfig[key] || Number(card.getAttribute('data-price')||0);
-    const el = card.querySelector('.price .p');
-    if(el && p){ el.textContent = p.toLocaleString('en-US'); }
-});
 
 function digitOnly(str){let out='';for(let i=0;i<str.length;i++){const c=str.charAt(i);if(c>='0'&&c<='9')out+=c;}return out;}
 
@@ -26,9 +17,10 @@ let registrationData = {}; // To hold data for verification step
 function openModal(e) {
     const key = e.target.dataset.course;
     const title = e.target.dataset.des;
+    const currentFee = e.target.dataset.fee;
+    if (!key || !title || !currentFee) throw new Error(`Open modal called with data-course: ${key} data-des: ${title} data-fee: ${currentFee}`)
     currentCourseKey = key; 
-    currentCourseTitle = title || key;
-    currentFee = pricingConfig[key] || 0;
+    currentCourseTitle = title;
     appliedDiscount = 0;
 
     // Reset form fields
