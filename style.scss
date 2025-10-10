@@ -13,6 +13,13 @@
   --ok: #16A34A;
   --warn: #F59E0B;
   --danger: #DC2626;
+  --inputBg: #c6e1f9;
+  --inputBorder: #90cafd;
+
+}
+#modal-form, #verification-modal {
+  --inputBg: #f3f4f6;
+  --inputBorder: #E5E7EB;
 }
 
 main {
@@ -110,6 +117,15 @@ h1, h2, h3, h4 {
     gap: 10px;
     margin-top: 24px;
 
+    @media screen and (max-width: 420px) {
+      display: flex;
+      flex-direction: column;
+
+      input {
+        flex: unset;
+      }
+    }
+
     > * {
       flex: 1 1 200px;
       min-width: 180px;
@@ -122,8 +138,8 @@ h1, h2, h3, h4 {
     }
 
     input, select {
-      border: 1px solid #8DC9FF;
-      background: #C6E1F9;
+      border: 1px solid var(--inputBorder);
+      background: var(--inputBg);
       color: var(--text);
     }
 
@@ -255,7 +271,7 @@ h1, h2, h3, h4 {
       overflow: hidden;
       text-overflow: ellipsis;
       color: var(--text);
-      background: #C6E1F9;
+      background: var(--inputBg);
       border-radius: 8px;
     }
   }
@@ -463,8 +479,8 @@ h1, h2, h3, h4 {
     border: 1px solid #4B5563;
     border-radius: 12px;
     background-color: #374151;
-    border: 1px solid #8DC9FF;
-    background: #C6E1F9;
+    border: 1px solid var(--inputBorder);
+    background: var(--inputBg);
     color: var(--text);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
