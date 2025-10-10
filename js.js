@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const bind = (query, event, callback) => {
     const ele = document.querySelector(query)
     if (ele) {
@@ -48,17 +50,14 @@ function closeModal(){
     modal.setAttribute('aria-hidden','true'); 
 }
 
-function applyDiscount() {
+async function applyDiscount() {
     const code = document.getElementById('mf-discount').value.trim().toUpperCase();
     const statusEl = document.getElementById('mf-discount-status');
-    const validCodes = {
-        'TAKHFIFAVAL': 0.10, // 10% discount
-        'VIP20': 0.20, // 20% discount
-        '2025': 0.10 // 10% discount for 2025
-    };
+    let res = await axios.post("/ApplyDiscount", {code: code})
 
-    if (validCodes[code]) {
-        const discountPercentage = validCodes[code];
+
+    if (res.data.percent) {
+        const discountPercentage = res.data.percent
         appliedDiscount = currentFee * discountPercentage;
         
         const finalAmount = currentFee - appliedDiscount;
@@ -114,7 +113,7 @@ let verificationCode = null;
 let lotteryUserData = {};
 let isForRegistration = false;
 
-function handleLotterySubmit(e, forRegistration = false){
+async function handleLotterySubmit(e, forRegistration = false){
     e.preventDefault();
     isForRegistration = forRegistration;
     
@@ -130,13 +129,13 @@ function handleLotterySubmit(e, forRegistration = false){
     lotteryUserData = { name, mobile, school };
     }
     
-    // --- SMS Sending Simulation ---
     verificationCode = 1234; // Static code for testing
-    console.log("Verification Code (for testing):", verificationCode);
+    
     alert('(شبیه‌سازی) یک کد تایید به شماره شما ارسال شد.');
-    // --- End Simulation ---
+    let response = await axios.post("/SendVerificationCode", {mobileNumber: mobile})
 
-    openVerificationModal();
+    if (response.data.ok)
+        openVerificationModal();
     return false;
 }
 
@@ -163,7 +162,7 @@ function closeVerificationModal(keepForm = false) {
     }
 }
 
-function handleVerificationSubmit(e) {
+async function handleVerificationSubmit(e) {
     e.preventDefault();
     const enteredCode = document.getElementById('vf-code').value;
     const errorEl = document.getElementById('vf-error');
@@ -176,7 +175,16 @@ function handleVerificationSubmit(e) {
         closeVerificationModal(true);
         openCartModal();
     } else {
-        // Proceed with lottery
+        const { name, mobile, school } = lotteryUserData;
+        alert(JSON.stringify(lotteryUserData, null, 2))
+        let data = {
+            name: name,
+            mobile: mobile,
+            school: school
+        }
+        let res = await axios.post("/NewPromotion", data)
+        if (!res.data.ok) return
+
         const svgStr = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#10b222" d="M256 512a256 256 0 1 1 0-512 256 256 0 1 1 0 512zM374 145.7c-10.7-7.8-25.7-5.4-33.5 5.3L221.1 315.2 169 263.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.8 7.5 18.8 7s13.4-4.1 17.5-9.8L379.3 179.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></svg>`
         const parser = new DOMParser()
         const svgElement = parser.parseFromString(svgStr, 'image/svg+xml').documentElement
@@ -187,9 +195,6 @@ function handleVerificationSubmit(e) {
         successTitle.textContent = 'موفقیت‌آمیز بود!';
         successTitle.insertBefore(svgElement, successTitle.firstChild)
         successTitle.classList.add("success")
-        
-        const { name, mobile, school } = lotteryUserData;
-        alert(JSON.stringify(lotteryUserData, null, 2))
     }
 
     } else {
