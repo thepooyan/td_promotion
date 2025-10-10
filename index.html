@@ -569,7 +569,7 @@
               <label for="mf-discount">کد تخفیف</label>
               <div style="display: flex; gap: 8px;">
                 <input id="mf-discount" placeholder="اختیاری" style="flex-grow: 1;" />
-                <button type="button" class="btn ghost click:applyDiscount" style="padding: 10px 14px; font-weight: 700;">اعمال</button>
+                <button type="button" class="btn click:applyDiscount" style="padding: 10px 14px; font-weight: 700;">اعمال</button>
               </div>
             </div>
           </div>
@@ -625,8 +625,7 @@
             <!-- Data will be populated by JS -->
         </div>
         <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:24px; border-top: 1px solid var(--border); padding-top: 16px;">
-            <button type="button" class="btn ghost click:closeCartModal">بازگشت</button>
-            <button class="btn primary click:proceedToPayment">تایید و پرداخت</button>
+            <button class="btn primary click:proceedToPayment success">تایید و پرداخت</button>
         </div>
     </div>
   </section>
