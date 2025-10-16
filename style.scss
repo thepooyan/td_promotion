@@ -324,6 +324,14 @@ h4 {
     background: var(--border);
     margin: 8px 0;
   }
+  @media screen and (max-width: 390px) {
+    .facts {
+      grid-template-columns: 1fr;
+    }
+    .price {
+      flex-direction: column;
+    }
+  }
 }
 
 /* Buttons */
