@@ -186,6 +186,12 @@ h4 {
     margin: 27px auto 0;
     text-align: center;
   }
+
+  @media screen and (max-width: 500px) {
+    h2::after {
+      width: 100%;
+    }
+  }
 }
 
 /* Layout */
