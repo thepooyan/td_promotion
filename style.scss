@@ -17,7 +17,9 @@
   --inputBorder: #90cafd;
 
 }
-#modal-form, #verification-modal {
+
+#modal-form,
+#verification-modal {
   --inputBg: #f3f4f6;
   --inputBorder: #E5E7EB;
 }
@@ -40,7 +42,10 @@ main {
   display: none !important;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-weight: 900;
 }
 
@@ -83,7 +88,7 @@ h1, h2, h3, h4 {
         font-weight: 900;
         line-height: 1;
         color: var(--violet);
-        background: linear-gradient(135deg,#2086C8,#2086C8);
+        background: linear-gradient(135deg, #2086C8, #2086C8);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin-bottom: 4px;
@@ -104,7 +109,7 @@ h1, h2, h3, h4 {
     min-height: 350px;
 
     img {
-      background: radial-gradient( circle at 50%, rgba(255, 245, 64, 0.41), transparent 54%);
+      background: radial-gradient(circle at 50%, rgba(255, 245, 64, 0.41), transparent 54%);
       max-height: 32rem;
       object-fit: contain;
       object-position: left;
@@ -126,18 +131,21 @@ h1, h2, h3, h4 {
       }
     }
 
-    > * {
+    >* {
       flex: 1 1 200px;
       min-width: 180px;
     }
 
-    input, select, button {
+    input,
+    select,
+    button {
       padding: 14px;
       font-size: 16px;
       border-radius: 12px;
     }
 
-    input, select {
+    input,
+    select {
       border: 1px solid var(--inputBorder);
       background: var(--inputBg);
       color: var(--text);
@@ -205,7 +213,7 @@ h1, h2, h3, h4 {
   flex-direction: column;
   gap: 12px;
   min-height: 460px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
   overflow: hidden;
 
   .cap {
@@ -230,6 +238,15 @@ h1, h2, h3, h4 {
       margin: 0;
       letter-spacing: .1px;
       font-size: 1.5rem;
+
+      @media screen and (max-width: 570px) {
+        font-size: 1.2rem;
+      }
+
+      @media screen and (max-width: 390px) {
+        font-size: 1rem;
+      }
+
     }
   }
 
@@ -287,10 +304,20 @@ h1, h2, h3, h4 {
     margin-top: auto;
   }
 
-  .price { 
+  .price {
     font-weight: 500;
     font-size: 1.2rem;
-   }
+    
+    @media screen and (max-width: 570px) {
+      font-size: 0.9rem;
+      justify-content: space-around;
+    }
+
+    @media screen and (max-width: 390px) {
+      font-size: 1rem;
+
+    }
+  }
 
   .divider {
     height: 1px;
@@ -314,18 +341,20 @@ h1, h2, h3, h4 {
   transition: transform .15s ease, box-shadow .2s ease;
 
   &.primary {
-    background: linear-gradient(135deg,#2086C8,#2086C8);
+    background: linear-gradient(135deg, #2086C8, #2086C8);
     color: #fff;
-    box-shadow: 0 8px 18px rgba(59,130,246,.25), 0 6px 14px rgba(245,158,11,.18);
+    box-shadow: 0 8px 18px rgba(59, 130, 246, .25), 0 6px 14px rgba(245, 158, 11, .18);
     overflow: hidden;
     width: 100%;
 
     &:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 26px rgba(59,130,246,.32), 0 10px 20px rgba(245,158,11,.28);
+      box-shadow: 0 14px 26px rgba(59, 130, 246, .32), 0 10px 20px rgba(245, 158, 11, .28);
     }
 
-    &:active { transform: translateY(0); }
+    &:active {
+      transform: translateY(0);
+    }
 
     &::after {
       content: "";
@@ -335,7 +364,7 @@ h1, h2, h3, h4 {
       width: 40%;
       height: 320%;
       transform: rotate(25deg);
-      background: linear-gradient(to right, rgba(255,255,255,.0), rgba(255,255,255,.5), rgba(255,255,255,.0));
+      background: linear-gradient(to right, rgba(255, 255, 255, .0), rgba(255, 255, 255, .5), rgba(255, 255, 255, .0));
       filter: blur(10px);
     }
 
@@ -349,11 +378,13 @@ h1, h2, h3, h4 {
     background: #3C6;
     box-shadow: none;
   }
+
   &.ghost {
     background: #374151;
     color: var(--text);
     border: 1px solid #4B5563;
   }
+
   &.cancel {
     background: #bdbdbd;
     color: var(--text);
@@ -366,7 +397,7 @@ h1, h2, h3, h4 {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(15,23,42,.35);
+  background: rgba(15, 23, 42, .35);
   backdrop-filter: blur(6px);
   display: grid;
   place-items: center;
@@ -378,7 +409,7 @@ h1, h2, h3, h4 {
     border: 1px solid var(--border);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 30px 80px rgba(0,0,0,.3);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .3);
   }
 
   .head {
@@ -469,8 +500,10 @@ h1, h2, h3, h4 {
     }
   }
 }
+
 #modal-form,
 #verification-form {
+
   input,
   select {
     width: 100%;
@@ -529,12 +562,19 @@ footer {
 }
 
 @media (max-width: 800px) {
-  .grid { grid-template-columns: 1fr; }
-  .grid2 { grid-template-columns: 1fr; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
-  .facts { grid-template-columns: 1fr; }
+  .facts {
+    grid-template-columns: 1fr;
+  }
 }
 
 #verification-title {
