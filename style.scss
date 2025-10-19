@@ -18,6 +18,48 @@
 
 }
 
+#schoolPage {
+  header {
+    padding: 1rem 2rem;
+    background-color: #ffffff80;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      display: flex ;
+      gap: 1.2rem;
+      color: #363636;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .logo {
+      color: #2589CA;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+
+      img {
+        width: 114px;
+        object-fit: contain;
+      }
+      p {
+        line-height: 1.6rem;
+        font-weight: 800;
+        font-size: 16px;
+      }
+    }
+    @media (max-width: 770px) {
+      flex-direction: column-reverse;
+      gap: 1rem;
+      font-size: 1rem;
+      padding: .8rem;
+      .logo img {width: 80px;}
+    }
+  }
+}
+
 #modal-form,
 #verification-modal {
   --inputBg: #f3f4f6;
