@@ -58,6 +58,72 @@
       .logo img {width: 80px;}
     }
   }
+
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 16px;
+    color: #363636;
+    background-color: #ffffff80;
+    padding: 3rem;
+    gap: 4rem;
+    opacity: 1;
+
+    p {
+      margin-bottom: .5rem;
+    }
+
+    h6 {
+      color: #2086C8;
+      text-align: right;
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 2rem;
+    }
+
+    .logo {
+      color: #2589CA;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1rem;
+
+      img {
+        width: 114px;
+        object-fit: contain;
+      }
+      p {
+        line-height: 1.6rem;
+        font-weight: 800;
+        font-size: 16px;
+      }
+    }
+
+    .icon {
+      display: flex;
+      gap: 1rem;
+
+      &::before {
+        content: "";
+        width: 28.8px;
+        height: 28.8px;
+        background-image: url("https://tahlildadeh.com/Content/images/img/footerIcon1.png");
+        background-repeat: no-repeat;
+        background-size: 657%;
+        flex-shrink: 0;
+      }
+      &.phone::before {
+        background-position: -2.1em .1em;
+        background-size: 533%;
+      }
+      &.mobile::before {
+        background-position: -5.3em 0;
+      }
+      &.map::before {
+        background-position: 0 .1em
+      }
+    }
+  }
 }
 
 #modal-form,
