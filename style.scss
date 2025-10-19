@@ -123,6 +123,13 @@
         background-position: 0 .1em
       }
     }
+
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr;
+      padding-inline: 1.2rem;
+
+      .logo {flex-direction: column;}
+    }
   }
 }
 
